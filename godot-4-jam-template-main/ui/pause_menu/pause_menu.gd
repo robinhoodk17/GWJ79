@@ -1,12 +1,14 @@
 extends UiPage
 
-
+@export var pause_action : GUIDEAction
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	call_deferred("_connect_buttons")
 
 
 func _connect_buttons() -> void:
+	if pause_action:
+		pause_action.triggered.connect(pause)
 	if ui:
 		%Resume.pressed.connect(_resume)
 		%Settings.pressed.connect(ui.go_to.bind("Settings"))
@@ -22,7 +24,17 @@ func _input(event: InputEvent) -> void:
 		_resume()
 
 
+func pause() -> void:
+	if visible:
+		return
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	ui.show()
+	ui.go_to("PauseMenu")
+	get_tree().paused = true
+
+
 func _resume() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if ui:
 		ui.go_to("Game")
 	get_tree().paused = false
