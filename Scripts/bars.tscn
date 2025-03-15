@@ -1,0 +1,55 @@
+[gd_scene load_steps=2 format=3 uid="uid://5smej7033vve"]
+
+[ext_resource type="Script" uid="uid://dhj0ht6au28ys" path="res://Scripts/life_bars.gd" id="1_raq7y"]
+
+[node name="Bars" type="CanvasLayer"]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="Sunlight Bar" type="ProgressBar" parent="."]
+modulate = Color(1, 0.831373, 0.478431, 1)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -167.0
+offset_top = -69.0
+offset_right = 165.0
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 100.0
+rounded = true
+script = ExtResource("1_raq7y")
+
+[node name="Thirst Bar" type="ProgressBar" parent="."]
+modulate = Color(0.4, 0.792157, 0.819608, 1)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -167.0
+offset_top = -109.0
+offset_right = 165.0
+offset_bottom = -82.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 100.0
+
+[node name="Sleep Bar" type="ProgressBar" parent="."]
+modulate = Color(0.635294, 0.552941, 0.635294, 1)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -167.0
+offset_top = -149.0
+offset_right = 165.0
+offset_bottom = -122.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 100.0

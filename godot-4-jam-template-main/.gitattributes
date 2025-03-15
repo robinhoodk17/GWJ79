@@ -1,4 +1,0 @@
-* text=auto eol=lf
-*.bat eol=crlf
-
-*.gd linguist-language=GDScript

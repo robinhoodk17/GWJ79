@@ -1,0 +1,342 @@
+[gd_scene load_steps=7 format=3 uid="uid://dom2bq6x7abkr"]
+
+[ext_resource type="Script" uid="uid://c4l4s6ay3mcjb" path="res://Scripts/player.gd" id="1_3eola"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_3eola"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0bb2n"]
+size = Vector3(2.32373, 2.37189, 2.04779)
+
+[sub_resource type="Animation" id="Animation_0bb2n"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Left front Leg Mesh:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.787901, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Left front Leg Mesh:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.638776, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Left front Leg Mesh:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-1.47739, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Right front Leg Mesh:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.829532, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Right front Leg Mesh:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.638776, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Right front Leg Mesh:position:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-1.47739, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Right Back Leg Mesh:position:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.937505, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Right Back Leg Mesh:position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.638776, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Right Back Leg Mesh:position:z")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Left Back Leg Mesh:position:x")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.878821, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/10/type = "bezier"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Left Back Leg Mesh:position:y")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.638776, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/11/type = "bezier"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Left Back Leg Mesh:position:z")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_3eola"]
+resource_name = "Walk"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Left front Leg Mesh:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0.787901, -0.25, 0, 0.25, 0, 0.787901, -0.25, 0, 0.25, 0, 0.787901, -0.25, 0, 0.25, 0, 0.787901, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.878744, 1.35912, 1.93324)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Left front Leg Mesh:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0.638776, -0.25, 0, 0.25, 0, 0.638776, -0.25, 0, 0.25, 0, 1.03495, -0.25, 0, 0.25, 0, 0.638776, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.878744, 1.35912, 1.93324)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Left front Leg Mesh:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(-1.47739, -0.25, 0, 0.25, 0, -1.47739, -0.25, 0, 0.25, 0, -1.47739, -0.25, 0, 0.25, 0, -1.47739, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.878744, 1.35912, 1.93324)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Right front Leg Mesh:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(-0.829532, -0.25, 0, 0.25, 0, -0.876548, -0.25, 0, 0.25, 0, -0.829532, -0.25, 0, 0.25, 0, -0.829532, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 0.878744, 1.93324)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Right front Leg Mesh:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0.638776, -0.25, 0, 0.25, 0, 1.00229, -0.25, 0, 0.25, 0, 0.638776, -0.25, 0, 0.25, 0, 0.638776, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 0.878744, 1.93324)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Right front Leg Mesh:position:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(-1.47739, -0.25, 0, 0.25, 0, -1.45507, -0.25, 0, 0.25, 0, -1.47739, -0.25, 0, 0.25, 0, -1.47739, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 0.878744, 1.93324)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Right Back Leg Mesh:position:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(-0.937505, -0.25, 0, 0.25, 0, -0.937505, -0.25, 0, 0.25, 0, -0.937505, -0.25, 0, 0.25, 0, -0.937505, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.878744, 1.35912, 1.93324)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Right Back Leg Mesh:position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0.638776, -0.25, 0, 0.25, 0, 0.638776, -0.25, 0, 0.25, 0, 1.07773, -0.25, 0, 0.25, 0, 0.638776, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.878744, 1.35912, 1.93324)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Right Back Leg Mesh:position:z")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.878744, 1.35912, 1.93324)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Left Back Leg Mesh:position:x")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0.878821, -0.25, 0, 0.25, 0, 0.878821, -0.25, 0, 0.25, 0, 0.878821, -0.25, 0, 0.25, 0, 0.878821, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 0.878744, 1.93324)
+}
+tracks/10/type = "bezier"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Left Back Leg Mesh:position:y")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0.638776, -0.25, 0, 0.25, 0, 1.06466, -0.25, 0, 0.25, 0, 0.638776, -0.25, 0, 0.25, 0, 0.638776, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 0.878744, 1.93324)
+}
+tracks/11/type = "bezier"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Left Back Leg Mesh:position:z")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 0.878744, 1.93324)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_duskh"]
+_data = {
+&"RESET": SubResource("Animation_0bb2n"),
+&"Walk": SubResource("Animation_3eola")
+}
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_3eola")
+
+[node name="Torso Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.615, 0, 0, 0, 1, 0, 0, 0, 2.103, 0, 1.72103, -0.763493)
+mesh = SubResource("BoxMesh_3eola")
+
+[node name="CameraTarget" type="Node3D" parent="."]
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraTarget"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.76113, 2.4659)
+spring_length = 2.0
+margin = 0.5
+
+[node name="Camera3D" type="Camera3D" parent="CameraTarget/SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.747502, 1.66775)
+
+[node name="Left Back Leg Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.595, 0, 0, 0, -1.63918e-08, -1.403, 0, 0.375, -6.13271e-08, 0.878821, 0.638776, 0)
+mesh = SubResource("BoxMesh_3eola")
+
+[node name="Right Back Leg Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.595, 0, 0, 0, -1.63918e-08, -1.403, 0, 0.375, -6.13271e-08, -0.937505, 0.638776, 0)
+mesh = SubResource("BoxMesh_3eola")
+
+[node name="Head Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.786, 0, 0, 0, -3.20842e-08, -1.034, 0, 0.734, -4.51976e-08, -0.00303149, 2.5855, -1.83275)
+mesh = SubResource("BoxMesh_3eola")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0324707, 1.14304, -0.73027)
+shape = SubResource("BoxShape3D_0bb2n")
+
+[node name="Left front Leg Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.595, 0, 0, 0, -1.63918e-08, -1.403, 0, 0.375, -6.13271e-08, 0.787901, 0.638776, -1.47739)
+mesh = SubResource("BoxMesh_3eola")
+
+[node name="Right front Leg Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.595, 0, 0, 0, -1.63918e-08, -1.403, 0, 0.375, -6.13271e-08, -0.829532, 0.638776, -1.47739)
+mesh = SubResource("BoxMesh_3eola")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_duskh")
+}
+speed_scale = 1.2
+blend_times = [&"RESET", &"RESET", 1.0, &"RESET", &"Walk", 1.0, &"Walk", &"RESET", 1.0, &"Walk", &"Walk", 1.0]
+
+[node name="Plant" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.27519, -0.52333)
+visible = false
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10258, -2.03371)
+target_position = Vector3(0, 0, -2)

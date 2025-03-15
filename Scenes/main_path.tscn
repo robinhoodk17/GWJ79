@@ -1,0 +1,261 @@
+[gd_scene load_steps=30 format=3 uid="uid://cm284gwx7qpyt"]
+
+[ext_resource type="PackedScene" uid="uid://dom2bq6x7abkr" path="res://Scripts/player.tscn" id="1_simwh"]
+[ext_resource type="PackedScene" uid="uid://5smej7033vve" path="res://Scripts/bars.tscn" id="2_3yvfe"]
+[ext_resource type="Script" uid="uid://w26saprr5eg6" path="res://Scenes/bar_spot.gd" id="2_a6253"]
+[ext_resource type="Material" uid="uid://dswa7nxvhoswc" path="res://Particles/Sunlight.tres" id="3_gxq6o"]
+[ext_resource type="Material" uid="uid://bfjbavkupu4b5" path="res://Particles/Sleep.tres" id="3_t6k5e"]
+[ext_resource type="Material" uid="uid://c605ge3qhov13" path="res://Particles/Water.tres" id="4_jkod3"]
+[ext_resource type="Script" uid="uid://ccw7fjqjo7y0x" path="res://Scripts/plant_pickup.gd" id="7_jkod3"]
+[ext_resource type="Script" uid="uid://ddrnfxokhbait" path="res://Scripts/farm_house.gd" id="7_li2j6"]
+[ext_resource type="PackedScene" uid="uid://cqqoh64l4uio8" path="res://3D Models/Leaf Bed.blend" id="8_8oh8j"]
+[ext_resource type="PackedScene" uid="uid://c7yipqfvp44tu" path="res://3D Models/Tree.blend" id="9_niauf"]
+[ext_resource type="PackedScene" uid="uid://crak05vlyp0ep" path="res://Scenes/lose_screen.tscn" id="10_e8v76"]
+[ext_resource type="PackedScene" uid="uid://c5w0hogxu2xpt" path="res://Scenes/time_limit.tscn" id="11_27dg6"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0ssrf"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_2e8v6"]
+sky_material = SubResource("ProceduralSkyMaterial_0ssrf")
+
+[sub_resource type="Environment" id="Environment_357dt"]
+background_mode = 2
+sky = SubResource("Sky_2e8v6")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t6k5e"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.134541, 0.484405, 9.62615e-07, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0ssrf"]
+material = SubResource("StandardMaterial3D_t6k5e")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2e8v6"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0ssrf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nof2k"]
+vertex_color_use_as_albedo = true
+metallic_specular = 1.0
+emission_enabled = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_t4p7o"]
+material = SubResource("StandardMaterial3D_nof2k")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_t6k5e"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jkod3"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.34902, 0.152941, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_t6k5e"]
+material = SubResource("StandardMaterial3D_jkod3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8oh8j"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.737255, 0.117647, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_jkod3"]
+material = SubResource("StandardMaterial3D_8oh8j")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_niauf"]
+points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jkod3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8oh8j"]
+
+[node name="Main Path" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_357dt")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+light_color = Color(0.683077, 0.683077, 0.683077, 1)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("1_simwh")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(26.0486, 0, 0, 0, 1, 0, 0, 0, 217.419, 0, 0, -93.9186)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_0ssrf")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_2e8v6")
+
+[node name="Bar Spot 1" type="Area3D" parent="."]
+transform = Transform3D(3.235, 0, 0, 0, 1, 0, 0, 0, 3.215, 8.81472, 0, 0)
+script = ExtResource("2_a6253")
+light_particles = ExtResource("3_gxq6o")
+water_particles = ExtResource("4_jkod3")
+sleep_particles = ExtResource("3_t6k5e")
+Particles = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bar Spot 1"]
+shape = SubResource("CylinderShape3D_0ssrf")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Bar Spot 1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.585545, 0)
+amount = 5
+lifetime = 2.0
+preprocess = 0.3
+speed_scale = 0.8
+explosiveness = 0.5
+randomness = 1.0
+fixed_fps = 10
+process_material = ExtResource("3_gxq6o")
+draw_pass_1 = SubResource("SphereMesh_t4p7o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bar Spot 1"]
+mesh = SubResource("CylinderMesh_t6k5e")
+
+[node name="Bars" parent="." instance=ExtResource("2_3yvfe")]
+
+[node name="Bar Spot 2" type="Area3D" parent="."]
+transform = Transform3D(3.235, 0, 0, 0, 1, 0, 0, 0, 3.215, -8.27684, 0, -41.0518)
+script = ExtResource("2_a6253")
+light_particles = ExtResource("3_gxq6o")
+water_particles = ExtResource("4_jkod3")
+sleep_particles = ExtResource("3_t6k5e")
+Particles = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bar Spot 2"]
+shape = SubResource("CylinderShape3D_0ssrf")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Bar Spot 2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.585545, 0)
+amount = 5
+lifetime = 2.0
+preprocess = 0.3
+speed_scale = 0.8
+explosiveness = 0.5
+randomness = 1.0
+fixed_fps = 10
+process_material = ExtResource("3_t6k5e")
+draw_pass_1 = SubResource("SphereMesh_t4p7o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bar Spot 2"]
+mesh = SubResource("CylinderMesh_t6k5e")
+
+[node name="Bar Spot 3" type="Area3D" parent="."]
+transform = Transform3D(3.235, 0, 0, 0, 1, 0, 0, 0, 3.215, 8.81472, 0, -118.61)
+script = ExtResource("2_a6253")
+light_particles = ExtResource("3_gxq6o")
+water_particles = ExtResource("4_jkod3")
+sleep_particles = ExtResource("3_t6k5e")
+Particles = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bar Spot 3"]
+shape = SubResource("CylinderShape3D_0ssrf")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Bar Spot 3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.585545, 0)
+amount = 5
+lifetime = 2.0
+preprocess = 0.3
+speed_scale = 0.8
+explosiveness = 0.5
+randomness = 1.0
+fixed_fps = 10
+process_material = ExtResource("3_t6k5e")
+draw_pass_1 = SubResource("SphereMesh_t4p7o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bar Spot 3"]
+visible = false
+mesh = SubResource("CylinderMesh_t6k5e")
+
+[node name="Farm House" type="MeshInstance3D" parent="."]
+transform = Transform3D(26.2354, 0, 0, 0, 18.6289, 0, 0, 0, 27.84, 0, 5.26637, -196.086)
+mesh = SubResource("BoxMesh_t6k5e")
+
+[node name="House Roof" type="MeshInstance3D" parent="Farm House"]
+transform = Transform3D(1.4, 0, 0, 0, 1, 0, 0, 0, 1.175, 0, 1.00293, 0)
+mesh = SubResource("PrismMesh_jkod3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Farm House"]
+visible = false
+script = ExtResource("7_li2j6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Farm House/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_niauf")
+
+[node name="Plant Pickup" type="StaticBody3D" parent="."]
+transform = Transform3D(2.45, 0, 0, 0, 2.45, 0, 0, 0, 2.45, 11.2781, 1.75492, 7.76763)
+script = ExtResource("7_jkod3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Plant Pickup"]
+mesh = SubResource("BoxMesh_jkod3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plant Pickup"]
+shape = SubResource("BoxShape3D_8oh8j")
+
+[node name="Leaf Bed" parent="." instance=ExtResource("8_8oh8j")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 8.70619, 0.517619, -118.304)
+
+[node name="Trees" type="Node3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 4.10404, 0, 0)
+
+[node name="Tree1" parent="Trees" instance=ExtResource("9_niauf")]
+transform = Transform3D(0.799863, 0.0148135, 0, -0.0148135, 0.799863, 0, 0, 0, 0.8, -30.5085, 1.5, -81.6285)
+
+[node name="Tree2" parent="Trees" instance=ExtResource("9_niauf")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -32.9589, 1.5, -52.2427)
+
+[node name="Tree3" parent="Trees" instance=ExtResource("9_niauf")]
+transform = Transform3D(0.799839, 0, 0.016042, 0, 0.8, 0, -0.016042, 0, 0.799839, -24.3777, 1.5, -19.2964)
+
+[node name="Tree4" parent="Trees" instance=ExtResource("9_niauf")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -28.4669, 1.5, -104.144)
+
+[node name="Tree5" parent="Trees" instance=ExtResource("9_niauf")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -32.9589, 1.5, -128.984)
+
+[node name="Tree6" parent="Trees" instance=ExtResource("9_niauf")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -32.9589, 1.5, 2.39375)
+
+[node name="Tree7" parent="Trees" instance=ExtResource("9_niauf")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -25.4838, 1.5, -158.757)
+
+[node name="Tree8" parent="Trees" instance=ExtResource("9_niauf")]
+transform = Transform3D(0.799863, 0.0148135, 0, -0.0148135, 0.799863, 0, 0, 0, 0.8, 22.2543, 1.5, -81.6285)
+
+[node name="Tree9" parent="Trees" instance=ExtResource("9_niauf")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 19.8039, 1.5, -52.2427)
+
+[node name="Tree10" parent="Trees" instance=ExtResource("9_niauf")]
+transform = Transform3D(0.799839, 0, 0.016042, 0, 0.8, 0, -0.016042, 0, 0.799839, 28.3851, 1.5, -19.2964)
+
+[node name="Tree11" parent="Trees" instance=ExtResource("9_niauf")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 24.2959, 1.5, -104.144)
+
+[node name="Tree12" parent="Trees" instance=ExtResource("9_niauf")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 19.8039, 1.5, -128.984)
+
+[node name="Tree13" parent="Trees" instance=ExtResource("9_niauf")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 19.8039, 1.5, 2.39375)
+
+[node name="Tree14" parent="Trees" instance=ExtResource("9_niauf")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 27.2791, 1.5, -158.757)
+
+[node name="Lose Screen" parent="." instance=ExtResource("10_e8v76")]
+
+[node name="Time Limit" parent="." instance=ExtResource("11_27dg6")]
+
+[connection signal="body_shape_entered" from="Bar Spot 1" to="Player" method="_on_bar_spot_1_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bar Spot 1" to="Player" method="_on_bar_spot_1_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bar Spot 2" to="Player" method="_on_bar_spot_2_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bar Spot 2" to="Player" method="_on_bar_spot_2_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bar Spot 3" to="Player" method="_on_bar_spot_3_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bar Spot 3" to="Player" method="_on_bar_spot_3_body_shape_exited"]
+
+[editable path="Player"]
+[editable path="Bars"]
+[editable path="Lose Screen"]
+[editable path="Time Limit"]
