@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0i4cibp8vq5y"]
+
+[ext_resource type="Script" uid="uid://dl5d38h0kp56q" path="res://source/enemies/basic_enemy.gd" id="1_ohqv6"]
+
+[node name="SmallKaiju" type="CharacterBody3D" node_paths=PackedStringArray("nav_agent", "attack_raycast", "animation_player", "attack_cd_timer")]
+collision_layer = 2
+script = ExtResource("1_ohqv6")
+nav_agent = NodePath("NavigationAgent3D")
+attack_raycast = NodePath("AttackRaycast")
+animation_player = NodePath("")
+attack_cd_timer = NodePath("Attack_CD")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_desired_distance = 15.0
+target_desired_distance = 10.0
+simplify_path = true
+avoidance_enabled = true
+debug_enabled = true
+debug_path_custom_color = Color(1, 0, 0, 1)
+
+[node name="AttackRaycast" type="RayCast3D" parent="."]
+
+[node name="Attack_CD" type="Timer" parent="."]
+one_shot = true

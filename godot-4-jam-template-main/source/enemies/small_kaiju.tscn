@@ -1,0 +1,148 @@
+[gd_scene load_steps=10 format=3 uid="uid://ch8gse74drulk"]
+
+[ext_resource type="PackedScene" uid="uid://d0i4cibp8vq5y" path="res://source/enemies/basic_enemy.tscn" id="1_4f1jf"]
+[ext_resource type="Script" uid="uid://rl8vm2mjrkbi" path="res://source/enemies/hitbox.gd" id="2_jidbh"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_yhgeu"]
+radius = 2.5
+height = 10.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5tdoh"]
+radius = 2.5
+height = 10.0
+
+[sub_resource type="Animation" id="Animation_4f1jf"]
+resource_name = "attack"
+length = 2.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.4, 1.5, 2),
+"transitions": PackedFloat32Array(1, 0.406126, 1, 1),
+"update": 0,
+"values": [Vector3(0, 3, 0), Vector3(0, 3, -0.75), Vector3(0, 3, -7), Vector3(0, 3, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"attack_cooldown"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MeshInstance3D2/Area3D:damaging")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_k171f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 3, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshInstance3D2/Area3D:damaging")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jidbh"]
+_data = {
+&"RESET": SubResource("Animation_k171f"),
+&"attack": SubResource("Animation_4f1jf")
+}
+
+[sub_resource type="BoxMesh" id="BoxMesh_rvg3d"]
+size = Vector3(1, 1, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4f1jf"]
+size = Vector3(1, 1, 5)
+
+[node name="SmallKaiju" node_paths=PackedStringArray("animation_player") instance=ExtResource("1_4f1jf")]
+animation_player = NodePath("AnimationPlayer")
+
+[node name="MeshInstance3D" parent="." index="0"]
+mesh = SubResource("CapsuleMesh_yhgeu")
+
+[node name="CollisionShape3D" parent="." index="1"]
+shape = SubResource("CapsuleShape3D_5tdoh")
+
+[node name="NavigationAgent3D" parent="." index="2"]
+target_desired_distance = 20.0
+
+[node name="AttackRaycast" parent="." index="3"]
+target_position = Vector3(0, -1, 1.65)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+libraries = {
+&"": SubResource("AnimationLibrary_jidbh")
+}
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+visible = false
+mesh = SubResource("BoxMesh_rvg3d")
+
+[node name="Area3D" type="Area3D" parent="MeshInstance3D2" index="0"]
+script = ExtResource("2_jidbh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/Area3D" index="0"]
+shape = SubResource("BoxShape3D_4f1jf")
