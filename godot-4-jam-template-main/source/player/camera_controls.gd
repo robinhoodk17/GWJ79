@@ -16,7 +16,7 @@ var current_camera_state : camera_state = camera_state.NORMAL
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	camera.make_current()
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
