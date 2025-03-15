@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_rbefe")
-name = &"Move"
+name = &"move"
 action_value_type = 2
 block_lower_priority_actions = true
 emit_as_godot_actions = false

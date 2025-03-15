@@ -1,11 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://bhsiyh7htemxt"]
+[gd_scene load_steps=13 format=3 uid="uid://bhsiyh7htemxt"]
 
 [ext_resource type="Script" uid="uid://dqih6i2t5n4pe" path="res://game/game.gd" id="1_bub6j"]
 [ext_resource type="Resource" uid="uid://v5u0dyabni7e" path="res://input/default_mapping_context.tres" id="2_let6s"]
+[ext_resource type="PackedScene" uid="uid://crm1y05dmwgy3" path="res://source/player/player.tscn" id="3_dxrkv"]
 [ext_resource type="PackedScene" uid="uid://bb8j3evqw8pqt" path="res://assets/3d/levels/level1/level1.glb" id="3_h7iqs"]
 [ext_resource type="PackedScene" uid="uid://ch8gse74drulk" path="res://source/enemies/small_kaiju.tscn" id="4_4fuuu"]
-[ext_resource type="Script" uid="uid://crel58vv8ykib" path="res://source/player/player_hitbox.gd" id="4_dakft"]
-[ext_resource type="PackedScene" uid="uid://6154dje6thlw" path="res://source/player/combat.tscn" id="5_dxrkv"]
 
 [sub_resource type="Gradient" id="Gradient_dxrkv"]
 offsets = PackedFloat32Array(0.308081, 1)
@@ -35,80 +34,6 @@ tonemap_mode = 2
 tonemap_exposure = 0.8
 ssr_enabled = true
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_u5opy"]
-points = PackedVector3Array(3.53877, 7.43766, 1.15742, -3.86324, -6.77678, -0.620572, -3.54648, -7.02787, -1.49535, 2.94766, -8.04165, 1.75559, -1.79213, 6.74768, 3.48903, 0.558045, 6.78789, -3.86952, 2.59504, -6.71337, -2.9513, -3.30772, 8.0381, -0.924641, -0.916002, -6.7817, 3.80253, 1.41636, 5.79515, 3.73643, -1.49535, -7.02787, -3.54648, -1.24865, -9.74195, -0.6402, 3.77297, 6.43612, -1.20117, 1.18876, 9.77071, 0.578505, -3.53397, -6.71214, 1.71937, -2.33746, 6.34092, -3.20339, -3.82351, 6.12373, 1.13369, 3.79036, -6.46554, 1.14302, 2.8284, -5.71861, 2.8284, 0.871904, 9.03921, -2.44199, 3.52821, -7.41566, -1.21739, 0.558045, -6.78789, -3.86952, 2.29345, 6.3945, -3.23019, -3.81574, 5.81948, -1.1948, 1.17198, -9.33637, -1.83886, -0.641549, -9.76355, 1.18786, -0.938262, 9.06789, 2.38614, 0.854882, -6.7999, 3.81282, 3.1818, 6.71746, 2.30443, -1.53767, 9.34186, -1.53767, -2.66056, -6.71855, 2.89006, 1.15677, 8.02793, 3.24008)
-
-[sub_resource type="Animation" id="Animation_dxrkv"]
-resource_name = "tail_attack"
-length = 1.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshParent:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MeshParent/Tail/HitBox:damaging")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_dakft"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshParent:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MeshParent/Tail/HitBox:damaging")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_dakft"]
-_data = {
-&"RESET": SubResource("Animation_dakft"),
-&"tail_attack": SubResource("Animation_dxrkv")
-}
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_dakft"]
-radius = 4.0
-height = 20.0
-
-[sub_resource type="BoxMesh" id="BoxMesh_dxrkv"]
-size = Vector3(2, 1, 20)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_dakft"]
-size = Vector3(2, 1, 20)
-
 [sub_resource type="NavigationMesh" id="NavigationMesh_dxrkv"]
 vertices = PackedVector3Array(-6.10352e-05, 9.9, -45.0001, 39.9999, 9.9, -45.0001, 225, 9.9, -225, -45.0001, 9.9, -6.10352e-05, -45.0001, 9.9, -40.0001, -225, 9.9, -225, -225, 9.9, 225, -45.0001, 9.9, 39.9999, 44.9999, 9.9, -6.10352e-05, 39.9999, 9.9, 44.9999, 225, 9.9, 225, -35.0001, 209.9, -35.0001, -35.0001, 209.9, 34.9999, 34.9999, 209.9, 34.9999, 34.9999, 209.9, -35.0001, -30.0001, 9.9, -30.0001, -30.0001, 9.9, 29.9999, 29.9999, 9.9, 29.9999, 29.9999, 9.9, -30.0001, -6.10352e-05, 9.9, 44.9999)
 polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(5, 4, 3), PackedInt32Array(4, 5, 0), PackedInt32Array(0, 5, 2), PackedInt32Array(7, 6, 3), PackedInt32Array(3, 6, 5), PackedInt32Array(10, 9, 8), PackedInt32Array(1, 2, 8), PackedInt32Array(8, 2, 10), PackedInt32Array(14, 13, 11), PackedInt32Array(11, 13, 12), PackedInt32Array(18, 17, 15), PackedInt32Array(15, 17, 16), PackedInt32Array(9, 10, 19), PackedInt32Array(19, 10, 6), PackedInt32Array(6, 7, 19)]
@@ -129,42 +54,8 @@ environment = SubResource("Environment_j8tme")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(0.972881, -0.0899139, -0.213115, 0.231306, 0.37818, 0.896369, 0, -0.921355, 0.388722, 0, 49.3607, 0)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.986873, -0.10804, 0.120041, 0, 0.743285, 0.668975, -0.1615, -0.660193, 0.733528, 3.7175, 25.7605, 88.9466)
-current = true
-
-[node name="StaticBody3D" type="CharacterBody3D" parent="." groups=["player"]]
+[node name="Player" parent="." instance=ExtResource("3_dxrkv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.588, 10, 65.347)
-
-[node name="Combat" parent="StaticBody3D" node_paths=PackedStringArray("animation_player") instance=ExtResource("5_dxrkv")]
-animation_player = NodePath("../AnimationPlayer")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_u5opy")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="StaticBody3D"]
-libraries = {
-&"": SubResource("AnimationLibrary_dakft")
-}
-
-[node name="MeshParent" type="Node3D" parent="StaticBody3D"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/MeshParent"]
-mesh = SubResource("CapsuleMesh_dakft")
-skeleton = NodePath("../..")
-
-[node name="Tail" type="MeshInstance3D" parent="StaticBody3D/MeshParent"]
-transform = Transform3D(1, 4.56653e-08, -1.02677e-08, -4.63842e-08, 0.996225, -0.086808, 6.2648e-09, 0.086808, 0.996225, 0, -4.9441, 8.4787)
-mesh = SubResource("BoxMesh_dxrkv")
-skeleton = NodePath("../..")
-
-[node name="HitBox" type="Area3D" parent="StaticBody3D/MeshParent/Tail"]
-collision_mask = 2
-script = ExtResource("4_dakft")
-damage_amount = 50
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/MeshParent/Tail/HitBox"]
-shape = SubResource("BoxShape3D_dakft")
 
 [node name="enemies" type="Node" parent="."]
 
@@ -202,6 +93,11 @@ navigation_mesh = SubResource("NavigationMesh_dxrkv")
 
 [node name="terrain2" parent="area2" instance=ExtResource("3_h7iqs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 500, 0, 0)
+
+[node name="Debug" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 10.588, 43.9199, 75.2953)
+current = true
+fov = 110.0
 
 [editable path="area1/terrain"]
 [editable path="area2/terrain2"]
