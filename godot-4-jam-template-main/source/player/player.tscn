@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://crm1y05dmwgy3"]
+[gd_scene load_steps=19 format=3 uid="uid://crm1y05dmwgy3"]
 
 [ext_resource type="Script" uid="uid://jh5iu7aaeq36" path="res://source/player/main_body.gd" id="1_u10tu"]
 [ext_resource type="Resource" uid="uid://c6tovgnwacf3x" path="res://input/move.tres" id="2_favdl"]
@@ -98,6 +98,12 @@ size = Vector3(2, 1, 20)
 [sub_resource type="BoxMesh" id="BoxMesh_u10tu"]
 size = Vector3(3, 1, 1)
 
+[sub_resource type="BoxMesh" id="BoxMesh_asuwg"]
+size = Vector3(10, 20, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_y2357"]
+viewport_path = NodePath("MeshParent/Farm/2DWorld")
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vj7dh"]
 bg_color = Color(0.137255, 0.137255, 0.137255, 0.568627)
 
@@ -144,6 +150,26 @@ shape = SubResource("BoxShape3D_dakft")
 [node name="Eyes" type="MeshInstance3D" parent="MeshParent"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.35724e-07, 5.76056, -4.20784)
 mesh = SubResource("BoxMesh_u10tu")
+
+[node name="Farm" type="MeshInstance3D" parent="MeshParent"]
+transform = Transform3D(1, 1.10251e-06, -4.32817e-06, 0, 0.969055, 0.246847, 4.46638e-06, -0.246847, 0.969055, -1.94456e-05, 5.04198, 4.35377)
+mesh = SubResource("BoxMesh_asuwg")
+skeleton = NodePath("../..")
+
+[node name="2DWorld" type="SubViewport" parent="MeshParent/Farm"]
+size = Vector2i(512, 1010)
+
+[node name="Panel" type="Panel" parent="MeshParent/Farm/2DWorld"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite3D" type="Sprite3D" parent="MeshParent/Farm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.166537, 0.653779)
+pixel_size = 0.02
+texture = SubResource("ViewportTexture_y2357")
 
 [node name="DeathScreen" type="CanvasLayer" parent="."]
 visible = false
