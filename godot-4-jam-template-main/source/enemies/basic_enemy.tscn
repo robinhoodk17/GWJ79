@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://dl5d38h0kp56q" path="res://source/enemies/basic_enemy.gd" id="1_ohqv6"]
 
-[node name="SmallKaiju" type="CharacterBody3D" node_paths=PackedStringArray("nav_agent", "attack_raycast", "animation_player", "attack_cd_timer")]
+[node name="SmallKaiju" type="CharacterBody3D" node_paths=PackedStringArray("nav_agent", "attack_raycast", "animation_player", "attack_cd_timer") groups=["enemy"]]
 collision_layer = 2
 script = ExtResource("1_ohqv6")
 nav_agent = NodePath("NavigationAgent3D")
 attack_raycast = NodePath("AttackRaycast")
-animation_player = NodePath("")
+animation_player = NodePath("AnimationPlayer")
 attack_cd_timer = NodePath("Attack_CD")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -26,3 +26,5 @@ debug_path_custom_color = Color(1, 0, 0, 1)
 
 [node name="Attack_CD" type="Timer" parent="."]
 one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

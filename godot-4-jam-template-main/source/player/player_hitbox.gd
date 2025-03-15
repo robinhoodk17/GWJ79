@@ -8,6 +8,5 @@ func _ready() -> void:
 
 func deal_damage(body : Node3D) -> void:
 	if damaging:
-		if body.is_in_group("player"):
-			body.get_node("Combat").take_damage(damage_amount)
-			damaging = false
+		if body.is_in_group("enemy"):
+			body.take_damage(damage_amount)

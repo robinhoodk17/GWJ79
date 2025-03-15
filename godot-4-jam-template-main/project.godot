@@ -72,6 +72,7 @@ ui/toolbar/run_overall=true
 [global_group]
 
 player=""
+enemy=""
 
 [godot_resource_groups]
 

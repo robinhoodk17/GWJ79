@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ch8gse74drulk"]
+[gd_scene load_steps=12 format=3 uid="uid://ch8gse74drulk"]
 
 [ext_resource type="PackedScene" uid="uid://d0i4cibp8vq5y" path="res://source/enemies/basic_enemy.tscn" id="1_4f1jf"]
 [ext_resource type="Script" uid="uid://rl8vm2mjrkbi" path="res://source/enemies/hitbox.gd" id="2_jidbh"]
@@ -7,11 +7,22 @@
 radius = 2.5
 height = 10.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jidbh"]
+resource_local_to_scene = true
+transparency = 1
+vertex_color_use_as_albedo = true
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5tdoh"]
 radius = 2.5
 height = 10.0
 
-[sub_resource type="Animation" id="Animation_4f1jf"]
+[sub_resource type="BoxMesh" id="BoxMesh_rvg3d"]
+size = Vector3(1, 1, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4f1jf"]
+size = Vector3(1, 1, 5)
+
+[sub_resource type="Animation" id="Animation_k171f"]
 resource_name = "attack"
 length = 2.1
 tracks/0/type = "value"
@@ -65,62 +76,87 @@ tracks/3/keys = {
 "values": [true, false]
 }
 
-[sub_resource type="Animation" id="Animation_k171f"]
+[sub_resource type="Animation" id="Animation_rvg3d"]
+resource_name = "die"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1.5708, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:surface_material_override/0:albedo_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"delete_entity"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_2mtot"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D2:visible")
+tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector3(0, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MeshInstance3D2:position")
+tracks/1/path = NodePath("MeshInstance3D:surface_material_override/0:albedo_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 3, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("MeshInstance3D2/Area3D:damaging")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_jidbh"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vgpjm"]
 _data = {
-&"RESET": SubResource("Animation_k171f"),
-&"attack": SubResource("Animation_4f1jf")
+&"RESET": SubResource("Animation_2mtot"),
+&"attack": SubResource("Animation_k171f"),
+&"die": SubResource("Animation_rvg3d")
 }
 
-[sub_resource type="BoxMesh" id="BoxMesh_rvg3d"]
-size = Vector3(1, 1, 5)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_4f1jf"]
-size = Vector3(1, 1, 5)
-
-[node name="SmallKaiju" node_paths=PackedStringArray("animation_player") instance=ExtResource("1_4f1jf")]
-animation_player = NodePath("AnimationPlayer")
+[node name="SmallKaiju" instance=ExtResource("1_4f1jf")]
 
 [node name="MeshInstance3D" parent="." index="0"]
 mesh = SubResource("CapsuleMesh_yhgeu")
+surface_material_override/0 = SubResource("StandardMaterial3D_jidbh")
 
 [node name="CollisionShape3D" parent="." index="1"]
 shape = SubResource("CapsuleShape3D_5tdoh")
@@ -131,12 +167,7 @@ target_desired_distance = 20.0
 [node name="AttackRaycast" parent="." index="3"]
 target_position = Vector3(0, -1, 1.65)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
-libraries = {
-&"": SubResource("AnimationLibrary_jidbh")
-}
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="5"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 visible = false
 mesh = SubResource("BoxMesh_rvg3d")
@@ -146,3 +177,8 @@ script = ExtResource("2_jidbh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/Area3D" index="0"]
 shape = SubResource("BoxShape3D_4f1jf")
+
+[node name="AnimationPlayer" parent="." index="6"]
+libraries = {
+&"": SubResource("AnimationLibrary_vgpjm")
+}

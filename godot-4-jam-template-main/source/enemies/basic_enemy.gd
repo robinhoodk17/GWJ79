@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 @export_group("functionality")
-enum states{IDLE, WALKING, ATTACKING, BLOCKED}
+enum states{IDLE, WALKING, ATTACKING, BLOCKED, DYING}
 @export var nav_agent : NavigationAgent3D
 @export var attack_raycast : RayCast3D
 @export var animation_player : AnimationPlayer
@@ -10,11 +10,13 @@ var current_state : states = states.IDLE
 var player : Node3D
 
 @export_group("Stats")
+@export var max_health : int = 50
 @export var speed : float = 10.0
 @export var attack_range : float = 5.0
 @export var kaiju_height : float = 10.0
 @export var kaiju_radius : float = 2.5
 @export var cd_between_attacks : float = 1.0
+var _current_health : int = max_health
 
 func _ready() -> void:
 	attack_cd_timer.timeout.connect(start_walking)
@@ -38,8 +40,6 @@ func  _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	match current_state:
-		states.IDLE:
-			pass
 		states.WALKING:
 			nav_agent.target_position = Vector3(player.global_position.x, 
 			global_position.y, player.global_position.z)
@@ -66,5 +66,21 @@ func check_for_attack() -> void:
 func attack_cooldown() -> void:
 	attack_cd_timer.start(cd_between_attacks)
 
+
 func start_walking() -> void:
 	current_state = states.WALKING
+
+
+func take_damage(how_much : int) -> void:
+	_current_health -= how_much
+	if _current_health <= 0:
+		die()
+
+
+func die() -> void:
+	current_state = states.DYING
+	animation_player.play("die")
+
+
+func delete_entity() -> void:
+	queue_free()
