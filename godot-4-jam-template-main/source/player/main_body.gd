@@ -7,6 +7,8 @@ enum states{IDLE, WALKING, TAIL_ATTACK, BLOCKED, DYING}
 @export var tail_attack_action : GUIDEAction
 @export var attack_cd_timer : Timer
 @export var move_action : GUIDEAction
+@export var camera : Camera3D
+@export var mesh_parent : Node3D
 var current_state : states = states.WALKING
 
 @export_group("Stats")
@@ -16,6 +18,7 @@ var current_state : states = states.WALKING
 @export var kaiju_radius : float = 2.5
 @export var cd_between_attacks : float = 1.0
 @export var max_health : int = 100
+@export var turn_speed : float = 50.0
 var current_health : int = max_health
 
 
@@ -32,8 +35,12 @@ func _physics_process(delta: float) -> void:
 			var input_dir : Vector2 = move_action.value_axis_2d
 			var direction : Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 			if direction:
+				#mesh_parent.look_at(global_position + direction)
 				velocity.x = direction.x * speed
 				velocity.z = direction.z * speed
+				var target_rotation : Basis = mesh_parent.basis.looking_at(velocity, Vector3.UP)
+				mesh_parent.basis =	mesh_parent.basis.slerp(target_rotation, delta * turn_speed)
+				direction = direction.rotated(Vector3.UP, camera.global_rotation.y)
 			else:
 				velocity.x = move_toward(velocity.x, 0, speed)
 				velocity.z = move_toward(velocity.z, 0, speed)

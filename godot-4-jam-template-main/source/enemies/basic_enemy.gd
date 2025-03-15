@@ -52,7 +52,8 @@ func _physics_process(delta: float) -> void:
 			var destination : Vector3 = nav_agent.get_next_path_position()
 			var local_destination : Vector3 = destination - global_position
 			var direction : Vector3 = local_destination.normalized()
-			look_at(global_position+direction)
+			if direction:
+				look_at(global_position + direction)
 			check_for_attack()
 			velocity = direction * speed
 			if !is_on_floor():

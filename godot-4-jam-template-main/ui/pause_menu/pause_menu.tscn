@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://3s7lo7jd53un"]
+[gd_scene load_steps=4 format=3 uid="uid://3s7lo7jd53un"]
 
 [ext_resource type="Script" uid="uid://p060qdoqdgi7" path="res://ui/pause_menu/pause_menu.gd" id="1_fpgrf"]
+[ext_resource type="PackedScene" uid="uid://doodjmci2iujk" path="res://ui/UI_animator.tscn" id="2_le02u"]
 [ext_resource type="PackedScene" uid="uid://dgxrcxbe8s24d" path="res://ui/build_info/build_info.tscn" id="2_q2yd3"]
 
 [node name="PauseMenu" type="Control" node_paths=PackedStringArray("default_focus_control")]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,20 +34,56 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Resume"
 
+[node name="Node" parent="Buttons/Resume" instance=ExtResource("2_le02u")]
+connect_as_button = true
+entrance_animation = true
+hover_rotation = 0.2
+random_entrance = true
+
 [node name="Settings" type="Button" parent="Buttons"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Settings"
+
+[node name="Node" parent="Buttons/Settings" instance=ExtResource("2_le02u")]
+connect_as_button = true
+entrance_animation = true
+hover_rotation = 0.2
+random_entrance = true
 
 [node name="Controls" type="Button" parent="Buttons"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Controls"
 
+[node name="Node" parent="Buttons/Controls" instance=ExtResource("2_le02u")]
+connect_as_button = true
+entrance_animation = true
+hover_rotation = 0.2
+random_entrance = true
+
+[node name="MainMenu" type="Button" parent="Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Main menu
+"
+
+[node name="Node" parent="Buttons/MainMenu" instance=ExtResource("2_le02u")]
+connect_as_button = true
+entrance_animation = true
+hover_rotation = 0.2
+random_entrance = true
+
 [node name="Quit" type="Button" parent="Buttons"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Quit"
+
+[node name="Node" parent="Buttons/Quit" instance=ExtResource("2_le02u")]
+connect_as_button = true
+entrance_animation = true
+hover_rotation = 0.2
+random_entrance = true
 
 [node name="BuildInfo" parent="." instance=ExtResource("2_q2yd3")]
 layout_mode = 1
