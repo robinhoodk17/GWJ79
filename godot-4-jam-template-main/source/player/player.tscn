@@ -1,11 +1,22 @@
-[gd_scene load_steps=19 format=3 uid="uid://crm1y05dmwgy3"]
+[gd_scene load_steps=31 format=3 uid="uid://crm1y05dmwgy3"]
 
 [ext_resource type="Script" uid="uid://jh5iu7aaeq36" path="res://source/player/main_body.gd" id="1_u10tu"]
 [ext_resource type="Resource" uid="uid://c6tovgnwacf3x" path="res://input/move.tres" id="2_favdl"]
 [ext_resource type="Script" uid="uid://crel58vv8ykib" path="res://source/player/player_hitbox.gd" id="3_favdl"]
 [ext_resource type="Resource" uid="uid://b6w7oxn8rfgtk" path="res://input/tail_attack.tres" id="4_favdl"]
-[ext_resource type="PackedScene" uid="uid://b3n3if56a7xg4" path="res://source/player/camera.tscn" id="5_favdl"]
+[ext_resource type="Script" uid="uid://u380g531p8ia" path="res://source/player/camera_controls.gd" id="5_favdl"]
 [ext_resource type="Resource" uid="uid://ej23s0epyv1y" path="res://input/camera_move.tres" id="6_asuwg"]
+[ext_resource type="Script" uid="uid://dm7wjvj3tat0d" path="res://ui/ui.gd" id="7_8va7w"]
+[ext_resource type="Script" uid="uid://dsi4kfv6iesor" path="res://source/player/camera_follow.gd" id="7_w1lkv"]
+[ext_resource type="PackedScene" uid="uid://cc37235kj4384" path="res://addons/maaacks_ui_sound_controller/base/scenes/Autoloads/ProjectUISoundController.tscn" id="8_w1lkv"]
+[ext_resource type="AudioStream" uid="uid://5kc55ftsdrvt" path="res://ui/assets/audio/rollover5.ogg" id="9_v5tg1"]
+[ext_resource type="Script" uid="uid://dlrpea0mdv2sj" path="res://ui/overlay.gd" id="10_fkki2"]
+[ext_resource type="PackedScene" uid="uid://c31bw3nk5ujvg" path="res://ui/settings/settings.tscn" id="11_l4ysx"]
+[ext_resource type="PackedScene" uid="uid://mwbv2jh1ugjq" path="res://ui/controls/controls.tscn" id="12_clmmo"]
+[ext_resource type="PackedScene" uid="uid://bojsla6nqcf03" path="res://ui/game/game_ui.tscn" id="13_ggjli"]
+[ext_resource type="PackedScene" uid="uid://3s7lo7jd53un" path="res://ui/pause_menu/pause_menu.tscn" id="14_pnvfq"]
+[ext_resource type="Resource" uid="uid://cq5qlttp3lypr" path="res://input/pause.tres" id="15_28hxr"]
+[ext_resource type="PackedScene" uid="uid://dtrluvg5ox2vb" path="res://ui/notifications/message_board.tscn" id="16_k00wa"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_u5opy"]
 points = PackedVector3Array(3.53877, 7.43766, 1.15742, -3.86324, -6.77678, -0.620572, -3.54648, -7.02787, -1.49535, 2.94766, -8.04165, 1.75559, -1.79213, 6.74768, 3.48903, 0.558045, 6.78789, -3.86952, 2.59504, -6.71337, -2.9513, -3.30772, 8.0381, -0.924641, -0.916002, -6.7817, 3.80253, 1.41636, 5.79515, 3.73643, -1.49535, -7.02787, -3.54648, -1.24865, -9.74195, -0.6402, 3.77297, 6.43612, -1.20117, 1.18876, 9.77071, 0.578505, -3.53397, -6.71214, 1.71937, -2.33746, 6.34092, -3.20339, -3.82351, 6.12373, 1.13369, 3.79036, -6.46554, 1.14302, 2.8284, -5.71861, 2.8284, 0.871904, 9.03921, -2.44199, 3.52821, -7.41566, -1.21739, 0.558045, -6.78789, -3.86952, 2.29345, 6.3945, -3.23019, -3.81574, 5.81948, -1.1948, 1.17198, -9.33637, -1.83886, -0.641549, -9.76355, 1.18786, -0.938262, 9.06789, 2.38614, 0.854882, -6.7999, 3.81282, 3.1818, 6.71746, 2.30443, -1.53767, 9.34186, -1.53767, -2.66056, -6.71855, 2.89006, 1.15677, 8.02793, 3.24008)
@@ -110,7 +121,9 @@ bg_color = Color(0.137255, 0.137255, 0.137255, 0.568627)
 [sub_resource type="SphereShape3D" id="SphereShape3D_favdl"]
 radius = 5.0
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("death_screen", "animation_player", "attack_cd_timer") groups=["player"]]
+[sub_resource type="BoxMesh" id="BoxMesh_0e1rv"]
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("death_screen", "animation_player", "attack_cd_timer", "camera", "mesh_parent") groups=["player"]]
 collision_mask = 3
 script = ExtResource("1_u10tu")
 death_screen = NodePath("DeathScreen")
@@ -118,6 +131,9 @@ animation_player = NodePath("AnimationPlayer")
 tail_attack_action = ExtResource("4_favdl")
 attack_cd_timer = NodePath("AttackCD")
 move_action = ExtResource("2_favdl")
+camera = NodePath("CameraPivot/Camera3D")
+mesh_parent = NodePath("MeshParent")
+turn_speed = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_u5opy")
@@ -199,10 +215,56 @@ text = "Oh, no! Your plants!"
 
 [node name="AttackCD" type="Timer" parent="."]
 
-[node name="CameraPivot" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_favdl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.03569, 0)
-top_level = false
-shape = SubResource("SphereShape3D_favdl")
-spring_length = 30.0
+[node name="CameraPivot" type="Node3D" parent="." node_paths=PackedStringArray("player", "camera", "spring_arm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+script = ExtResource("5_favdl")
 rotate_action = ExtResource("6_asuwg")
 player = NodePath("..")
+camera = NodePath("Camera3D")
+spring_arm = NodePath("SpringArm")
+
+[node name="SpringArm" type="SpringArm3D" parent="CameraPivot"]
+shape = SubResource("SphereShape3D_favdl")
+spring_length = 30.0
+
+[node name="SpringPosition" type="Node3D" parent="CameraPivot/SpringArm"]
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot" node_paths=PackedStringArray("spring_position")]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 30.0357, 30)
+current = true
+fov = 95.0
+script = ExtResource("7_w1lkv")
+spring_position = NodePath("../SpringArm/SpringPosition")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CameraPivot/Camera3D"]
+mesh = SubResource("BoxMesh_0e1rv")
+
+[node name="UI" type="CanvasLayer" parent="CameraPivot"]
+process_mode = 3
+script = ExtResource("7_8va7w")
+
+[node name="ProjectUISoundController" parent="CameraPivot/UI" instance=ExtResource("8_w1lkv")]
+button_hovered = ExtResource("9_v5tg1")
+button_focused = ExtResource("9_v5tg1")
+button_pressed = ExtResource("9_v5tg1")
+
+[node name="InGameMenuOverlay" type="ColorRect" parent="CameraPivot/UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.784314)
+script = ExtResource("10_fkki2")
+
+[node name="Settings" parent="CameraPivot/UI" instance=ExtResource("11_l4ysx")]
+
+[node name="Controls" parent="CameraPivot/UI" instance=ExtResource("12_clmmo")]
+
+[node name="Game" parent="CameraPivot/UI" instance=ExtResource("13_ggjli")]
+mouse_filter = 2
+
+[node name="PauseMenu" parent="CameraPivot/UI" instance=ExtResource("14_pnvfq")]
+pause_action = ExtResource("15_28hxr")
+
+[node name="MessageBoard" parent="CameraPivot/UI" instance=ExtResource("16_k00wa")]

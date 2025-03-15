@@ -1,14 +1,12 @@
-extends SpringArm3D
+extends Node3D
 
 enum camera_state{LOCK_ON, NORMAL, CUTSCENE}
 
 @export var rotate_action: GUIDEAction
 @export var player : Node3D
 @export var camera : Camera3D
-@export var nest : Node3D
-@export var focus_point : Node3D
-@export var look_at_node : Node3D
 @export var sensibility : float = 2.0
+@export var spring_arm : SpringArm3D
 
 var offset : Vector3
 var current_camera_state : camera_state = camera_state.NORMAL
@@ -24,8 +22,7 @@ func _physics_process(delta: float) -> void:
 		camera_state.NORMAL:
 			var rotation_input : Vector2 = rotate_action.value_axis_2d
 			rotation.x -= rotation_input.y * sensibility * delta
+			rotation.x = clamp(rotation.x, -PI/2, PI/4)
+			
 			rotation.y -= rotation_input.x * sensibility * delta
-			#global_position = lerp(global_position,player.global_position, delta)
-			#focus_point.global_position = lerp(focus_point.global_position, player.global_position + player.velocity, delta * .5)
-			#camera.look_at_node(focus_point.global_position)
-			#camera.global_basis = camera.global_basis.slerp(nest.global_basis,delta * 2.0).orthonormalized()
+			rotation.y = wrapf(rotation.y, 0.0, TAU)

@@ -62,6 +62,18 @@ entrance_animation = true
 hover_rotation = 0.2
 random_entrance = true
 
+[node name="MainMenu" type="Button" parent="Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Main menu
+"
+
+[node name="Node" parent="Buttons/MainMenu" instance=ExtResource("2_le02u")]
+connect_as_button = true
+entrance_animation = true
+hover_rotation = 0.2
+random_entrance = true
+
 [node name="Quit" type="Button" parent="Buttons"]
 unique_name_in_owner = true
 layout_mode = 2
