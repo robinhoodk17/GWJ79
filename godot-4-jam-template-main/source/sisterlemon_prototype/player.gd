@@ -5,6 +5,7 @@ enum states{IDLE, WALKING, TAIL_ATTACK, BLOCKED, DYING}
 @export var game_UI : Control
 @export var death_screen : CanvasLayer
 @export var death_screen_label : Label
+@export var interact_prompt : Control
 @export var animation_player : AnimationPlayer
 @export var tail_attack_action : GUIDEAction
 @export var move_action : GUIDEAction
@@ -58,7 +59,9 @@ func handle_inputs(delta : float) -> void:
 		velocity.z = move_toward(velocity.z, 0, speed)
 
 	if !interaction_raycast.is_colliding():
+		interact_prompt.hide()
 		return
+	interact_prompt.show()
 	if interact.is_triggered():
 		if interaction_raycast.get_collider() is FarmHouse:
 			death_screen.text = "You Win!"

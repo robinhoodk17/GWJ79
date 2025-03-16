@@ -381,12 +381,13 @@ radius = 5.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_uljta"]
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("game_UI", "death_screen", "death_screen_label", "animation_player", "camera", "camera_spring_arm", "mesh_parent", "plant", "interaction_raycast")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("game_UI", "death_screen", "death_screen_label", "interact_prompt", "animation_player", "camera", "camera_spring_arm", "mesh_parent", "plant", "interaction_raycast")]
 collision_mask = 3
 script = ExtResource("1_3eola")
 game_UI = NodePath("CameraPivot/UI/Game")
 death_screen = NodePath("CameraPivot/Lose Screen")
 death_screen_label = NodePath("CameraPivot/Lose Screen/ColorRect/VBoxContainer/Label")
+interact_prompt = NodePath("CameraPivot/UI/Game/InputPrompt")
 animation_player = NodePath("AnimationPlayer")
 tail_attack_action = ExtResource("2_der45")
 move_action = ExtResource("3_0llfg")
