@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dom2bq6x7abkr"]
+[gd_scene load_steps=35 format=3 uid="uid://dom2bq6x7abkr"]
 
 [ext_resource type="Script" uid="uid://ocibsxhcwp14" path="res://source/sisterlemon_prototype/player.gd" id="1_3eola"]
 [ext_resource type="Resource" uid="uid://b6w7oxn8rfgtk" path="res://input/tail_attack.tres" id="2_der45"]
@@ -318,6 +318,20 @@ tracks/11/keys = {
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.5, 0.878744, 1.93324)
 }
+tracks/12/type = "method"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("CameraPivot")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0.866667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.5, 1.0],
+"method": &"add_kaiju_step_trauma"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_der45"]
 resource_name = "tail_attack"
@@ -382,6 +396,8 @@ albedo_color = Color(0.823529, 0, 0.701961, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_jp832"]
 material = SubResource("StandardMaterial3D_dmlwb")
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dmlwb"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jp832"]
 vertex_color_use_as_albedo = true
 albedo_color = Color(0.835294, 0, 0, 1)
@@ -407,13 +423,12 @@ animation_player = NodePath("AnimationPlayer")
 tail_attack_action = ExtResource("2_der45")
 move_action = ExtResource("3_0llfg")
 interact = ExtResource("4_0llfg")
-camera = NodePath("CameraPivot/Camera3D")
+camera = NodePath("CameraPivot/CameraNest/Camera3D")
 camera_spring_arm = NodePath("CameraPivot/SpringArm")
 camera_pivot = NodePath("CameraPivot")
 mesh_parent = NodePath("MeshParent")
 plant = NodePath("MeshParent/AnimatableBody/Plant")
 interaction_raycast = NodePath("MeshParent/InteractionRaycast")
-speed = 20.0
 turn_speed = 10.0
 
 [node name="Collision" type="CollisionShape3D" parent="."]
@@ -494,13 +509,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.869, 0)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="follow_target"]
 mesh = SubResource("SphereMesh_jp832")
 
-[node name="CameraPivot" type="Node3D" parent="." node_paths=PackedStringArray("camera", "follow_target", "original_target", "spring_position", "spring_arm", "player", "mesh_parent", "lock_on_area", "lock_on_timer", "lock_on_sprite", "animator_2d")]
+[node name="CameraPivot" type="Node3D" parent="." node_paths=PackedStringArray("camera_nest", "camera", "follow_target", "original_target", "spring_position", "spring_arm", "player", "mesh_parent", "lock_on_area", "lock_on_timer", "lock_on_sprite", "animator_2d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("5_dmlwb")
+noise = SubResource("FastNoiseLite_dmlwb")
 rotate_action = ExtResource("6_jp832")
 lock_action = ExtResource("8_dmlwb")
 change_lcck = ExtResource("9_jp832")
-camera = NodePath("Camera3D")
+camera_nest = NodePath("CameraNest")
+camera = NodePath("CameraNest/Camera3D")
 follow_target = NodePath("../follow_target")
 original_target = NodePath("../Original_camera_target")
 spring_position = NodePath("SpringArm/SpringPosition")
@@ -511,6 +528,7 @@ lock_on_area = NodePath("../LockOnArea")
 lock_on_timer = NodePath("LockOnTimer")
 lock_on_sprite = NodePath("UI/Game/LockOn")
 animator_2d = NodePath("UI/Game/AnimationPlayer")
+idle_cooldown = 3.0
 
 [node name="SpringArm" type="SpringArm3D" parent="CameraPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -521,10 +539,12 @@ spring_length = 10.0
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CameraPivot/SpringArm/SpringPosition"]
 mesh = SubResource("SphereMesh_iwx2n")
 
-[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+[node name="CameraNest" type="Node3D" parent="CameraPivot"]
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot/CameraNest"]
 current = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CameraPivot/Camera3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CameraPivot/CameraNest/Camera3D"]
 mesh = SubResource("BoxMesh_uljta")
 
 [node name="UI" type="CanvasLayer" parent="CameraPivot"]
