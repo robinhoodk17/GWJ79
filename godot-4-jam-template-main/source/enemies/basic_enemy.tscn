@@ -4,6 +4,7 @@
 
 [node name="SmallKaiju" type="CharacterBody3D" node_paths=PackedStringArray("nav_agent", "attack_raycast", "animation_player", "attack_cd_timer") groups=["enemy"]]
 collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_ohqv6")
 nav_agent = NodePath("NavigationAgent3D")
 attack_raycast = NodePath("AttackRaycast")

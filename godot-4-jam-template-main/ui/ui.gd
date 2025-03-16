@@ -74,7 +74,6 @@ func late_ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	var focus_owner: Node = get_viewport().gui_get_focus_owner()
-	print("focus owner is ", focus_owner)
 	if (
 		(event.is_action_pressed("ui_focus_next") or event.is_action_pressed("ui_focus_controls"))
 		and not focus_owner

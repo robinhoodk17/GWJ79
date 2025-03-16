@@ -88,6 +88,8 @@ func start_walking() -> void:
 
 
 func take_damage(how_much : int, launch_force : float, _launch_direction : Vector3) -> void:
+	if current_state == states.DYING:
+		return
 	accumulated_launch += launch_force
 	if accumulated_launch >= resistance_against_launch:
 		if animation_player.is_playing():

@@ -116,6 +116,10 @@ E={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_2="enemy"
+
 [physics]
 
 3d/default_gravity=20.0

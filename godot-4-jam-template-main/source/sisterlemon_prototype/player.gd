@@ -12,10 +12,12 @@ enum states{IDLE, WALKING, TAIL_ATTACK, BLOCKED, DYING}
 @export var interact : GUIDEAction
 @export var camera : Camera3D
 @export var camera_spring_arm : SpringArm3D
+@export var camera_pivot : Node3D
 @export var mesh_parent : Node3D
 @export var plant : Node3D
 @export var interaction_raycast : RayCast3D
 var current_state : states = states.WALKING
+var direction : Vector3 = Vector3.ZERO
 
 @export_group("Stats")
 @export var speed : float = 10.0
@@ -31,6 +33,7 @@ func _ready() -> void:
 	interaction_raycast.add_exception(self)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	camera_spring_arm.add_excluded_object(self)
+	camera_spring_arm.add_excluded_object(camera_spring_arm)
 	call_deferred("late_ready")
 
 
@@ -45,14 +48,26 @@ func handle_inputs(delta : float) -> void:
 		return
 
 	var input_dir : Vector2 = move_action.value_axis_2d
-	var direction : Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
 		animation_player.play("Walk")
 		direction = direction.rotated(Vector3.UP, camera.global_rotation.y)
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
-		var target_rotation : Basis = Basis.looking_at(velocity, Vector3.UP)
-		mesh_parent.basis =	mesh_parent.basis.slerp(target_rotation, delta * turn_speed)
+		if camera_pivot.current_camera_state == camera_pivot.camera_state.NORMAL:
+			var target_rotation : Basis = Basis.looking_at(velocity, Vector3.UP)
+			mesh_parent.basis =	mesh_parent.basis.slerp(target_rotation, delta * turn_speed)
+		if camera_pivot.current_camera_state == camera_pivot.camera_state.ENEMY_ACQUIRED:
+			if camera_pivot.locked_enemy != null:
+				velocity /= 2.0
+				var transformed_enemy_position : Vector3 = Vector3\
+				(camera_pivot.locked_enemy.global_position.x,\
+				mesh_parent.global_position.y, \
+				camera_pivot.locked_enemy.global_position.z) - \
+				Vector3(global_position.x, 0, global_position.z)
+				var target_rotation : Basis = Basis.looking_at(transformed_enemy_position, Vector3.UP)
+				mesh_parent.basis =	mesh_parent.basis.slerp(target_rotation, delta * turn_speed / 2.0)
+			
 	else:
 		animation_player.play("RESET")
 		velocity.x = move_toward(velocity.x, 0, speed)

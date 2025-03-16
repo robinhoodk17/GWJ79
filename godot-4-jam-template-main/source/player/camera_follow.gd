@@ -7,4 +7,3 @@ extends Camera3D
 
 func _process(delta: float) -> void:
 	global_position = lerp(global_position, spring_position.global_position, delta*lerp_power)
-	look_at(follow_target.global_position)
