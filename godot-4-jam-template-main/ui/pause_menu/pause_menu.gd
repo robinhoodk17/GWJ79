@@ -7,8 +7,6 @@ func _ready() -> void:
 
 
 func _connect_buttons() -> void:
-	if pause_action:
-		pause_action.triggered.connect(pause)
 	if ui:
 		%Resume.pressed.connect(_resume)
 		%Settings.pressed.connect(ui.go_to.bind("Settings"))
@@ -25,15 +23,6 @@ func _input(event: InputEvent) -> void:
 		_resume()
 
 
-func pause() -> void:
-	if visible:
-		return
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	ui.show()
-	ui.go_to("PauseMenu")
-	get_tree().paused = true
-
-
 func _resume() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if ui:
@@ -48,3 +37,9 @@ func _main_menu() -> void:
 
 func quit() -> void:
 	get_tree().quit()
+
+
+func show_ui() -> void:
+	show()
+	%Resume.grab_focus()
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

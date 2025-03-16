@@ -10,13 +10,13 @@
 [ext_resource type="Resource" uid="uid://bo0hoqgqx87cp" path="res://input/lock_on.tres" id="8_dmlwb"]
 [ext_resource type="Script" uid="uid://dm7wjvj3tat0d" path="res://ui/ui.gd" id="8_ixiwu"]
 [ext_resource type="PackedScene" uid="uid://cc37235kj4384" path="res://addons/maaacks_ui_sound_controller/base/scenes/Autoloads/ProjectUISoundController.tscn" id="9_1ps34"]
+[ext_resource type="Resource" uid="uid://dev701h4y2c4p" path="res://input/change_lock.tres" id="9_jp832"]
 [ext_resource type="AudioStream" uid="uid://5kc55ftsdrvt" path="res://ui/assets/audio/rollover5.ogg" id="10_mtrw4"]
 [ext_resource type="Script" uid="uid://dlrpea0mdv2sj" path="res://ui/overlay.gd" id="11_du256"]
 [ext_resource type="PackedScene" uid="uid://c31bw3nk5ujvg" path="res://ui/settings/settings.tscn" id="12_hmqcg"]
 [ext_resource type="PackedScene" uid="uid://mwbv2jh1ugjq" path="res://ui/controls/controls.tscn" id="13_fvg78"]
 [ext_resource type="PackedScene" uid="uid://bojsla6nqcf03" path="res://ui/game/game_ui.tscn" id="14_64oqw"]
 [ext_resource type="PackedScene" uid="uid://3s7lo7jd53un" path="res://ui/pause_menu/pause_menu.tscn" id="15_8vj76"]
-[ext_resource type="Resource" uid="uid://cq5qlttp3lypr" path="res://input/pause.tres" id="16_c13la"]
 [ext_resource type="PackedScene" uid="uid://dtrluvg5ox2vb" path="res://ui/notifications/message_board.tscn" id="17_qcw8q"]
 [ext_resource type="PackedScene" uid="uid://crak05vlyp0ep" path="res://source/sisterlemon_prototype/lose_screen.tscn" id="19_dmlwb"]
 
@@ -499,6 +499,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("5_dmlwb")
 rotate_action = ExtResource("6_jp832")
 lock_action = ExtResource("8_dmlwb")
+change_lcck = ExtResource("9_jp832")
 camera = NodePath("Camera3D")
 follow_target = NodePath("../follow_target")
 original_target = NodePath("../Original_camera_target")
@@ -553,7 +554,6 @@ script = ExtResource("11_du256")
 mouse_filter = 2
 
 [node name="PauseMenu" parent="CameraPivot/UI" instance=ExtResource("15_8vj76")]
-pause_action = ExtResource("16_c13la")
 
 [node name="MessageBoard" parent="CameraPivot/UI" instance=ExtResource("17_qcw8q")]
 
@@ -574,4 +574,4 @@ collision_mask = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("BoxShape3D_dmlwb")
 
-[editable path="CameraPivot/Lose Screen"]
+[editable path="CameraPivot/UI/PauseMenu"]

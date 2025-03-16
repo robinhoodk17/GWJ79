@@ -306,4 +306,5 @@ fov = 100.0
 [connection signal="body_shape_exited" from="Bar Spot 3" to="Player" method="_on_bar_spot_3_body_shape_exited"]
 
 [editable path="Player"]
+[editable path="Player/CameraPivot/UI/PauseMenu"]
 [editable path="Player/CameraPivot/Lose Screen"]

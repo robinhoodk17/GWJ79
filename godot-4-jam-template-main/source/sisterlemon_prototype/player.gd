@@ -66,7 +66,8 @@ func handle_inputs(delta : float) -> void:
 				camera_pivot.locked_enemy.global_position.z) - \
 				Vector3(global_position.x, 0, global_position.z)
 				var target_rotation : Basis = Basis.looking_at(transformed_enemy_position, Vector3.UP)
-				mesh_parent.basis =	mesh_parent.basis.slerp(target_rotation, delta * turn_speed / 2.0)
+				mesh_parent.basis =	mesh_parent.basis.slerp(target_rotation, delta * turn_speed / 2.0).orthonormalized()
+				mesh_parent.rotation.x = 0.0
 			
 	else:
 		animation_player.play("RESET")

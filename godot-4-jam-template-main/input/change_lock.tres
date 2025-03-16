@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="GUIDEAction" load_steps=2 format=3 uid="uid://dev701h4y2c4p"]
+
+[ext_resource type="Script" uid="uid://b6xc83iuixejb" path="res://addons/guide/guide_action.gd" id="1_boygs"]
+
+[resource]
+script = ExtResource("1_boygs")
+name = &"change_lock"
+action_value_type = 0
+block_lower_priority_actions = true
+emit_as_godot_actions = false
+is_remappable = true
+display_name = "Change target"
+display_category = ""

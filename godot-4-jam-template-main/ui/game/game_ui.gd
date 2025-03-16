@@ -2,9 +2,11 @@ extends UiPage
 
 func _input(event: InputEvent) -> void:
 	if visible and event.is_action_pressed("ui_cancel"):
-		accept_event()
-		get_tree().paused = true
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		Input.set_deferred("mouse_mode", Input.MOUSE_MODE_VISIBLE)
 		ui.go_to("PauseMenu")
+		get_tree().paused = true
+		accept_event()
 
 
 func _toggle_guide_debugger(toggled_on: bool) -> void:

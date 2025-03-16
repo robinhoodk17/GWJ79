@@ -5,6 +5,7 @@ enum camera_state{LOCK_ON, NORMAL, CUTSCENE, ENEMY_ACQUIRED}
 @export_group("functionality")
 @export var rotate_action: GUIDEAction
 @export var lock_action : GUIDEAction
+@export var change_lcck : GUIDEAction
 @export var camera : Camera3D
 @export var follow_target : Marker3D
 @export var original_target : Node3D
@@ -29,7 +30,7 @@ var current_camera_state : camera_state = camera_state.NORMAL
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#camera.make_current()
+	camera.make_current()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	lock_on_timer.timeout.connect(allow_relock)
 
@@ -86,7 +87,7 @@ func _physics_process(delta: float) -> void:
 				lock_on_sprite.hide()
 				return
 
-			if abs(rotate_action.value_axis_2d.x) > 0.5 and lock_changeable:
+			if change_lcck.value_bool and lock_changeable:
 				lock_on_timer.start(lock_on_cooldown)
 				lock_changeable = false
 				var found_something = false
@@ -102,12 +103,19 @@ func _physics_process(delta: float) -> void:
 						locked_enemy_list.clear()
 						locked_enemy_list.append(locked_enemy)
 			
-			rotation.x = lerp(rotation.x, -0.524, delta * lerp_power/5.0)
-			rotation.y = lerp(rotation.y, mesh_parent.rotation.y, delta*lerp_power/5.0)
+			follow_target.position = lerp(follow_target.position, locked_enemy.global_position - global_position, delta * sensibility * 10.0)
+			var rotation_input : Vector2 = rotate_action.value_axis_2d
+			
+			rotation.x -= rotation_input.y * sensibility * delta
+			rotation.x = clamp(rotation.x, -PI/2, PI/4)
+			
+			rotation.y -= rotation_input.x * sensibility * delta * 3.0
+			rotation.y = wrapf(rotation.y, 0.0, TAU)
+
+			var target_rotation  : Basis = camera.basis.looking_at(follow_target.global_position)
+			camera.basis.slerp(target_rotation, delta * lerp_power / 5.0)
 
 			lock_on_sprite.show()
 			lock_on_sprite.global_position = camera.unproject_position(locked_enemy.global_position)
 			if !animator_2d.is_playing():
 				animator_2d.play("rotate_lock")
-			var target_rotation  : Basis = camera.basis.looking_at(locked_enemy.global_position)
-			camera.basis.slerp(target_rotation, delta * lerp_power / 5.0)

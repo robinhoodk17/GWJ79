@@ -6,16 +6,12 @@ func _ready() -> void:
 	Global.lost_game.connect(lost_game)
 	hide()
 
+
 func lost_game() -> void:
 	get_tree().paused = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	show()
 	$VBoxContainer/Retry.grab_focus()
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
 
 
 func _on_quit_pressed() -> void:

@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://3s7lo7jd53un"]
+[gd_scene load_steps=5 format=3 uid="uid://3s7lo7jd53un"]
 
 [ext_resource type="Script" uid="uid://p060qdoqdgi7" path="res://ui/pause_menu/pause_menu.gd" id="1_fpgrf"]
+[ext_resource type="Resource" uid="uid://cq5qlttp3lypr" path="res://input/pause.tres" id="2_b4b0p"]
 [ext_resource type="PackedScene" uid="uid://doodjmci2iujk" path="res://ui/UI_animator.tscn" id="2_le02u"]
 [ext_resource type="PackedScene" uid="uid://dgxrcxbe8s24d" path="res://ui/build_info/build_info.tscn" id="2_q2yd3"]
 
@@ -13,6 +14,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fpgrf")
+pause_action = ExtResource("2_b4b0p")
 default_focus_control = NodePath("Buttons/Resume")
 
 [node name="Buttons" type="VBoxContainer" parent="."]
