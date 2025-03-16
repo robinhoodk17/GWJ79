@@ -2,18 +2,22 @@ extends CharacterBody3D
 
 @export_group("functionality")
 enum states{IDLE, WALKING, TAIL_ATTACK, BLOCKED, DYING}
+@export var game_UI : Control
 @export var death_screen : CanvasLayer
+@export var death_screen_label : Label
 @export var animation_player : AnimationPlayer
 @export var tail_attack_action : GUIDEAction
 @export var move_action : GUIDEAction
+@export var interact : GUIDEAction
 @export var camera : Camera3D
 @export var camera_spring_arm : SpringArm3D
 @export var mesh_parent : Node3D
+@export var plant : Node3D
 @export var interaction_raycast : RayCast3D
 var current_state : states = states.WALKING
 
 @export_group("Stats")
-@export var speed : float = 5.0
+@export var speed : float = 10.0
 @export var attack_range : float = 5.0
 @export var kaiju_height : float = 10.0
 @export var kaiju_radius : float = 2.5
@@ -22,23 +26,46 @@ var current_state : states = states.WALKING
 @export var turn_speed : float = 20.0
 var current_health : int = max_health
 
-func _ready():
+func _ready() -> void:
 	interaction_raycast.add_exception(self)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	camera_spring_arm.add_excluded_object(self)
+	call_deferred("late_ready")
 
-func _input(event) -> void:
+
+func late_ready() -> void:
+	game_UI.show()
+
+func handle_inputs(delta : float) -> void:
+	if tail_attack_action.is_triggered():
+		animation_player.play("tail_attack")
+		current_state = states.TAIL_ATTACK
+		velocity = Vector3.ZERO
+		return
+
+	var input_dir : Vector2 = move_action.value_axis_2d
+	var direction : Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	if direction:
+		animation_player.play("Walk")
+		direction = direction.rotated(Vector3.UP, camera.global_rotation.y)
+		velocity.x = direction.x * speed
+		velocity.z = direction.z * speed
+		var target_rotation : Basis = Basis.looking_at(velocity, Vector3.UP)
+		mesh_parent.basis =	mesh_parent.basis.slerp(target_rotation, delta * turn_speed)
+	else:
+		animation_player.play("RESET")
+		velocity.x = move_toward(velocity.x, 0, speed)
+		velocity.z = move_toward(velocity.z, 0, speed)
+
 	if !interaction_raycast.is_colliding():
 		return
-	if Input.is_action_pressed("E"):
+	if interact.is_triggered():
 		if interaction_raycast.get_collider() is FarmHouse:
-			$"../Lose Screen/ColorRect/Label".text = "You Win!"
+			death_screen.text = "You Win!"
 			Global.lost_game.emit()
-
-	if Input.is_action_pressed("E"):
 		if interaction_raycast.get_collider() is PlantPickup:
 			$"../Plant Pickup".position.y -= 100
-			$Plant.visible = true
+			plant.visible = true
 			Global.plants += 1
 			Global.picked_plant.emit()
 
@@ -46,26 +73,9 @@ func _input(event) -> void:
 func _physics_process(delta: float) -> void:	
 	match current_state:
 		states.WALKING:
-			if tail_attack_action.is_triggered():
-				animation_player.play("tail_attack")
-				current_state = states.TAIL_ATTACK
-				velocity = Vector3.ZERO
-				return
 			if not is_on_floor():
 				velocity += get_gravity() * delta
-			var input_dir : Vector2 = move_action.value_axis_2d
-			var direction : Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-			if direction:
-				animation_player.play("Walk")
-				direction = direction.rotated(Vector3.UP, camera.global_rotation.y)
-				velocity.x = direction.x * speed
-				velocity.z = direction.z * speed
-				var target_rotation : Basis = Basis.looking_at(velocity, Vector3.UP)
-				mesh_parent.basis =	mesh_parent.basis.slerp(target_rotation, delta * turn_speed)
-			else:
-				animation_player.play("RESET")
-				velocity.x = move_toward(velocity.x, 0, speed)
-				velocity.z = move_toward(velocity.z, 0, speed)
+			handle_inputs(delta)
 			move_and_slide()
 
 

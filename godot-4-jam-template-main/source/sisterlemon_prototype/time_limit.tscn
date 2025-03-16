@@ -3,9 +3,11 @@
 [ext_resource type="Script" uid="uid://bsvjf71a1lel6" path="res://source/sisterlemon_prototype/time_limit.gd" id="1_evulx"]
 
 [node name="Time Limit" type="CanvasLayer"]
+layer = 0
+follow_viewport_enabled = true
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 40.0
+wait_time = 80.0
 one_shot = true
 
 [node name="Time Limit" type="Label" parent="."]

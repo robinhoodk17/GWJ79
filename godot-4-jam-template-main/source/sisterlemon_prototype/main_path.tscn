@@ -1,9 +1,8 @@
-[gd_scene load_steps=35 format=3 uid="uid://cm284gwx7qpyt"]
+[gd_scene load_steps=32 format=3 uid="uid://cm284gwx7qpyt"]
 
 [ext_resource type="Script" uid="uid://dqih6i2t5n4pe" path="res://game/game.gd" id="1_nal3o"]
 [ext_resource type="PackedScene" uid="uid://dom2bq6x7abkr" path="res://source/sisterlemon_prototype/player.tscn" id="1_simwh"]
 [ext_resource type="Resource" uid="uid://v5u0dyabni7e" path="res://input/default_mapping_context.tres" id="2_1ldu7"]
-[ext_resource type="PackedScene" uid="uid://5smej7033vve" path="res://source/sisterlemon_prototype/bars.tscn" id="2_3yvfe"]
 [ext_resource type="Script" uid="uid://ek8xpatk0abp" path="res://source/sisterlemon_prototype/bar_spot.gd" id="2_a6253"]
 [ext_resource type="Material" uid="uid://dswa7nxvhoswc" path="res://source/sisterlemon_prototype/Sunlight.tres" id="3_gxq6o"]
 [ext_resource type="Material" uid="uid://bfjbavkupu4b5" path="res://source/sisterlemon_prototype/Sleep.tres" id="3_t6k5e"]
@@ -12,8 +11,6 @@
 [ext_resource type="Script" uid="uid://dj3oo25bv4g2m" path="res://source/sisterlemon_prototype/farm_house.gd" id="7_li2j6"]
 [ext_resource type="PackedScene" uid="uid://3ch4cewd4fr5" path="res://source/sisterlemon_prototype/Leaf Bed.blend" id="8_8oh8j"]
 [ext_resource type="PackedScene" uid="uid://cxx38lw6y1dt6" path="res://source/sisterlemon_prototype/Tree.blend" id="9_niauf"]
-[ext_resource type="PackedScene" uid="uid://crak05vlyp0ep" path="res://source/sisterlemon_prototype/lose_screen.tscn" id="10_e8v76"]
-[ext_resource type="PackedScene" uid="uid://c5w0hogxu2xpt" path="res://source/sisterlemon_prototype/time_limit.tscn" id="11_27dg6"]
 [ext_resource type="PackedScene" uid="uid://ch8gse74drulk" path="res://source/enemies/small_kaiju.tscn" id="15_tnacl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0ssrf"]
@@ -82,10 +79,6 @@ size = Vector3(26, 1, 217)
 [node name="Main Path" type="Node3D"]
 script = ExtResource("1_nal3o")
 default_mapping_context = ExtResource("2_1ldu7")
-
-[node name="Time Limit" parent="." instance=ExtResource("11_27dg6")]
-
-[node name="Bars" parent="." instance=ExtResource("2_3yvfe")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_357dt")
@@ -294,9 +287,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.81928, 2.3663, -0.393103)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Killbox"]
 shape = SubResource("BoxShape3D_tnacl")
 
-[node name="Lose Screen" parent="." instance=ExtResource("10_e8v76")]
-layer = 10
-
 [connection signal="body_shape_entered" from="Bar Spot 1" to="Player" method="_on_bar_spot_1_body_shape_entered"]
 [connection signal="body_shape_exited" from="Bar Spot 1" to="Player" method="_on_bar_spot_1_body_shape_exited"]
 [connection signal="body_shape_entered" from="Bar Spot 2" to="Player" method="_on_bar_spot_2_body_shape_entered"]
@@ -304,7 +294,5 @@ layer = 10
 [connection signal="body_shape_entered" from="Bar Spot 3" to="Player" method="_on_bar_spot_3_body_shape_entered"]
 [connection signal="body_shape_exited" from="Bar Spot 3" to="Player" method="_on_bar_spot_3_body_shape_exited"]
 
-[editable path="Time Limit"]
-[editable path="Bars"]
 [editable path="Player"]
-[editable path="Lose Screen"]
+[editable path="Player/CameraPivot/Lose Screen"]

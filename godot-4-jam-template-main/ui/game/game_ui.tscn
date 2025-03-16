@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bojsla6nqcf03"]
+[gd_scene load_steps=5 format=3 uid="uid://bojsla6nqcf03"]
 
 [ext_resource type="Script" uid="uid://csrg6q7a24yum" path="res://ui/game/game_ui.gd" id="1_67una"]
+[ext_resource type="Script" uid="uid://c3u6rm60678fe" path="res://ui/game/show_bars.gd" id="2_d7okr"]
+[ext_resource type="Script" uid="uid://dwij6va472hth" path="res://source/sisterlemon_prototype/life_bars.gd" id="2_yc87g"]
+[ext_resource type="Script" uid="uid://bsvjf71a1lel6" path="res://source/sisterlemon_prototype/time_limit.gd" id="4_lkn3m"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -22,3 +25,80 @@ offset_right = 33.5
 offset_bottom = 23.0
 grow_horizontal = 2
 text = "Game UI"
+
+[node name="Bars" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_d7okr")
+
+[node name="Timer" type="Timer" parent="Bars"]
+wait_time = 0.3
+
+[node name="Sunlight Bar" type="ProgressBar" parent="Bars"]
+modulate = Color(1, 0.831373, 0.478431, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 133.0
+offset_top = 251.0
+offset_right = 465.0
+offset_bottom = 283.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 100.0
+rounded = true
+script = ExtResource("2_yc87g")
+
+[node name="Thirst Bar" type="ProgressBar" parent="Bars"]
+modulate = Color(0.4, 0.792157, 0.819608, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 133.0
+offset_top = 211.0
+offset_right = 465.0
+offset_bottom = 238.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 100.0
+
+[node name="Sleep Bar" type="ProgressBar" parent="Bars"]
+modulate = Color(0.635294, 0.552941, 0.635294, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 133.0
+offset_top = 171.0
+offset_right = 465.0
+offset_bottom = 198.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 100.0
+
+[node name="TimeLimit" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Timer" type="Timer" parent="TimeLimit"]
+wait_time = 80.0
+one_shot = true
+
+[node name="Time Limit" type="Label" parent="TimeLimit"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 40
+text = "Time Left:"
+visible_characters = 16
+visible_ratio = 1.6
+script = ExtResource("4_lkn3m")
