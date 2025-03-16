@@ -53,15 +53,17 @@ func _physics_process(delta: float) -> void:
 			var local_destination : Vector3 = destination - global_position
 			var direction : Vector3 = local_destination.normalized()
 			if direction:
-				look_at(global_position + direction)
+				look_at(global_position + direction, Vector3.UP)
 			check_for_attack()
 			velocity = direction * speed
 			if !is_on_floor():
-				velocity += get_gravity() * delta
+				velocity += get_gravity()
 			move_and_slide()
 		states.STAGGERED:
 			was_launched_ago += launch_speed * delta
 			velocity = launch_direction * launch_speed
+			if !is_on_floor():
+				velocity += get_gravity()
 			move_and_slide()
 			if was_launched_ago > launch_distance:
 				was_launched_ago = 0

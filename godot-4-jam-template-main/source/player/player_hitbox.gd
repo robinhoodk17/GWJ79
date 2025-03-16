@@ -3,7 +3,7 @@ extends Area3D
 @export var damage_amount : int = 10
 @export var launch_force : float = 30.0
 @export var main_body : Node3D
-var damaging : bool = false
+@export var damaging : bool = false
 
 func _ready() -> void:
 	body_entered.connect(deal_damage)

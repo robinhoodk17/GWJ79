@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=3 uid="uid://crak05vlyp0ep"]
+
+[ext_resource type="Script" uid="uid://d2vc3h730shwj" path="res://source/sisterlemon_prototype/lose_screen.gd" id="1_s2rrh"]
+
+[node name="Lose Screen" type="CanvasLayer"]
+process_mode = 3
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.235294, 0.235294, 0.235294, 0.439216)
+script = ExtResource("1_s2rrh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -165.0
+offset_right = 165.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "You Lost"
+
+[node name="Retry" type="Button" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 60
+text = "Retry"
+
+[node name="Separator" type="Control" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="Quit" type="Button" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 60
+text = "Quit"
+
+[node name="Separator2" type="Control" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+
+[connection signal="pressed" from="ColorRect/VBoxContainer/Retry" to="ColorRect" method="_on_retry_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Quit" to="ColorRect" method="_on_quit_pressed"]

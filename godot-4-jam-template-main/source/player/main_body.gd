@@ -36,11 +36,11 @@ func _physics_process(delta: float) -> void:
 			var direction : Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 			if direction:
 				#mesh_parent.look_at(global_position + direction)
+				direction = direction.rotated(Vector3.UP, camera.global_rotation.y)
 				velocity.x = direction.x * speed
 				velocity.z = direction.z * speed
 				var target_rotation : Basis = mesh_parent.basis.looking_at(velocity, Vector3.UP)
 				mesh_parent.basis =	mesh_parent.basis.slerp(target_rotation, delta * turn_speed)
-				direction = direction.rotated(Vector3.UP, camera.global_rotation.y)
 			else:
 				velocity.x = move_toward(velocity.x, 0, speed)
 				velocity.z = move_toward(velocity.z, 0, speed)
