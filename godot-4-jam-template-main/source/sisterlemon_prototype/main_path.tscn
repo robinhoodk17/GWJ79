@@ -89,7 +89,6 @@ light_color = Color(0.683077, 0.683077, 0.683077, 1)
 shadow_enabled = true
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_simwh")]
-speed = 20.0
 
 [node name="Bar Spot 1" type="Area3D" parent="."]
 transform = Transform3D(3.235, 0, 0, 0, 1, 0, 0, 0, 3.215, 8.81472, 0, 0)

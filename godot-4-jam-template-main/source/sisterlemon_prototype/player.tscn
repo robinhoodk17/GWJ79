@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dom2bq6x7abkr"]
+[gd_scene load_steps=32 format=3 uid="uid://dom2bq6x7abkr"]
 
 [ext_resource type="Script" uid="uid://ocibsxhcwp14" path="res://source/sisterlemon_prototype/player.gd" id="1_3eola"]
 [ext_resource type="Resource" uid="uid://b6w7oxn8rfgtk" path="res://input/tail_attack.tres" id="2_der45"]
@@ -376,6 +376,12 @@ size = Vector3(0.5, 0.5, 4)
 [sub_resource type="BoxShape3D" id="BoxShape3D_yxwls"]
 size = Vector3(0.5, 0.5, 4)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dmlwb"]
+albedo_color = Color(0.823529, 0, 0.701961, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_jp832"]
+material = SubResource("StandardMaterial3D_dmlwb")
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_lw75c"]
 radius = 1.5
 
@@ -397,6 +403,7 @@ camera_spring_arm = NodePath("CameraPivot/SpringArm")
 mesh_parent = NodePath("MeshParent")
 plant = NodePath("MeshParent/AnimatableBody/Plant")
 interaction_raycast = NodePath("MeshParent/InteractionRaycast")
+speed = 20.0
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0324707, 1.14304, -0.73027)
@@ -467,11 +474,20 @@ shape = SubResource("BoxShape3D_yxwls")
 transform = Transform3D(1, 0, -4.64123e-06, 0, 1, 0, 4.64123e-06, 0, 1, 2.42889e-06, 2.27519, -0.52333)
 visible = false
 
-[node name="CameraPivot" type="Node3D" parent="." node_paths=PackedStringArray("camera")]
+[node name="follow_target" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.86899, -0.936471)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="follow_target"]
+mesh = SubResource("SphereMesh_jp832")
+
+[node name="CameraPivot" type="Node3D" parent="." node_paths=PackedStringArray("camera", "follow_target", "original_target", "player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.86899, -0.936471)
 script = ExtResource("5_dmlwb")
 rotate_action = ExtResource("6_jp832")
 camera = NodePath("Camera3D")
+follow_target = NodePath("../follow_target")
+original_target = NodePath("../Original_camera_target")
+player = NodePath("..")
 
 [node name="SpringArm" type="SpringArm3D" parent="CameraPivot"]
 shape = SubResource("SphereShape3D_lw75c")
@@ -479,12 +495,13 @@ spring_length = 5.0
 
 [node name="SpringPosition" type="Node3D" parent="CameraPivot/SpringArm"]
 
-[node name="Camera3D" type="Camera3D" parent="CameraPivot" node_paths=PackedStringArray("player", "spring_position")]
+[node name="Camera3D" type="Camera3D" parent="CameraPivot" node_paths=PackedStringArray("player", "spring_position", "follow_target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56193, 5.20465)
 current = true
 script = ExtResource("7_iwx2n")
 player = NodePath("../..")
 spring_position = NodePath("../SpringArm/SpringPosition")
+follow_target = NodePath("../../follow_target")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CameraPivot/Camera3D"]
 mesh = SubResource("BoxMesh_uljta")
@@ -522,5 +539,8 @@ pause_action = ExtResource("16_c13la")
 
 [node name="Lose Screen" parent="CameraPivot" instance=ExtResource("19_dmlwb")]
 layer = 10
+
+[node name="Original_camera_target" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.18849, -1.66927)
 
 [editable path="CameraPivot/Lose Screen"]
