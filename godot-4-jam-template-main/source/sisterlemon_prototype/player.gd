@@ -64,7 +64,7 @@ func handle_inputs(delta : float) -> void:
 	interact_prompt.show()
 	if interact.is_triggered():
 		if interaction_raycast.get_collider() is FarmHouse:
-			death_screen.text = "You Win!"
+			death_screen_label.text = "You Win!"
 			Global.lost_game.emit()
 		if interaction_raycast.get_collider() is PlantPickup:
 			$"../Plant Pickup".position.y -= 100

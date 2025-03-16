@@ -377,7 +377,7 @@ size = Vector3(0.5, 0.5, 4)
 size = Vector3(0.5, 0.5, 4)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_lw75c"]
-radius = 5.0
+radius = 1.5
 
 [sub_resource type="BoxMesh" id="BoxMesh_uljta"]
 
@@ -467,12 +467,11 @@ shape = SubResource("BoxShape3D_yxwls")
 transform = Transform3D(1, 0, -4.64123e-06, 0, 1, 0, 4.64123e-06, 0, 1, 2.42889e-06, 2.27519, -0.52333)
 visible = false
 
-[node name="CameraPivot" type="Node3D" parent="." node_paths=PackedStringArray("camera", "spring_arm")]
+[node name="CameraPivot" type="Node3D" parent="." node_paths=PackedStringArray("camera")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.86899, -0.936471)
 script = ExtResource("5_dmlwb")
 rotate_action = ExtResource("6_jp832")
 camera = NodePath("Camera3D")
-spring_arm = NodePath("SpringArm")
 
 [node name="SpringArm" type="SpringArm3D" parent="CameraPivot"]
 shape = SubResource("SphereShape3D_lw75c")
@@ -480,10 +479,11 @@ spring_length = 5.0
 
 [node name="SpringPosition" type="Node3D" parent="CameraPivot/SpringArm"]
 
-[node name="Camera3D" type="Camera3D" parent="CameraPivot" node_paths=PackedStringArray("spring_position")]
+[node name="Camera3D" type="Camera3D" parent="CameraPivot" node_paths=PackedStringArray("player", "spring_position")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56193, 5.20465)
 current = true
 script = ExtResource("7_iwx2n")
+player = NodePath("../..")
 spring_position = NodePath("../SpringArm/SpringPosition")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CameraPivot/Camera3D"]

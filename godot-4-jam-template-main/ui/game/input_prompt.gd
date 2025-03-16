@@ -9,5 +9,5 @@ func _ready() -> void:
 
 func update() -> void:
 	var formatter : GUIDEInputFormatter = GUIDEInputFormatter.for_active_contexts()
-	var action_string = await formatter.action_as_richtext_async(action)
+	var action_string : String = await formatter.action_as_richtext_async(action)
 	text = "[center]interact  %s[/center]" % action_string

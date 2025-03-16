@@ -3,10 +3,8 @@ extends Node3D
 enum camera_state{LOCK_ON, NORMAL, CUTSCENE}
 
 @export var rotate_action: GUIDEAction
-@export var player : Node3D
 @export var camera : Camera3D
 @export var sensibility : float = 1.0
-@export var spring_arm : SpringArm3D
 
 var offset : Vector3
 var current_camera_state : camera_state = camera_state.NORMAL
