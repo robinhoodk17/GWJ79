@@ -1,7 +1,6 @@
 extends UiPage
 
 # TODO: Add a title and/or background art to main_menu.tscn
-
 func _ready() -> void:
 	call_deferred("_connect_buttons")
 	if OS.get_name() == "Web":
@@ -20,4 +19,4 @@ func _connect_buttons() -> void:
 
 func _start_game() -> void:
 	# TODO: Consider adding some kind of scene transition
-	get_tree().change_scene_to_file("res://source/sisterlemon_prototype/main_path.tscn")
+	get_tree().change_scene_to_file("res://scenes/terrain/main_path.tscn")
