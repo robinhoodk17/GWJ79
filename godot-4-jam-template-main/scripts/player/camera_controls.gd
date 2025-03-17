@@ -37,7 +37,6 @@ var lock_changeable : bool = true
 var locked_enemy_list : Array[Node3D] = []
 
 @export_group("customizable")
-@export var sensibility : float = 1.0
 @export var lerp_power : float = 10.0
 @export var lock_on_cooldown : float = 0.5
 @export var idle_cooldown : float = 1.5
@@ -108,16 +107,16 @@ func allow_relock() -> void:
 func _physics_process(delta: float) -> void:
 	match current_camera_state:
 		camera_state.NORMAL:
-			var position_lerp_strength : float = delta * sensibility * 2.0
+			var position_lerp_strength : float = delta * 2.0
 			if !player.direction:
-				position_lerp_strength /= 2.0
+				position_lerp_strength /= 4.0
 			follow_target.position = lerp(follow_target.position, original_target.position + player.direction * 2.0, position_lerp_strength)
 			position = lerp(position, original_target.position, position_lerp_strength * 5.0)
 			var rotation_input : Vector2 = rotate_action.value_axis_2d
 
-			rotation.x -= rotation_input.y * sensibility * delta
+			rotation.x -= rotation_input.y * Global.sensitivity * delta
 			rotation.x = clamp(rotation.x, -PI/2, PI/4)
-			rotation.y -= rotation_input.x * sensibility * delta * 3.0
+			rotation.y -= rotation_input.x * Global.sensitivity * delta * 3.0
 			rotation.y = wrapf(rotation.y, 0.0, TAU)
 
 			camera_nest.global_position = lerp(camera_nest.global_position, spring_position.global_position, delta*lerp_power)
@@ -177,12 +176,12 @@ func _physics_process(delta: float) -> void:
 				animator_2d.stop()
 				lock_on_sprite.hide()
 				
-			follow_target.global_position = lerp(follow_target.global_position, locked_enemy.global_position, delta * sensibility * 2.0)
+			follow_target.global_position = lerp(follow_target.global_position, locked_enemy.global_position, delta)
 			var rotation_input : Vector2 = rotate_action.value_axis_2d
 
-			rotation.x -= rotation_input.y * sensibility * delta
+			rotation.x -= rotation_input.y * Global.sensitivity * delta
 			rotation.x = clamp(rotation.x, -PI/2, PI/4)
-			rotation.y -= rotation_input.x * sensibility * delta * 3.0
+			rotation.y -= rotation_input.x * Global.sensitivity * delta * 3.0
 			rotation.y = wrapf(rotation.y, 0.0, TAU)
 
 			camera_nest.global_position = lerp(camera_nest.global_position, spring_position.global_position, delta*lerp_power)
