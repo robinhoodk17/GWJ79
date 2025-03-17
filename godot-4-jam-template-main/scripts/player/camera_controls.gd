@@ -41,6 +41,7 @@ var locked_enemy_list : Array[Node3D] = []
 @export var lerp_power : float = 10.0
 @export var lock_on_cooldown : float = 0.5
 @export var idle_cooldown : float = 1.5
+@export var shake_probability : float = 0.8
 
 var current_camera_state : camera_state = camera_state.NORMAL
 
@@ -50,6 +51,9 @@ func add_trauma(amount : float, max_trauma : float) -> void:
 
 
 func add_kaiju_step_trauma(amount : float, max_trauma : float) -> void:
+	var probability = randf_range(0.0, 1.0)
+	if probability < shake_probability:
+		return
 	kaiju_trauma = min(kaiju_trauma + amount, max_trauma)
 
 
@@ -106,7 +110,7 @@ func _physics_process(delta: float) -> void:
 		camera_state.NORMAL:
 			var position_lerp_strength : float = delta * sensibility * 2.0
 			if !player.direction:
-				position_lerp_strength *= 2.0
+				position_lerp_strength /= 2.0
 			follow_target.position = lerp(follow_target.position, original_target.position + player.direction * 2.0, position_lerp_strength)
 			position = lerp(position, original_target.position, position_lerp_strength * 5.0)
 			var rotation_input : Vector2 = rotate_action.value_axis_2d
@@ -151,12 +155,12 @@ func _physics_process(delta: float) -> void:
 				animator_2d.stop()
 				lock_on_sprite.hide()
 				return
-
+			var overlapping_bodies : Array[Node3D] = lock_on_area.get_overlapping_bodies()
 			if change_lcck.value_bool and lock_changeable:
 				lock_on_timer.start(lock_on_cooldown)
 				lock_changeable = false
 				var found_something : bool = false
-				for body : Node3D in lock_on_area.get_overlapping_bodies():
+				for body : Node3D in overlapping_bodies:
 					if !(body in locked_enemy_list):
 						found_something = true
 						locked_enemy = body
@@ -167,7 +171,12 @@ func _physics_process(delta: float) -> void:
 						locked_enemy = locked_enemy_list[0]
 						locked_enemy_list.clear()
 						locked_enemy_list.append(locked_enemy)
-			
+			if !(locked_enemy in overlapping_bodies):
+				current_camera_state = camera_state.NORMAL
+				locked_enemy_list.clear()
+				animator_2d.stop()
+				lock_on_sprite.hide()
+				
 			follow_target.global_position = lerp(follow_target.global_position, locked_enemy.global_position, delta * sensibility * 2.0)
 			var rotation_input : Vector2 = rotate_action.value_axis_2d
 

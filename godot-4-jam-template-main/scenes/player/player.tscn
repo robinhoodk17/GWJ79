@@ -8,7 +8,7 @@
 [ext_resource type="Resource" uid="uid://t84x06cxbh2f" path="res://input/interact.tres" id="4_0llfg"]
 [ext_resource type="Script" uid="uid://u380g531p8ia" path="res://scripts/player/camera_controls.gd" id="5_dmlwb"]
 [ext_resource type="PackedScene" uid="uid://2vx50o17va8m" path="res://assets/3d/sapling.blend" id="6_8ydkj"]
-[ext_resource type="Material" path="res://assets/materials/torso_material.tres" id="6_ioxgp"]
+[ext_resource type="Material" uid="uid://dah7wq8ujaphk" path="res://assets/materials/torso_material.tres" id="6_ioxgp"]
 [ext_resource type="Resource" uid="uid://ej23s0epyv1y" path="res://input/camera_move.tres" id="6_jp832"]
 [ext_resource type="Material" uid="uid://bu2hhup8lfd3y" path="res://assets/materials/default_player_farm_material.tres" id="7_ioxgp"]
 [ext_resource type="Resource" uid="uid://bo0hoqgqx87cp" path="res://input/lock_on.tres" id="8_dmlwb"]
@@ -27,8 +27,8 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ydkj"]
 albedo_color = Color(0.564706, 0.337255, 0.152941, 1)
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_dmlwb"]
-radius = 1.22
+[sub_resource type="BoxShape3D" id="BoxShape3D_ioxgp"]
+size = Vector3(2, 2, 2.8031)
 
 [sub_resource type="Animation" id="Animation_0bb2n"]
 length = 0.001
@@ -312,7 +312,7 @@ tracks/10/loop_wrap = true
 tracks/10/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0, 0),
 "points": PackedFloat32Array(0.638776, -0.25, 0, 0.25, 0, 1.06466, -0.25, 0, 0.25, 0, 0.638776, -0.25, 0, 0.25, 0, 0.638776, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.5, 0.878744, 1.93324)
+"times": PackedFloat32Array(0, 0.5, 0.8787, 1.93324)
 }
 tracks/11/type = "bezier"
 tracks/11/imported = false
@@ -332,10 +332,10 @@ tracks/12/path = NodePath("CameraPivot")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(0.866667),
+"times": PackedFloat32Array(0.8787),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [0.5, 1.0],
+"args": [0.2, 1.0],
 "method": &"add_kaiju_step_trauma"
 }]
 }
@@ -400,6 +400,9 @@ size = Vector3(0.5, 0.5, 4)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3j4b4"]
 albedo_color = Color(0.192157, 0.509804, 0.278431, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_dmlwb"]
+size = Vector3(25, 4, 11.4415)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dmlwb"]
 albedo_color = Color(0.823529, 0, 0.701961, 1)
 
@@ -418,9 +421,6 @@ radius = 0.25
 height = 0.5
 
 [sub_resource type="BoxMesh" id="BoxMesh_uljta"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_dmlwb"]
-size = Vector3(25, 4, 25)
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("farm1", "farm2", "farm3", "farm4", "sapling1", "sapling2", "sapling3", "sapling4", "farm_1_timer", "farm_2_timer", "farm_3_timer", "farm_4_timer", "game_UI", "death_screen", "death_screen_label", "interact_prompt", "interaction_raycast", "camera", "camera_spring_arm", "camera_pivot", "mesh_parent", "animation_player")]
 collision_mask = 3
@@ -452,11 +452,12 @@ camera_spring_arm = NodePath("CameraPivot/SpringArm")
 camera_pivot = NodePath("CameraPivot")
 mesh_parent = NodePath("MeshParent")
 animation_player = NodePath("AnimationPlayer")
+speed = 5.0
 turn_speed = 10.0
 
 [node name="Collision" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0324707, 1.14304, -0.73027)
-shape = SubResource("SphereShape3D_dmlwb")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.28595)
+shape = SubResource("BoxShape3D_ioxgp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -590,6 +591,15 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.0
 [node name="Cube" parent="MeshParent/Farm/Farm4/sapling4" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_3j4b4")
 
+[node name="LockOnArea" type="Area3D" parent="MeshParent"]
+transform = Transform3D(1, 0, -4.46638e-06, 0, 1, 0, 4.46638e-06, 0, 1, 0, 0, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshParent/LockOnArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -6.77924)
+shape = SubResource("BoxShape3D_dmlwb")
+
 [node name="follow_target" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.869, 0)
 
@@ -610,7 +620,7 @@ spring_position = NodePath("SpringArm/SpringPosition")
 spring_arm = NodePath("SpringArm")
 player = NodePath("..")
 mesh_parent = NodePath("../MeshParent")
-lock_on_area = NodePath("../LockOnArea")
+lock_on_area = NodePath("../MeshParent/LockOnArea")
 lock_on_timer = NodePath("LockOnTimer")
 lock_on_sprite = NodePath("UI/Game/LockOn")
 animator_2d = NodePath("UI/Game/AnimationPlayer")
@@ -670,14 +680,6 @@ one_shot = true
 
 [node name="Original_camera_target" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.188, 0)
-
-[node name="LockOnArea" type="Area3D" parent="."]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LockOnArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-shape = SubResource("BoxShape3D_dmlwb")
 
 [editable path="MeshParent/Farm/Farm1/sapling1"]
 [editable path="MeshParent/Farm/Farm2/sapling2"]
