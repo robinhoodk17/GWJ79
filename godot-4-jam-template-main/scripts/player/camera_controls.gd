@@ -41,9 +41,24 @@ var locked_enemy_list : Array[Node3D] = []
 @export var lock_on_cooldown : float = 0.5
 @export var idle_cooldown : float = 1.5
 @export var shake_probability : float = 0.8
+@export var tween_duration : float = 0.25
+@export var _reset_x_rotation : float = -0.35
+var _target_rotation : Vector3 = Vector3(_reset_x_rotation,0,0)
+var tween : Tween
 
 var current_camera_state : camera_state = camera_state.NORMAL
 
+
+func position_camera_behind_player(duration : float = tween_duration) -> void:
+	_tween_rotation(mesh_parent.get_rotation().y,  duration)
+
+
+func _tween_rotation(target_y_rotation : float, duration : float = tween_duration):
+	_target_rotation.y = wrapf(target_y_rotation, rotation.y - PI, rotation.y + PI)
+	if tween and tween.is_running():
+		tween.kill()
+	tween = create_tween()
+	tween.tween_property(self, "rotation", _target_rotation, duration)
 
 func add_trauma(amount : float, max_trauma : float) -> void:
 	trauma = min(trauma + amount, max_trauma)
@@ -107,11 +122,11 @@ func allow_relock() -> void:
 func _physics_process(delta: float) -> void:
 	match current_camera_state:
 		camera_state.NORMAL:
-			var position_lerp_strength : float = delta * 2.0
+			var position_lerp_strength : float = delta
 			if !player.direction:
-				position_lerp_strength /= 4.0
+				position_lerp_strength /= 2.0
 			follow_target.position = lerp(follow_target.position, original_target.position + player.direction * 2.0, position_lerp_strength)
-			position = lerp(position, original_target.position, position_lerp_strength * 5.0)
+			position = lerp(position, original_target.position, position_lerp_strength)
 			var rotation_input : Vector2 = rotate_action.value_axis_2d
 
 			rotation.x -= rotation_input.y * Global.sensitivity * delta
@@ -119,10 +134,11 @@ func _physics_process(delta: float) -> void:
 			rotation.y -= rotation_input.x * Global.sensitivity * delta * 3.0
 			rotation.y = wrapf(rotation.y, 0.0, TAU)
 
-			camera_nest.global_position = lerp(camera_nest.global_position, spring_position.global_position, delta*lerp_power)
+			camera_nest.global_position = lerp(camera_nest.global_position, spring_position.global_position, delta * lerp_power /2.0)
 			camera_nest.look_at(follow_target.global_position, Vector3.UP)
 			if lock_action.value_bool:
 				current_camera_state = camera_state.LOCK_ON
+				position_camera_behind_player()
 			handleShakes(delta)
 
 		camera_state.LOCK_ON:
@@ -137,13 +153,18 @@ func _physics_process(delta: float) -> void:
 				for body : Node3D in array_with_bodies:
 					var candidate_colinearity : float = camera_front.dot(body.global_position.normalized())
 					if candidate_colinearity > colinearity:
-						colinearity = candidate_colinearity
-						locked_enemy = body
-						locked_enemy_list.append(locked_enemy)
-
-			position = lerp(position, original_target.position, delta * lerp_power * 5.0)
-			rotation.x = lerp(rotation.x, -0.3, delta*lerp_power)
-			rotation.y = lerp(rotation.y, mesh_parent.rotation.y, delta*lerp_power)
+						if locked_enemy == null:
+							colinearity = candidate_colinearity
+							locked_enemy = body
+							locked_enemy_list.append(locked_enemy)
+						else:
+							if body.is_in_group("enemy"):
+								colinearity = candidate_colinearity
+								locked_enemy = body
+								locked_enemy_list.append(locked_enemy)
+			if !tween.is_running():
+				rotation = _target_rotation
+			position = lerp(position, original_target.position, delta * lerp_power)
 			camera_nest.global_position = lerp(camera_nest.global_position, spring_position.global_position, delta*lerp_power)
 			camera.rotation = Vector3.ZERO
 
@@ -175,6 +196,7 @@ func _physics_process(delta: float) -> void:
 				locked_enemy_list.clear()
 				animator_2d.stop()
 				lock_on_sprite.hide()
+				return
 				
 			follow_target.global_position = lerp(follow_target.global_position, locked_enemy.global_position, delta)
 			var rotation_input : Vector2 = rotate_action.value_axis_2d
