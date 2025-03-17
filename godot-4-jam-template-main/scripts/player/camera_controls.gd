@@ -52,7 +52,7 @@ func add_trauma(amount : float, max_trauma : float) -> void:
 
 func add_kaiju_step_trauma(amount : float, max_trauma : float) -> void:
 	var probability = randf_range(0.0, 1.0)
-	if probability < shake_probability:
+	if probability > shake_probability:
 		return
 	kaiju_trauma = min(kaiju_trauma + amount, max_trauma)
 

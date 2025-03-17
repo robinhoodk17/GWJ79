@@ -120,6 +120,9 @@ func handle_inputs(delta : float) -> void:
 	if !interaction_raycast.is_colliding():
 		interact_prompt.hide()
 		return
+	
+	if !interaction_raycast.get_collider().is_in_group("interactable"):
+		return
 	interact_prompt.show()
 	if interact.is_triggered():
 		if interaction_raycast.get_collider() is FarmHouse:

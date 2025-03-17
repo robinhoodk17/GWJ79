@@ -75,6 +75,7 @@ ui/toolbar/run_overall=true
 
 player=""
 enemy=""
+interactable=""
 
 [godot_resource_groups]
 
