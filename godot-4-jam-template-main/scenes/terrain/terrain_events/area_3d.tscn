@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cp8g1km0wbohh"]
+
+[ext_resource type="Script" uid="uid://bmpk5r1cp0pvy" path="res://scenes/terrain/terrain_events/on_entrance_target_player.gd" id="1_p8p2p"]
+
+[node name="StartCombat" type="Area3D"]
+collision_mask = 3
+script = ExtResource("1_p8p2p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]

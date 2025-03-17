@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5w0hogxu2xpt"]
+
+[ext_resource type="Script" uid="uid://bsvjf71a1lel6" path="res://scripts/player/time_limit.gd" id="1_gcc73"]
+
+[node name="Time Limit" type="CanvasLayer"]
+layer = 0
+follow_viewport_enabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 80.0
+one_shot = true
+
+[node name="Time Limit" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 40
+text = "Time Left:"
+visible_characters = 16
+visible_ratio = 1.6
+script = ExtResource("1_gcc73")

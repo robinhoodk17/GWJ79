@@ -2,11 +2,26 @@
 
 [ext_resource type="Script" uid="uid://csrg6q7a24yum" path="res://ui/game/game_ui.gd" id="1_67una"]
 [ext_resource type="Script" uid="uid://c3u6rm60678fe" path="res://ui/game/show_bars.gd" id="2_d7okr"]
-[ext_resource type="Script" uid="uid://dwij6va472hth" path="res://source/sisterlemon_prototype/life_bars.gd" id="2_yc87g"]
-[ext_resource type="Script" uid="uid://bsvjf71a1lel6" path="res://source/sisterlemon_prototype/time_limit.gd" id="4_lkn3m"]
+[ext_resource type="Script" uid="uid://dwij6va472hth" path="res://scripts/player/life_bars.gd" id="2_yc87g"]
+[ext_resource type="Script" uid="uid://bsvjf71a1lel6" path="res://scripts/player/time_limit.gd" id="4_lkn3m"]
 [ext_resource type="Script" uid="uid://k1g62qxo5ngl" path="res://ui/game/input_prompt.gd" id="5_ke6fc"]
 [ext_resource type="Resource" uid="uid://t84x06cxbh2f" path="res://input/interact.tres" id="6_2g71p"]
 [ext_resource type="Texture2D" uid="uid://d4ljmbuqhcqlv" path="res://assets/2d/Arrow_Crosshair1 - copia.png" id="7_b3mny"]
+
+[sub_resource type="Animation" id="Animation_pc3ud"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LockOn:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_b3mny"]
 resource_name = "rotate_lock"
@@ -22,21 +37,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 6.28319]
-}
-
-[sub_resource type="Animation" id="Animation_pc3ud"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("LockOn:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yw7c2"]
@@ -135,6 +135,7 @@ wait_time = 80.0
 one_shot = true
 
 [node name="Time Limit" type="Label" parent="TimeLimit"]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 theme_override_font_sizes/font_size = 40
