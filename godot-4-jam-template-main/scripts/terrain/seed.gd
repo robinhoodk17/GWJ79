@@ -7,7 +7,7 @@ func  _ready() -> void:
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and Global.seeds_carried<4:
 		Global.seeds_carried+=1
 		Signalbus.emit_signal("seed_picked")
 		queue_free()
