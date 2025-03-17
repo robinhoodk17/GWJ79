@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="GUIDEAction" load_steps=2 format=3 uid="uid://ej23s0epyv1y"]
+
+[ext_resource type="Script" uid="uid://b6xc83iuixejb" path="res://addons/guide/guide_action.gd" id="1_eqml5"]
+
+[resource]
+script = ExtResource("1_eqml5")
+name = &"camera_move"
+action_value_type = 2
+block_lower_priority_actions = true
+emit_as_godot_actions = false
+is_remappable = true
+display_name = "Move camera"
+display_category = ""

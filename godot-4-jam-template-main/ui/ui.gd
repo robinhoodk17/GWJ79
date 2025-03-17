@@ -1,7 +1,6 @@
 extends CanvasLayer
 
 
-# TODO: consider using the hide_ui and show_ui functions to add ui animation
 func hide_ui(page: Variant = null) -> void:
 	if page:
 		var ui_page: UiPage = _resolve_ui_page(page)
@@ -58,20 +57,23 @@ func _resolve_ui_page(node_or_name: Variant) -> Node:
 
 func _ready() -> void:
 	get_viewport().gui_focus_changed.connect(_on_focus_changed)
-	hide()
 	for child: Node in get_children():
 		if child is UiPage:
 			print("injecting ui in ", child.name)
 			child.set("ui", self)
+	call_deferred("late_ready")
+
+
+func late_ready() -> void:
+	hide()
+	for child: Node in get_children():
+		if child is UiPage:
 			child.hide()
 	show()
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	# I think this could be simplified somehow, but I'm not getting it just yet
-	# If nothing focused, trying to focus next will focus something
 	var focus_owner: Node = get_viewport().gui_get_focus_owner()
-	print("focus owner is ", focus_owner)
 	if (
 		(event.is_action_pressed("ui_focus_next") or event.is_action_pressed("ui_focus_controls"))
 		and not focus_owner
@@ -113,6 +115,7 @@ func _focus_something() -> void:
 			if button.visible:
 				button.grab_focus()
 				break
+
 
 func _on_focus_changed(control: Control) -> void:
 	# Can do something interesting with focus here...

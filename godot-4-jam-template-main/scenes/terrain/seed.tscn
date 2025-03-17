@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://djr1wp2hgfg1s"]
+
+[ext_resource type="Script" uid="uid://08o6c0ts6ync" path="res://scripts/terrain/seed.gd" id="1_lpm7q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lpm7q"]
+albedo_color = Color(0.592157, 0.517647, 0.258824, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_kbdjb"]
+material = SubResource("StandardMaterial3D_lpm7q")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_lpm7q"]
+radius = 0.1
+
+[node name="Seed" type="Node3D" node_paths=PackedStringArray("area3D")]
+script = ExtResource("1_lpm7q")
+area3D = NodePath("Area3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_kbdjb")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_lpm7q")
