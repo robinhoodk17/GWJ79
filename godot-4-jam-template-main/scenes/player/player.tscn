@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://dom2bq6x7abkr"]
+[gd_scene load_steps=41 format=3 uid="uid://dom2bq6x7abkr"]
 
 [ext_resource type="Script" uid="uid://ocibsxhcwp14" path="res://scripts/player/player.gd" id="1_3eola"]
 [ext_resource type="Resource" uid="uid://b6w7oxn8rfgtk" path="res://input/tail_attack.tres" id="2_der45"]
@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://t84x06cxbh2f" path="res://input/interact.tres" id="4_0llfg"]
 [ext_resource type="Script" uid="uid://u380g531p8ia" path="res://scripts/player/camera_controls.gd" id="5_dmlwb"]
 [ext_resource type="PackedScene" uid="uid://2vx50o17va8m" path="res://assets/3d/sapling.blend" id="6_8ydkj"]
+[ext_resource type="Material" path="res://assets/materials/torso_material.tres" id="6_ioxgp"]
 [ext_resource type="Resource" uid="uid://ej23s0epyv1y" path="res://input/camera_move.tres" id="6_jp832"]
 [ext_resource type="Material" uid="uid://bu2hhup8lfd3y" path="res://assets/materials/default_player_farm_material.tres" id="7_ioxgp"]
 [ext_resource type="Resource" uid="uid://bo0hoqgqx87cp" path="res://input/lock_on.tres" id="8_dmlwb"]
@@ -478,36 +479,43 @@ target_position = Vector3(0, 0, -10)
 
 [node name="Torso Mesh" type="MeshInstance3D" parent="MeshParent/AnimatableBody"]
 transform = Transform3D(1.615, 0, 0, 0, 1, 0, 0, 0, 2.103, 0, 1.72103, -0.763493)
+material_override = ExtResource("6_ioxgp")
 mesh = SubResource("BoxMesh_3eola")
 skeleton = NodePath("../../..")
 
 [node name="Left Back Leg Mesh" type="MeshInstance3D" parent="MeshParent/AnimatableBody"]
 transform = Transform3D(0.595, 0, 0, 0, -1.63918e-08, -1.403, 0, 0.375, -6.13271e-08, 0.878821, 0.638776, 0)
+material_override = ExtResource("6_ioxgp")
 mesh = SubResource("BoxMesh_3eola")
 skeleton = NodePath("../../..")
 
 [node name="Right Back Leg Mesh" type="MeshInstance3D" parent="MeshParent/AnimatableBody"]
 transform = Transform3D(0.595, 0, 0, 0, -1.63918e-08, -1.403, 0, 0.375, -6.13271e-08, -0.937505, 0.638776, 0)
+material_override = ExtResource("6_ioxgp")
 mesh = SubResource("BoxMesh_3eola")
 skeleton = NodePath("../../..")
 
 [node name="Head Mesh" type="MeshInstance3D" parent="MeshParent/AnimatableBody"]
 transform = Transform3D(0.786, 0, 0, 0, -3.20842e-08, -1.034, 0, 0.734, -4.51976e-08, -0.00303149, 2.5855, -1.83275)
+material_override = ExtResource("6_ioxgp")
 mesh = SubResource("BoxMesh_3eola")
 skeleton = NodePath("../../..")
 
 [node name="Left front Leg Mesh" type="MeshInstance3D" parent="MeshParent/AnimatableBody"]
 transform = Transform3D(0.595, 0, 0, 0, -1.63918e-08, -1.403, 0, 0.375, -6.13271e-08, 0.787901, 0.638776, -1.47739)
+material_override = ExtResource("6_ioxgp")
 mesh = SubResource("BoxMesh_3eola")
 skeleton = NodePath("../../..")
 
 [node name="Right front Leg Mesh" type="MeshInstance3D" parent="MeshParent/AnimatableBody"]
 transform = Transform3D(0.595, 0, 0, 0, -1.63918e-08, -1.403, 0, 0.375, -6.13271e-08, -0.829532, 0.638776, -1.47739)
+material_override = ExtResource("6_ioxgp")
 mesh = SubResource("BoxMesh_3eola")
 skeleton = NodePath("../../..")
 
 [node name="Tail" type="MeshInstance3D" parent="MeshParent/AnimatableBody"]
 transform = Transform3D(1, 0, 0, 0, 0.961262, -0.275637, 0, 0.275637, 0.961262, 0, 1.28153, 2.07023)
+material_override = ExtResource("6_ioxgp")
 mesh = SubResource("BoxMesh_3wg0x")
 skeleton = NodePath("../../..")
 
