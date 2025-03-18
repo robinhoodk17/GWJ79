@@ -87,7 +87,7 @@ func late_ready() -> void:
 
 func handle_inputs(delta : float) -> void:
 	if tail_attack_action.is_triggered():
-		animation_player.play("tail_attack")
+		animation_player.play("Tail_Attack")
 		current_state = states.TAIL_ATTACK
 		velocity = Vector3.ZERO
 		return
@@ -95,7 +95,7 @@ func handle_inputs(delta : float) -> void:
 	var input_dir : Vector2 = move_action.value_axis_2d
 	direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
-		animation_player.play("Walk")
+		animation_player.play("Player_Walk")
 		direction = direction.rotated(Vector3.UP, camera.global_rotation.y)
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
@@ -115,7 +115,7 @@ func handle_inputs(delta : float) -> void:
 				mesh_parent.rotation.x = 0.0
 			
 	else:
-		animation_player.play("RESET")
+		animation_player.play("Player_Idle")
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
 
