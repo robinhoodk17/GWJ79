@@ -452,7 +452,7 @@ camera_spring_arm = NodePath("CameraPivot/SpringArm")
 camera_pivot = NodePath("CameraPivot")
 mesh_parent = NodePath("MeshParent")
 animation_player = NodePath("AnimationPlayer")
-speed = 5.0
+speed = 20.0
 turn_speed = 10.0
 
 [node name="Collision" type="CollisionShape3D" parent="."]
