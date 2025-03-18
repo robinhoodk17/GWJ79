@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://0iqgmgg2101e"]
+
+[ext_resource type="Texture2D" uid="uid://dp6jvrbfaqsps" path="res://assets/textures/Concreto.png" id="1_30gga"]
+
+[resource]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.0941176, 0.486275, 0, 1)
+albedo_texture = ExtResource("1_30gga")
