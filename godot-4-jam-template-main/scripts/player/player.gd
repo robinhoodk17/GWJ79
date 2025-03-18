@@ -1,5 +1,5 @@
 extends CharacterBody3D
-
+class_name player
 @export_group("farm")
 #region farm variables
 @export var farm1: CSGBox3D
@@ -71,7 +71,9 @@ func _ready() -> void:
 	farm_2_timer.timeout.connect(_on_farm_2_timer_timeout)
 	farm_3_timer.timeout.connect(_on_farm_3_timer_timeout)
 	farm_4_timer.timeout.connect(_on_farm_4_timer_timeout)
+	
 	Signalbus.seed_picked.connect(_on_seed_picked)
+	Signalbus.seed_dropped.connect(_on_seed_dropped)
 	interaction_raycast.add_exception(self)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	camera_spring_arm.add_excluded_object(self)
@@ -166,6 +168,7 @@ func start_walking() -> void:
 #region New Code Region
 
 func _on_seed_picked():
+	print("seed picked")
 	print(Global.seeds_carried)
 	#farm1.material=default_material
 	#farm2.material=default_material
@@ -186,15 +189,46 @@ func _on_seed_picked():
 		4:
 			farm4.material_override=planted_material
 			farm_4_timer.start(sapling_growing_time)
+			
+func _on_seed_dropped():
 
+	#farm1.material=default_material
+	#farm2.material=default_material
+	#farm3.material=default_material
+	#farm4.material=default_material
+	#
+	#sapling1.visible=false
+	#sapling2.visible=false
+	#sapling3.visible=false
+	#sapling4.visible=false
+	#
+	print(Global.seeds_carried)
+	match Global.seeds_carried:
+
+		0:
+			farm1.material_override=default_material
+			sapling1.visible=false			
+		1:
+			farm2.material_override=default_material
+			sapling2.visible=false
+		2:
+			farm3.material_override=default_material
+			sapling3.visible=false
+		3:
+			farm4.material_override=default_material
+			sapling4.visible=false
 
 func _on_farm_1_timer_timeout() -> void:
+	Global.saplings_carried+=1
 	sapling1.visible=true
 func _on_farm_2_timer_timeout() -> void:
+	Global.saplings_carried+=1
 	sapling2.visible=true
 func _on_farm_3_timer_timeout() -> void:
+	Global.saplings_carried+=1
 	sapling3.visible=true
 func _on_farm_4_timer_timeout() -> void:
+	Global.saplings_carried+=1
 	sapling4.visible=true
 
 
