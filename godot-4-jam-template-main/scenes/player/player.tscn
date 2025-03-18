@@ -401,7 +401,7 @@ size = Vector3(0.5, 0.5, 4)
 albedo_color = Color(0.192157, 0.509804, 0.278431, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dmlwb"]
-size = Vector3(25, 4, 11.4415)
+size = Vector3(25, 4, 21.0716)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dmlwb"]
 albedo_color = Color(0.823529, 0, 0.701961, 1)
@@ -597,7 +597,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshParent/LockOnArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -6.77924)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -6.44536)
 shape = SubResource("BoxShape3D_dmlwb")
 
 [node name="follow_target" type="Marker3D" parent="."]

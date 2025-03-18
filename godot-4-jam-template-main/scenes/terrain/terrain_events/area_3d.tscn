@@ -2,8 +2,15 @@
 
 [ext_resource type="Script" uid="uid://bmpk5r1cp0pvy" path="res://scenes/terrain/terrain_events/on_entrance_target_player.gd" id="1_p8p2p"]
 
-[node name="StartCombat" type="Area3D"]
-collision_mask = 3
+[node name="StartCombat_trigger" type="Area3D"]
+collision_layer = 0
 script = ExtResource("1_p8p2p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+
+[node name="Affected_area" type="Area3D" parent="."]
+top_level = true
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Affected_area"]

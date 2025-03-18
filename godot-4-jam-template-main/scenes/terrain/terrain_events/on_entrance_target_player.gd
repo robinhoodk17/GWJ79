@@ -5,10 +5,9 @@ extends Area3D
 func _ready() -> void:
 	body_entered.connect(acquire_target)
 
-
 func acquire_target(body : Node3D) -> void:
 	if body.is_in_group("player"):
-		var overlapping_bodies : Array[Node3D] = get_overlapping_bodies()
+		var overlapping_bodies : Array[Node3D] = $Affected_area.get_overlapping_bodies()
 		for i : Node3D in overlapping_bodies:
 			if i.is_in_group("enemy"):
 				i.acquire_target(body)

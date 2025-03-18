@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cq1jb3btvntna"]
+
+[ext_resource type="Texture2D" uid="uid://oigp210hdr0q" path="res://assets/textures/Grava.png" id="1_jm60m"]
+
+[resource]
+albedo_color = Color(0.811105, 0.456931, 0.0131018, 1)
+albedo_texture = ExtResource("1_jm60m")
+uv1_scale = Vector3(3, 5, 1.79)
