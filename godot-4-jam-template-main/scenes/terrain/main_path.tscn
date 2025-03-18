@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cm284gwx7qpyt"]
+[gd_scene load_steps=41 format=3 uid="uid://cm284gwx7qpyt"]
 
 [ext_resource type="Script" uid="uid://dqih6i2t5n4pe" path="res://scripts/enable_guide.gd" id="1_mqemg"]
 [ext_resource type="Resource" uid="uid://v5u0dyabni7e" path="res://input/default_mapping_context.tres" id="2_y1ygp"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://cp8g1km0wbohh" path="res://scenes/terrain/terrain_events/area_3d.tscn" id="14_y1ygp"]
 [ext_resource type="PackedScene" uid="uid://djr1wp2hgfg1s" path="res://scenes/terrain/seed.tscn" id="15_xcm3i"]
 [ext_resource type="PackedScene" uid="uid://cpnv5epwbqi4f" path="res://assets/3d/city.blend" id="22_cgwd4"]
+[ext_resource type="PackedScene" uid="uid://dnj4vd42wu5uj" path="res://scenes/terrain/worldfarm_tile.tscn" id="23_x7gld"]
 
 [sub_resource type="Gradient" id="Gradient_olwnp"]
 offsets = PackedFloat32Array(0.466667, 0.773333)
@@ -388,6 +389,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.23878, 0.6, -132.66)
 
 [node name="Seed18" parent="Seeds" instance=ExtResource("15_xcm3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4451, 0.6, -132.66)
+
+[node name="worldfarm1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.3016, 0.788385, -73.2924)
+
+[node name="worldfarm_tile" parent="worldfarm1" instance=ExtResource("23_x7gld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.894444, -3.94958)
+
+[node name="worldfarm_tile2" parent="worldfarm1" instance=ExtResource("23_x7gld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.894444, 0)
+
+[node name="worldfarm_tile3" parent="worldfarm1" instance=ExtResource("23_x7gld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.04021, 0.894444, -3.90923)
+
+[node name="worldfarm_tile4" parent="worldfarm1" instance=ExtResource("23_x7gld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.12684, 0.894444, 4.31187)
+
+[node name="worldfarm_tile5" parent="worldfarm1" instance=ExtResource("23_x7gld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.09156, 0.894444, 0)
+
+[node name="worldfarm_tile6" parent="worldfarm1" instance=ExtResource("23_x7gld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.894444, 4.29414)
 
 [connection signal="body_shape_entered" from="Section1/Bar Spot 1" to="Player" method="_on_bar_spot_1_body_shape_entered"]
 [connection signal="body_shape_exited" from="Section1/Bar Spot 1" to="Player" method="_on_bar_spot_1_body_shape_exited"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dom2bq6x7abkr"]
+[gd_scene load_steps=43 format=4 uid="uid://dom2bq6x7abkr"]
 
 [ext_resource type="Script" uid="uid://ocibsxhcwp14" path="res://scripts/player/player.gd" id="1_3eola"]
 [ext_resource type="Resource" uid="uid://b6w7oxn8rfgtk" path="res://input/tail_attack.tres" id="2_der45"]
@@ -7,13 +7,13 @@
 [ext_resource type="Resource" uid="uid://c6tovgnwacf3x" path="res://input/move.tres" id="3_0llfg"]
 [ext_resource type="Resource" uid="uid://t84x06cxbh2f" path="res://input/interact.tres" id="4_0llfg"]
 [ext_resource type="Script" uid="uid://u380g531p8ia" path="res://scripts/player/camera_controls.gd" id="5_dmlwb"]
-[ext_resource type="PackedScene" uid="uid://2vx50o17va8m" path="res://assets/3d/sapling.blend" id="6_8ydkj"]
 [ext_resource type="Material" uid="uid://dah7wq8ujaphk" path="res://assets/materials/torso_material.tres" id="6_ioxgp"]
 [ext_resource type="Resource" uid="uid://ej23s0epyv1y" path="res://input/camera_move.tres" id="6_jp832"]
 [ext_resource type="Material" uid="uid://bu2hhup8lfd3y" path="res://assets/materials/default_player_farm_material.tres" id="7_ioxgp"]
 [ext_resource type="Resource" uid="uid://bo0hoqgqx87cp" path="res://input/lock_on.tres" id="8_dmlwb"]
 [ext_resource type="Script" uid="uid://dm7wjvj3tat0d" path="res://ui/ui.gd" id="8_ixiwu"]
 [ext_resource type="PackedScene" uid="uid://cc37235kj4384" path="res://addons/maaacks_ui_sound_controller/base/scenes/Autoloads/ProjectUISoundController.tscn" id="9_1ps34"]
+[ext_resource type="Material" uid="uid://7uthqp3njhqt" path="res://assets/materials/plant_material.tres" id="9_ioxgp"]
 [ext_resource type="Resource" uid="uid://dev701h4y2c4p" path="res://input/change_lock.tres" id="9_jp832"]
 [ext_resource type="AudioStream" uid="uid://5kc55ftsdrvt" path="res://ui/assets/audio/rollover5.ogg" id="10_mtrw4"]
 [ext_resource type="Script" uid="uid://dlrpea0mdv2sj" path="res://ui/overlay.gd" id="11_du256"]
@@ -397,8 +397,37 @@ size = Vector3(0.5, 0.5, 4)
 [sub_resource type="BoxShape3D" id="BoxShape3D_yxwls"]
 size = Vector3(0.5, 0.5, 4)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3j4b4"]
-albedo_color = Color(0.192157, 0.509804, 0.278431, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fwcrm"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_yin1h"]
+_surfaces = [{
+"aabb": AABB(-0.213977, -0.213977, -0.530345, 0.427953, 0.427953, 0.463326),
+"format": 34359742465,
+"index_count": 132,
+"index_data": PackedByteArray("AAABAAIAAwAAAAIAAwACAAQABQAAAAMAAAAFAAEABgADAAQABQADAAYABwAEAAIABwACAAEABgAEAAcABQAIAAEABgAJAAUABQAJAAgABwAKAAYABgAKAAkAAQALAAcAAQAIAAsABwALAAoACQAMAAgACAANAAsACAAMAA0ACwAOAAoACwANAA4ACgAPAAkACQAPAAwACgAOAA8ADAAQAA0ADQARAA4ADQAQABEADgASAA8ADgARABIADwATAAwADAATABAADwASABMAEAAUABEAEgAVABMAEwAWABAAEAAWABQAEwAVABYAEQAUABcAEQAXABIAFwAUABYAEgAXABUAFwAWABUA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("sRxbvrEcW776QIm9pkWxvaZFsT2YGu69sRxbvrEcWz76QIm9sRxbPrEcW776QIm9sRxbPrEcWz76QIm9pkWxvaZFsb2YGu69pkWxPaZFsb2YGu69pkWxPaZFsT2YGu69xy9+vfPuZDt/lGC+xy9+vR5+F75/lGC+0Qu3PR5+F75/lGC+0Qu3PfPuZDt/lGC+RwfYvZYTtD1WC6a+8HurO5YTtD1WC6a+8HurO76turxWC6a+RwfYvb6turxWC6a+saLiPD6hlbvQ+tm+saLiPHeEl73Q+tm+awMrvXeEl73Q+tm+awMrvT6hlbvQ+tm+1ZDNvJtQQz2pxAe/3FU/vQbvjT2pxAe/1ZDNvAbvjT2pxAe/3FU/vZtQQz2pxAe/")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_cnsyf"]
+resource_name = "saplings_Cube_002"
+_surfaces = [{
+"aabb": AABB(-0.213977, -0.213977, -0.530345, 0.427953, 0.427953, 0.463326),
+"attribute_data": PackedByteArray("AADAPgAAgD8AACA/AABAPwAAID8AAIA/AADAPgAAQD8AACA/AAAAPwAAwD4AAAA/AADAPgAAAD8AACA/AAAAPwAAwD4AAAA/AAAgPwAAgD4AACA/AAAAPwAAwD4AAIA+AADAPgAAgD4AACA/AAAAAAAAID8AAIA+AADAPgAAAAAAAAA+AAAAPwAAwD4AAIA+AADAPgAAAD8AAAA+AACAPgAAID8AAAA/AABgPwAAgD4AAGA/AAAAPwAAID8AAIA+AAAgPwAAAD8AAMA+AAAAPwAAwD4AAAA/AAAgPwAAAD8AAMA+AAAAPwAAAD4AAAA/AAAAPgAAAD8AAMA+AAAAPwAAYD8AAAA/AAAgPwAAAD8AACA/AAAAPwAAYD8AAAA/AADAPgAAQD8AACA/AABAPwAAID8AAEA/AADAPgAAQD8AAGA/AAAAPwAAID8AAAA/AAAgPwAAAD8AAGA/AAAAPwAAwD4AAAA/AAAAPgAAAD8AAAA+AAAAPwAAwD4AAAA/AABgPwAAAD8AACA/AAAAPwAAID8AAAA/AABgPwAAAD8AAMA+AABAPwAAID8AAEA/AAAgPwAAQD8AAMA+AABAPwAAwD4AAEA/AAAgPwAAQD8AACA/AABAPwAAwD4AAEA/AADAPgAAQD8AACA/AABAPwAAID8AAEA/AADAPgAAQD8AACA/AAAAPwAAwD4AAAA/AADAPgAAAD8AACA/AAAAPwAAwD4AAAA/AAAAPgAAAD8AAAA+AAAAPwAAwD4AAAA/AADAPgAAQD8AACA/AAAAPwAAID8AAEA/AADAPgAAAD8AACA/AAAAPwAAwD4AAAA/AADAPgAAAD8AACA/AAAAPwAAwD4AAAA/AAAAPgAAAD8AAAA+AAAAPwAAwD4AAAA/AABgPwAAAD8AACA/AAAAPwAAID8AAAA/AABgPwAAAD8="),
+"format": 34359742487,
+"index_count": 132,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUAKAApACoAKAArACkALAAtAC4ALAAvAC0AMAAxADIAMAAzADEANAA1ADYANAA3ADUAOAA5ADoAOAA7ADkAPAA9AD4APAA/AD0AQABBAEIAQABDAEEARABFAEYARABHAEUASABJAEoASABLAEkATABNAE4ATABPAE0AUABRAFIAUABTAFEAVABVAFYAVABXAFUA"),
+"material": SubResource("StandardMaterial3D_fwcrm"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 88,
+"vertex_data": PackedByteArray("sRxbvrEcW776QIm9pkWxvaZFsT2YGu69sRxbvrEcWz76QIm9pkWxvaZFsb2YGu69pkWxPaZFsT2YGu690Qu3PR5+F75/lGC+pkWxPaZFsb2YGu690Qu3PfPuZDt/lGC+pkWxPaZFsb2YGu69sRxbPrEcWz76QIm9pkWxPaZFsT2YGu69sRxbPrEcW776QIm9sRxbPrEcW776QIm9sRxbvrEcWz76QIm9sRxbPrEcWz76QIm9sRxbvrEcW776QIm9pkWxvaZFsb2YGu69sRxbPrEcW776QIm9pkWxPaZFsb2YGu69sRxbvrEcW776QIm9pkWxPaZFsT2YGu69sRxbvrEcWz76QIm9pkWxvaZFsT2YGu69sRxbPrEcWz76QIm90Qu3PfPuZDt/lGC+8HurO76turxWC6a+0Qu3PR5+F75/lGC+8HurO5YTtD1WC6a+pkWxPaZFsb2YGu69xy9+vR5+F75/lGC+pkWxvaZFsb2YGu690Qu3PR5+F75/lGC+pkWxvaZFsT2YGu690Qu3PfPuZDt/lGC+pkWxPaZFsT2YGu69xy9+vfPuZDt/lGC+pkWxvaZFsb2YGu69xy9+vfPuZDt/lGC+pkWxvaZFsT2YGu69xy9+vR5+F75/lGC+RwfYvZYTtD1WC6a+saLiPD6hlbvQ+tm+8HurO5YTtD1WC6a+awMrvT6hlbvQ+tm+0Qu3PR5+F75/lGC+RwfYvb6turxWC6a+xy9+vR5+F75/lGC+8HurO76turxWC6a+xy9+vfPuZDt/lGC+8HurO5YTtD1WC6a+0Qu3PfPuZDt/lGC+RwfYvZYTtD1WC6a+xy9+vR5+F75/lGC+RwfYvZYTtD1WC6a+xy9+vfPuZDt/lGC+RwfYvb6turxWC6a+awMrvXeEl73Q+tm+3FU/vQbvjT2pxAe/awMrvT6hlbvQ+tm+3FU/vZtQQz2pxAe/RwfYvb6turxWC6a+awMrvT6hlbvQ+tm+RwfYvZYTtD1WC6a+awMrvXeEl73Q+tm+8HurO5YTtD1WC6a+saLiPHeEl73Q+tm+8HurO76turxWC6a+saLiPD6hlbvQ+tm+8HurO76turxWC6a+awMrvXeEl73Q+tm+RwfYvb6turxWC6a+saLiPHeEl73Q+tm+3FU/vZtQQz2pxAe/1ZDNvAbvjT2pxAe/3FU/vQbvjT2pxAe/1ZDNvJtQQz2pxAe/saLiPD6hlbvQ+tm+1ZDNvJtQQz2pxAe/saLiPHeEl73Q+tm+1ZDNvAbvjT2pxAe/saLiPHeEl73Q+tm+3FU/vZtQQz2pxAe/awMrvXeEl73Q+tm+1ZDNvJtQQz2pxAe/awMrvT6hlbvQ+tm+1ZDNvAbvjT2pxAe/saLiPD6hlbvQ+tm+3FU/vQbvjT2pxAe/AABR3P9///8AAFHc/3///wAAUdz/f///AABR3P9///+X/P9/////P5f8/3////8/l/z/f////z+X/P9/////P///Udz/f/////9R3P9//////1Hc/3//////Udz/f////3//f/9/////f/9//3////9//3//f////3//f/9///9R3AAA////v1HcAAD///+/UdwAAP///79R3AAA////v1Hc//8AAP+/Udz//wAA/79R3P//AAD/v1Hc//8AAP+////xuP///z////G4////P///8bj///8////xuP///z//f8cv////P/9/xy////8//3/HL////z//f8cv////Px+5//////8/H7n//////z8fuf//////Px+5//////8/AACVmP///z8AAJWY////PwAAlZj///8/AACVmP///z8Mvf//////Pwy9//////8/DL3//////z8Mvf//////P5rFAAD///8/msUAAP///z+axQAA////P5rFAAD///8//3/xxv///z//f/HG////P/9/8cb///8//3/xxv///z9zJf9/////P3Ml/3////8/cyX/f////z9zJf9/////P8wF/3////8/zAX/f////z/MBf9/////P8wF/3////8/AABjsf///z8AAGOx////PwAAY7H///8/AABjsf///z/R6P9/////P9Ho/3////8/0ej/f////z/R6P9/////P/9/7yr///8//3/vKv///z//f+8q////P/9/7yr///8///////9//////////3//////////f/////////9//////+iq////P///6Kr///8////oqv///z///+iq////P9PEAAD///8/08QAAP///z/TxAAA////P9PEAAD///8//38Dy////z//fwPL////P/9/A8v///8//38Dy////z8=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_yin1h")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dmlwb"]
 size = Vector3(25, 4, 21.0716)
@@ -429,10 +458,10 @@ farm1 = NodePath("MeshParent/Farm/Farm1")
 farm2 = NodePath("MeshParent/Farm/Farm2")
 farm3 = NodePath("MeshParent/Farm/Farm3")
 farm4 = NodePath("MeshParent/Farm/Farm4")
-sapling1 = NodePath("MeshParent/Farm/Farm1/sapling1/Cube")
-sapling2 = NodePath("MeshParent/Farm/Farm2/sapling2/Cube")
-sapling3 = NodePath("MeshParent/Farm/Farm3/sapling3/Cube")
-sapling4 = NodePath("MeshParent/Farm/Farm4/sapling4/Cube")
+sapling1 = NodePath("MeshParent/Farm/Farm1/sapling1")
+sapling2 = NodePath("MeshParent/Farm/Farm2/sapling2")
+sapling3 = NodePath("MeshParent/Farm/Farm3/sapling3")
+sapling4 = NodePath("MeshParent/Farm/Farm4/sapling4")
 farm_1_timer = NodePath("MeshParent/Farm/Farm1/FarmTimer1")
 farm_2_timer = NodePath("MeshParent/Farm/Farm2/FarmTimer2")
 farm_3_timer = NodePath("MeshParent/Farm/Farm3/FarmTimer3")
@@ -542,15 +571,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.376, 2.275, -0.89)
 size = Vector3(0.5, 0.395, 0.5)
 material = ExtResource("7_ioxgp")
 
+[node name="sapling1" type="MeshInstance3D" parent="MeshParent/Farm/Farm1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.0963292, 0)
+material_override = ExtResource("9_ioxgp")
+mesh = SubResource("ArrayMesh_cnsyf")
+skeleton = NodePath("")
+
 [node name="FarmTimer1" type="Timer" parent="MeshParent/Farm/Farm1"]
-
-[node name="sapling1" parent="MeshParent/Farm/Farm1" instance=ExtResource("6_8ydkj")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.0697713, 0)
-
-[node name="Cube" parent="MeshParent/Farm/Farm1/sapling1" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_3j4b4")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshParent/Farm/Farm1"]
+one_shot = true
 
 [node name="Farm2" type="CSGBox3D" parent="MeshParent/Farm"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.304, 2.275, -0.89)
@@ -558,12 +586,13 @@ size = Vector3(0.5, 0.395, 0.5)
 material = ExtResource("7_ioxgp")
 
 [node name="FarmTimer2" type="Timer" parent="MeshParent/Farm/Farm2"]
+one_shot = true
 
-[node name="sapling2" parent="MeshParent/Farm/Farm2" instance=ExtResource("6_8ydkj")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.0697713, 0)
-
-[node name="Cube" parent="MeshParent/Farm/Farm2/sapling2" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_3j4b4")
+[node name="sapling2" type="MeshInstance3D" parent="MeshParent/Farm/Farm2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.0963292, 0)
+material_override = ExtResource("9_ioxgp")
+mesh = SubResource("ArrayMesh_cnsyf")
+skeleton = NodePath("")
 
 [node name="Farm3" type="CSGBox3D" parent="MeshParent/Farm"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.376, 2.275, -0.125)
@@ -571,12 +600,13 @@ size = Vector3(0.5, 0.395, 0.5)
 material = ExtResource("7_ioxgp")
 
 [node name="FarmTimer3" type="Timer" parent="MeshParent/Farm/Farm3"]
+one_shot = true
 
-[node name="sapling3" parent="MeshParent/Farm/Farm3" instance=ExtResource("6_8ydkj")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.0697713, 0)
-
-[node name="Cube" parent="MeshParent/Farm/Farm3/sapling3" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_3j4b4")
+[node name="sapling3" type="MeshInstance3D" parent="MeshParent/Farm/Farm3"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.0963292, 0)
+material_override = ExtResource("9_ioxgp")
+mesh = SubResource("ArrayMesh_cnsyf")
+skeleton = NodePath("")
 
 [node name="Farm4" type="CSGBox3D" parent="MeshParent/Farm"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.325, 2.275, -0.13)
@@ -584,12 +614,13 @@ size = Vector3(0.5, 0.395, 0.5)
 material = ExtResource("7_ioxgp")
 
 [node name="FarmTimer4" type="Timer" parent="MeshParent/Farm/Farm4"]
+one_shot = true
 
-[node name="sapling4" parent="MeshParent/Farm/Farm4" instance=ExtResource("6_8ydkj")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.0697713, 0)
-
-[node name="Cube" parent="MeshParent/Farm/Farm4/sapling4" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_3j4b4")
+[node name="sapling4" type="MeshInstance3D" parent="MeshParent/Farm/Farm4"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.0963292, 0)
+material_override = ExtResource("9_ioxgp")
+mesh = SubResource("ArrayMesh_cnsyf")
+skeleton = NodePath("")
 
 [node name="LockOnArea" type="Area3D" parent="MeshParent"]
 transform = Transform3D(1, 0, -4.46638e-06, 0, 1, 0, 4.46638e-06, 0, 1, 0, 0, 0)
@@ -681,8 +712,4 @@ one_shot = true
 [node name="Original_camera_target" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.188, 0)
 
-[editable path="MeshParent/Farm/Farm1/sapling1"]
-[editable path="MeshParent/Farm/Farm2/sapling2"]
-[editable path="MeshParent/Farm/Farm3/sapling3"]
-[editable path="MeshParent/Farm/Farm4/sapling4"]
 [editable path="CameraPivot/UI/PauseMenu"]
