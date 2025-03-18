@@ -6,6 +6,7 @@ var sleeping : bool = true
 var plants : int = 0
 var sensitivity : float = 1.0
 var seeds_carried : int = 0
+var time : float = 0.0
 
 @warning_ignore("unused_signal")
 signal picked_plant
