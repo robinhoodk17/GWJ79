@@ -104,6 +104,7 @@ func handle_inputs(delta : float) -> void:
 			animation_player.play("Stomp_Attack")
 			current_state = states.ATTACKING
 			velocity = Vector3.ZERO
+			current_stomp_cooldown = 0.0
 			return
 
 		if bite_action.is_triggered():

@@ -356,6 +356,16 @@ script = ExtResource("11_du256")
 [node name="Game" parent="CameraPivot/UI" instance=ExtResource("14_64oqw")]
 mouse_filter = 2
 
+[node name="RichTextLabel" parent="CameraPivot/UI/Game/InputPrompt" index="0"]
+action = null
+message = ""
+
+[node name="ProgressBar" parent="CameraPivot/UI/Game" index="7" node_paths=PackedStringArray("player_node")]
+player_node = NodePath("../../../..")
+
+[node name="RichTextLabel" parent="CameraPivot/UI/Game/ProgressBar" index="0"]
+action = null
+
 [node name="PauseMenu" parent="CameraPivot/UI" instance=ExtResource("15_8vj76")]
 
 [node name="MessageBoard" parent="CameraPivot/UI" instance=ExtResource("17_qcw8q")]
@@ -370,4 +380,5 @@ one_shot = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.188, 0)
 
 [editable path="MeshParent/Kaiju"]
+[editable path="CameraPivot/UI/Game"]
 [editable path="CameraPivot/UI/PauseMenu"]
