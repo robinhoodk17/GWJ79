@@ -227,8 +227,8 @@ bones/6/scale = Vector3(1, 1, 1)
 bones/7/position = Vector3(0.267038, 1.48092, 0.273869)
 bones/7/rotation = Quaternion(0.649882, 0.672139, 0.230148, -0.270028)
 bones/7/scale = Vector3(1, 1, 1)
-bones/8/rotation = Quaternion(-0.644119, -0.0293293, 0.0246926, 0.763964)
-bones/9/rotation = Quaternion(0.035819, -0.0178283, -0.0300075, 0.998749)
+bones/8/rotation = Quaternion(-0.747898, -0.0595884, 0.0590904, 0.658488)
+bones/9/rotation = Quaternion(0.00345878, 0.0448799, 0.0191066, 0.998804)
 bones/10/position = Vector3(5.1677e-16, 0.10212, 0.0207559)
 bones/10/rotation = Quaternion(-7.90644e-07, 0.0166579, 0.999861, -1.31723e-08)
 bones/12/rotation = Quaternion(-0.443371, 0.00949242, -0.0175154, 0.896117)
@@ -263,7 +263,7 @@ bones/37/rotation = Quaternion(-0.0264904, -9.26746e-09, 0.110427, 0.993531)
 bones/38/rotation = Quaternion(-0.157178, -1.00207e-07, 0.655205, 0.738919)
 
 [node name="AnimationPlayer" parent="MeshParent/Kaiju" index="1"]
-blend_times = [&"Bite_Attack", &"Bite_Attack", 1.0, &"Bite_Attack", &"Player_Idle", 1.0, &"Bite_Attack", &"Player_Walk", 1.0, &"Bite_Attack_Kill", &"Bite_Attack", 1.0, &"Bite_Attack_Kill", &"Bite_Attack_Kill", 1.0, &"Bite_Attack_Kill", &"Player_Idle", 1.0, &"Bite_Attack_Kill", &"Player_Walk", 1.0, &"Player_Idle", &"Bite_Attack", 1.0, &"Player_Idle", &"Bite_Attack_Kill", 1.0, &"Player_Idle", &"Player_Idle", 1.0, &"Player_Idle", &"Player_Walk", 1.0, &"Player_Walk", &"Bite_Attack", 1.0, &"Player_Walk", &"Bite_Attack_Kill", 1.0, &"Player_Walk", &"Player_Idle", 1.0, &"Player_Walk", &"Player_Walk", 1.0, &"Player_Walk", &"Stomp_Attack", 1.0, &"Player_Walk", &"Tail_Attack", 1.0, &"Stomp_Attack", &"Player_Idle", 1.0, &"Stomp_Attack", &"Player_Walk", 1.0, &"Stomp_Attack", &"Stomp_Attack", 1.0, &"Tail_Attack", &"Player_Idle", 1.0, &"Tail_Attack", &"Player_Walk", 1.0, &"Tail_Attack", &"Tail_Attack", 1.0]
+blend_times = [&"Bite_Attack", &"Bite_Attack", 1.0, &"Bite_Attack", &"Player_Idle", 1.0, &"Bite_Attack", &"Player_Walk", 1.0, &"Bite_Attack_Kill", &"Bite_Attack", 1.0, &"Bite_Attack_Kill", &"Bite_Attack_Kill", 1.0, &"Bite_Attack_Kill", &"Player_Idle", 1.0, &"Bite_Attack_Kill", &"Player_Walk", 1.0, &"Bite_Attack_Pickup", &"Bite_Attack_Pickup", 1.0, &"Bite_Attack_Pickup", &"Player_Idle_Holding_Enemy", 1.0, &"Bite_Attack_Pickup", &"Player_Walk_Holding_Enemy", 1.0, &"Player_Idle", &"Bite_Attack", 1.0, &"Player_Idle", &"Bite_Attack_Kill", 1.0, &"Player_Idle", &"Player_Idle", 1.0, &"Player_Idle", &"Player_Walk", 1.0, &"Player_Idle_Holding_Enemy", &"Player_Idle_Holding_Enemy", 1.0, &"Player_Idle_Holding_Enemy", &"Player_Walk_Holding_Enemy", 1.0, &"Player_Idle_Holding_Enemy", &"Throw_Enemy", 1.0, &"Player_Walk", &"Bite_Attack", 1.0, &"Player_Walk", &"Bite_Attack_Kill", 1.0, &"Player_Walk", &"Player_Idle", 1.0, &"Player_Walk", &"Player_Walk", 1.0, &"Player_Walk", &"Stomp_Attack", 1.0, &"Player_Walk", &"Tail_Attack", 1.0, &"Player_Walk_Holding_Enemy", &"Player_Idle_Holding_Enemy", 1.0, &"Player_Walk_Holding_Enemy", &"Throw_Enemy", 1.0, &"Stomp_Attack", &"Player_Idle", 1.0, &"Stomp_Attack", &"Player_Walk", 1.0, &"Stomp_Attack", &"Stomp_Attack", 1.0, &"Tail_Attack", &"Player_Idle", 1.0, &"Tail_Attack", &"Player_Walk", 1.0, &"Tail_Attack", &"Tail_Attack", 1.0, &"Throw_Enemy", &"Player_Idle", 1.0, &"Throw_Enemy", &"Player_Walk", 1.0, &"Throw_Enemy", &"Throw_Enemy", 1.0]
 
 [node name="TailAttack" type="Area3D" parent="MeshParent/Kaiju" node_paths=PackedStringArray("main_body")]
 collision_layer = 4
