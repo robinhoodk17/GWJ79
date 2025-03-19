@@ -87,10 +87,11 @@ func late_ready() -> void:
 
 func handle_inputs(delta : float) -> void:
 	if tail_attack_action.is_triggered():
-		animation_player.play("Tail_Attack")
-		current_state = states.TAIL_ATTACK
-		velocity = Vector3.ZERO
-		return
+		if is_on_floor():
+			animation_player.play("Tail_Attack")
+			current_state = states.TAIL_ATTACK
+			velocity = Vector3.ZERO
+			return
 
 	var input_dir : Vector2 = move_action.value_axis_2d
 	direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
