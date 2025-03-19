@@ -25,7 +25,7 @@ class_name player
 
 @export_group("controls, camera, and animation")
 #region Nodes for functionality
-enum states{IDLE, WALKING, TAIL_ATTACK, BLOCKED, DYING}
+enum states{IDLE, WALKING, ATTACKING, BLOCKED, DYING, CARRYING_ENEMY}
 @export_subgroup("UI")
 @export var game_UI : Control
 @export var death_screen : CanvasLayer
@@ -34,6 +34,8 @@ enum states{IDLE, WALKING, TAIL_ATTACK, BLOCKED, DYING}
 @export var interaction_raycast : RayCast3D
 @export_subgroup("GUIDE actions")
 @export var tail_attack_action : GUIDEAction
+@export var bite_action : GUIDEAction
+@export var stomp_action : GUIDEAction
 @export var move_action : GUIDEAction
 @export var interact : GUIDEAction
 @export_subgroup("camera")
@@ -59,6 +61,9 @@ var direction : Vector3 = Vector3.ZERO
 @export var max_health : int = 100
 ##how fast the model turns to look at the direction it is moving
 @export var turn_speed : float = 20.0
+@export var stomp_cooldown : float = 10.0
+@export var bite_damage : float = 10.0
+var current_stomp_cooldown : float = 10.0
 var current_health : int = max_health
 #endregion
 
@@ -86,12 +91,31 @@ func late_ready() -> void:
 
 
 func handle_inputs(delta : float) -> void:
-	if tail_attack_action.is_triggered():
-		if is_on_floor():
+	if is_on_floor():
+		if tail_attack_action.is_triggered():
 			animation_player.play("Tail_Attack")
-			current_state = states.TAIL_ATTACK
+			current_state = states.ATTACKING
 			velocity = Vector3.ZERO
 			return
+
+		if stomp_action.is_triggered():
+			if current_stomp_cooldown < stomp_cooldown:
+				return
+			animation_player.play("Stomp_Attack")
+			current_state = states.ATTACKING
+			velocity = Vector3.ZERO
+			return
+
+		if bite_action.is_triggered():
+			if camera_pivot.current_camera_state == camera_pivot.camera_state.ENEMY_ACQUIRED:
+				var targeted_enemy : Node3D = camera_pivot.locked_enemy
+				if targeted_enemy._current_health <= bite_damage:
+					targeted_enemy._current_health = 0
+					targeted_enemy.start_ragdoll()
+					current_state = states.ATTACKING
+					
+					velocity = Vector3.ZERO
+				return
 
 	var input_dir : Vector2 = move_action.value_axis_2d
 	direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
@@ -139,7 +163,8 @@ func handle_inputs(delta : float) -> void:
 			pass
 
 
-func _physics_process(delta: float) -> void:	
+func _physics_process(delta: float) -> void:
+	handle_cooldowns(delta)
 	match current_state:
 		states.WALKING:
 			if not is_on_floor():
@@ -149,6 +174,10 @@ func _physics_process(delta: float) -> void:
 
 ##combat and state machine
 #region New Code Region
+func handle_cooldowns(delta : float):
+	if current_stomp_cooldown <= stomp_cooldown:
+		current_stomp_cooldown += delta
+
 
 func take_damage(damage : int) -> void:
 	current_health -= damage
