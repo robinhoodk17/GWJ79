@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 @export_group("functionality")
-enum states{IDLE, WALKING, ATTACKING, BLOCKED, DYING, STAGGERED}
+enum states{IDLE, WALKING, ATTACKING, BLOCKED, DYING, STAGGERED, RAGDOLLED, THROWN}
 @export var nav_agent : NavigationAgent3D
 @export var attack_raycast : RayCast3D
 @export var animation_player : AnimationPlayer
@@ -110,6 +110,11 @@ func take_damage(how_much : int, launch_force : float, _launch_direction : Vecto
 	_current_health -= how_much
 	if _current_health <= 0:
 		die()
+
+
+func start_ragdoll():
+	##actually implement stuff
+	current_state = states.RAGDOLLED
 
 
 func die() -> void:
