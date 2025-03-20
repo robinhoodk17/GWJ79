@@ -11,6 +11,7 @@ var current_state : states = states.IDLE
 var player_node : Node3D
 var thrown_towards : Node3D
 var damage_on_throw : float
+var lockable : bool = true
 
 @export_group("Stats")
 @export var max_health : int = 50
@@ -45,15 +46,9 @@ func acquire_target(body : Node3D) -> void:
 	current_state = states.WALKING
 
 
-func  _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept"):
-		var random_position : Vector3 = Vector3.ZERO
-		random_position.x = randf_range(-200,200)
-		random_position.y = randf_range(-200,200)
-		nav_agent.target_position = random_position
-
-
 func _physics_process(delta: float) -> void:
+	if current_state == states.DYING:
+		return
 	match current_state:
 		states.WALKING:
 			nav_agent.target_position = Vector3(player_node.global_position.x, 
@@ -79,13 +74,15 @@ func _physics_process(delta: float) -> void:
 				start_walking()
 		states.THROWN:
 			if thrown_towards != null:
-				velocity = (global_position - thrown_towards.global_position).normalized() * launch_speed
+				velocity = (thrown_towards.global_position - global_position).normalized() * launch_speed
 				move_and_slide()
 				if was_launched_ago > launch_distance:
 					var launch_target_direction = global_position - player_node.global_position
-					thrown_towards.take_damage(damage_on_throw, resistance_against_launch * 2.0, launch_target_direction)
+					thrown_towards.take_damage(damage_on_throw, resistance_against_launch * 10.0, launch_target_direction)
 					queue_free()
 				was_launched_ago += delta * launch_speed
+			else:
+				queue_free()
 			
 
 func check_for_attack() -> void:
@@ -111,7 +108,7 @@ func take_damage(how_much : int, launch_force : float, _launch_direction : Vecto
 	accumulated_launch += launch_force
 	if accumulated_launch >= resistance_against_launch:
 		if animation_player.is_playing():
-			animation_player.play("RESET")
+			animation_player.stop()
 		launch_direction = _launch_direction
 		current_state = states.STAGGERED
 		was_launched_ago = 0.0
@@ -126,7 +123,11 @@ func take_damage(how_much : int, launch_force : float, _launch_direction : Vecto
 func start_ragdoll():
 	##actually implement stuff
 	#physical_bones_start_simulation()
+	lockable = false
 	current_state = states.RAGDOLLED
+	animation_player.stop()
+	set_collision_mask_value(2,false)
+	set_collision_mask_value(1,false)
 
 
 func start_throw(target : Node3D, _throw_speed, _throw_distance, damage_done):

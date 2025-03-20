@@ -11,6 +11,7 @@ func display_prompt() -> void:
 func  turn_off_prompt():
 	pop_up.turn_off_prompt()
 	
-func  interact(_body : Node3D):
+func interact(_body : Node3D):
 	#do whaterver you want
+	print_debug("interacted")
 	pass

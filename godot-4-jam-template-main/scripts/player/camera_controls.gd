@@ -30,7 +30,7 @@ var current_camera_roll : float = 0.0
 @export var mesh_parent : Node3D
 @export var lock_on_area : Area3D
 @export var lock_on_timer : Timer
-@export var lock_on_sprite : Sprite2D
+@export var lock_on_sprite : Control
 @export var animator_2d : AnimationPlayer
 var locked_enemy : Node3D
 var lock_changeable : bool = true
@@ -122,6 +122,9 @@ func allow_relock() -> void:
 func _physics_process(delta: float) -> void:
 	match current_camera_state:
 		camera_state.NORMAL:
+			if lock_on_sprite.visible:
+				animator_2d.stop()
+				lock_on_sprite.hide()
 			var position_lerp_strength : float = delta
 			if !player.direction:
 				position_lerp_strength /= 2.0
@@ -142,11 +145,13 @@ func _physics_process(delta: float) -> void:
 			handleShakes(delta)
 
 		camera_state.LOCK_ON:
+			if lock_on_sprite.visible:
+				animator_2d.stop()
+				lock_on_sprite.hide()
 			if !lock_action.value_bool:
 				current_camera_state = camera_state.NORMAL
 				return
 			if lock_on_area.has_overlapping_bodies():
-				current_camera_state = camera_state.ENEMY_ACQUIRED
 				var colinearity : float = -10.0
 				var array_with_bodies : Array[Node3D] = lock_on_area.get_overlapping_bodies()
 				var camera_front : Vector3 = -camera_nest.global_basis.z
@@ -154,14 +159,18 @@ func _physics_process(delta: float) -> void:
 					var candidate_colinearity : float = camera_front.dot(body.global_position.normalized())
 					if candidate_colinearity > colinearity:
 						if locked_enemy == null:
-							colinearity = candidate_colinearity
-							locked_enemy = body
-							locked_enemy_list.append(locked_enemy)
-						else:
-							if body.is_in_group("enemy"):
+							if body.lockable:
+								current_camera_state = camera_state.ENEMY_ACQUIRED
 								colinearity = candidate_colinearity
 								locked_enemy = body
 								locked_enemy_list.append(locked_enemy)
+						else:
+							if body.is_in_group("enemy"):
+								if body.lockable:
+									current_camera_state = camera_state.ENEMY_ACQUIRED
+									colinearity = candidate_colinearity
+									locked_enemy = body
+									locked_enemy_list.append(locked_enemy)
 			if !tween.is_running():
 				rotation = _target_rotation
 			position = lerp(position, original_target.position, delta * lerp_power)

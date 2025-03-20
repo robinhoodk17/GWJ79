@@ -21,7 +21,7 @@ func _process(delta) -> void:
 				interacting_with = i
 
 	if interacting_with == null:
-		print_debug("null")
+		#print_debug("null")
 		return
 
 	interacting_with.display_prompt()
@@ -29,4 +29,4 @@ func _process(delta) -> void:
 	if interact_action.is_triggered():
 		if camera_pivot.current_camera_state == camera_pivot.camera_state.ENEMY_ACQUIRED:
 			return
-		interacting_with.interact(player)
+		interacting_with.interact(player_node)
