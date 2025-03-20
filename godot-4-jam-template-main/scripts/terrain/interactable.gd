@@ -12,4 +12,5 @@ func  turn_off_prompt():
 	pop_up.turn_off_prompt()
 	
 func  interact(_body : Node3D):
+	#do whaterver you want
 	pass
