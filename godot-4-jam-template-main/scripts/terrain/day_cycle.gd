@@ -2,6 +2,7 @@ extends Node3D
 
 @export var worldEnvironment : WorldEnvironment
 @export var sun : DirectionalLight3D
+@onready var moon: DirectionalLight3D = $Moon
 @export var sun_color : Gradient
 @export var sun_intensity : Curve 
 @export var sky_color : Gradient 
@@ -9,7 +10,7 @@ extends Node3D
 #day length in seconds. A 5 minute day is 300
 @export var day_length : float = 20.0
 @export var start_time : float = 0.3
-const  day_cover = preload("res://assets/materials/day_environment.tres")
+const day_cover = preload("res://assets/materials/day_environment.tres")
 const night_cover = preload("res://assets/materials/night_environment.tres")
 var time : float
 var time_rate : float 
@@ -26,8 +27,10 @@ func _physics_process(delta: float) -> void:
 	if time >= 0.5 and day:
 		worldEnvironment.environment = night_cover
 		day = false
+		moon.show()
 
 	if time >= 1.0:
+		moon.hide()
 		time = 0.0
 		Signalbus.day_started.emit()
 		worldEnvironment.environment = day_cover

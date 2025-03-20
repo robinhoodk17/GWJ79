@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=4 uid="uid://dom2bq6x7abkr"]
+[gd_scene load_steps=78 format=4 uid="uid://dom2bq6x7abkr"]
 
 [ext_resource type="Script" uid="uid://ocibsxhcwp14" path="res://scripts/player/player.gd" id="1_3eola"]
 [ext_resource type="Resource" uid="uid://b6w7oxn8rfgtk" path="res://input/tail_attack.tres" id="2_der45"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://3s7lo7jd53un" path="res://ui/pause_menu/pause_menu.tscn" id="15_8vj76"]
 [ext_resource type="PackedScene" uid="uid://dtrluvg5ox2vb" path="res://ui/notifications/message_board.tscn" id="17_qcw8q"]
 [ext_resource type="PackedScene" uid="uid://crak05vlyp0ep" path="res://scenes/player/lose_screen.tscn" id="19_dmlwb"]
+[ext_resource type="Script" uid="uid://cinn5hvex2bcb" path="res://scenes/player/interaction_area.gd" id="28_28m0y"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ydkj"]
 albedo_color = Color(0.564706, 0.337255, 0.152941, 1)
@@ -2906,6 +2907,23 @@ tracks/47/keys = {
 "method": &"go_idle"
 }]
 }
+tracks/48/type = "method"
+tracks/48/imported = false
+tracks/48/enabled = true
+tracks/48/path = NodePath("StompAttack")
+tracks/48/interp = 1
+tracks/48/loop_wrap = true
+tracks/48/keys = {
+"times": PackedFloat32Array(1.1, 1.33333),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"start_damaging"
+}, {
+"args": [],
+"method": &"stop_damaging"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_28m0y"]
 resource_name = "Tail_Attack"
@@ -3253,6 +3271,35 @@ tracks/47/keys = {
 "method": &"go_idle"
 }]
 }
+tracks/48/type = "value"
+tracks/48/imported = false
+tracks/48/enabled = true
+tracks/48/path = NodePath("TailAttack:rotation")
+tracks/48/interp = 1
+tracks/48/loop_wrap = true
+tracks/48/keys = {
+"times": PackedFloat32Array(0, 3.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+tracks/49/type = "method"
+tracks/49/imported = false
+tracks/49/enabled = true
+tracks/49/path = NodePath("TailAttack")
+tracks/49/interp = 1
+tracks/49/loop_wrap = true
+tracks/49/keys = {
+"times": PackedFloat32Array(0.0333333, 3.36667),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"start_damaging"
+}, {
+"args": [],
+"method": &"stop_damaging"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_jnueu"]
 resource_name = "Throw_Enemy"
@@ -3587,6 +3634,21 @@ tracks/46/interp = 0
 tracks/46/loop_wrap = true
 tracks/46/keys = PackedFloat32Array(0, 1, -0.157178, -1.00831e-07, 0.655205, 0.738919)
 
+[sub_resource type="Animation" id="Animation_uniwh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TailAttack:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q6hwy"]
 _data = {
 &"Bite_Attack": SubResource("Animation_ji0a1"),
@@ -3596,6 +3658,7 @@ _data = {
 &"Player_Idle": SubResource("Animation_yepay"),
 &"Player_Walk": SubResource("Animation_vxl4j"),
 &"Player_Walk_Holding_Enemy": SubResource("Animation_hc408"),
+&"RESET": SubResource("Animation_uniwh"),
 &"Stomp_Attack": SubResource("Animation_j4nxn"),
 &"Tail_Attack": SubResource("Animation_28m0y"),
 &"Throw_Enemy": SubResource("Animation_jnueu")
@@ -3605,7 +3668,7 @@ _data = {
 size = Vector3(1, 1.16748, 4.59293)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ioxgp"]
-radius = 3.5
+radius = 7.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dmlwb"]
 albedo_color = Color(0.823529, 0, 0.701961, 1)
@@ -3704,7 +3767,7 @@ animation = &"Tail_Attack"
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_uniwh"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_bbmj2"]
-graph_offset = Vector2(-262.392, 110.121)
+graph_offset = Vector2(-158.405, -118.026)
 nodes/MoveStateMachine/node = SubResource("AnimationNodeStateMachine_4hvnv")
 nodes/MoveStateMachine/position = Vector2(-680, 120)
 nodes/Stomp_Attack/node = SubResource("AnimationNodeOneShot_pk8ii")
@@ -3715,14 +3778,17 @@ nodes/Tail_Attack/node = SubResource("AnimationNodeOneShot_5mf0n")
 nodes/Tail_Attack/position = Vector2(580, 100)
 nodes/Tail_anim/node = SubResource("AnimationNodeAnimation_pk8ii")
 nodes/Tail_anim/position = Vector2(200, 300)
-nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_uniwh")
-nodes/TimeScale/position = Vector2(360, 260)
 "nodes/TimeScale 2/node" = SubResource("AnimationNodeTimeScale_iqsei")
 "nodes/TimeScale 2/position" = Vector2(-280, 360)
-nodes/output/position = Vector2(900, 120)
-node_connections = [&"Stomp_Attack", 0, &"MoveStateMachine", &"Stomp_Attack", 1, &"TimeScale 2", &"Tail_Attack", 0, &"Stomp_Attack", &"Tail_Attack", 1, &"TimeScale", &"TimeScale", 0, &"Tail_anim", &"TimeScale 2", 0, &"Stomp_anim", &"output", 0, &"Tail_Attack"]
+nodes/Timeanimation_playerScale/node = SubResource("AnimationNodeTimeScale_uniwh")
+nodes/Timeanimation_playerScale/position = Vector2(360, 260)
+nodes/output/position = Vector2(1040, 133.333)
+node_connections = [&"Stomp_Attack", 0, &"MoveStateMachine", &"Stomp_Attack", 1, &"TimeScale 2", &"Tail_Attack", 0, &"Stomp_Attack", &"Tail_Attack", 1, &"Timeanimation_playerScale", &"TimeScale 2", 0, &"Stomp_anim", &"Timeanimation_playerScale", 0, &"Tail_anim", &"output", 0, &"Tail_Attack"]
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("farm1", "farm2", "farm3", "farm4", "sapling1", "sapling2", "sapling3", "sapling4", "farm_1_timer", "farm_2_timer", "farm_3_timer", "farm_4_timer", "game_UI", "death_screen", "death_screen_label", "interact_prompt", "interaction_raycast", "camera", "camera_spring_arm", "camera_pivot", "mesh_parent", "animation_player")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_j4nxn"]
+size = Vector3(15, 2.5, 15)
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("farm1", "farm2", "farm3", "farm4", "sapling1", "sapling2", "sapling3", "sapling4", "farm_1_timer", "farm_2_timer", "farm_3_timer", "farm_4_timer", "game_UI", "death_screen", "death_screen_label", "interact_prompt", "camera", "camera_spring_arm", "camera_pivot", "mesh_parent", "animation_player")]
 collision_mask = 3
 script = ExtResource("1_3eola")
 farm1 = NodePath("MeshParent/Farm/Farm1")
@@ -3743,12 +3809,10 @@ game_UI = NodePath("CameraPivot/UI/Game")
 death_screen = NodePath("CameraPivot/Lose Screen")
 death_screen_label = NodePath("CameraPivot/Lose Screen/ColorRect/VBoxContainer/Label")
 interact_prompt = NodePath("CameraPivot/UI/Game/InputPrompt")
-interaction_raycast = NodePath("MeshParent/InteractionRaycast")
 tail_attack_action = ExtResource("2_der45")
 bite_action = ExtResource("4_0llfg")
 stomp_action = ExtResource("5_cnsyf")
 move_action = ExtResource("3_0llfg")
-interact = ExtResource("4_0llfg")
 camera = NodePath("CameraPivot/CameraNest/Camera3D")
 camera_spring_arm = NodePath("CameraPivot/SpringArm")
 camera_pivot = NodePath("CameraPivot")
@@ -3766,10 +3830,6 @@ transform = Transform3D(1, 0, 4.46638e-06, 0, 1, 0, -4.46638e-06, 0, 1, 0, 0, 0)
 
 [node name="MarkerBehindPlayer" type="Marker3D" parent="MeshParent"]
 transform = Transform3D(1, 0, -4.46638e-06, 0, 1, 0, 4.46638e-06, 0, 1, -2.23319e-05, 3.5, 5)
-
-[node name="InteractionRaycast" type="RayCast3D" parent="MeshParent"]
-transform = Transform3D(1, 0, -4.46638e-06, 0, 1, 0, 4.46638e-06, 0, 1, 0, 0, 0)
-target_position = Vector3(0, 0, -10)
 
 [node name="Farm" type="Node3D" parent="MeshParent"]
 transform = Transform3D(1, 0, -4.46638e-06, 0, 1, 0, 4.46638e-06, 0, 1, 0, 0, 0)
@@ -3898,16 +3958,16 @@ bones/6/name = "Left Eyelid"
 bones/6/parent = 4
 bones/6/rest = Transform3D(0.0493214, -0.998775, 0.0038372, 0.546822, 0.0302176, 0.836703, -0.835794, -0.0391691, 0.547643, -0.266384, 1.49088, 0.272608)
 bones/6/enabled = true
-bones/6/position = Vector3(-0.323484, 1.53188, 0.260109)
-bones/6/rotation = Quaternion(-0.460284, 0.320628, 0.54197, 0.625783)
-bones/6/scale = Vector3(1.02003, 1.02003, 1.02003)
+bones/6/position = Vector3(-0.320612, 1.53877, 0.26292)
+bones/6/rotation = Quaternion(-0.462994, 0.340525, 0.541587, 0.613484)
+bones/6/scale = Vector3(1.02295, 1.02295, 1.02295)
 bones/7/name = "Right Eyelid"
 bones/7/parent = 4
 bones/7/rest = Transform3D(-0.0094775, 0.997914, -0.063855, 0.749329, 0.0493717, 0.660355, 0.66213, -0.0415899, -0.748234, 0.267038, 1.48092, 0.273869)
 bones/7/enabled = true
-bones/7/position = Vector3(0.315553, 1.50822, 0.281201)
-bones/7/rotation = Quaternion(0.685999, 0.644843, 0.145835, -0.303834)
-bones/7/scale = Vector3(1.05816, 1.05816, 1.05816)
+bones/7/position = Vector3(0.313487, 1.50966, 0.282211)
+bones/7/rotation = Quaternion(0.691603, 0.64405, 0.144358, -0.293335)
+bones/7/scale = Vector3(1.05979, 1.05979, 1.05979)
 bones/8/name = "Lower Face"
 bones/8/parent = 3
 bones/8/rest = Transform3D(0.996135, -0.00153921, -0.0878207, 0.0873069, 0.126747, 0.988085, 0.00961016, -0.991934, 0.126392, -7.5549e-08, 1.92539, 9.94789e-08)
@@ -4189,7 +4249,7 @@ animator_2d = NodePath("UI/Game/AnimationPlayer")
 idle_cooldown = 3.0
 
 [node name="SpringArm" type="SpringArm3D" parent="CameraPivot"]
-spring_length = 6.0
+spring_length = 10.0
 
 [node name="SpringPosition" type="Node3D" parent="CameraPivot/SpringArm"]
 
@@ -4230,6 +4290,9 @@ script = ExtResource("11_du256")
 [node name="Game" parent="CameraPivot/UI" instance=ExtResource("14_64oqw")]
 mouse_filter = 2
 
+[node name="ProgressBar" parent="CameraPivot/UI/Game" index="7" node_paths=PackedStringArray("player_node")]
+player_node = NodePath("../../../..")
+
 [node name="PauseMenu" parent="CameraPivot/UI" instance=ExtResource("15_8vj76")]
 
 [node name="MessageBoard" parent="CameraPivot/UI" instance=ExtResource("17_qcw8q")]
@@ -4256,7 +4319,20 @@ parameters/Stomp_Attack/request = 0
 parameters/Tail_Attack/active = false
 parameters/Tail_Attack/internal_active = false
 parameters/Tail_Attack/request = 0
-parameters/TimeScale/scale = 2.5
-"parameters/TimeScale 2/scale" = 2.0
+"parameters/TimeScale 2/scale" = 1.0
+parameters/Timeanimation_playerScale/scale = 2.5
 
+[node name="Area3D" type="Area3D" parent="." node_paths=PackedStringArray("player_node", "camera_pivot")]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("28_28m0y")
+player_node = NodePath("..")
+interact_action = ExtResource("4_0llfg")
+camera_pivot = NodePath("../CameraPivot")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.90127, 0)
+shape = SubResource("BoxShape3D_j4nxn")
+
+[editable path="CameraPivot/UI/Game"]
 [editable path="CameraPivot/UI/PauseMenu"]

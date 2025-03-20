@@ -31,13 +31,13 @@ enum states{IDLE, WALKING,TAIL_ATTACK,BITE_ATTACK,STOMP_ATTACK,TRANSITION, BLOCK
 @export var death_screen : CanvasLayer
 @export var death_screen_label : Label
 @export var interact_prompt : Control
-@export var interaction_raycast : RayCast3D
+#@export var interaction_raycast : RayCast3D
 @export_subgroup("GUIDE actions")
 @export var tail_attack_action : GUIDEAction
 @export var bite_action : GUIDEAction
 @export var stomp_action : GUIDEAction
 @export var move_action : GUIDEAction
-@export var interact : GUIDEAction
+#@export var interact : GUIDEAction
 @export_subgroup("camera")
 @export var camera : Camera3D
 @export var camera_spring_arm : SpringArm3D
@@ -47,6 +47,7 @@ enum states{IDLE, WALKING,TAIL_ATTACK,BITE_ATTACK,STOMP_ATTACK,TRANSITION, BLOCK
 @export var animation_player : AnimationPlayer
 var current_state : states = states.WALKING
 var direction : Vector3 = Vector3.ZERO
+var targeted_enemy : Node3D = null
 #endregion
 
 @export_group("Stats")
@@ -63,6 +64,7 @@ var direction : Vector3 = Vector3.ZERO
 @export var turn_speed : float = 20.0
 @export var stomp_cooldown : float = 10.0
 @export var bite_damage : float = 10.0
+@export var bite_damage_force : float = 20.0
 var current_stomp_cooldown : float = 10.0
 var current_health : int = max_health
 #endregion
@@ -80,13 +82,15 @@ func _ready() -> void:
 	
 	Signalbus.seed_picked.connect(_on_seed_picked)
 	Signalbus.seed_dropped.connect(_on_seed_dropped)
-	interaction_raycast.add_exception(self)
+	#interaction_raycast.add_exception(self)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	camera_spring_arm.add_excluded_object(self)
 	camera_spring_arm.add_excluded_object(camera_spring_arm)
-	call_deferred("late_ready")
 	animation_player.get_animation("Player_Walk").loop_mode=Animation.LOOP_LINEAR
 	animation_player.get_animation("Player_Idle").loop_mode=Animation.LOOP_LINEAR
+	call_deferred("late_ready")
+
+
 func late_ready() -> void:
 	game_UI.show()
 
@@ -123,7 +127,7 @@ func state_machine(delta : float) -> void:
 			velocity = Vector3.ZERO
 			set_animstate_oneshot("Tail_Attack")
 			current_state=states.TRANSITION
-		states.BITE_ATTACK:	
+		states.BITE_ATTACK:
 			velocity = Vector3.ZERO
 			set_animstate_oneshot("Bite_Attack")	
 			current_state=states.TRANSITION	
@@ -131,13 +135,14 @@ func state_machine(delta : float) -> void:
 				var targeted_enemy : Node3D = camera_pivot.locked_enemy
 				if targeted_enemy._current_health <= bite_damage:
 					targeted_enemy._current_health = 0
-					targeted_enemy.start_ragdoll()					
+					targeted_enemy.start_ragdoll()
 				return
 		states.STOMP_ATTACK:
 			current_state=states.TRANSITION
 			velocity = Vector3.ZERO
 			set_animstate_oneshot("Stomp_Attack")
 			velocity = Vector3.ZERO
+			current_stomp_cooldown = 0.0
 		states.TRANSITION:
 			pass
 
@@ -147,7 +152,7 @@ func go_idle():	# used to go back to idle state after animation to be used as "C
 	current_state=states.IDLE
 	
 func _physics_process(delta: float) -> void:
-	print(current_state)
+	print_debug(current_state)
 	var input_dir : Vector2 = move_action.value_axis_2d
 	if current_state!=states.TRANSITION:
 		if input_dir.length()>0.1:
@@ -158,7 +163,14 @@ func _physics_process(delta: float) -> void:
 		if tail_attack_action.is_triggered():
 			current_state=states.TAIL_ATTACK
 		if bite_action.is_triggered():
-			current_state=states.BITE_ATTACK
+			if camera_pivot.current_camera_state == camera_pivot.camera_state.ENEMY_ACQUIRED:
+				targeted_enemy = camera_pivot.locked_enemy
+				if targeted_enemy == null:
+					return
+				targeted_enemy.take_damage(bite_damage, bite_damage_force, targeted_enemy.global_position - global_position)
+				current_state=states.BITE_ATTACK
+				velocity = Vector3.ZERO
+			
 		if stomp_action.is_triggered():
 			if current_stomp_cooldown < stomp_cooldown:
 				return
@@ -173,23 +185,23 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	##
-	if !interaction_raycast.is_colliding():
-		interact_prompt.hide()
-		return
+	#if !interaction_raycast.is_colliding():
+		#interact_prompt.hide()
+		#return
 	
-	if !interaction_raycast.get_collider().is_in_group("interactable"):
-		return
+	#if !interaction_raycast.get_collider().is_in_group("interactable"):
+		#return
 	interact_prompt.show()
-	if interact.is_triggered():
-		if interaction_raycast.get_collider() is FarmHouse:
-			death_screen_label.text = "You Win!"
-			Global.lost_game.emit()
-		if interaction_raycast.get_collider() is PlantPickup:
+	#if interact.is_triggered():
+		#if interaction_raycast.get_collider() is FarmHouse:
+			#death_screen_label.text = "You Win!"
+			#Global.lost_game.emit()
+		#if interaction_raycast.get_collider() is PlantPickup:
 			#$"../Plant Pickup".position.y -= 100
 			#plant.visible = true
 			#Global.plants += 1
 			#Global.picked_plant.emit()
-			pass
+			#pass
 
 ##combat and state machine
 #region New Code Region
@@ -231,7 +243,7 @@ func _on_seed_picked():
 			
 func _on_seed_dropped():
 
-	print(Global.seeds_carried)
+	print_debug(Global.seeds_carried)
 	match Global.seeds_carried:
 
 		0:

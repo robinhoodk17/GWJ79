@@ -187,6 +187,7 @@ visible_ratio = 1.6
 script = ExtResource("4_lkn3m")
 
 [node name="InputPrompt" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
