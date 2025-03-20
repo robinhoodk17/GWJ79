@@ -30,7 +30,6 @@ enum states{IDLE, WALKING,TAIL_ATTACK,BITE_ATTACK,STOMP_ATTACK,TRANSITION, BLOCK
 @export var game_UI : Control
 @export var death_screen : CanvasLayer
 @export var death_screen_label : Label
-@export var interact_prompt : Control
 #@export var interaction_raycast : RayCast3D
 @export_subgroup("GUIDE actions")
 @export var tail_attack_action : GUIDEAction
@@ -191,7 +190,7 @@ func _physics_process(delta: float) -> void:
 	
 	#if !interaction_raycast.get_collider().is_in_group("interactable"):
 		#return
-	interact_prompt.show()
+
 	#if interact.is_triggered():
 		#if interaction_raycast.get_collider() is FarmHouse:
 			#death_screen_label.text = "You Win!"
