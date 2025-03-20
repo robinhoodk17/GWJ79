@@ -188,13 +188,8 @@ input_mappings = Array[ExtResource("3_mbp6c")]([SubResource("Resource_blffm"), S
 metadata/_guide_input_mappings_collapsed = true
 
 [sub_resource type="Resource" id="Resource_umxlc"]
-script = ExtResource("4_w8q5f")
-key = 69
-shift = false
-control = false
-alt = false
-meta = false
-allow_additional_modifiers = true
+script = ExtResource("13_p3dbk")
+button = 1
 
 [sub_resource type="Resource" id="Resource_g6sd5"]
 script = ExtResource("12_fqwdo")
