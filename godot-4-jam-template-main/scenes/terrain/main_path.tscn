@@ -80,7 +80,7 @@ sun_color = SubResource("Gradient_t21en")
 sun_intensity = SubResource("Curve_cgwd4")
 sky_color = SubResource("Gradient_h5v8l")
 horizon_color = ExtResource("4_t21en")
-day_length = 60.0
+day_length = 200000.0
 
 [node name="Sun" type="DirectionalLight3D" parent="WorldEnvironment/DayCycle"]
 light_energy = 2.333
@@ -268,7 +268,8 @@ draw_pass_1 = SubResource("SphereMesh_t4p7o")
 visible = false
 mesh = SubResource("CylinderMesh_t6k5e")
 
-[node name="enemies" type="Node" parent="Section1"]
+[node name="enemies" type="Node3D" parent="Section1"]
+visible = false
 
 [node name="SmallKaiju" parent="Section1/enemies" instance=ExtResource("12_h5v8l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3663, -38.9378)

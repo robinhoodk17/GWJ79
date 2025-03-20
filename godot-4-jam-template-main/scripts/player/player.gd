@@ -25,7 +25,7 @@ class_name player
 
 @export_group("controls, camera, and animation")
 #region Nodes for functionality
-enum states{IDLE, WALKING, ATTACKING, BLOCKED, DYING, CARRYING_ENEMY}
+enum states{IDLE, WALKING,TAIL_ATTACK,BITE_ATTACK,STOMP_ATTACK,TRANSITION, BLOCKED, DYING, CARRYING_ENEMY}
 @export_subgroup("UI")
 @export var game_UI : Control
 @export var death_screen : CanvasLayer
@@ -66,6 +66,7 @@ var direction : Vector3 = Vector3.ZERO
 var current_stomp_cooldown : float = 10.0
 var current_health : int = max_health
 #endregion
+@onready var animation_state_machine=$AnimationTree.get("parameters/MoveStateMachine/playback")
 
 func _ready() -> void:
 	sapling1.visible=false
@@ -84,66 +85,94 @@ func _ready() -> void:
 	camera_spring_arm.add_excluded_object(self)
 	camera_spring_arm.add_excluded_object(camera_spring_arm)
 	call_deferred("late_ready")
-
-
+	animation_player.get_animation("Player_Walk").loop_mode=Animation.LOOP_LINEAR
+	animation_player.get_animation("Player_Idle").loop_mode=Animation.LOOP_LINEAR
 func late_ready() -> void:
 	game_UI.show()
 
 
-func handle_inputs(delta : float) -> void:
-	if is_on_floor():
-		if tail_attack_action.is_triggered():
-			animation_player.play("Tail_Attack")
-			current_state = states.ATTACKING
+func state_machine(delta : float) -> void:
+	match current_state:
+		states.IDLE:
+			velocity=Vector3.ZERO
+			set_animstate("Idle")	
+		states.WALKING:
+			set_animstate("Walk")
+			var input_dir : Vector2 = move_action.value_axis_2d
+			direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+			
+			direction = direction.rotated(Vector3.UP, camera.global_rotation.y)
+			velocity.x = direction.x * speed
+			velocity.z = direction.z * speed
+			if camera_pivot.current_camera_state == camera_pivot.camera_state.NORMAL:
+				var target_rotation : Basis = Basis.looking_at(velocity, Vector3.UP)
+				mesh_parent.basis =	mesh_parent.basis.slerp(target_rotation, delta * turn_speed)
+			if camera_pivot.current_camera_state == camera_pivot.camera_state.ENEMY_ACQUIRED:
+				if camera_pivot.locked_enemy != null:
+					velocity /= 2.0
+					var transformed_enemy_position : Vector3 = Vector3\
+					(camera_pivot.locked_enemy.global_position.x,\
+					mesh_parent.global_position.y, \
+					camera_pivot.locked_enemy.global_position.z) - \
+					Vector3(global_position.x, 0, global_position.z)
+					var target_rotation : Basis = Basis.looking_at(transformed_enemy_position, Vector3.UP)
+					mesh_parent.basis =	mesh_parent.basis.slerp(target_rotation, delta * turn_speed / 2.0).orthonormalized()
+					mesh_parent.rotation.x = 0.0
+					
+		states.TAIL_ATTACK:
 			velocity = Vector3.ZERO
-			return
-
-		if stomp_action.is_triggered():
-			if current_stomp_cooldown < stomp_cooldown:
-				return
-			animation_player.play("Stomp_Attack")
-			current_state = states.ATTACKING
+			set_animstate_oneshot("Tail_Attack")
+			current_state=states.TRANSITION
+		states.BITE_ATTACK:	
 			velocity = Vector3.ZERO
-			return
-
-		if bite_action.is_triggered():
+			set_animstate_oneshot("Bite_Attack")	
+			current_state=states.TRANSITION	
 			if camera_pivot.current_camera_state == camera_pivot.camera_state.ENEMY_ACQUIRED:
 				var targeted_enemy : Node3D = camera_pivot.locked_enemy
 				if targeted_enemy._current_health <= bite_damage:
 					targeted_enemy._current_health = 0
-					targeted_enemy.start_ragdoll()
-					current_state = states.ATTACKING
-					
-					velocity = Vector3.ZERO
+					targeted_enemy.start_ragdoll()					
 				return
+		states.STOMP_ATTACK:
+			current_state=states.TRANSITION
+			velocity = Vector3.ZERO
+			set_animstate_oneshot("Stomp_Attack")
+			velocity = Vector3.ZERO
+		states.TRANSITION:
+			pass
 
+
+
+func go_idle():	# used to go back to idle state after animation to be used as "Call method track" in animation player
+	current_state=states.IDLE
+	
+func _physics_process(delta: float) -> void:
+	print(current_state)
 	var input_dir : Vector2 = move_action.value_axis_2d
-	direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
-		animation_player.play("Player_Walk")
-		direction = direction.rotated(Vector3.UP, camera.global_rotation.y)
-		velocity.x = direction.x * speed
-		velocity.z = direction.z * speed
-		if camera_pivot.current_camera_state == camera_pivot.camera_state.NORMAL:
-			var target_rotation : Basis = Basis.looking_at(velocity, Vector3.UP)
-			mesh_parent.basis =	mesh_parent.basis.slerp(target_rotation, delta * turn_speed)
-		if camera_pivot.current_camera_state == camera_pivot.camera_state.ENEMY_ACQUIRED:
-			if camera_pivot.locked_enemy != null:
-				velocity /= 2.0
-				var transformed_enemy_position : Vector3 = Vector3\
-				(camera_pivot.locked_enemy.global_position.x,\
-				mesh_parent.global_position.y, \
-				camera_pivot.locked_enemy.global_position.z) - \
-				Vector3(global_position.x, 0, global_position.z)
-				var target_rotation : Basis = Basis.looking_at(transformed_enemy_position, Vector3.UP)
-				mesh_parent.basis =	mesh_parent.basis.slerp(target_rotation, delta * turn_speed / 2.0).orthonormalized()
-				mesh_parent.rotation.x = 0.0
-			
-	else:
-		animation_player.play("Player_Idle")
-		velocity.x = move_toward(velocity.x, 0, speed)
-		velocity.z = move_toward(velocity.z, 0, speed)
+	if current_state!=states.TRANSITION:
+		if input_dir.length()>0.1:
+			current_state=states.WALKING
+		else:
+			current_state=states.IDLE
 
+		if tail_attack_action.is_triggered():
+			current_state=states.TAIL_ATTACK
+		if bite_action.is_triggered():
+			current_state=states.BITE_ATTACK
+		if stomp_action.is_triggered():
+			if current_stomp_cooldown < stomp_cooldown:
+				return
+			current_state=states.STOMP_ATTACK
+		
+		
+	handle_cooldowns(delta)
+	state_machine(delta)
+	
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+	move_and_slide()
+	
+	##
 	if !interaction_raycast.is_colliding():
 		interact_prompt.hide()
 		return
@@ -162,16 +191,6 @@ func handle_inputs(delta : float) -> void:
 			#Global.picked_plant.emit()
 			pass
 
-
-func _physics_process(delta: float) -> void:
-	handle_cooldowns(delta)
-	match current_state:
-		states.WALKING:
-			if not is_on_floor():
-				velocity += get_gravity() * delta
-			handle_inputs(delta)
-			move_and_slide()
-
 ##combat and state machine
 #region New Code Region
 func handle_cooldowns(delta : float):
@@ -188,23 +207,13 @@ func take_damage(damage : int) -> void:
 func die() -> void:
 	Global.lost_game.emit()
 
-
-func start_walking() -> void:
-	current_state = states.WALKING
-
 #endregion
 
 ##farm
 #region New Code Region
 
 func _on_seed_picked():
-	print("seed picked")
-	print(Global.seeds_carried)
-	#farm1.material=default_material
-	#farm2.material=default_material
-	#farm3.material=default_material
-	#farm4.material=default_material
-	
+
 	match Global.seeds_carried:
 
 		1:
@@ -222,16 +231,6 @@ func _on_seed_picked():
 			
 func _on_seed_dropped():
 
-	#farm1.material=default_material
-	#farm2.material=default_material
-	#farm3.material=default_material
-	#farm4.material=default_material
-	#
-	#sapling1.visible=false
-	#sapling2.visible=false
-	#sapling3.visible=false
-	#sapling4.visible=false
-	#
 	print(Global.seeds_carried)
 	match Global.seeds_carried:
 
@@ -292,3 +291,9 @@ func _on_bar_spot_2_body_shape_exited(body_rid: RID, body: Node3D, body_shape_in
 	Global.drinking_water = !Global.drinking_water
 
 #endregion
+
+func set_animstate(state_name):	# to set looped animation state
+	animation_state_machine.travel(state_name)
+	
+func set_animstate_oneshot(state_name):# to set oneshot animation state
+	$AnimationTree.set("parameters/"+str(state_name)+"/request",AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
