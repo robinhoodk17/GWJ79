@@ -12,7 +12,6 @@ func _ready() -> void:
 
 
 func enemy_died(_body : Node3D):
-	print_debug("enemy died", _body)
 	if _body in body_list:
 		for i in body_list.size():
 			if body_list[i] == _body:

@@ -12,7 +12,6 @@ func _ready() -> void:
 
 
 func late_ready() -> void:
-	print_debug("called_late_ready")
 	var overlapping_bodies : Array[Node3D] = $Affected_area.get_overlapping_bodies()
 	for i : Node3D in overlapping_bodies:
 		if i.is_in_group("enemy"):

@@ -32,9 +32,8 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ydkj"]
 albedo_color = Color(0.564706, 0.337255, 0.152941, 1)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_28m0y"]
-radius = 1.0
-height = 3.5
+[sub_resource type="SphereShape3D" id="SphereShape3D_28m0y"]
+radius = 1.6
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fwcrm"]
 
@@ -3711,10 +3710,10 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cnsyf"]
-size = Vector3(1, 1.16748, 4.59293)
+size = Vector3(1, 1.167, 8)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ioxgp"]
-radius = 7.0
+radius = 14.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dmlwb"]
 albedo_color = Color(0.823529, 0, 0.701961, 1)
@@ -3857,8 +3856,12 @@ node_connections = [&"Activate_Attack", 0, &"Tail_Attack", &"Activate_Attack", 1
 [sub_resource type="BoxShape3D" id="BoxShape3D_j4nxn"]
 size = Vector3(15, 2.5, 15)
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("farm1", "farm2", "farm3", "farm4", "sapling1", "sapling2", "sapling3", "sapling4", "farm_1_timer", "farm_2_timer", "farm_3_timer", "farm_4_timer", "game_UI", "death_screen", "death_screen_label", "camera", "camera_spring_arm", "camera_pivot", "mesh_parent", "animation_player", "carried_enemy_position")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("farm1", "farm2", "farm3", "farm4", "sapling1", "sapling2", "sapling3", "sapling4", "farm_1_timer", "farm_2_timer", "farm_3_timer", "farm_4_timer", "game_UI", "death_screen", "death_screen_label", "camera", "camera_spring_arm", "camera_pivot", "mesh_parent", "animation_player", "carried_enemy_position", "lock_on_area")]
 collision_mask = 3
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+wall_min_slide_angle = 0.436332
 script = ExtResource("1_3eola")
 farm1 = NodePath("MeshParent/Farm/Farm1")
 farm2 = NodePath("MeshParent/Farm/Farm2")
@@ -3887,12 +3890,13 @@ camera_pivot = NodePath("CameraPivot")
 mesh_parent = NodePath("MeshParent")
 animation_player = NodePath("MeshParent/Kaiju/AnimationPlayer")
 carried_enemy_position = NodePath("MeshParent/Kaiju/Player Kaiju Armature/Skeleton3D/BoneAttachment3D/Marker3D")
+lock_on_area = NodePath("MeshParent/LockOnArea")
 speed = 20.0
 turn_speed = 10.0
 
 [node name="Collision" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.02004, -0.28595)
-shape = SubResource("CapsuleShape3D_28m0y")
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.57895, -0.28595)
+shape = SubResource("SphereShape3D_28m0y")
 
 [node name="MeshParent" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 4.46638e-06, 0, 1, 0, -4.46638e-06, 0, 1, 0, 0, 0)
@@ -4027,16 +4031,16 @@ bones/6/name = "Left Eyelid"
 bones/6/parent = 4
 bones/6/rest = Transform3D(0.0493214, -0.998775, 0.0038372, 0.546822, 0.0302176, 0.836703, -0.835794, -0.0391691, 0.547643, -0.266384, 1.49088, 0.272608)
 bones/6/enabled = true
-bones/6/position = Vector3(-0.456513, 1.54008, 0.278086)
-bones/6/rotation = Quaternion(-0.662507, 0.039883, 0.393821, 0.635924)
-bones/6/scale = Vector3(1.09998, 1.09998, 1.09998)
+bones/6/position = Vector3(-0.391765, 1.54822, 0.272473)
+bones/6/rotation = Quaternion(-0.583599, 0.204359, 0.460903, 0.636567)
+bones/6/scale = Vector3(1.06743, 1.06743, 1.06743)
 bones/7/name = "Right Eyelid"
 bones/7/parent = 4
 bones/7/rest = Transform3D(-0.0094775, 0.997914, -0.063855, 0.749329, 0.0493717, 0.660355, 0.66213, -0.0415899, -0.748234, 0.267038, 1.48092, 0.273869)
 bones/7/enabled = true
-bones/7/position = Vector3(0.498848, 1.51191, 0.339879)
-bones/7/rotation = Quaternion(0.676699, 0.505068, -0.156558, -0.512323)
-bones/7/scale = Vector3(1.08014, 1.08014, 1.08014)
+bones/7/position = Vector3(0.40061, 1.51688, 0.298867)
+bones/7/rotation = Quaternion(0.69459, 0.617675, -0.012729, -0.368591)
+bones/7/scale = Vector3(1.07787, 1.07787, 1.07787)
 bones/8/name = "Lower Face"
 bones/8/parent = 3
 bones/8/rest = Transform3D(0.996135, -0.00153921, -0.0878207, 0.0873069, 0.126747, 0.988085, 0.00961016, -0.991934, 0.126392, -7.5549e-08, 1.92539, 9.94789e-08)
@@ -4262,7 +4266,7 @@ mesh = SubResource("ArrayMesh_kvv1v")
 skin = SubResource("Skin_he2u2")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="MeshParent/Kaiju/Player Kaiju Armature/Skeleton3D"]
-transform = Transform3D(0.992062, 0.0529795, -0.114032, -0.0302494, 0.980824, 0.192527, 0.122045, -0.18755, 0.974642, 6.6584e-05, 6.47074, 3.89442)
+transform = Transform3D(0.992063, 0.0529795, -0.114032, -0.0302495, 0.980825, 0.192527, 0.122045, -0.18755, 0.974643, 6.6584e-05, 6.47074, 3.89442)
 bone_name = "Lower Jaw"
 bone_idx = 9
 
@@ -4290,7 +4294,7 @@ damage_amount = 5
 main_body = NodePath("../../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshParent/Kaiju/TailAttack"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.09139e-11, 0.75132, 1.79646)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.65142e-06, 0.75132, 4.73127)
 shape = SubResource("BoxShape3D_cnsyf")
 
 [node name="StompAttack" type="Area3D" parent="MeshParent/Kaiju" node_paths=PackedStringArray("main_body")]

@@ -15,6 +15,7 @@ var lockable : bool = true
 
 @export_group("Stats")
 @export var max_health : int = 50
+@export var small : bool = true
 @export var resistance_against_launch : float = 10.0
 @export var speed : float = 25.0
 @export var attack_range : float = 5.0

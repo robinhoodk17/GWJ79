@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cm284gwx7qpyt"]
+[gd_scene load_steps=37 format=3 uid="uid://cm284gwx7qpyt"]
 
 [ext_resource type="Script" uid="uid://dqih6i2t5n4pe" path="res://scripts/enable_guide.gd" id="1_mqemg"]
 [ext_resource type="Resource" uid="uid://v5u0dyabni7e" path="res://input/default_mapping_context.tres" id="2_y1ygp"]
@@ -10,7 +10,6 @@
 [ext_resource type="Material" uid="uid://bfjbavkupu4b5" path="res://scenes/particles/Sleep.tres" id="7_olwnp"]
 [ext_resource type="Material" uid="uid://cq1jb3btvntna" path="res://assets/materials/wall_material.tres" id="8_cgwd4"]
 [ext_resource type="Script" uid="uid://dj3oo25bv4g2m" path="res://scripts/terrain/interactable.gd" id="8_i3jkc"]
-[ext_resource type="PackedScene" uid="uid://b7cyn7p8nyyd7" path="res://scenes/terrain/terrain_events/finish_combat.tscn" id="10_60fbq"]
 [ext_resource type="PackedScene" uid="uid://3ch4cewd4fr5" path="res://assets/3d/Leaf Bed.blend" id="10_cgwd4"]
 [ext_resource type="PackedScene" uid="uid://cxx38lw6y1dt6" path="res://assets/3d/Tree.blend" id="11_x7gld"]
 [ext_resource type="PackedScene" uid="uid://bw6h0b07qrtvl" path="res://assets/3d/level1.blend" id="12_0rf43"]
@@ -39,9 +38,6 @@ size = Vector3(25, 5, 29.186)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h5v8l"]
 size = Vector3(23.951, 7.51648, 28.6648)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_rxav6"]
-size = Vector3(24.5565, 7.56305, 31.0017)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0ssrf"]
 
@@ -117,13 +113,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -31.2502)
 [node name="CollisionShape3D" parent="Section1/StartCombat/Affected_area" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.37681, 3.25824, -3.85925)
 shape = SubResource("BoxShape3D_h5v8l")
-
-[node name="FinishCombat" parent="Section1" instance=ExtResource("10_60fbq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.4315, 1.43863, -34.9029)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Section1/FinishCombat"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.01459, 3.28152, 2.36389)
-shape = SubResource("BoxShape3D_rxav6")
 
 [node name="Trees" type="Node3D" parent="Section1"]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 4.10404, 0, 0)
