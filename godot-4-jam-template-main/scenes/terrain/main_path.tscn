@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cm284gwx7qpyt"]
+[gd_scene load_steps=44 format=3 uid="uid://cm284gwx7qpyt"]
 
 [ext_resource type="Script" uid="uid://dqih6i2t5n4pe" path="res://scripts/enable_guide.gd" id="1_mqemg"]
 [ext_resource type="Resource" uid="uid://v5u0dyabni7e" path="res://input/default_mapping_context.tres" id="2_y1ygp"]
@@ -24,6 +24,10 @@
 [ext_resource type="Script" uid="uid://2to3axc5b76g" path="res://scripts/terrain/terrain_events/change_level.gd" id="23_60fbq"]
 [ext_resource type="PackedScene" uid="uid://cwyk20gm1yjhr" path="res://scenes/pop_up_with_message.tscn" id="23_h5v8l"]
 [ext_resource type="PackedScene" uid="uid://dnj4vd42wu5uj" path="res://scenes/terrain/worldfarm_tile.tscn" id="23_x7gld"]
+[ext_resource type="Resource" uid="uid://t84x06cxbh2f" path="res://input/interact.tres" id="25_2pqk4"]
+[ext_resource type="Resource" uid="uid://c6tovgnwacf3x" path="res://input/move.tres" id="26_72pjs"]
+[ext_resource type="Resource" uid="uid://ej23s0epyv1y" path="res://input/camera_move.tres" id="27_ofh2v"]
+[ext_resource type="Resource" uid="uid://bo0hoqgqx87cp" path="res://input/lock_on.tres" id="28_72pjs"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_1ldu7"]
 vertices = PackedVector3Array(-14.9577, 0.768523, -152.631, -14.9577, 0.768523, -215.131, -19.2077, 0.768523, -215.131, -19.9577, 1.01852, -152.631, -9.95771, 36.7685, -202.381, -4.95771, 39.7685, -202.381, -4.95771, 39.7685, -204.381, 0.0422897, 39.7685, -207.631, 0.0422897, 38.0185, -215.131, -9.95771, 36.5185, -215.131, -5.4724, 39.0185, -208.121, -6.95741, 38.5185, -208.132, 5.04229, 39.7685, -204.131, 10.0423, 36.5185, -204.131, 10.0423, 36.5185, -215.131, 6.52257, 38.7685, -208.153, -13.7077, 0.768523, -203.631, -12.9577, 0.768523, -203.631, -12.9577, 0.768523, -204.631, -13.7077, 0.768523, -214.881, -1.95771, 0.768523, -214.881, 13.0423, 0.768523, -204.631, 13.0423, 0.768523, -203.631, 13.7923, 0.768523, -203.631, 13.7923, 0.768523, -214.881, 2.04229, 0.768523, -214.881, 11.7923, 0.768523, -203.881, 0.0422897, 0.768523, -214.631, -11.7077, 0.768523, -203.881, -11.7077, 1.01852, -105.631, 11.5423, 0.768523, -105.381, 4.79229, 39.7685, -105.131, 9.79229, 36.5185, -105.131, 6.51753, 38.5185, -187.136, -13.7077, 1.01852, -105.131, -12.9577, 1.01852, -105.131, 8.54229, 0.768523, -44.6312, 9.54229, 0.768523, -46.8812, 10.5423, 1.26852, -57.3812, 9.6534, 0.768523, -51.7145, 11.2923, 1.26852, -63.8812, 11.7923, 1.01852, -63.1312, 12.2923, 1.01852, -81.3812, 13.0423, 0.768523, -82.6312, 12.7923, 0.768523, -101.881, 13.5423, 0.768523, -103.381, -9.95771, 36.7685, -105.131, -4.95771, 39.7685, -105.131, -20.7077, 1.01852, -105.381, -14.9577, 1.01852, -105.631, -14.7077, 1.01852, -103.881, -20.7077, 1.01852, -94.8812, -11.9577, 1.01852, -103.881, -30.4577, 2.51852, -76.1312, -30.7077, 2.51852, -74.6312, 10.5423, 1.01852, -74.1312, -21.8684, 1.51852, -74.524, -11.5559, 1.01852, -74.399, -18.9757, 1.51852, -89.6153, -14.4707, 1.01852, -89.6323, -17.454, 1.51852, -80.6551, -11.4804, 1.26852, -88.1186, -9.95669, 0.768523, -95.6223, -17.4463, 1.26852, -92.6267, -7.95771, 19.0185, -13.1312, -7.95771, 19.0185, -12.3812, -6.70771, 18.7685, -12.3812, -0.95771, 19.7685, -26.8812, -2.20771, 20.0185, -26.8812, 13.5423, 27.2685, -92.8812, 13.5423, 30.5185, -104.131, 12.2923, 30.5185, -104.131, 12.2923, 27.2685, -92.8812, 9.29229, 23.2685, -55.3812, 5.29229, 21.7685, -41.6312, 6.79229, 22.0185, -41.8812, 10.5423, 23.2685, -55.3812, 12.5423, 24.5185, -71.1312, 11.2923, 24.5185, -71.1312, 13.2756, 25.7685, -87.0812, 12.0256, 25.7685, -87.0812, 14.7923, 0.768523, -87.6312, 14.5423, 0.768523, -102.131, 14.2923, 0.768523, -81.1312, 13.5423, 1.01852, -65.1312, 13.2923, 1.01852, -68.8812, 10.0423, 1.26852, -68.6312, -31.9577, 2.01852, -69.3812, -14.5784, 1.01852, -69.0708, -1.54392, 1.01852, -68.8381, 1.35263, 1.51852, -68.7863, 2.05315, 1.51852, -70.1261, -2.45717, 1.01852, -71.6118, 9.29229, 1.51852, -60.6312, 10.0423, 1.26852, -64.8812, -34.2077, 1.51852, -60.6312, -8.10771, 1.01852, -60.6312, -0.857712, 2.01852, -60.6312, 4.94229, 2.01852, -60.6312, -26.4777, 1.26852, -67.1232, 6.53792, 1.76852, -65.6349, 11.7923, 1.01852, -55.1312, 12.0423, 0.768523, -53.3812, 13.0423, 1.01852, -59.1312, 12.7923, 1.01852, -62.1312, -35.4577, 1.26852, -56.6312, -35.7077, 1.51852, -49.3812, 7.79229, 0.768523, -49.3812, -11.0577, 1.51852, -49.3812, -6.70771, 2.26852, -49.3812, -3.80771, 2.26852, -49.3812, 8.72979, 1.51852, -56.4124, 2.05327, 2.26852, -56.6162, -26.462, 1.01852, -56.625, -3.96543, 2.51852, -50.6296, -20.4506, 1.76852, -50.6505, -26.4406, 1.26852, -50.6444, -12.9469, 1.01852, -56.6261, -9.96615, 1.26852, -53.6388, 6.54229, 0.768523, -43.6312, 7.79229, 0.768523, -47.6312, -36.2077, 1.51852, -44.1312, -31.7853, 1.51852, -44.0795, -24.4146, 2.26852, -43.9933, -11.1474, 2.01852, -43.8381, -8.19909, 2.51852, -43.8036, 0.645737, 1.01852, -43.7001, -21.9526, 2.01852, -47.6183, -27.9427, 1.51852, -47.6122, 5.79229, 0.768523, -40.8812, -36.2077, 1.76852, -40.8812, -24.6215, 2.51852, -40.8812, -10.1387, 2.51852, -40.8812, -1.44909, 1.01852, -40.8812, -34.2077, 0.768523, 0.86882, -27.7077, 1.01852, 0.61882, -27.4577, 1.01852, -2.38118, -35.7077, 1.01852, -9.13118, -24.4577, 1.26852, -2.38118, -24.2077, 0.768523, 0.36882, -16.7077, 1.01852, -0.13118, -5.70771, 0.768523, -14.3812, -36.4577, 1.76852, -31.3812, -20.447, 2.76852, -35.636, -14.4784, 2.01852, -16.1508, -14.4725, 0.768523, -10.1488, -17.4425, 1.76852, -10.1207, -17.4622, 0.768523, -7.1131, -20.4822, 1.51852, -7.13509, -17.4452, 1.76852, -26.6379, -11.476, 2.26852, -31.135, -0.952129, 0.768523, -37.1288, -27.9455, 2.26852, -28.1175, -21.9537, 1.26852, -17.6255, -18.972, 0.768523, -4.10928, -14.4677, 1.51852, -11.6355, -9.97334, 1.01852, -16.1179, -12.9643, 2.01852, -22.1408, -23.4371, 1.26852, -5.60817, -8.47406, 1.01852, -20.6271, -24.952, 2.76852, -35.6189, -15.9816, 2.26852, -34.1173, -3.97216, 1.01852, -37.1508, -14.4804, 2.26852, -28.1186, -15.9575, 1.51852, -10.1098, -6.45771, 0.768523, -9.38118, -6.95771, 0.768523, -11.3812, 3.54229, 0.768523, -31.1312, -5.20771, 0.768523, -11.3812, -4.45771, 0.768523, -11.1312, -3.20771, 0.768523, -12.3812, 4.29229, 0.768523, -27.1312, 4.79229, 0.768523, -29.8812, 6.29229, 0.768523, -34.6312, 6.04229, 0.768523, -35.8812, -26.7077, 2.26852, -1.38118, -26.7077, 2.26852, 0.11882, -25.2077, 2.26852, 0.11882, -25.2077, 2.26852, -1.38118)
@@ -69,6 +73,19 @@ size = Vector2(2, 2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_60fbq"]
 size = Vector3(1.84, 20, 50)
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_72pjs"]
+viewport_path = NodePath("Fertilize/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ofh2v"]
+resource_local_to_scene = true
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("ViewportTexture_72pjs")
+billboard_mode = 1
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_n8t7c"]
+viewport_path = NodePath("Fertilize/SubViewport")
+
 [node name="Main Path" type="Node3D"]
 script = ExtResource("1_mqemg")
 default_mapping_context = ExtResource("2_y1ygp")
@@ -77,7 +94,7 @@ default_mapping_context = ExtResource("2_y1ygp")
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("3_xcm3i")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.82469, 0.776253, -176.793)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.82469, 0.776253, -196.237)
 
 [node name="Section1" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_1ldu7")
@@ -521,7 +538,57 @@ shape = SubResource("BoxShape3D_60fbq")
 
 [node name="PopUp" parent="DragonsRidge" instance=ExtResource("23_h5v8l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7262, -9.6308)
+action = ExtResource("25_2pqk4")
 message = "Dragon's ridge"
+
+[node name="Move" parent="." instance=ExtResource("23_h5v8l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5874, 3.3643, -192.278)
+action = ExtResource("26_72pjs")
+message = "Move"
+turn_off = false
+
+[node name="Camera" parent="." instance=ExtResource("23_h5v8l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.72681, 3.40013, -194.482)
+action = ExtResource("27_ofh2v")
+message = "Camera"
+turn_off = false
+
+[node name="Lock_On" parent="." instance=ExtResource("23_h5v8l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.53544, 3.40013, -148.636)
+action = ExtResource("28_72pjs")
+message = "Toggle lock-on"
+turn_off = false
+
+[node name="Fertilize" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.1342, 3.00494, -12.9829)
+
+[node name="SubViewport" type="SubViewport" parent="Fertilize"]
+transparent_bg = true
+size = Vector2i(1200, 600)
+
+[node name="Message" type="Label" parent="Fertilize/SubViewport"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -157.0
+offset_right = 157.0
+offset_bottom = 103.0
+grow_horizontal = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 5
+theme_override_font_sizes/font_size = 100
+text = "Fertilize the crops
+with captured enemies"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite3D" type="Sprite3D" parent="Fertilize"]
+material_override = SubResource("StandardMaterial3D_ofh2v")
+texture = SubResource("ViewportTexture_n8t7c")
 
 [connection signal="body_shape_entered" from="Section1/Bar Spot 1" to="Player" method="_on_bar_spot_1_body_shape_entered"]
 [connection signal="body_shape_exited" from="Section1/Bar Spot 1" to="Player" method="_on_bar_spot_1_body_shape_exited"]

@@ -111,12 +111,10 @@ func state_machine(delta : float) -> void:
 			set_animstate("Idle")
 		states.WALKING_CARRYING:
 			if carried_enemy == null:
-				velocity=Vector3.ZERO
-				set_animstate("Idle")
-				current_state = states.IDLE
-				return
-				
-			set_animstate("Walk_Holding")
+				set_animstate("Walk")
+				current_state = states.WALKING
+			else:
+				set_animstate("Walk_Holding")
 			var input_dir : Vector2 = move_action.value_axis_2d
 			direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 			
@@ -179,7 +177,6 @@ func state_machine(delta : float) -> void:
 				targeted_enemy._current_health = 0
 				targeted_enemy.start_ragdoll()
 				carried_enemy = targeted_enemy
-				camera_pivot.current_camera_state = camera_pivot.camera_state.LOCK_ON
 			return
 		states.THROWING:
 			current_state=states.TRANSITION
@@ -190,11 +187,9 @@ func state_machine(delta : float) -> void:
 			current_state=states.TRANSITION
 			velocity = Vector3.ZERO
 			set_animstate_oneshot("Stomp_Attack")
-			velocity = Vector3.ZERO
 			current_stomp_cooldown = 0.0
 		states.TRANSITION:
 			pass
-
 
 
 func go_idle():	# used to go back to idle state after animation to be used as "Call method track" in animation player
@@ -227,26 +222,26 @@ func _physics_process(delta: float) -> void:
 						var candidate_distance = targetable_enemies[i].global_position.distance_squared_to(global_position)
 						if candidate_distance < current_distance:
 							targeted_enemy = targetable_enemies[i]
-			if targeted_enemy == null:
-				return
-			if carrying_enemy and carried_enemy!= null:
-				current_state = states.THROWING
-				velocity = Vector3.ZERO
-			else:
-				if targeted_enemy.small:
-					targeted_enemy._current_health = 0
-					targeted_enemy.start_ragdoll()
-					current_state = states.BITE_ATTACK_KILL
+			if targeted_enemy != null:
+				if carrying_enemy and carried_enemy!= null:
+					current_state = states.THROWING
 					velocity = Vector3.ZERO
 				else:
-					targeted_enemy.take_damage(bite_damage, bite_damage_force, targeted_enemy.global_position - global_position)
-					current_state=states.BITE_ATTACK
-					velocity = Vector3.ZERO
+					carrying_enemy = false
+					carried_enemy = null
+					if targeted_enemy.small:
+						targeted_enemy._current_health = 0
+						targeted_enemy.start_ragdoll()
+						current_state = states.BITE_ATTACK_KILL
+						velocity = Vector3.ZERO
+					else:
+						targeted_enemy.take_damage(bite_damage, bite_damage_force, targeted_enemy.global_position - global_position)
+						current_state=states.BITE_ATTACK
+						velocity = Vector3.ZERO
 			
 		if stomp_action.is_triggered():
-			if current_stomp_cooldown < stomp_cooldown:
-				return
-			current_state=states.STOMP_ATTACK
+			if current_stomp_cooldown >= stomp_cooldown:
+				current_state=states.STOMP_ATTACK
 		
 		
 	handle_cooldowns(delta)
@@ -259,8 +254,11 @@ func _physics_process(delta: float) -> void:
 		carried_enemy.global_position = carried_enemy_position.global_position
 		carried_enemy.global_basis = carried_enemy_position.global_basis
 func start_throw():
-	var distance = carried_enemy.global_position.distance_to(targeted_enemy.global_position)
-	carried_enemy.start_throw(targeted_enemy, throw_speed, distance, throw_damage)
+	if targeted_enemy != null:
+		var distance = carried_enemy.global_position.distance_to(targeted_enemy.global_position)
+		carried_enemy.start_throw(targeted_enemy, throw_speed, distance, throw_damage)
+	else:
+		carried_enemy.start_throw(targeted_enemy, throw_speed, 0.0, throw_damage)
 	carrying_enemy = false
 	carried_enemy = null
 ##combat and state machine
