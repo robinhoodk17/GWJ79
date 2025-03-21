@@ -559,6 +559,12 @@ action = ExtResource("28_72pjs")
 message = "Toggle lock-on"
 turn_off = false
 
+[node name="PickUp" parent="." instance=ExtResource("23_h5v8l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.78499, 6.02852, -59.2659)
+action = ExtResource("25_2pqk4")
+message = "Pick up enemy"
+turn_off = false
+
 [node name="Fertilize" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.1342, 3.00494, -12.9829)
 
