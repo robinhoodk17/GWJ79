@@ -7,6 +7,7 @@ func _ready() -> void:
 
 func acquire_target(body : Node3D) -> void:
 	if body.is_in_group("player"):
+		Signalbus.combat_started.emit(self)
 		var overlapping_bodies : Array[Node3D] = $Affected_area.get_overlapping_bodies()
 		for i : Node3D in overlapping_bodies:
 			if i.is_in_group("enemy"):
