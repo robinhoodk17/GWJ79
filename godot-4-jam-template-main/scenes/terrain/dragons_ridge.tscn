@@ -1,0 +1,97 @@
+[gd_scene load_steps=15 format=3 uid="uid://cir8y5jn4x7vd"]
+
+[ext_resource type="Script" uid="uid://dqih6i2t5n4pe" path="res://scripts/enable_guide.gd" id="1_1l6eb"]
+[ext_resource type="PackedScene" uid="uid://bdfdxgatveclo" path="res://scenes/world_environment.tscn" id="1_4xw5c"]
+[ext_resource type="PackedScene" uid="uid://dom2bq6x7abkr" path="res://scenes/player/player.tscn" id="2_fj8uc"]
+[ext_resource type="Resource" uid="uid://v5u0dyabni7e" path="res://input/default_mapping_context.tres" id="2_gbyxq"]
+[ext_resource type="PackedScene" uid="uid://bj8lfi1t3pnck" path="res://assets/3d/dragons_ridge/dragons_ridge.blend" id="3_fj8uc"]
+[ext_resource type="Material" uid="uid://cq1jb3btvntna" path="res://assets/materials/wall_material.tres" id="6_mfj74"]
+[ext_resource type="Script" uid="uid://ddumrm5q77037" path="res://scripts/terrain/terrain_events/queue_free_on_combat_finish.gd" id="7_iels7"]
+[ext_resource type="PackedScene" uid="uid://b7cyn7p8nyyd7" path="res://scenes/terrain/terrain_events/finish_combat.tscn" id="8_xcd34"]
+[ext_resource type="PackedScene" uid="uid://ch8gse74drulk" path="res://scenes/enemies/small_kaiju.tscn" id="9_ipmiy"]
+[ext_resource type="Script" uid="uid://cxhiheuo0y8e5" path="res://scripts/killbox.gd" id="10_c35l2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_w5vg4"]
+size = Vector3(2, 10, 25)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_xp2xt"]
+data = PackedVector3Array(-1, 5, 12.5, 1, 5, 12.5, -1, -5, 12.5, 1, 5, 12.5, 1, -5, 12.5, -1, -5, 12.5, 1, 5, -12.5, -1, 5, -12.5, 1, -5, -12.5, -1, 5, -12.5, -1, -5, -12.5, 1, -5, -12.5, 1, 5, 12.5, 1, 5, -12.5, 1, -5, 12.5, 1, 5, -12.5, 1, -5, -12.5, 1, -5, 12.5, -1, 5, -12.5, -1, 5, 12.5, -1, -5, -12.5, -1, 5, 12.5, -1, -5, 12.5, -1, -5, -12.5, 1, 5, 12.5, -1, 5, 12.5, 1, 5, -12.5, -1, 5, 12.5, -1, 5, -12.5, 1, 5, -12.5, -1, -5, 12.5, 1, -5, 12.5, -1, -5, -12.5, 1, -5, 12.5, 1, -5, -12.5, -1, -5, -12.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_efxw0"]
+size = Vector3(46.936, 21.7505, 59.5844)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yrkbe"]
+size = Vector3(1000, 5, 1000)
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_1l6eb")
+default_mapping_context = ExtResource("2_gbyxq")
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("1_4xw5c")]
+
+[node name="Player" parent="." instance=ExtResource("2_fj8uc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.568, 1, 0)
+
+[node name="MeshParent" parent="Player" index="1"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Player/MeshParent/Kaiju/Player Kaiju Armature" index="0"]
+bones/6/position = Vector3(-0.364534, 1.5486, 0.269003)
+bones/6/rotation = Quaternion(-0.54357, 0.254948, 0.491101, 0.631152)
+bones/6/scale = Vector3(1.05748, 1.05748, 1.05748)
+bones/7/position = Vector3(0.357507, 1.51522, 0.293269)
+bones/7/rotation = Quaternion(0.697924, 0.632377, 0.0513422, -0.332214)
+bones/7/scale = Vector3(1.06555, 1.06555, 1.06555)
+
+[node name="CameraPivot" parent="Player" index="3"]
+transform = Transform3D(-4.37114e-08, 0.258819, -0.965926, 0, 0.965926, 0.258819, 1, 1.13133e-08, -4.2222e-08, 0, 0, 0)
+
+[node name="dragons_ridge" parent="." instance=ExtResource("3_fj8uc")]
+
+[node name="tunnel" parent="dragons_ridge" index="0"]
+material_override = ExtResource("6_mfj74")
+
+[node name="floor" parent="dragons_ridge" index="1"]
+material_override = ExtResource("6_mfj74")
+
+[node name="tunnel_001" parent="dragons_ridge" index="2"]
+material_override = ExtResource("6_mfj74")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="dragons_ridge/tunnel_001" index="1" node_paths=PackedStringArray("which_combat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.6223, 0.335414, 12.2809)
+script = ExtResource("7_iels7")
+which_combat = NodePath("../../../FinishCombat")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="dragons_ridge/tunnel_001/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.65013, -2.5319, -11.0479)
+mesh = SubResource("BoxMesh_w5vg4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="dragons_ridge/tunnel_001/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.65013, -2.5319, -11.0479)
+shape = SubResource("ConcavePolygonShape3D_xp2xt")
+
+[node name="FinishCombat" parent="." instance=ExtResource("8_xcd34")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FinishCombat"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 121.865, 0.102295, 58.6976)
+shape = SubResource("BoxShape3D_efxw0")
+
+[node name="Enemies" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.284, 0, 53.7784)
+
+[node name="SmallKaiju" parent="Enemies" instance=ExtResource("9_ipmiy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.21529, 0)
+
+[node name="KillBox" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 7
+script = ExtResource("10_c35l2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KillBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.09406, 0)
+shape = SubResource("BoxShape3D_yrkbe")
+
+[editable path="Player"]
+[editable path="Player/CameraPivot/UI/Game"]
+[editable path="Player/CameraPivot/UI/PauseMenu"]
+[editable path="dragons_ridge"]

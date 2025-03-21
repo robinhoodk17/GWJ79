@@ -105,7 +105,8 @@ func late_ready() -> void:
 func state_machine(delta : float) -> void:
 	match current_state:
 		states.IDLE:
-			velocity=Vector3.ZERO
+			if is_on_floor():
+				velocity=Vector3.ZERO
 			set_animstate("Idle")
 		states.WALKING_CARRYING:
 			if carried_enemy == null:
@@ -205,6 +206,8 @@ func go_idle():	# used to go back to idle state after animation to be used as "C
 	current_state=states.IDLE
 	
 func _physics_process(delta: float) -> void:
+	if !is_on_floor():
+		velocity += get_gravity()
 	#print_debug(current_state)
 	var input_dir : Vector2 = move_action.value_axis_2d
 	if current_state!=states.TRANSITION:

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7cyn7p8nyyd7"]
+
+[ext_resource type="Script" uid="uid://dhr8y50tubwsw" path="res://scripts/terrain/terrain_events/end_combat.gd" id="1_x6fs6"]
+
+[node name="FinishCombat" type="Area3D"]
+collision_layer = 0
+collision_mask = 7
+script = ExtResource("1_x6fs6")

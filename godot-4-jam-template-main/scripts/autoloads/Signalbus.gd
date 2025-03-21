@@ -8,3 +8,7 @@ signal seed_dropped
 signal lost_game
 @warning_ignore("unused_signal")
 signal day_started
+@warning_ignore("unused_signal")
+signal enemy_died(body : Node3D)
+@warning_ignore("unused_signal")
+signal combat_finished(body : Area3D)

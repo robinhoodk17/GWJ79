@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cp8g1km0wbohh"]
 
-[ext_resource type="Script" uid="uid://bmpk5r1cp0pvy" path="res://scenes/terrain/terrain_events/on_entrance_target_player.gd" id="1_p8p2p"]
+[ext_resource type="Script" uid="uid://bmpk5r1cp0pvy" path="res://scripts/terrain/terrain_events/on_entrance_target_player.gd" id="1_p8p2p"]
 
 [node name="StartCombat_trigger" type="Area3D"]
 collision_layer = 0
@@ -11,6 +11,6 @@ script = ExtResource("1_p8p2p")
 [node name="Affected_area" type="Area3D" parent="."]
 top_level = true
 collision_layer = 0
-collision_mask = 2
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Affected_area"]
