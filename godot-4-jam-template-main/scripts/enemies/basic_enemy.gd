@@ -55,17 +55,18 @@ func _physics_process(delta: float) -> void:
 				velocity += get_gravity()
 				move_and_slide()
 		states.WALKING:
-			nav_agent.target_position = Vector3(player_node.global_position.x, 
-			global_position.y, player_node.global_position.z)
-			var destination : Vector3 = nav_agent.get_next_path_position()
-			var local_destination : Vector3 = destination - global_position
-			var direction : Vector3 = local_destination.normalized()
-			if direction:
-				look_at(global_position + direction, Vector3.UP)
-			check_for_attack()
-			velocity = direction * speed
 			if !is_on_floor():
 				velocity += get_gravity()
+			else:
+				nav_agent.target_position = Vector3(player_node.global_position.x, 
+				global_position.y, player_node.global_position.z)
+				var destination : Vector3 = nav_agent.get_next_path_position()
+				var local_destination : Vector3 = destination - global_position
+				var direction : Vector3 = local_destination.normalized()
+				if direction:
+					look_at(global_position + direction, Vector3.UP)
+				check_for_attack()
+				velocity = direction * speed
 			move_and_slide()
 		states.STAGGERED:
 			was_launched_ago += launch_speed * delta

@@ -4027,16 +4027,16 @@ bones/6/name = "Left Eyelid"
 bones/6/parent = 4
 bones/6/rest = Transform3D(0.0493214, -0.998775, 0.0038372, 0.546822, 0.0302176, 0.836703, -0.835794, -0.0391691, 0.547643, -0.266384, 1.49088, 0.272608)
 bones/6/enabled = true
-bones/6/position = Vector3(-0.303257, 1.5187, 0.258979)
-bones/6/rotation = Quaternion(-0.416433, 0.336103, 0.566303, 0.626832)
-bones/6/scale = Vector3(1.00666, 1.00666, 1.00666)
+bones/6/position = Vector3(-0.456513, 1.54008, 0.278086)
+bones/6/rotation = Quaternion(-0.662507, 0.039883, 0.393821, 0.635924)
+bones/6/scale = Vector3(1.09998, 1.09998, 1.09998)
 bones/7/name = "Right Eyelid"
 bones/7/parent = 4
 bones/7/rest = Transform3D(-0.0094775, 0.997914, -0.063855, 0.749329, 0.0493717, 0.660355, 0.66213, -0.0415899, -0.748234, 0.267038, 1.48092, 0.273869)
 bones/7/enabled = true
-bones/7/position = Vector3(0.300297, 1.50241, 0.279245)
-bones/7/rotation = Quaternion(0.676857, 0.649081, 0.177781, -0.298249)
-bones/7/scale = Vector3(1.04927, 1.04927, 1.04927)
+bones/7/position = Vector3(0.498848, 1.51191, 0.339879)
+bones/7/rotation = Quaternion(0.676699, 0.505068, -0.156558, -0.512323)
+bones/7/scale = Vector3(1.08014, 1.08014, 1.08014)
 bones/8/name = "Lower Face"
 bones/8/parent = 3
 bones/8/rest = Transform3D(0.996135, -0.00153921, -0.0878207, 0.0873069, 0.126747, 0.988085, 0.00961016, -0.991934, 0.126392, -7.5549e-08, 1.92539, 9.94789e-08)
@@ -4262,7 +4262,7 @@ mesh = SubResource("ArrayMesh_kvv1v")
 skin = SubResource("Skin_he2u2")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="MeshParent/Kaiju/Player Kaiju Armature/Skeleton3D"]
-transform = Transform3D(0.992063, 0.0529795, -0.114032, -0.0302495, 0.980825, 0.192527, 0.122045, -0.18755, 0.974643, 6.6584e-05, 6.47074, 3.89442)
+transform = Transform3D(0.992062, 0.0529795, -0.114032, -0.0302494, 0.980824, 0.192527, 0.122045, -0.18755, 0.974642, 6.6584e-05, 6.47074, 3.89442)
 bone_name = "Lower Jaw"
 bone_idx = 9
 

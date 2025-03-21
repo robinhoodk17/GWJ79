@@ -35,6 +35,9 @@ var current_camera_roll : float = 0.0
 var locked_enemy : Node3D
 var lock_changeable : bool = true
 var locked_enemy_list : Array[Node3D] = []
+var camera_toggled : bool = false
+var lock_action_cooldown : float = 0.5
+var lock_action_current_cooldown : float = 0.0
 
 @export_group("customizable")
 @export var lerp_power : float = 10.0
@@ -120,6 +123,8 @@ func allow_relock() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if lock_action_current_cooldown < lock_action_cooldown:
+		lock_action_current_cooldown += delta
 	match current_camera_state:
 		camera_state.NORMAL:
 			if lock_on_sprite.visible:
@@ -139,7 +144,9 @@ func _physics_process(delta: float) -> void:
 
 			camera_nest.global_position = lerp(camera_nest.global_position, spring_position.global_position, delta * lerp_power /2.0)
 			camera_nest.look_at(follow_target.global_position, Vector3.UP)
-			if lock_action.value_bool:
+			if lock_action.is_triggered() and lock_action_current_cooldown >= lock_action_cooldown:
+				lock_action_current_cooldown = 0.0
+				camera_toggled = true
 				current_camera_state = camera_state.LOCK_ON
 				position_camera_behind_player()
 			handleShakes(delta)
@@ -148,9 +155,13 @@ func _physics_process(delta: float) -> void:
 			if lock_on_sprite.visible:
 				animator_2d.stop()
 				lock_on_sprite.hide()
-			if !lock_action.value_bool:
+
+			if lock_action.is_triggered() and lock_action_current_cooldown >= lock_action_cooldown:
+				lock_action_current_cooldown = 0.0
 				current_camera_state = camera_state.NORMAL
+				camera_toggled = false
 				return
+
 			if lock_on_area.has_overlapping_bodies():
 				var colinearity : float = -10.0
 				var array_with_bodies : Array[Node3D] = lock_on_area.get_overlapping_bodies()
@@ -178,12 +189,22 @@ func _physics_process(delta: float) -> void:
 			camera.rotation = Vector3.ZERO
 
 		camera_state.ENEMY_ACQUIRED:
-			if !lock_action.value_bool or locked_enemy == null:
-				current_camera_state = camera_state.NORMAL
+			if locked_enemy == null:
+				current_camera_state = camera_state.LOCK_ON
 				locked_enemy_list.clear()
 				animator_2d.stop()
 				lock_on_sprite.hide()
 				return
+
+			if lock_action.is_triggered() and lock_action_current_cooldown >= lock_action_cooldown:
+				current_camera_state = camera_state.NORMAL
+				camera_toggled = false
+				lock_action_current_cooldown = 0.0
+				locked_enemy_list.clear()
+				animator_2d.stop()
+				lock_on_sprite.hide()
+				return
+
 			var overlapping_bodies : Array[Node3D] = lock_on_area.get_overlapping_bodies()
 			if change_lcck.value_bool and lock_changeable:
 				lock_on_timer.start(lock_on_cooldown)
@@ -201,7 +222,7 @@ func _physics_process(delta: float) -> void:
 						locked_enemy_list.clear()
 						locked_enemy_list.append(locked_enemy)
 			if !(locked_enemy in overlapping_bodies):
-				current_camera_state = camera_state.NORMAL
+				current_camera_state = camera_state.LOCK_ON
 				locked_enemy_list.clear()
 				animator_2d.stop()
 				lock_on_sprite.hide()

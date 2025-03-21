@@ -80,6 +80,7 @@ default_mapping_context = ExtResource("2_y1ygp")
 [node name="WorldEnvironment" parent="." instance=ExtResource("3_x7gld")]
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("3_xcm3i")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.82469, 0.776253, -176.793)
 
 [node name="Section1" type="NavigationRegion3D" parent="."]
