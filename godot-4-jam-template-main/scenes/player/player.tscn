@@ -32,8 +32,9 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ydkj"]
 albedo_color = Color(0.564706, 0.337255, 0.152941, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ioxgp"]
-size = Vector3(2, 2, 2.8031)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_28m0y"]
+radius = 1.0
+height = 3.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fwcrm"]
 
@@ -3890,8 +3891,8 @@ speed = 20.0
 turn_speed = 10.0
 
 [node name="Collision" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.28595)
-shape = SubResource("BoxShape3D_ioxgp")
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.02004, -0.28595)
+shape = SubResource("CapsuleShape3D_28m0y")
 
 [node name="MeshParent" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 4.46638e-06, 0, 1, 0, -4.46638e-06, 0, 1, 0, 0, 0)
@@ -4007,7 +4008,7 @@ bones/3/rest = Transform3D(1, 1.11259e-07, 6.50998e-09, -1.11259e-07, 0.993171, 
 bones/3/enabled = true
 bones/3/position = Vector3(-3.06563e-08, 1.83903, 5.76318e-07)
 bones/3/rotation = Quaternion(-0.0584315, -1.10008e-12, -5.57245e-08, 0.998291)
-bones/3/scale = Vector3(1, 1, 1)
+bones/3/scale = Vector3(1, 0.999999, 0.999999)
 bones/4/name = "Upper Face"
 bones/4/parent = 3
 bones/4/rest = Transform3D(1, 7.75969e-07, 3.99267e-07, -7.75969e-07, 0.581338, 0.813662, 3.99267e-07, -0.813662, 0.581338, -7.5549e-08, 1.92539, 9.94789e-08)
@@ -4026,16 +4027,16 @@ bones/6/name = "Left Eyelid"
 bones/6/parent = 4
 bones/6/rest = Transform3D(0.0493214, -0.998775, 0.0038372, 0.546822, 0.0302176, 0.836703, -0.835794, -0.0391691, 0.547643, -0.266384, 1.49088, 0.272608)
 bones/6/enabled = true
-bones/6/position = Vector3(-0.266883, 1.49132, 0.272117)
-bones/6/rotation = Quaternion(-0.344194, 0.329641, 0.605352, 0.637508)
-bones/6/scale = Vector3(1, 1, 1)
+bones/6/position = Vector3(-0.303257, 1.5187, 0.258979)
+bones/6/rotation = Quaternion(-0.416433, 0.336103, 0.566303, 0.626832)
+bones/6/scale = Vector3(1.00666, 1.00666, 1.00666)
 bones/7/name = "Right Eyelid"
 bones/7/parent = 4
 bones/7/rest = Transform3D(-0.0094775, 0.997914, -0.063855, 0.749329, 0.0493717, 0.660355, 0.66213, -0.0415899, -0.748234, 0.267038, 1.48092, 0.273869)
 bones/7/enabled = true
-bones/7/position = Vector3(0.267699, 1.48144, 0.273978)
-bones/7/rotation = Quaternion(0.650494, 0.67155, 0.229218, -0.270809)
-bones/7/scale = Vector3(1.00136, 1.00136, 1.00136)
+bones/7/position = Vector3(0.300297, 1.50241, 0.279245)
+bones/7/rotation = Quaternion(0.676857, 0.649081, 0.177781, -0.298249)
+bones/7/scale = Vector3(1.04927, 1.04927, 1.04927)
 bones/8/name = "Lower Face"
 bones/8/parent = 3
 bones/8/rest = Transform3D(0.996135, -0.00153921, -0.0878207, 0.0873069, 0.126747, 0.988085, 0.00961016, -0.991934, 0.126392, -7.5549e-08, 1.92539, 9.94789e-08)
@@ -4049,7 +4050,7 @@ bones/9/rest = Transform3D(0.999953, 0.00366737, -0.00891925, -0.00368912, 0.999
 bones/9/enabled = true
 bones/9/position = Vector3(-1.49012e-07, 1.24496, -9.83477e-07)
 bones/9/rotation = Quaternion(0.035819, -0.0178283, -0.0300075, 0.998749)
-bones/9/scale = Vector3(1, 1, 1)
+bones/9/scale = Vector3(0.999999, 1, 1)
 bones/10/name = "Lower Torso"
 bones/10/parent = -1
 bones/10/rest = Transform3D(-1, 3.55271e-14, -1.58151e-06, -5.2682e-08, -0.999445, 0.0333112, -1.58063e-06, 0.0333113, 0.999445, 1.77636e-15, 0.10212, 0.0207556)
@@ -4062,7 +4063,7 @@ bones/11/parent = 10
 bones/11/rest = Transform3D(1, -5.53953e-08, 9.70582e-10, 5.53954e-08, 0.999386, -0.0350269, 9.70344e-10, 0.0350269, 0.999386, 1.12655e-07, 2.08676, -5.46981e-08)
 bones/11/enabled = true
 bones/11/position = Vector3(1.12655e-07, 2.08676, -5.46981e-08)
-bones/11/rotation = Quaternion(0.0175162, 5.94893e-14, 2.77019e-08, 0.999847)
+bones/11/rotation = Quaternion(0.0175161, 5.93228e-14, 2.77019e-08, 0.999847)
 bones/11/scale = Vector3(1, 1, 1)
 bones/12/name = "Upper Tail"
 bones/12/parent = 11
@@ -4098,7 +4099,7 @@ bones/16/rest = Transform3D(1, -4.59482e-07, 6.82184e-08, 4.59482e-07, 0.956864,
 bones/16/enabled = true
 bones/16/position = Vector3(6.04464e-08, 1.51277, -3.97425e-07)
 bones/16/rotation = Quaternion(0.146861, -3.6879e-13, 2.32259e-07, 0.989157)
-bones/16/scale = Vector3(1, 1, 1)
+bones/16/scale = Vector3(1, 0.999999, 0.999999)
 bones/17/name = "To FR Leg"
 bones/17/parent = -1
 bones/17/rest = Transform3D(-0.146255, 0.982525, 0.115131, -0.989052, -0.147545, 0.0027196, 0.0196591, -0.113473, 0.993347, 2.22045e-15, 2.19426, 0.0258003)
@@ -4126,7 +4127,7 @@ bones/20/rest = Transform3D(0.931525, -0.334852, -0.141898, 0.340623, 0.940031, 
 bones/20/enabled = true
 bones/20/position = Vector3(-3.8743e-07, 1.27162, -2.68221e-07)
 bones/20/rotation = Quaternion(-0.0210501, -0.0685301, 0.171874, 0.982507)
-bones/20/scale = Vector3(1, 1, 1)
+bones/20/scale = Vector3(1, 0.999999, 1)
 bones/21/name = "FR Foot"
 bones/21/parent = 20
 bones/21/rest = Transform3D(0.999854, 0.0160648, 0.00573801, -0.0149153, 0.986519, -0.162965, -0.00827866, 0.162856, 0.986615, 5.96046e-07, 1.27199, 4.47035e-08)
@@ -4209,7 +4210,7 @@ bones/32/parent = 31
 bones/32/rest = Transform3D(0.138195, 0.990151, -0.0224373, -0.990151, 0.137611, -0.0257789, -0.0224374, 0.0257788, 0.999416, 2.93367e-08, 0.670272, 9.32341e-08)
 bones/32/enabled = true
 bones/32/position = Vector3(2.93367e-08, 0.670272, 9.32341e-08)
-bones/32/rotation = Quaternion(0.0170904, 3.76633e-08, -0.656432, 0.754192)
+bones/32/rotation = Quaternion(0.0170904, 4.38376e-08, -0.656432, 0.754192)
 bones/32/scale = Vector3(1, 1, 1)
 bones/33/name = "To BR Leg"
 bones/33/parent = -1
@@ -4245,7 +4246,7 @@ bones/37/rest = Transform3D(0.975612, -0.219425, -0.00585053, 0.219425, 0.974208
 bones/37/enabled = true
 bones/37/position = Vector3(-5.96046e-08, 1.33403, -2.57045e-07)
 bones/37/rotation = Quaternion(-0.0264904, -1.51651e-08, 0.110427, 0.993531)
-bones/37/scale = Vector3(1, 1, 1)
+bones/37/scale = Vector3(1, 1, 0.999999)
 bones/38/name = "BR Toes"
 bones/38/parent = 37
 bones/38/rest = Transform3D(0.141412, -0.968287, -0.205967, 0.968287, 0.0920027, 0.232283, -0.205967, -0.232283, 0.95059, -5.58794e-08, 0.705076, -2.32365e-07)

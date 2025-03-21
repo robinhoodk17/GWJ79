@@ -1,0 +1,73 @@
+[gd_scene load_steps=6 format=3 uid="uid://cwyk20gm1yjhr"]
+
+[ext_resource type="Script" uid="uid://bagcvxj2p8rkn" path="res://scripts/pop_up_with_message.gd" id="1_umrav"]
+[ext_resource type="Resource" uid="uid://t84x06cxbh2f" path="res://input/interact.tres" id="2_4cdw6"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ui8ff"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4cdw6"]
+resource_local_to_scene = true
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("ViewportTexture_ui8ff")
+billboard_mode = 1
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_xutg2"]
+viewport_path = NodePath("SubViewport")
+
+[node name="PopUp" type="Node3D"]
+script = ExtResource("1_umrav")
+interact_action = ExtResource("2_4cdw6")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(1200, 600)
+
+[node name="Message" type="Label" parent="SubViewport"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -157.0
+offset_right = 157.0
+offset_bottom = 103.0
+grow_horizontal = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 5
+theme_override_font_sizes/font_size = 100
+text = "Message"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="RichTextLabel" parent="SubViewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -68.5
+offset_right = 125.0
+offset_bottom = 68.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_outline_size = 5
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "Hello"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+material_override = SubResource("StandardMaterial3D_4cdw6")
+texture = SubResource("ViewportTexture_xutg2")

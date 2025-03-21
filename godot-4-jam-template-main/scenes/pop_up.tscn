@@ -3,14 +3,14 @@
 [ext_resource type="Script" uid="uid://ckwjj1fue1vvx" path="res://scripts/pop_up_show.gd" id="1_ui8ff"]
 [ext_resource type="Resource" uid="uid://t84x06cxbh2f" path="res://input/interact.tres" id="2_vln5t"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ui8ff"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_vln5t"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vln5t"]
 resource_local_to_scene = true
 transparency = 1
 vertex_color_use_as_albedo = true
-albedo_texture = SubResource("ViewportTexture_ui8ff")
+albedo_texture = SubResource("ViewportTexture_vln5t")
 billboard_mode = 1
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_tsqhh"]
