@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnjmv0bhxd80o"]
+
+[ext_resource type="Script" uid="uid://bnasos4wqurlm" path="res://scripts/terrain/terrain_events/second_wave.gd" id="1_6n3pi"]
+
+[node name="Second_Wave" type="Area3D"]
+collision_layer = 0
+collision_mask = 7
+script = ExtResource("1_6n3pi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
