@@ -53,7 +53,7 @@ visible = false
 
 [node name="Player" parent="." instance=ExtResource("5_i2xcs")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -504.725, 0.679, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.3103, 0.679, 0)
 
 [node name="MeshParent" parent="Player" index="1"]
 transform = Transform3D(4.42267e-06, 0, -1, 0, 1, 0, 1, 0, 4.42267e-06, 0, 0, 0)
@@ -65,11 +65,12 @@ bones/2/scale = Vector3(1, 1, 1)
 bones/3/scale = Vector3(1, 0.999999, 0.999999)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/scale = Vector3(1, 1, 1)
-bones/6/position = Vector3(-0.278081, 1.50071, 0.263809)
-bones/6/rotation = Quaternion(-0.364763, 0.338399, 0.594169, 0.631979)
-bones/7/position = Vector3(0.280324, 1.49106, 0.276099)
-bones/7/rotation = Quaternion(0.66177, 0.660612, 0.211328, -0.284591)
-bones/7/scale = Vector3(1.02551, 1.02551, 1.02551)
+bones/6/position = Vector3(-0.346124, 1.55269, 0.269862)
+bones/6/rotation = Quaternion(-0.521123, 0.29207, 0.508302, 0.620286)
+bones/6/scale = Vector3(1.05847, 1.05847, 1.05847)
+bones/7/position = Vector3(0.333642, 1.51259, 0.283287)
+bones/7/rotation = Quaternion(0.697779, 0.646775, 0.0901513, -0.294379)
+bones/7/scale = Vector3(1.05979, 1.05979, 1.05979)
 bones/8/scale = Vector3(1, 1, 1)
 bones/9/scale = Vector3(0.999999, 1, 1)
 bones/11/rotation = Quaternion(0.0175161, 5.93228e-14, 2.77019e-08, 0.999847)
