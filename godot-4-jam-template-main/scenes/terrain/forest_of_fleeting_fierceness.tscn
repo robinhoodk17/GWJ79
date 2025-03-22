@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dh05vexi1i10v"]
+[gd_scene load_steps=19 format=3 uid="uid://dh05vexi1i10v"]
 
 [ext_resource type="Script" uid="uid://dqih6i2t5n4pe" path="res://scripts/enable_guide.gd" id="1_6736k"]
 [ext_resource type="Resource" uid="uid://v5u0dyabni7e" path="res://input/default_mapping_context.tres" id="2_gkkc5"]
@@ -7,21 +7,34 @@
 [ext_resource type="Material" uid="uid://0iqgmgg2101e" path="res://assets/materials/floor_material.tres" id="5_gkkc5"]
 [ext_resource type="Material" uid="uid://dwmy1gd45q8ti" path="res://assets/materials/forest_floor_material.tres" id="5_hxlqj"]
 [ext_resource type="PackedScene" uid="uid://dom2bq6x7abkr" path="res://scenes/player/player.tscn" id="5_i2xcs"]
+[ext_resource type="Script" uid="uid://dj3oo25bv4g2m" path="res://scripts/terrain/interactable.gd" id="7_5ohrr"]
+[ext_resource type="PackedScene" uid="uid://v6l3630gxqxn" path="res://scenes/pop_up.tscn" id="8_74qiy"]
 [ext_resource type="PackedScene" uid="uid://cp8g1km0wbohh" path="res://scenes/terrain/terrain_events/start_combat.tscn" id="8_i2xcs"]
 [ext_resource type="PackedScene" uid="uid://ch8gse74drulk" path="res://scenes/enemies/small_kaiju.tscn" id="9_i3gby"]
+[ext_resource type="PackedScene" uid="uid://djr1wp2hgfg1s" path="res://scenes/terrain/seed.tscn" id="10_i3gby"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i2xcs"]
+albedo_color = Color(1, 0.960784, 0, 1)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_hxlqj"]
-vertices = PackedVector3Array(-232.883, 0.5, -446, -232.883, 0.5, -418.5, -145.883, 0.5, -418.5, -145.883, 0.5, -446)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+vertices = PackedVector3Array(-399.725, 0.5, -506.75, -377.225, 0.5, -506.75, -376.975, 0.5, -509, -399.725, 0.5, -566.5, -205.475, 0.5, -509, -205.475, 0.5, -566.5, -399.725, 0.5, -501, -377.225, 0.5, -501, -399.975, 0.5, -498.75, -377.225, 0.5, -291.75, -452.475, 0.5, -498.75, -451.725, 0.5, -291.75, -345.725, 0.5, -298.5, -296.225, 0.5, -298.5, -265.475, 0.5, -328.25, -265.475, 0.5, -476.5, -345.725, 0.5, -476.5, -232.975, 0.5, -446, -232.975, 0.5, -418.5, -145.725, 0.5, -418.5, -145.725, 0.5, -446, 84.2747, 0.5, -256.25, 86.5247, 0.5, -256.5, 86.5247, 0.5, -297, 6.77469, 0.5, -297, 6.77469, 0.5, -254.25, 84.2747, 0.5, -254.25, 184.525, 0.5, -256.5, 184.525, 0.5, -297, -451.475, 0.5, -188.25, -418.725, 0.5, -188, -377.225, 0.5, -188, 6.77469, 0.5, -241.75, 84.2747, 0.5, -241.75, 84.2747, 0.5, -206.25, 86.5247, 0.5, -206.5, 86.5247, 0.5, -239.5, 84.2747, 0.5, -239.75, 6.77469, 0.5, -204.25, 84.2747, 0.5, -204.25, 134.025, 0.5, -206.5, 134.025, 0.5, -239.5, 6.77469, 0.5, -176.75, 84.2747, 0.5, -176.75, 86.5247, 0.5, -128, 86.5247, 0.5, -174.5, 84.2747, 0.5, -174.75, 6.77469, 0.5, -128, 88.7747, 0.5, -128, 88.7747, 0.5, -174.5, 90.7747, 0.5, -128, 91.0247, 0.5, -126.25, 134.775, 0.5, -126.5, 134.775, 0.5, -174.5, 91.0247, 0.5, -38.5, 134.775, 0.5, -38.5, -14.7253, 0.5, 105.75, -12.4753, 0.5, 105.5, -12.4753, 0.5, 84, -16.4753, 0.5, 84, -14.7253, 0.5, 142.5, -88.9753, 0.5, 92, 80.2747, 0.5, 207, 105.775, 0.5, 207, 105.775, 0.5, 187.75, 80.2747, 0.5, 187.75, -8.22531, 0.75, 105.5, -8.22531, 0.75, 84, 42.2747, 4, 106.5, 42.2747, 4, 84, 92.7747, 7.25, 107.5, 92.7747, 7.25, 84, 147.275, 10.75, 108.75, 147.275, 10.75, 84, -98.2253, 0.5, 92.75, -177.225, 0.5, 166, -177.225, 0.5, 178.75, 78.2747, 0.5, 187.5, -12.4753, 0.5, 142.75, 78.2747, 0.5, 207.25, -179.475, 0.5, 101.5, -179.475, 0.5, 165.75, -192.225, 0.5, 167.75, -192.225, 0.5, 177.25, -178.475, 0.5, 177.25, -178.475, 0.5, 167.75, -187.225, 0.5, 102.25, -186.975, 0.5, 165.75, -223.225, 0.5, 167.25, -193.475, 0.5, 167.5, -193.225, 0.5, 165.75, -223.225, 0.5, 106.25, -495.225, 0.5, 217, -437.975, 0.5, 217, -437.975, 0.5, 128, -495.225, 0.5, 128, 78.2747, 0.5, 170, 80.5247, 0.5, 169.75, 80.5247, 0.5, 142.75, -193.225, 0.5, 179, -193.475, 0.5, 177.25, -223.225, 0.5, 177.5, 106.775, 0.5, 169.75, 106.775, 0.5, 142.75, -223.225, 0.5, 242.75, -178.975, 0.5, 179, 78.2747, 0.5, 242.75)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(4, 2, 5), PackedInt32Array(5, 2, 3), PackedInt32Array(0, 1, 6), PackedInt32Array(6, 1, 7), PackedInt32Array(6, 7, 8), PackedInt32Array(8, 7, 9), PackedInt32Array(10, 8, 11), PackedInt32Array(11, 8, 9), PackedInt32Array(13, 12, 14), PackedInt32Array(14, 12, 15), PackedInt32Array(15, 12, 16), PackedInt32Array(20, 19, 17), PackedInt32Array(17, 19, 18), PackedInt32Array(22, 21, 23), PackedInt32Array(23, 21, 24), PackedInt32Array(24, 21, 25), PackedInt32Array(21, 26, 25), PackedInt32Array(23, 28, 22), PackedInt32Array(22, 28, 27), PackedInt32Array(30, 29, 31), PackedInt32Array(31, 29, 9), PackedInt32Array(9, 29, 11), PackedInt32Array(25, 26, 32), PackedInt32Array(32, 26, 33), PackedInt32Array(35, 34, 36), PackedInt32Array(36, 34, 37), PackedInt32Array(37, 34, 38), PackedInt32Array(37, 38, 32), PackedInt32Array(32, 33, 37), PackedInt32Array(34, 39, 38), PackedInt32Array(36, 41, 35), PackedInt32Array(35, 41, 40), PackedInt32Array(38, 39, 42), PackedInt32Array(42, 39, 43), PackedInt32Array(45, 44, 46), PackedInt32Array(46, 44, 47), PackedInt32Array(46, 47, 42), PackedInt32Array(42, 43, 46), PackedInt32Array(45, 49, 44), PackedInt32Array(44, 49, 48), PackedInt32Array(51, 50, 52), PackedInt32Array(52, 50, 53), PackedInt32Array(53, 50, 49), PackedInt32Array(50, 48, 49), PackedInt32Array(54, 51, 55), PackedInt32Array(55, 51, 52), PackedInt32Array(57, 56, 58), PackedInt32Array(58, 56, 59), PackedInt32Array(60, 61, 59), PackedInt32Array(59, 56, 60), PackedInt32Array(65, 64, 62), PackedInt32Array(62, 64, 63), PackedInt32Array(58, 67, 57), PackedInt32Array(57, 67, 66), PackedInt32Array(67, 69, 66), PackedInt32Array(66, 69, 68), PackedInt32Array(69, 71, 68), PackedInt32Array(68, 71, 70), PackedInt32Array(71, 73, 70), PackedInt32Array(70, 73, 72), PackedInt32Array(76, 75, 74), PackedInt32Array(78, 77, 60), PackedInt32Array(60, 77, 79), PackedInt32Array(81, 80, 75), PackedInt32Array(75, 80, 74), PackedInt32Array(85, 84, 82), PackedInt32Array(82, 84, 83), PackedInt32Array(87, 86, 81), PackedInt32Array(81, 86, 80), PackedInt32Array(89, 88, 90), PackedInt32Array(90, 88, 91), PackedInt32Array(90, 91, 86), PackedInt32Array(86, 87, 90), PackedInt32Array(95, 94, 92), PackedInt32Array(92, 94, 93), PackedInt32Array(62, 79, 65), PackedInt32Array(65, 79, 77), PackedInt32Array(78, 96, 77), PackedInt32Array(97, 96, 98), PackedInt32Array(98, 96, 78), PackedInt32Array(74, 61, 60), PackedInt32Array(101, 100, 99), PackedInt32Array(98, 103, 97), PackedInt32Array(97, 103, 102), PackedInt32Array(100, 101, 89), PackedInt32Array(89, 101, 88), PackedInt32Array(104, 101, 99), PackedInt32Array(104, 99, 105), PackedInt32Array(104, 105, 76), PackedInt32Array(79, 106, 60), PackedInt32Array(60, 106, 74), PackedInt32Array(74, 106, 76), PackedInt32Array(76, 106, 104)]
 geometry_parsed_geometry_type = 1
 geometry_source_geometry_mode = 2
 geometry_source_group_name = &"enemy_area"
+border_size = 1.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6w418"]
 size = Vector3(20.9804, 2.87744, 7.35693)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5ohrr"]
 size = Vector3(87.5017, 7.24207, 34.3643)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_74qiy"]
+size = Vector3(34.9371, 20.5372, 23.886)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q8tdr"]
+size = Vector3(145.928, 5.82239, 249.976)
 
 [node name="forest_of_fleeting_fierceness" type="Node3D"]
 script = ExtResource("1_6736k")
@@ -37,75 +50,73 @@ material_override = ExtResource("5_hxlqj")
 [node name="pyramid" parent="forest" index="1"]
 material_override = ExtResource("5_gkkc5")
 
+[node name="EntranceTunnel" parent="forest" index="2"]
+material_override = ExtResource("5_gkkc5")
+
 [node name="tunnels" parent="forest" index="3"]
 material_override = ExtResource("5_gkkc5")
 
-[node name="stairs" parent="forest" index="6"]
+[node name="stairs" parent="forest" index="5"]
 material_override = ExtResource("5_gkkc5")
 
-[node name="stairs_001" parent="forest" index="7"]
+[node name="stairs_001" parent="forest" index="6"]
 material_override = ExtResource("5_gkkc5")
 
-[node name="enemy_area_1" parent="forest" index="8"]
+[node name="Tent" parent="forest" index="8"]
+material_override = SubResource("StandardMaterial3D_i2xcs")
+
+[node name="StaticBody3D" parent="forest/Tent" index="0" node_paths=PackedStringArray("pop_up") groups=["enemy_area", "interactable"]]
+collision_layer = 7
+script = ExtResource("7_5ohrr")
+pop_up = NodePath("../PopUp")
+
+[node name="PopUp" parent="forest/Tent" index="1" instance=ExtResource("8_74qiy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9194, 0, 0)
+
+[node name="enemy_area_1" parent="forest" index="9"]
 visible = false
 
 [node name="StaticBody3D" parent="forest/enemy_area_1" index="0" groups=["enemy_area"]]
 
+[node name="enemy_area_2" parent="forest" index="10"]
+visible = false
+
+[node name="StaticBody3D" parent="forest/enemy_area_2" index="0" groups=["enemy_area"]]
+
+[node name="enemy_beginning" parent="forest" index="11"]
+visible = false
+
+[node name="StaticBody3D" parent="forest/enemy_beginning" index="0" groups=["enemy_area"]]
+
+[node name="enemy-cube1" parent="forest" index="12"]
+visible = false
+
+[node name="StaticBody3D" parent="forest/enemy-cube1" index="0" groups=["enemy_area"]]
+
+[node name="enemy-area" parent="forest" index="13"]
+visible = false
+
+[node name="StaticBody3D" parent="forest/enemy-area" index="0" groups=["enemy_area"]]
+
+[node name="enemy-area_001" parent="forest" index="14"]
+visible = false
+
+[node name="StaticBody3D" parent="forest/enemy-area_001" index="0" groups=["enemy_area"]]
+
 [node name="Player" parent="." instance=ExtResource("5_i2xcs")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.3103, 0.679, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.9876, 0.679, 123.865)
 
 [node name="MeshParent" parent="Player" index="1"]
 transform = Transform3D(4.42267e-06, 0, -1, 0, 1, 0, 1, 0, 4.42267e-06, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Player/MeshParent/Kaiju/Player Kaiju Armature" index="0"]
-bones/0/scale = Vector3(1, 1, 1)
-bones/1/scale = Vector3(1, 1, 1)
-bones/2/scale = Vector3(1, 1, 1)
-bones/3/scale = Vector3(1, 0.999999, 0.999999)
-bones/4/scale = Vector3(1, 1, 1)
-bones/5/scale = Vector3(1, 1, 1)
-bones/6/position = Vector3(-0.346124, 1.55269, 0.269862)
-bones/6/rotation = Quaternion(-0.521123, 0.29207, 0.508302, 0.620286)
-bones/6/scale = Vector3(1.05847, 1.05847, 1.05847)
-bones/7/position = Vector3(0.333642, 1.51259, 0.283287)
-bones/7/rotation = Quaternion(0.697779, 0.646775, 0.0901513, -0.294379)
-bones/7/scale = Vector3(1.05979, 1.05979, 1.05979)
-bones/8/scale = Vector3(1, 1, 1)
-bones/9/scale = Vector3(0.999999, 1, 1)
-bones/11/rotation = Quaternion(0.0175161, 5.93228e-14, 2.77019e-08, 0.999847)
-bones/11/scale = Vector3(1, 1, 1)
-bones/12/scale = Vector3(1, 1, 1)
-bones/13/scale = Vector3(1, 1, 1)
-bones/14/scale = Vector3(1, 1, 1)
-bones/15/scale = Vector3(1, 1, 1)
-bones/16/scale = Vector3(1, 0.999999, 0.999999)
-bones/17/scale = Vector3(1, 1, 1)
-bones/18/scale = Vector3(1, 1, 1)
-bones/19/scale = Vector3(1, 1, 1)
-bones/20/scale = Vector3(1, 0.999999, 1)
-bones/21/scale = Vector3(1, 1, 1)
-bones/22/scale = Vector3(1, 1, 1)
-bones/23/scale = Vector3(1, 1, 1)
-bones/24/scale = Vector3(1, 1, 1)
-bones/25/scale = Vector3(1, 1, 1)
-bones/26/scale = Vector3(1, 1, 1)
-bones/27/scale = Vector3(1, 1, 1)
-bones/28/scale = Vector3(1, 1, 1)
-bones/29/scale = Vector3(1, 1, 1)
-bones/30/scale = Vector3(1, 1, 1)
-bones/31/scale = Vector3(1, 1, 1)
-bones/32/rotation = Quaternion(0.0170904, 4.38376e-08, -0.656432, 0.754192)
-bones/32/scale = Vector3(1, 1, 1)
-bones/33/scale = Vector3(1, 1, 1)
-bones/34/scale = Vector3(1, 1, 1)
-bones/35/scale = Vector3(1, 1, 1)
-bones/36/scale = Vector3(1, 1, 1)
-bones/37/scale = Vector3(1, 1, 0.999999)
-bones/38/scale = Vector3(1, 1, 1)
-
-[node name="BoneAttachment3D" parent="Player/MeshParent/Kaiju/Player Kaiju Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.992063, 0.0529795, -0.114032, -0.0302495, 0.980825, 0.192527, 0.122045, -0.18755, 0.974643, 6.6584e-05, 6.47074, 3.89442)
+bones/6/position = Vector3(-0.461975, 1.54045, 0.278633)
+bones/6/rotation = Quaternion(-0.669214, 0.0215111, 0.387577, 0.63362)
+bones/6/scale = Vector3(1.10484, 1.10484, 1.10484)
+bones/7/position = Vector3(0.503592, 1.51138, 0.345825)
+bones/7/rotation = Quaternion(0.676243, 0.489804, -0.164981, -0.524947)
+bones/7/scale = Vector3(1.07655, 1.07655, 1.07655)
 
 [node name="CameraPivot" parent="Player" index="3"]
 transform = Transform3D(-4.2222e-08, 0.258819, -0.965926, 1.13133e-08, 0.965926, 0.258819, 1, 0, -4.37114e-08, 0, 0, 0)
@@ -145,9 +156,114 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.5126, 1.41511, -7.94693)
 [node name="SmallKaiju5" parent="Combats/StartCombat_trigger" instance=ExtResource("9_i3gby")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.4778, 1.41511, 0.350464)
 
+[node name="StartCombat_trigger2" parent="Combats" instance=ExtResource("8_i2xcs")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -97.5756, 0, 176.866)
+hide_enemies = false
+
+[node name="CollisionShape3D" parent="Combats/StartCombat_trigger2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.6231, 9.76859, -79.6032)
+shape = SubResource("BoxShape3D_74qiy")
+
+[node name="CollisionShape3D" parent="Combats/StartCombat_trigger2/Affected_area" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.02855, 2.41119, -46.9134)
+shape = SubResource("BoxShape3D_q8tdr")
+
+[node name="SmallKaiju" parent="Combats/StartCombat_trigger2" instance=ExtResource("9_i3gby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.3422, 1.41511, 0.132446)
+
+[node name="SmallKaiju2" parent="Combats/StartCombat_trigger2" instance=ExtResource("9_i3gby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8887, 1.41511, 7.69742)
+
+[node name="SmallKaiju3" parent="Combats/StartCombat_trigger2" instance=ExtResource("9_i3gby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0204, 1.41511, 7.69742)
+
+[node name="SmallKaiju4" parent="Combats/StartCombat_trigger2" instance=ExtResource("9_i3gby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.5126, 1.41511, -7.94693)
+
+[node name="SmallKaiju5" parent="Combats/StartCombat_trigger2" instance=ExtResource("9_i3gby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.4778, 1.41511, 0.350464)
+
+[node name="SmallKaiju6" parent="Combats/StartCombat_trigger2" instance=ExtResource("9_i3gby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.3422, 1.41511, 44.5113)
+
+[node name="SmallKaiju7" parent="Combats/StartCombat_trigger2" instance=ExtResource("9_i3gby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8887, 1.41511, 52.0763)
+
+[node name="SmallKaiju8" parent="Combats/StartCombat_trigger2" instance=ExtResource("9_i3gby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0204, 1.41511, 52.0763)
+
+[node name="SmallKaiju9" parent="Combats/StartCombat_trigger2" instance=ExtResource("9_i3gby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.5126, 1.41511, 36.4319)
+
+[node name="SmallKaiju10" parent="Combats/StartCombat_trigger2" instance=ExtResource("9_i3gby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.4778, 1.41511, 44.7293)
+
+[node name="SmallKaiju11" parent="Combats/StartCombat_trigger2" instance=ExtResource("9_i3gby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.5061, 1.41511, -147.144)
+
+[node name="SmallKaiju12" parent="Combats/StartCombat_trigger2" instance=ExtResource("9_i3gby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.40303, 1.41511, -147.144)
+
+[node name="SmallKaiju13" parent="Combats/StartCombat_trigger2" instance=ExtResource("9_i3gby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.89522, 1.41511, -162.789)
+
+[node name="SmallKaiju14" parent="Combats/StartCombat_trigger2" instance=ExtResource("9_i3gby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.8604, 1.41511, -154.491)
+
+[node name="Seeds" type="Node3D" parent="."]
+
+[node name="Seed" parent="Seeds" instance=ExtResource("10_i3gby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.8471, 80.9068, 26.48)
+
+[node name="Seed2" parent="Seeds" instance=ExtResource("10_i3gby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1705, 80.9068, 26.48)
+
+[node name="Seed3" parent="Seeds" instance=ExtResource("10_i3gby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.0601, 80.9068, 26.48)
+
+[node name="Seed4" parent="Seeds" instance=ExtResource("10_i3gby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.3835, 80.9068, 26.48)
+
+[node name="Seed5" parent="Seeds" instance=ExtResource("10_i3gby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.8471, 80.9068, 29.2179)
+
+[node name="Seed6" parent="Seeds" instance=ExtResource("10_i3gby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1705, 80.9068, 29.2179)
+
+[node name="Seed7" parent="Seeds" instance=ExtResource("10_i3gby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.0601, 80.9068, 29.2179)
+
+[node name="Seed8" parent="Seeds" instance=ExtResource("10_i3gby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.3835, 80.9068, 29.2179)
+
+[node name="Seed9" parent="Seeds" instance=ExtResource("10_i3gby")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -30.0236, 80.9068, 25.5701)
+
+[node name="Seed10" parent="Seeds" instance=ExtResource("10_i3gby")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -30.0236, 80.9068, 27.2467)
+
+[node name="Seed11" parent="Seeds" instance=ExtResource("10_i3gby")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -30.0236, 80.9068, 12.3571)
+
+[node name="Seed12" parent="Seeds" instance=ExtResource("10_i3gby")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -30.0236, 80.9068, 14.0337)
+
+[node name="Seed13" parent="Seeds" instance=ExtResource("10_i3gby")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -27.2858, 80.9068, 25.5701)
+
+[node name="Seed14" parent="Seeds" instance=ExtResource("10_i3gby")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -27.2858, 80.9068, 27.2467)
+
+[node name="Seed15" parent="Seeds" instance=ExtResource("10_i3gby")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -27.2858, 80.9068, 12.3571)
+
+[node name="Seed16" parent="Seeds" instance=ExtResource("10_i3gby")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -27.2858, 80.9068, 14.0337)
+
 [editable path="WorldEnvironment"]
 [editable path="forest"]
 [editable path="Player"]
 [editable path="Player/CameraPivot/UI/Game"]
 [editable path="Player/CameraPivot/UI/PauseMenu"]
 [editable path="Combats/StartCombat_trigger"]
+[editable path="Combats/StartCombat_trigger2"]
