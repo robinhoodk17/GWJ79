@@ -1,11 +1,27 @@
-[gd_scene load_steps=7 format=3 uid="uid://dh05vexi1i10v"]
+[gd_scene load_steps=13 format=3 uid="uid://dh05vexi1i10v"]
 
 [ext_resource type="Script" uid="uid://dqih6i2t5n4pe" path="res://scripts/enable_guide.gd" id="1_6736k"]
 [ext_resource type="Resource" uid="uid://v5u0dyabni7e" path="res://input/default_mapping_context.tres" id="2_gkkc5"]
 [ext_resource type="PackedScene" uid="uid://bdfdxgatveclo" path="res://scenes/world_environment.tscn" id="3_hxlqj"]
 [ext_resource type="PackedScene" uid="uid://w7t2nu6mwjg5" path="res://assets/3d/ferocious_forest/forest.blend" id="4_7dhnh"]
 [ext_resource type="Material" uid="uid://0iqgmgg2101e" path="res://assets/materials/floor_material.tres" id="5_gkkc5"]
+[ext_resource type="Material" uid="uid://dwmy1gd45q8ti" path="res://assets/materials/forest_floor_material.tres" id="5_hxlqj"]
 [ext_resource type="PackedScene" uid="uid://dom2bq6x7abkr" path="res://scenes/player/player.tscn" id="5_i2xcs"]
+[ext_resource type="PackedScene" uid="uid://cp8g1km0wbohh" path="res://scenes/terrain/terrain_events/start_combat.tscn" id="8_i2xcs"]
+[ext_resource type="PackedScene" uid="uid://ch8gse74drulk" path="res://scenes/enemies/small_kaiju.tscn" id="9_i3gby"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_hxlqj"]
+vertices = PackedVector3Array(-232.883, 0.5, -446, -232.883, 0.5, -418.5, -145.883, 0.5, -418.5, -145.883, 0.5, -446)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+geometry_parsed_geometry_type = 1
+geometry_source_geometry_mode = 2
+geometry_source_group_name = &"enemy_area"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6w418"]
+size = Vector3(20.9804, 2.87744, 7.35693)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5ohrr"]
+size = Vector3(87.5017, 7.24207, 34.3643)
 
 [node name="forest_of_fleeting_fierceness" type="Node3D"]
 script = ExtResource("1_6736k")
@@ -15,11 +31,122 @@ default_mapping_context = ExtResource("2_gkkc5")
 
 [node name="forest" parent="." instance=ExtResource("4_7dhnh")]
 
+[node name="floor" parent="forest" index="0"]
+material_override = ExtResource("5_hxlqj")
+
 [node name="pyramid" parent="forest" index="1"]
 material_override = ExtResource("5_gkkc5")
 
+[node name="tunnels" parent="forest" index="3"]
+material_override = ExtResource("5_gkkc5")
+
+[node name="stairs" parent="forest" index="6"]
+material_override = ExtResource("5_gkkc5")
+
+[node name="stairs_001" parent="forest" index="7"]
+material_override = ExtResource("5_gkkc5")
+
+[node name="enemy_area_1" parent="forest" index="8"]
+visible = false
+
+[node name="StaticBody3D" parent="forest/enemy_area_1" index="0" groups=["enemy_area"]]
+
 [node name="Player" parent="." instance=ExtResource("5_i2xcs")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.72552, 100.875, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -504.725, 0.679, 0)
 
+[node name="MeshParent" parent="Player" index="1"]
+transform = Transform3D(4.42267e-06, 0, -1, 0, 1, 0, 1, 0, 4.42267e-06, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Player/MeshParent/Kaiju/Player Kaiju Armature" index="0"]
+bones/0/scale = Vector3(1, 1, 1)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/scale = Vector3(1, 0.999999, 0.999999)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/position = Vector3(-0.278081, 1.50071, 0.263809)
+bones/6/rotation = Quaternion(-0.364763, 0.338399, 0.594169, 0.631979)
+bones/7/position = Vector3(0.280324, 1.49106, 0.276099)
+bones/7/rotation = Quaternion(0.66177, 0.660612, 0.211328, -0.284591)
+bones/7/scale = Vector3(1.02551, 1.02551, 1.02551)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/scale = Vector3(0.999999, 1, 1)
+bones/11/rotation = Quaternion(0.0175161, 5.93228e-14, 2.77019e-08, 0.999847)
+bones/11/scale = Vector3(1, 1, 1)
+bones/12/scale = Vector3(1, 1, 1)
+bones/13/scale = Vector3(1, 1, 1)
+bones/14/scale = Vector3(1, 1, 1)
+bones/15/scale = Vector3(1, 1, 1)
+bones/16/scale = Vector3(1, 0.999999, 0.999999)
+bones/17/scale = Vector3(1, 1, 1)
+bones/18/scale = Vector3(1, 1, 1)
+bones/19/scale = Vector3(1, 1, 1)
+bones/20/scale = Vector3(1, 0.999999, 1)
+bones/21/scale = Vector3(1, 1, 1)
+bones/22/scale = Vector3(1, 1, 1)
+bones/23/scale = Vector3(1, 1, 1)
+bones/24/scale = Vector3(1, 1, 1)
+bones/25/scale = Vector3(1, 1, 1)
+bones/26/scale = Vector3(1, 1, 1)
+bones/27/scale = Vector3(1, 1, 1)
+bones/28/scale = Vector3(1, 1, 1)
+bones/29/scale = Vector3(1, 1, 1)
+bones/30/scale = Vector3(1, 1, 1)
+bones/31/scale = Vector3(1, 1, 1)
+bones/32/rotation = Quaternion(0.0170904, 4.38376e-08, -0.656432, 0.754192)
+bones/32/scale = Vector3(1, 1, 1)
+bones/33/scale = Vector3(1, 1, 1)
+bones/34/scale = Vector3(1, 1, 1)
+bones/35/scale = Vector3(1, 1, 1)
+bones/36/scale = Vector3(1, 1, 1)
+bones/37/scale = Vector3(1, 1, 0.999999)
+bones/38/scale = Vector3(1, 1, 1)
+
+[node name="BoneAttachment3D" parent="Player/MeshParent/Kaiju/Player Kaiju Armature/Skeleton3D" index="1"]
+transform = Transform3D(0.992063, 0.0529795, -0.114032, -0.0302495, 0.980825, 0.192527, 0.122045, -0.18755, 0.974643, 6.6584e-05, 6.47074, 3.89442)
+
+[node name="CameraPivot" parent="Player" index="3"]
+transform = Transform3D(-4.2222e-08, 0.258819, -0.965926, 1.13133e-08, 0.965926, 0.258819, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_hxlqj")
+
+[node name="Combats" type="Node3D" parent="."]
+
+[node name="StartCombat_trigger" parent="Combats" instance=ExtResource("8_i2xcs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -188.858, 0, -432.001)
+hide_enemies = false
+
+[node name="CollisionShape3D" parent="Combats/StartCombat_trigger" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.938721, -10.726)
+shape = SubResource("BoxShape3D_6w418")
+
+[node name="Affected_area" parent="Combats/StartCombat_trigger" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -192.978, 0, -431.051)
+
+[node name="CollisionShape3D" parent="Combats/StartCombat_trigger/Affected_area" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.46716, 3.12103, -2.12637)
+shape = SubResource("BoxShape3D_5ohrr")
+
+[node name="SmallKaiju" parent="Combats/StartCombat_trigger" instance=ExtResource("9_i3gby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.3422, 1.41511, 0.132446)
+
+[node name="SmallKaiju2" parent="Combats/StartCombat_trigger" instance=ExtResource("9_i3gby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8887, 1.41511, 7.69742)
+
+[node name="SmallKaiju3" parent="Combats/StartCombat_trigger" instance=ExtResource("9_i3gby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0204, 1.41511, 7.69742)
+
+[node name="SmallKaiju4" parent="Combats/StartCombat_trigger" instance=ExtResource("9_i3gby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.5126, 1.41511, -7.94693)
+
+[node name="SmallKaiju5" parent="Combats/StartCombat_trigger" instance=ExtResource("9_i3gby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.4778, 1.41511, 0.350464)
+
+[editable path="WorldEnvironment"]
 [editable path="forest"]
+[editable path="Player"]
+[editable path="Player/CameraPivot/UI/Game"]
+[editable path="Player/CameraPivot/UI/PauseMenu"]
+[editable path="Combats/StartCombat_trigger"]

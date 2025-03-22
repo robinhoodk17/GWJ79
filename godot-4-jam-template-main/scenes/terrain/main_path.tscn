@@ -92,7 +92,7 @@ default_mapping_context = ExtResource("2_y1ygp")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("3_x7gld")]
 
-[node name="Player" parent="." groups=["player"] instance=ExtResource("3_xcm3i")]
+[node name="Player" parent="." instance=ExtResource("3_xcm3i")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.82469, 0.776253, -196.237)
 
@@ -119,6 +119,7 @@ shape = SubResource("BoxShape3D_tnacl")
 
 [node name="StartCombat" parent="Section1" instance=ExtResource("14_y1ygp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.710213, 0.5, -114.358)
+days_for_respawn = 0
 
 [node name="CollisionShape3D" parent="Section1/StartCombat" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.7394)
@@ -357,6 +358,9 @@ surface_material_override/0 = ExtResource("8_cgwd4")
 [node name="Tunnel" parent="city" index="8"]
 material_override = ExtResource("8_cgwd4")
 
+[node name="Tunnel_001" parent="city" index="9"]
+material_override = ExtResource("14_x7gld")
+
 [node name="Seeds" type="Node" parent="."]
 
 [node name="Seed" parent="Seeds" instance=ExtResource("15_xcm3i")]
@@ -541,6 +545,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7262, -9.6308)
 action = ExtResource("25_2pqk4")
 message = "Dragon's ridge"
 
+[node name="Forest" type="StaticBody3D" parent="." node_paths=PackedStringArray("pop_up") groups=["interactable"]]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -64.689, 0, 73.9318)
+collision_layer = 5
+collision_mask = 3
+script = ExtResource("23_60fbq")
+new_scene = "res://scenes/terrain/forest_of_fleeting_fierceness.tscn"
+pop_up = NodePath("PopUp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Forest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.76803, -12.6347)
+shape = SubResource("BoxShape3D_60fbq")
+
+[node name="PopUp" parent="Forest" instance=ExtResource("23_h5v8l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7262, -9.6308)
+action = ExtResource("25_2pqk4")
+message = "Ferocious Forest"
+
 [node name="Move" parent="." instance=ExtResource("23_h5v8l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5874, 3.3643, -192.278)
 action = ExtResource("26_72pjs")
@@ -554,15 +575,15 @@ message = "Camera"
 turn_off = false
 
 [node name="Lock_On" parent="." instance=ExtResource("23_h5v8l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.53544, 3.40013, -148.636)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.53544, 3.40013, -47.9391)
 action = ExtResource("28_72pjs")
-message = "Toggle lock-on"
+message = "Focus on/off"
 turn_off = false
 
 [node name="PickUp" parent="." instance=ExtResource("23_h5v8l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.78499, 6.02852, -59.2659)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.06926, 4.08583, -105.313)
 action = ExtResource("25_2pqk4")
-message = "Pick up enemy"
+message = "Bite"
 turn_off = false
 
 [node name="Fertilize" type="Node3D" parent="."]

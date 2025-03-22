@@ -1,9 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://bojsla6nqcf03"]
+[gd_scene load_steps=16 format=3 uid="uid://bojsla6nqcf03"]
 
 [ext_resource type="Script" uid="uid://csrg6q7a24yum" path="res://ui/game/game_ui.gd" id="1_67una"]
 [ext_resource type="Script" uid="uid://c3u6rm60678fe" path="res://ui/game/show_bars.gd" id="2_d7okr"]
 [ext_resource type="Script" uid="uid://dwij6va472hth" path="res://scripts/player/life_bars.gd" id="2_yc87g"]
-[ext_resource type="Script" uid="uid://bsvjf71a1lel6" path="res://scripts/player/time_limit.gd" id="4_lkn3m"]
 [ext_resource type="Script" uid="uid://k1g62qxo5ngl" path="res://ui/game/input_prompt.gd" id="5_ke6fc"]
 [ext_resource type="Script" uid="uid://fpe4uuvo5r35" path="res://scripts/player/cooldown_tail_attack.gd" id="6_vor7y"]
 [ext_resource type="Resource" uid="uid://t84x06cxbh2f" path="res://input/interact.tres" id="6_yw7c2"]
@@ -65,17 +64,6 @@ grow_vertical = 2
 script = ExtResource("1_67una")
 prevent_joypad_focus_capture = true
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -33.5
-offset_right = 33.5
-offset_bottom = 23.0
-grow_horizontal = 2
-text = "Game UI"
-
 [node name="Bars" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
@@ -135,25 +123,6 @@ grow_horizontal = 2
 grow_vertical = 0
 value = 100.0
 
-[node name="TimeLimit" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Timer" type="Timer" parent="TimeLimit"]
-wait_time = 80.0
-one_shot = true
-
-[node name="Time Limit" type="Label" parent="TimeLimit"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_font_sizes/font_size = 40
-text = "Time Left:"
-visible_characters = 16
-visible_ratio = 1.6
-script = ExtResource("4_lkn3m")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_yw7c2")
@@ -195,9 +164,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -286.0
-offset_top = 110.0
+offset_top = 114.0
 offset_right = -286.0
-offset_bottom = 110.0
+offset_bottom = 114.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 12
@@ -206,7 +175,7 @@ fit_content = true
 autowrap_mode = 0
 script = ExtResource("5_ke6fc")
 action = ExtResource("11_vor7y")
-label_size = 18.0
+label_size = 24.0
 
 [node name="TailInput" type="RichTextLabel" parent="."]
 layout_mode = 1
@@ -216,9 +185,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -225.0
-offset_top = 112.0
+offset_top = 116.0
 offset_right = -225.0
-offset_bottom = 112.0
+offset_bottom = 116.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 12
@@ -227,7 +196,7 @@ fit_content = true
 autowrap_mode = 0
 script = ExtResource("5_ke6fc")
 action = ExtResource("9_w08ax")
-label_size = 18.0
+label_size = 24.0
 
 [node name="Stomp" type="Label" parent="."]
 layout_mode = 1

@@ -170,18 +170,22 @@ func state_machine(delta : float) -> void:
 			return
 		states.BITE_ATTACK_KILL:
 			velocity = Vector3.ZERO
-			set_attack_animation("Bite_Attack_Kill", 1.5)
+			set_attack_animation("Bite_Attack_Kill", 3.0)
 			current_state = states.TRANSITION
 			carrying_enemy = true
 			if targeted_enemy._current_health <= bite_damage:
-				targeted_enemy._current_health = 0
+				var duplicate = targeted_enemy.duplicate()
+				duplicate.player_node = self
+				get_tree().root.add_child(duplicate)
+				targeted_enemy.delete_entity()
+				targeted_enemy = duplicate
 				targeted_enemy.start_ragdoll()
 				carried_enemy = targeted_enemy
 			return
 		states.THROWING:
 			current_state=states.TRANSITION
 			velocity = Vector3.ZERO
-			set_attack_animation("Throw_Enemy", 2.0)
+			set_attack_animation("Throw_Enemy", 3.0)
 			
 		states.STOMP_ATTACK:
 			current_state=states.TRANSITION
@@ -198,7 +202,6 @@ func go_idle():	# used to go back to idle state after animation to be used as "C
 func _physics_process(delta: float) -> void:
 	if !is_on_floor():
 		velocity += get_gravity()
-	#print_debug(current_state)
 	var input_dir : Vector2 = move_action.value_axis_2d
 	if current_state!=states.TRANSITION:
 		if input_dir.length()>0.1:
