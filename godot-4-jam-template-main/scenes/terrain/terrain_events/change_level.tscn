@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2ow85x2y4tmc"]
+
+[ext_resource type="Script" uid="uid://2to3axc5b76g" path="res://scripts/terrain/terrain_events/change_level.gd" id="1_fdfv2"]
+[ext_resource type="PackedScene" uid="uid://cwyk20gm1yjhr" path="res://scenes/pop_up_with_message.tscn" id="2_vwuby"]
+[ext_resource type="Resource" uid="uid://t84x06cxbh2f" path="res://input/interact.tres" id="3_hrnoj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_60fbq"]
+size = Vector3(1.84, 20, 50)
+
+[node name="DragonsRidge" type="StaticBody3D" node_paths=PackedStringArray("pop_up") groups=["interactable"]]
+collision_layer = 5
+collision_mask = 3
+script = ExtResource("1_fdfv2")
+new_scene = "res://scenes/terrain/dragons_ridge.tscn"
+pop_up = NodePath("PopUp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.76803, -12.6347)
+shape = SubResource("BoxShape3D_60fbq")
+
+[node name="PopUp" parent="." instance=ExtResource("2_vwuby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7262, -9.6308)
+action = ExtResource("3_hrnoj")
+message = "Dragon's ridge"

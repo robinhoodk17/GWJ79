@@ -23,7 +23,7 @@ func _ready() -> void:
 func late_ready() -> void:
 	if !respawning:
 		body_list.clear()
-		var overlapping_bodies : Array[Node3D] = $Affected_area.get_overlapping_bodies()
+		var overlapping_bodies : Array[Node] = get_children()
 		for i : Node3D in overlapping_bodies:
 			if i.is_in_group("enemy"):
 				body_list.append(i)
@@ -70,8 +70,8 @@ func acquire_target(body : Node3D) -> void:
 	if body.is_in_group("player"):
 		Signalbus.combat_started.emit(self)
 		print_debug("combat_started")
-		var overlapping_bodies : Array[Node3D] = $Affected_area.get_overlapping_bodies()
-		for i : Node3D in overlapping_bodies:
+		for i : Node3D in body_list:
 			if i.is_in_group("enemy"):
 				i.show()
 				i.acquire_target(body)
+				print_debug("aquirec player")
