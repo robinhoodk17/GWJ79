@@ -21,7 +21,6 @@ func _ready() -> void:
 
 
 func late_ready() -> void:
-	print_debug("readied")
 	if !respawning:
 		body_list.clear()
 		var overlapping_bodies : Array[Node3D] = $Affected_area.get_overlapping_bodies()
@@ -29,7 +28,6 @@ func late_ready() -> void:
 			if i.is_in_group("enemy"):
 				body_list.append(i)
 				positions.append(i.global_position)
-				print_debug("preparing enemies")
 				if hide_enemies:
 					i.hide()
 		respawning = true
@@ -54,7 +52,6 @@ func wait_for_respawn() -> void:
 	if days_passed == days_for_respawn:
 		respawn_enemies()
 	days_passed += 1
-	print_debug(days_passed)
 
 
 func respawn_enemies() -> void:
