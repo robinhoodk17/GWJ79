@@ -65,6 +65,10 @@ folder_colors={
 "res://ui/": "blue"
 }
 
+[filesystem]
+
+import/blender/enabled=false
+
 [gdunit4]
 
 report/assert/verbose_warnings=false
