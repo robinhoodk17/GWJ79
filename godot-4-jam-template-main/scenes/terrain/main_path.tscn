@@ -11,7 +11,7 @@
 [ext_resource type="Material" uid="uid://c605ge3qhov13" path="res://scenes/particles/Water.tres" id="6_h8t5e"]
 [ext_resource type="Material" uid="uid://bfjbavkupu4b5" path="res://scenes/particles/Sleep.tres" id="7_olwnp"]
 [ext_resource type="Material" uid="uid://cq1jb3btvntna" path="res://assets/materials/wall_material.tres" id="8_cgwd4"]
-[ext_resource type="Script" uid="uid://dj3oo25bv4g2m" path="res://scripts/terrain/interactable.gd" id="8_i3jkc"]
+[ext_resource type="Script" path="res://scripts/terrain/interactable.gd" id="8_i3jkc"]
 [ext_resource type="PackedScene" uid="uid://3ch4cewd4fr5" path="res://assets/3d/Leaf Bed.blend" id="10_cgwd4"]
 [ext_resource type="PackedScene" uid="uid://cxx38lw6y1dt6" path="res://assets/3d/Tree.blend" id="11_x7gld"]
 [ext_resource type="PackedScene" uid="uid://bw6h0b07qrtvl" path="res://assets/3d/level1.blend" id="12_0rf43"]
@@ -79,7 +79,7 @@ sun_color = SubResource("Gradient_t21en")
 sun_intensity = SubResource("Curve_cgwd4")
 sky_color = SubResource("Gradient_h5v8l")
 horizon_color = ExtResource("4_t21en")
-day_length = 60.0
+day_length = 100000.0
 
 [node name="Sun" type="DirectionalLight3D" parent="WorldEnvironment/DayCycle"]
 visible = false
@@ -280,6 +280,7 @@ visible = false
 mesh = SubResource("CylinderMesh_t6k5e")
 
 [node name="enemies" type="Node3D" parent="Section1"]
+visible = false
 
 [node name="SmallKaiju" parent="Section1/enemies" instance=ExtResource("12_h5v8l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3663, -38.9378)

@@ -27,7 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://3s7lo7jd53un" path="res://ui/pause_menu/pause_menu.tscn" id="15_8vj76"]
 [ext_resource type="PackedScene" uid="uid://dtrluvg5ox2vb" path="res://ui/notifications/message_board.tscn" id="17_qcw8q"]
 [ext_resource type="PackedScene" uid="uid://crak05vlyp0ep" path="res://scenes/player/lose_screen.tscn" id="19_dmlwb"]
-[ext_resource type="Script" uid="uid://cinn5hvex2bcb" path="res://scenes/player/interaction_area.gd" id="28_28m0y"]
+[ext_resource type="Script" path="res://scenes/player/interaction_area.gd" id="28_28m0y"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ydkj"]
 albedo_color = Color(0.564706, 0.337255, 0.152941, 1)
@@ -4026,16 +4026,16 @@ bones/6/name = "Left Eyelid"
 bones/6/parent = 4
 bones/6/rest = Transform3D(0.0493214, -0.998775, 0.0038372, 0.546822, 0.0302176, 0.836703, -0.835794, -0.0391691, 0.547643, -0.266384, 1.49088, 0.272608)
 bones/6/enabled = true
-bones/6/position = Vector3(-0.266883, 1.49132, 0.272117)
-bones/6/rotation = Quaternion(-0.344194, 0.329641, 0.605352, 0.637508)
-bones/6/scale = Vector3(1, 1, 1)
+bones/6/position = Vector3(-0.465363, 1.5401, 0.27859)
+bones/6/rotation = Quaternion(-0.672351, 0.0121613, 0.383327, 0.633132)
+bones/6/scale = Vector3(1.10212, 1.10212, 1.10212)
 bones/7/name = "Right Eyelid"
 bones/7/parent = 4
 bones/7/rest = Transform3D(-0.0094775, 0.997914, -0.063855, 0.749329, 0.0493717, 0.660355, 0.66213, -0.0415899, -0.748234, 0.267038, 1.48092, 0.273869)
 bones/7/enabled = true
-bones/7/position = Vector3(0.267699, 1.48144, 0.273978)
-bones/7/rotation = Quaternion(0.650494, 0.67155, 0.229218, -0.270809)
-bones/7/scale = Vector3(1.00136, 1.00136, 1.00136)
+bones/7/position = Vector3(0.506296, 1.51384, 0.353852)
+bones/7/rotation = Quaternion(0.67617, 0.478126, -0.174159, -0.532784)
+bones/7/scale = Vector3(1.07856, 1.07856, 1.07856)
 bones/8/name = "Lower Face"
 bones/8/parent = 3
 bones/8/rest = Transform3D(0.996135, -0.00153921, -0.0878207, 0.0873069, 0.126747, 0.988085, 0.00961016, -0.991934, 0.126392, -7.5549e-08, 1.92539, 9.94789e-08)
