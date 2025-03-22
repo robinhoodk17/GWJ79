@@ -75,3 +75,4 @@ func acquire_target(body : Node3D) -> void:
 			if i.is_in_group("enemy"):
 				i.show()
 				i.acquire_target(body)
+				print_debug("aquirec player")
