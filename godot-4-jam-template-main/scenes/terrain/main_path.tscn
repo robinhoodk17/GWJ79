@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=4 uid="uid://cm284gwx7qpyt"]
+[gd_scene load_steps=50 format=4 uid="uid://cm284gwx7qpyt"]
 
 [ext_resource type="Script" uid="uid://dqih6i2t5n4pe" path="res://scripts/enable_guide.gd" id="1_mqemg"]
 [ext_resource type="Resource" uid="uid://v5u0dyabni7e" path="res://input/default_mapping_context.tres" id="2_y1ygp"]
@@ -42,9 +42,6 @@ size = Vector3(759.275, 8.12378, 217)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xcm3i"]
 size = Vector3(25, 5, 29.186)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_h5v8l"]
-size = Vector3(23.951, 7.51648, 65.6351)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0ssrf"]
 
@@ -173,12 +170,29 @@ days_for_respawn = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.7394)
 shape = SubResource("BoxShape3D_xcm3i")
 
-[node name="Affected_area" parent="Section1/StartCombat" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -31.2502)
+[node name="SmallKaiju" parent="Section1/StartCombat" instance=ExtResource("12_h5v8l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.710213, 1.8663, 75.4202)
 
-[node name="CollisionShape3D" parent="Section1/StartCombat/Affected_area" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.37681, 3.25824, 105.199)
-shape = SubResource("BoxShape3D_h5v8l")
+[node name="SmallKaiju2" parent="Section1/StartCombat" instance=ExtResource("12_h5v8l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.699577, 1.8663, 72.8664)
+
+[node name="SmallKaiju3" parent="Section1/StartCombat" instance=ExtResource("12_h5v8l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.51972, 1.8663, 68.4443)
+
+[node name="SmallKaiju4" parent="Section1/StartCombat" instance=ExtResource("12_h5v8l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.51972, 1.8663, 86.5169)
+
+[node name="SmallKaiju5" parent="Section1/StartCombat" instance=ExtResource("12_h5v8l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6091, 4.05248, 86.5169)
+
+[node name="SmallKaiju6" parent="Section1/StartCombat" instance=ExtResource("12_h5v8l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.19832, 1.8663, 90.1779)
+
+[node name="SmallKaiju7" parent="Section1/StartCombat" instance=ExtResource("12_h5v8l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5246, 1.8663, 90.1779)
+
+[node name="SmallKaiju8" parent="Section1/StartCombat" instance=ExtResource("12_h5v8l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.23467, 1.8663, 82.8527)
 
 [node name="Trees" type="Node3D" parent="Section1"]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 4.10404, 0, 0)
@@ -306,32 +320,6 @@ draw_pass_1 = SubResource("SphereMesh_t4p7o")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Section1/Bar Spot 3"]
 visible = false
 mesh = SubResource("CylinderMesh_t6k5e")
-
-[node name="enemies" type="Node3D" parent="Section1"]
-
-[node name="SmallKaiju" parent="Section1/enemies" instance=ExtResource("12_h5v8l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3663, -38.9378)
-
-[node name="SmallKaiju2" parent="Section1/enemies" instance=ExtResource("12_h5v8l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40979, 2.3663, -41.4916)
-
-[node name="SmallKaiju3" parent="Section1/enemies" instance=ExtResource("12_h5v8l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.80951, 2.3663, -45.9137)
-
-[node name="SmallKaiju4" parent="Section1/enemies" instance=ExtResource("12_h5v8l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.80951, 2.3663, -27.8411)
-
-[node name="SmallKaiju5" parent="Section1/enemies" instance=ExtResource("12_h5v8l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8989, 4.55248, -27.8411)
-
-[node name="SmallKaiju6" parent="Section1/enemies" instance=ExtResource("12_h5v8l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48811, 2.3663, -24.1801)
-
-[node name="SmallKaiju7" parent="Section1/enemies" instance=ExtResource("12_h5v8l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8144, 2.3663, -24.1801)
-
-[node name="SmallKaiju8" parent="Section1/enemies" instance=ExtResource("12_h5v8l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.52446, 2.3663, -31.5053)
 
 [node name="city" parent="." instance=ExtResource("22_cgwd4")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 22.487, -11.8583, 221.136)
