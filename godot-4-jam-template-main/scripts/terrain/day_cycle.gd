@@ -25,6 +25,7 @@ func _physics_process(delta: float) -> void:
 		worldEnvironment.environment = night_cover
 		day = false
 		moon.show()
+		Signalbus.night_started.emit()
 
 	if time >= 1.0:
 		moon.hide()
