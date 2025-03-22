@@ -1,7 +1,7 @@
-[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://dcd2s0eawu3kf"]
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://srrslakukios"]
 
-[ext_resource type="Shader" uid="uid://bdoboib6qlwio" path="res://assets/shaders/toonshader.gdshader" id="1_6w21f"]
-[ext_resource type="Texture2D" uid="uid://bhmm6jliw6qa1" path="res://assets/3d/colorpalette2.png" id="2_dn3t7"]
+[ext_resource type="Shader" uid="uid://bdoboib6qlwio" path="res://assets/shaders/toonshader.gdshader" id="1_aesm5"]
+[ext_resource type="Texture2D" uid="uid://bhmm6jliw6qa1" path="res://assets/3d/colorpalette2.png" id="2_rhsaw"]
 
 [sub_resource type="Gradient" id="Gradient_j4nxn"]
 offsets = PackedFloat32Array(0.563422, 0.569322, 0.817109, 0.840708)
@@ -12,9 +12,9 @@ gradient = SubResource("Gradient_j4nxn")
 
 [resource]
 render_priority = 0
-shader = ExtResource("1_6w21f")
-shader_parameter/albedo = Color(0.637843, 0.637843, 0.637843, 1)
-shader_parameter/texture_albedo = ExtResource("2_dn3t7")
+shader = ExtResource("1_aesm5")
+shader_parameter/albedo = Color(0.568973, 0.568973, 0.568973, 1)
+shader_parameter/texture_albedo = ExtResource("2_rhsaw")
 shader_parameter/albedo_texture_size = Vector2i(1080, 1080)
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 1.0

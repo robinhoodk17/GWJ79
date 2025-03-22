@@ -372,40 +372,52 @@ surface_material_override/0 = ExtResource("8_cgwd4")
 [node name="Seeds" type="Node" parent="."]
 
 [node name="Seed" parent="Seeds" instance=ExtResource("15_xcm3i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0223, 0.6, -136.889)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.23318, 0.598802, -166.412)
+type = 4
 
 [node name="Seed2" parent="Seeds" instance=ExtResource("15_xcm3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.30203, 0.6, -138.785)
+type = 4
 
 [node name="Seed3" parent="Seeds" instance=ExtResource("15_xcm3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.32021, 0.6, -138.785)
+type = 4
 
 [node name="Seed4" parent="Seeds" instance=ExtResource("15_xcm3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.32021, 0.6, -134.692)
+type = 4
 
 [node name="Seed5" parent="Seeds" instance=ExtResource("15_xcm3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.80212, 0.6, -132.66)
+type = 3
 
 [node name="Seed6" parent="Seeds" instance=ExtResource("15_xcm3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.404222, 0.6, -132.66)
+type = 3
 
 [node name="Seed7" parent="Seeds" instance=ExtResource("15_xcm3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.45537, 0.6, -136.889)
+type = 3
 
 [node name="Seed8" parent="Seeds" instance=ExtResource("15_xcm3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.735092, 0.6, -138.785)
+type = 3
 
 [node name="Seed9" parent="Seeds" instance=ExtResource("15_xcm3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.24672, 0.6, -138.785)
+type = 2
 
 [node name="Seed10" parent="Seeds" instance=ExtResource("15_xcm3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.24672, 0.6, -134.692)
+type = 2
 
 [node name="Seed11" parent="Seeds" instance=ExtResource("15_xcm3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.23518, 0.6, -132.66)
+type = 2
 
 [node name="Seed12" parent="Seeds" instance=ExtResource("15_xcm3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.97116, 0.6, -132.66)
+type = 2
 
 [node name="Seed13" parent="Seeds" instance=ExtResource("15_xcm3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0185971, 0.6, -136.889)
@@ -421,120 +433,195 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.72069, 0.6, -134.692)
 
 [node name="Seed17" parent="Seeds" instance=ExtResource("15_xcm3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.23878, 0.6, -132.66)
+type = 3
 
 [node name="Seed18" parent="Seeds" instance=ExtResource("15_xcm3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4451, 0.6, -132.66)
+type = 3
+
+[node name="Seeds2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86.3986, 0.290628, 129.713)
+
+[node name="Seed2" parent="Seeds2" instance=ExtResource("15_xcm3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.30203, 0.6, -138.785)
+type = 4
+
+[node name="Seed3" parent="Seeds2" instance=ExtResource("15_xcm3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.32021, 0.6, -138.785)
+type = 4
+
+[node name="Seed4" parent="Seeds2" instance=ExtResource("15_xcm3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.32021, 0.6, -134.692)
+type = 4
+
+[node name="Seed5" parent="Seeds2" instance=ExtResource("15_xcm3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.80212, 0.6, -132.66)
+type = 3
+
+[node name="Seed6" parent="Seeds2" instance=ExtResource("15_xcm3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.404222, 0.6, -132.66)
+type = 3
+
+[node name="Seed7" parent="Seeds2" instance=ExtResource("15_xcm3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.45537, 0.6, -136.889)
+type = 3
+
+[node name="Seed8" parent="Seeds2" instance=ExtResource("15_xcm3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.735092, 0.6, -138.785)
+type = 3
+
+[node name="Seed9" parent="Seeds2" instance=ExtResource("15_xcm3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.24672, 0.6, -138.785)
+type = 2
+
+[node name="Seed10" parent="Seeds2" instance=ExtResource("15_xcm3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.24672, 0.6, -134.692)
+type = 2
+
+[node name="Seed11" parent="Seeds2" instance=ExtResource("15_xcm3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.23518, 0.6, -132.66)
+type = 2
+
+[node name="Seed12" parent="Seeds2" instance=ExtResource("15_xcm3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.97116, 0.6, -132.66)
+type = 2
+
+[node name="Seed13" parent="Seeds2" instance=ExtResource("15_xcm3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0185971, 0.6, -136.889)
+
+[node name="Seed14" parent="Seeds2" instance=ExtResource("15_xcm3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.73887, 0.6, -138.785)
+
+[node name="Seed15" parent="Seeds2" instance=ExtResource("15_xcm3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.72069, 0.6, -138.785)
+
+[node name="Seed16" parent="Seeds2" instance=ExtResource("15_xcm3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.72069, 0.6, -134.692)
+
+[node name="Seed17" parent="Seeds2" instance=ExtResource("15_xcm3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.23878, 0.6, -132.66)
+type = 3
+
+[node name="Seed18" parent="Seeds2" instance=ExtResource("15_xcm3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4451, 0.6, -132.66)
+type = 3
 
 [node name="worldfarm1" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.017, 0.788385, -5.27965)
 
 [node name="worldfarm_tile" parent="worldfarm1" instance=ExtResource("23_x7gld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.894444, -3.94958)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.194743, -3.94958)
 
 [node name="worldfarm_tile2" parent="worldfarm1" instance=ExtResource("23_x7gld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.894444, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.194743, 0)
 
 [node name="worldfarm_tile3" parent="worldfarm1" instance=ExtResource("23_x7gld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.04021, 0.894444, -3.90923)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.04021, 0.194743, -3.90923)
 
 [node name="worldfarm_tile4" parent="worldfarm1" instance=ExtResource("23_x7gld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.12684, 0.894444, 4.31187)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.12684, 0.194743, 4.31187)
 
 [node name="worldfarm_tile5" parent="worldfarm1" instance=ExtResource("23_x7gld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.09156, 0.894444, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.09156, 0.194743, 0)
 
 [node name="worldfarm_tile6" parent="worldfarm1" instance=ExtResource("23_x7gld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.894444, 4.29414)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.194743, 4.29414)
 
 [node name="worldfarm_tile7" parent="worldfarm1" instance=ExtResource("23_x7gld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.10131, 0.894444, -3.94958)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.10131, 0.194743, -3.94958)
 
 [node name="worldfarm_tile8" parent="worldfarm1" instance=ExtResource("23_x7gld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.10131, 0.894444, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.10131, 0.194743, 0)
 
 [node name="worldfarm_tile9" parent="worldfarm1" instance=ExtResource("23_x7gld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.1415, 0.894444, -3.90923)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.1415, 0.194743, -3.90923)
 
 [node name="worldfarm_tile10" parent="worldfarm1" instance=ExtResource("23_x7gld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2281, 0.894444, 4.31187)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2281, 0.194743, 4.31187)
 
 [node name="worldfarm_tile11" parent="worldfarm1" instance=ExtResource("23_x7gld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.1929, 0.894444, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.1929, 0.194743, 0)
 
 [node name="worldfarm_tile12" parent="worldfarm1" instance=ExtResource("23_x7gld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.10131, 0.894444, 4.29414)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.10131, 0.194743, 4.29414)
 
 [node name="worldfarm_tile13" parent="worldfarm1" instance=ExtResource("23_x7gld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0877, 0.894444, -3.94958)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0877, 0.194743, -3.94958)
 
 [node name="worldfarm_tile14" parent="worldfarm1" instance=ExtResource("23_x7gld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0877, 0.894444, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0877, 0.194743, 0)
 
 [node name="worldfarm_tile15" parent="worldfarm1" instance=ExtResource("23_x7gld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.1279, 0.894444, -3.90923)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.1279, 0.194743, -3.90923)
 
 [node name="worldfarm_tile16" parent="worldfarm1" instance=ExtResource("23_x7gld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.2146, 0.894444, 4.31187)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.2146, 0.194743, 4.31187)
 
 [node name="worldfarm_tile17" parent="worldfarm1" instance=ExtResource("23_x7gld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.1793, 0.894444, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.1793, 0.194743, 0)
 
 [node name="worldfarm_tile18" parent="worldfarm1" instance=ExtResource("23_x7gld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0877, 0.894444, 4.29414)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0877, 0.194743, 4.29414)
 
 [node name="worldfarm_tile19" parent="worldfarm1" instance=ExtResource("23_x7gld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0877, 0.894444, 8.93644)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0877, 0.194743, 8.93644)
 
 [node name="worldfarm_tile20" parent="worldfarm1" instance=ExtResource("23_x7gld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0877, 0.894444, 12.886)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0877, 0.194743, 12.886)
 
 [node name="worldfarm_tile21" parent="worldfarm1" instance=ExtResource("23_x7gld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.1279, 0.894444, 8.97679)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.1279, 0.194743, 8.97679)
 
 [node name="worldfarm_tile22" parent="worldfarm1" instance=ExtResource("23_x7gld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.2146, 0.894444, 17.1979)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.2146, 0.194743, 17.1979)
 
 [node name="worldfarm_tile23" parent="worldfarm1" instance=ExtResource("23_x7gld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.1793, 0.894444, 12.886)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.1793, 0.194743, 12.886)
 
 [node name="worldfarm_tile24" parent="worldfarm1" instance=ExtResource("23_x7gld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0877, 0.894444, 17.1802)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0877, 0.194743, 17.1802)
 
 [node name="worldfarm_tile25" parent="worldfarm1" instance=ExtResource("23_x7gld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.18751, 0.894444, 8.93644)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.18751, 0.194743, 8.93644)
 
 [node name="worldfarm_tile26" parent="worldfarm1" instance=ExtResource("23_x7gld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.18751, 0.894444, 12.886)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.18751, 0.194743, 12.886)
 
 [node name="worldfarm_tile27" parent="worldfarm1" instance=ExtResource("23_x7gld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2277, 0.894444, 8.97679)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2277, 0.194743, 8.97679)
 
 [node name="worldfarm_tile28" parent="worldfarm1" instance=ExtResource("23_x7gld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.3144, 0.894444, 17.1979)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.3144, 0.194743, 17.1979)
 
 [node name="worldfarm_tile29" parent="worldfarm1" instance=ExtResource("23_x7gld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2791, 0.894444, 12.886)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2791, 0.194743, 12.886)
 
 [node name="worldfarm_tile30" parent="worldfarm1" instance=ExtResource("23_x7gld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.18751, 0.894444, 17.1802)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.18751, 0.194743, 17.1802)
 
 [node name="worldfarm_tile31" parent="worldfarm1" instance=ExtResource("23_x7gld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.216221, 0.894444, 8.93644)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.216221, 0.194743, 8.93644)
 
 [node name="worldfarm_tile32" parent="worldfarm1" instance=ExtResource("23_x7gld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.216221, 0.894444, 12.886)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.216221, 0.194743, 12.886)
 
 [node name="worldfarm_tile33" parent="worldfarm1" instance=ExtResource("23_x7gld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.25643, 0.894444, 8.97679)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.25643, 0.194743, 8.97679)
 
 [node name="worldfarm_tile34" parent="worldfarm1" instance=ExtResource("23_x7gld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.34306, 0.894444, 17.1979)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.34306, 0.194743, 17.1979)
 
 [node name="worldfarm_tile35" parent="worldfarm1" instance=ExtResource("23_x7gld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.30778, 0.894444, 12.886)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.30778, 0.194743, 12.886)
 
 [node name="worldfarm_tile36" parent="worldfarm1" instance=ExtResource("23_x7gld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.216221, 0.894444, 17.1802)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.216221, 0.194743, 17.1802)
+
+[node name="worldfarm_tile37" parent="worldfarm1" instance=ExtResource("23_x7gld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.2493, -0.0971693, -157.054)
+
+[node name="worldfarm_tile38" parent="worldfarm1" instance=ExtResource("23_x7gld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.2342, -0.0816735, -143.48)
 
 [connection signal="body_shape_entered" from="Section1/Bar Spot 1" to="Player" method="_on_bar_spot_1_body_shape_entered"]
 [connection signal="body_shape_exited" from="Section1/Bar Spot 1" to="Player" method="_on_bar_spot_1_body_shape_exited"]

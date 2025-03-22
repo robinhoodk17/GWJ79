@@ -10,6 +10,7 @@ var seeds_carried : int = 0
 var time : float = 0.0
 
 var saplings_carried=0
+var plants_list:Array[int]=[0,0,0,0]
 
 
 @warning_ignore("unused_signal")

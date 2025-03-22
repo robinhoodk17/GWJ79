@@ -2,15 +2,11 @@ extends CharacterBody3D
 class_name player
 @export_group("farm")
 #region farm variables
-@export var farm1: CSGBox3D
-@export var farm2: CSGBox3D
-@export var farm3: CSGBox3D
-@export var farm4: CSGBox3D
+@onready var farm1: MeshInstance3D = $MeshParent/Farm/farm1
+@onready var farm2: MeshInstance3D = $MeshParent/Farm/farm2
+@onready var farm3: MeshInstance3D = $MeshParent/Farm/farm3
+@onready var farm4: MeshInstance3D = $MeshParent/Farm/farm4
 
-@export var sapling1: MeshInstance3D
-@export var sapling2: MeshInstance3D
-@export var sapling3: MeshInstance3D
-@export var sapling4: MeshInstance3D
 
 @export var farm_1_timer: Timer
 @export var farm_2_timer: Timer
@@ -20,7 +16,7 @@ class_name player
 
 @export var default_material:Material
 @export var planted_material:Material
-@export var sapling_growing_time:float
+@export var sapling_growing_time:float=5
 #endregion
 
 @export_group("controls, camera, and animation")
@@ -77,11 +73,10 @@ var current_health : int = max_health
 #endregion
 @onready var animation_state_machine=$AnimationTree.get("parameters/MoveStateMachine/playback")
 
+
+
 func _ready() -> void:
-	sapling1.visible=false
-	sapling2.visible=false
-	sapling3.visible=false
-	sapling4.visible=false
+
 	farm_1_timer.timeout.connect(_on_farm_1_timer_timeout)
 	farm_2_timer.timeout.connect(_on_farm_2_timer_timeout)
 	farm_3_timer.timeout.connect(_on_farm_3_timer_timeout)
@@ -200,11 +195,11 @@ func state_machine(delta : float) -> void:
 			pass
 
 
-
 func go_idle():	# used to go back to idle state after animation to be used as "Call method track" in animation player
 	current_state=states.IDLE
 	
 func _physics_process(delta: float) -> void:
+	#print(Global.plants_list)
 	#print_debug(current_state)
 	var input_dir : Vector2 = move_action.value_axis_2d
 	if current_state!=states.TRANSITION:
@@ -280,55 +275,97 @@ func die() -> void:
 ##farm
 #region New Code Region
 
-func _on_seed_picked():
+func _on_seed_picked(type):
 
 	match Global.seeds_carried:
 
 		1:
+			Global.plants_list[0]=type
 			farm1.material_override=planted_material
 			farm_1_timer.start(sapling_growing_time)
 		2:
+			Global.plants_list[1]=type
 			farm2.material_override=planted_material
 			farm_2_timer.start(sapling_growing_time)
 		3:
+			Global.plants_list[2]=type
 			farm3.material_override=planted_material
 			farm_3_timer.start(sapling_growing_time)
 		4:
+			Global.plants_list[3]=type
 			farm4.material_override=planted_material
 			farm_4_timer.start(sapling_growing_time)
 			
 func _on_seed_dropped():
 
-	print_debug(Global.seeds_carried)
+	#print_debug(Global.seeds_carried)
 	match Global.seeds_carried:
 
 		0:
 			farm1.material_override=default_material
-			sapling1.visible=false			
+			farm1.get_node("plant1_small").visible=false
+			farm1.get_node("plant2_small").visible=false
+			farm1.get_node("plant3_small").visible=false
+			farm1.get_node("plant4_small").visible=false		
+			Global.plants_list[0]=0
 		1:
 			farm2.material_override=default_material
-			sapling2.visible=false
+			farm2.get_node("plant1_small").visible=false
+			farm2.get_node("plant2_small").visible=false
+			farm2.get_node("plant3_small").visible=false
+			farm2.get_node("plant4_small").visible=false
+			Global.plants_list[1]=0
 		2:
 			farm3.material_override=default_material
-			sapling3.visible=false
+			farm3.get_node("plant1_small").visible=false
+			farm3.get_node("plant2_small").visible=false
+			farm3.get_node("plant3_small").visible=false
+			farm3.get_node("plant4_small").visible=false
+			Global.plants_list[2]=0
 		3:
 			farm4.material_override=default_material
-			sapling4.visible=false
+			farm4.get_node("plant1_small").visible=false
+			farm4.get_node("plant2_small").visible=false
+			farm4.get_node("plant3_small").visible=false
+			farm4.get_node("plant4_small").visible=false
+			Global.plants_list[3]=0
 
 func _on_farm_1_timer_timeout() -> void:
 	Global.saplings_carried+=1
-	sapling1.visible=true
+	display_plant(1)
+	
 func _on_farm_2_timer_timeout() -> void:
 	Global.saplings_carried+=1
-	sapling2.visible=true
+	display_plant(2)
 func _on_farm_3_timer_timeout() -> void:
 	Global.saplings_carried+=1
-	sapling3.visible=true
+	display_plant(3)
 func _on_farm_4_timer_timeout() -> void:
 	Global.saplings_carried+=1
-	sapling4.visible=true
+	display_plant(4)
 
-
+func display_plant(farm_num):
+	var farm=farm1
+	match farm_num:
+		1:
+			farm=farm1
+		2:
+			farm=farm2
+		3:
+			farm=farm3
+		4:
+			farm=farm4
+			
+	match Global.plants_list[farm_num-1]:
+		1:
+			farm.get_node("plant1_small").visible=true
+		2:
+			farm.get_node("plant2_small").visible=true
+		3:
+			farm.get_node("plant3_small").visible=true
+		4:
+			farm.get_node("plant4_small").visible=true
+			
 @warning_ignore("unused_parameter")
 func _on_bar_spot_1_body_shape_entered(body_rid: RID, body: Node3D, body_shape_index: int, local_shape_index: int) -> void:
 	Global.in_sun = !Global.in_sun
