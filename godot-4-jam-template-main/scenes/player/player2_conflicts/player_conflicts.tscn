@@ -14,7 +14,7 @@
 [ext_resource type="Resource" uid="uid://bo0hoqgqx87cp" path="res://input/lock_on.tres" id="8_dmlwb"]
 [ext_resource type="Script" uid="uid://dm7wjvj3tat0d" path="res://ui/ui.gd" id="8_ixiwu"]
 [ext_resource type="PackedScene" uid="uid://cc37235kj4384" path="res://addons/maaacks_ui_sound_controller/base/scenes/Autoloads/ProjectUISoundController.tscn" id="9_1ps34"]
-[ext_resource type="Material" uid="uid://b0502fk24tsy3" path="res://assets/materials/toonshader_maerial.tres" id="9_j4nxn"]
+[ext_resource type="Material" uid="uid://b0502fk24tsy3" path="res://assets/materials/colorpalette1_toon_material.tres" id="9_j4nxn"]
 [ext_resource type="Resource" uid="uid://dev701h4y2c4p" path="res://input/change_lock.tres" id="9_jp832"]
 [ext_resource type="Texture2D" uid="uid://cqjmyimwmbiys" path="res://assets/3d/characters/player/Kaiju_newcolorpalette.png" id="10_007i1"]
 [ext_resource type="AudioStream" uid="uid://5kc55ftsdrvt" path="res://ui/assets/audio/rollover5.ogg" id="10_mtrw4"]

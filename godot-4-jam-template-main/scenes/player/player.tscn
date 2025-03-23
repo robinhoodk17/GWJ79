@@ -15,7 +15,7 @@
 [ext_resource type="Resource" uid="uid://bo0hoqgqx87cp" path="res://input/lock_on.tres" id="8_dmlwb"]
 [ext_resource type="Script" uid="uid://dm7wjvj3tat0d" path="res://ui/ui.gd" id="8_ixiwu"]
 [ext_resource type="PackedScene" uid="uid://cc37235kj4384" path="res://addons/maaacks_ui_sound_controller/base/scenes/Autoloads/ProjectUISoundController.tscn" id="9_1ps34"]
-[ext_resource type="Material" uid="uid://b0502fk24tsy3" path="res://assets/materials/toonshader_maerial.tres" id="9_j4nxn"]
+[ext_resource type="Material" uid="uid://b0502fk24tsy3" path="res://assets/materials/colorpalette1_toon_material.tres" id="9_j4nxn"]
 [ext_resource type="Resource" uid="uid://dev701h4y2c4p" path="res://input/change_lock.tres" id="9_jp832"]
 [ext_resource type="Texture2D" uid="uid://cqjmyimwmbiys" path="res://assets/3d/characters/player/Kaiju_newcolorpalette.png" id="10_007i1"]
 [ext_resource type="AudioStream" uid="uid://5kc55ftsdrvt" path="res://ui/assets/audio/rollover5.ogg" id="10_mtrw4"]
@@ -4270,16 +4270,16 @@ bones/6/name = "Left Eyelid"
 bones/6/parent = 4
 bones/6/rest = Transform3D(0.0493214, -0.998775, 0.0038372, 0.546822, 0.0302176, 0.836703, -0.835794, -0.0391691, 0.547643, -0.266384, 1.49088, 0.272608)
 bones/6/enabled = true
-bones/6/position = Vector3(-0.285767, 1.50594, 0.262205)
-bones/6/rotation = Quaternion(-0.379808, 0.337238, 0.585761, 0.631586)
-bones/6/scale = Vector3(1, 1, 1)
+bones/6/position = Vector3(-0.438377, 1.54021, 0.276114)
+bones/6/rotation = Quaternion(-0.639852, 0.0948875, 0.413532, 0.640763)
+bones/6/scale = Vector3(1.08327, 1.08327, 1.08327)
 bones/7/name = "Right Eyelid"
 bones/7/parent = 4
 bones/7/rest = Transform3D(-0.0094775, 0.997914, -0.063855, 0.749329, 0.0493717, 0.660355, 0.66213, -0.0415899, -0.748234, 0.267038, 1.48092, 0.273869)
 bones/7/enabled = true
-bones/7/position = Vector3(0.283795, 1.49343, 0.27647)
-bones/7/rotation = Quaternion(0.663983, 0.658619, 0.207553, -0.286826)
-bones/7/scale = Vector3(1.03199, 1.03199, 1.03199)
+bones/7/position = Vector3(0.477001, 1.51559, 0.326681)
+bones/7/rotation = Quaternion(0.681257, 0.546592, -0.124165, -0.470861)
+bones/7/scale = Vector3(1.08872, 1.08872, 1.08872)
 bones/8/name = "Lower Face"
 bones/8/parent = 3
 bones/8/rest = Transform3D(0.996135, -0.00153921, -0.0878207, 0.0873069, 0.126747, 0.988085, 0.00961016, -0.991934, 0.126392, -7.5549e-08, 1.92539, 9.94789e-08)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://cm284gwx7qpyt"]
+[gd_scene load_steps=48 format=4 uid="uid://cm284gwx7qpyt"]
 
 [ext_resource type="Script" uid="uid://dqih6i2t5n4pe" path="res://scripts/enable_guide.gd" id="1_mqemg"]
 [ext_resource type="Resource" uid="uid://v5u0dyabni7e" path="res://input/default_mapping_context.tres" id="2_y1ygp"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://bw6h0b07qrtvl" path="res://assets/3d/level1.blend" id="12_0rf43"]
 [ext_resource type="PackedScene" uid="uid://ch8gse74drulk" path="res://scenes/enemies/small_kaiju.tscn" id="12_h5v8l"]
 [ext_resource type="Script" uid="uid://cxhiheuo0y8e5" path="res://scripts/killbox.gd" id="13_60fbq"]
+[ext_resource type="PackedScene" uid="uid://b6ldwhy1nw5fc" path="res://scenes/enemies/dragon_enemy.tscn" id="13_72pjs"]
 [ext_resource type="Material" uid="uid://0iqgmgg2101e" path="res://assets/materials/floor_material.tres" id="14_x7gld"]
 [ext_resource type="PackedScene" uid="uid://cp8g1km0wbohh" path="res://scenes/terrain/terrain_events/start_combat.tscn" id="14_y1ygp"]
 [ext_resource type="PackedScene" uid="uid://djr1wp2hgfg1s" path="res://scenes/terrain/seed.tscn" id="15_xcm3i"]
@@ -278,6 +279,7 @@ shape = SubResource("BoxShape3D_tnacl")
 
 [node name="StartCombat" parent="Section1" instance=ExtResource("14_y1ygp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.710213, 0.5, -114.358)
+visible = false
 days_for_respawn = 0
 
 [node name="CollisionShape3D" parent="Section1/StartCombat" index="0"]
@@ -307,6 +309,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5246, 1.8663, 90.1779)
 
 [node name="SmallKaiju8" parent="Section1/StartCombat" instance=ExtResource("12_h5v8l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.23467, 1.8663, 82.8527)
+
+[node name="dragon_enemy" parent="Section1/StartCombat" instance=ExtResource("13_72pjs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.20842, 2.485)
 
 [node name="Trees" type="Node3D" parent="Section1"]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 4.10404, 0, 0)
