@@ -495,11 +495,10 @@ material_override = ExtResource("14_x7gld")
 [node name="city_plane" parent="city" index="5"]
 material_override = ExtResource("14_x7gld")
 
-[node name="StaticBody3D" parent="city/Cube_002" index="0" node_paths=PackedStringArray("pop_up") groups=["interactable"]]
+[node name="StaticBody3D" parent="city/Cube_002" index="0" groups=["interactable"]]
 collision_layer = 5
 collision_mask = 3
 script = ExtResource("8_i3jkc")
-pop_up = NodePath("")
 
 [node name="Seeds" type="Node" parent="."]
 
