@@ -37,15 +37,42 @@ gdscript/warnings/inferred_declaration=1
 
 [dialogic]
 
-directories/dch_directory={}
-directories/dtl_directory={}
+directories/dch_directory={
+"Abe": "res://Characters/Abe.dch",
+"Aelia": "res://Characters/Aelia.dch",
+"Baron": "res://Characters/Baron.dch",
+"Celebrity": "res://Characters/Celebrity.dch",
+"Child": "res://Characters/Child.dch",
+"Crowd": "res://Characters/Crowd.dch",
+"Explosion": "res://Characters/Explosion.dch",
+"Gaiamon": "res://Characters/Gaiamon.dch",
+"Galloway": "res://Characters/Galloway.dch",
+"Jo": "res://Characters/Jo.dch",
+"Mechamon": "res://Characters/Mechamon.dch",
+"Millionaire": "res://Characters/Millionaire.dch",
+"Millionaire 1": "res://Characters/Millionaire 1.dch",
+"Millionaire 2": "res://Characters/Millionaire 2.dch",
+"Mysterious": "res://Characters/Mysterious.dch",
+"Turing": "res://Characters/Turing.dch"
+}
+directories/dtl_directory={
+"After_Credits": "res://Timelines/After_Credits.dtl",
+"End_Game": "res://Timelines/End_Game.dtl",
+"Quest_1_End": "res://Timelines/Quest_1_End.dtl",
+"Quest_1_Start": "res://Timelines/Quest_1_Start.dtl",
+"Quest_2_End": "res://Timelines/Quest_2_End.dtl",
+"Quest_2_Start": "res://Timelines/Quest_2_Start.dtl",
+"Quest_3_End": "res://Timelines/Quest_3_End.dtl",
+"Quest_3_Start": "res://Timelines/Quest_3_Start.dtl",
+"Quest_4_Actual_End": "res://Timelines/Quest_4_Actual_End.dtl",
+"Quest_4_Actual_Start": "res://Timelines/Quest_4_Actual_Start.dtl",
+"Quest_4_Start": "res://Timelines/Quest_4_Start.dtl"
+}
 
 [display]
 
-window/size/viewport_width=640
-window/size/viewport_height=360
-window/size/window_width_override=1280
-window/size/window_height_override=720
+window/size/viewport_width=950
+window/size/viewport_height=600
 window/stretch/mode="canvas_items"
 
 [dotnet]

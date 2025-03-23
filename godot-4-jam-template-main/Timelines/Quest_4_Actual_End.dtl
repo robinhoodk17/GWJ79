@@ -1,0 +1,24 @@
+join Gaiamon (gaiamon-happy) left
+Millionaire: Baron Kristopher! Our beastly servant has returned with the rose!
+join Baron (baron-excited) right
+Baron (baron-excited): Ha ha ha! Perfect! Excellent! Thank you so much my loyal pet. Next I want you to retrieve some saffron, fine liquor and-
+join Explosion (Explosion) center
+*BOOOOOOOOM!!!*
+Gaiamon (gaiamon-concerned): (!)
+leave Explosion
+Millionaire: What the-
+Baron (baron-concerned): That sounded like an explosion! What is going on!?
+Celebrity: Look over there! There is smoke on the horizon!
+Baron (baron-concerned): Is that not where the city is located?
+Gaiamon (gaiamon-concerned): (Oh no! I gotta go!)
+update Gaiamon rightmost
+update Baron leftmost
+Baron (baron-angry): Wait! Hold on! You cannot go, we need you to go get saffron, fine liquor and-
+Gaiamon (gaiamon-angry): (*Glaaaaaare*)
+Baron (baron-concerned): That is an o-order from your m-m-master, you hear!
+Gaiamon (gaiamon-angry): (*Glaaaaaare*)
+Baron (baron-concerned): I-I-I m-mean… p-p-p-pretty please?
+Gaiamon (gaiamon-angry): (*Glaaaaaare*)
+Baron (baron-concerned): …Okay, you can go… \:(
+Gaiamon (gaiamon-happy): (Hehehe. This human is funny! Wish I could stay and play more but I need to go check on the others!)
+[end_timeline]

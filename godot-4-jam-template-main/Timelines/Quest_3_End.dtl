@@ -1,0 +1,13 @@
+join Gaiamon (gaiamon-happy) right
+join Abe (watanabe-happy) left
+Gaiamon (gaiamon-happy): (Here you go!)
+Abe (watanabe-happy): Oh thank you Gaiamon! You truly are worthy of the title “Protector of Humanity”. I will harvest these plants off your back at once.
+join Jo center
+Jo: *Hick*, Heeeeeeey man… *Hick*
+Abe (watanabe-concerned): Jo? Where have you been all day?! Doctor Galloway has been looking for you and-
+Jo: Listen I w-was told to deliver this missive to Gaiamon. The rich #@!?s in the bunker wants to talk to you.
+Gaiamon (gaiamon-concerned): (Huh? What's a missive?)
+leave Jo
+Abe (watanabe-angry): I think what my drunk fool of a friend means to say is that the people that live in the big bunker need your help Gaiamon.
+Gaiamon (gaiamon-happy): (OK!)
+[end_timeline]

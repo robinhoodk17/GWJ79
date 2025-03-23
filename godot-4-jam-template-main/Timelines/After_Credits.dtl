@@ -1,0 +1,10 @@
+join Aelia (rodrigues-excited) right
+Aelia (rodrigues-excited): Well done Gaiamon! You defeated Mechamon and saved the day!
+join Galloway (galloway-happy) left
+Galloway (galloway-happy): I think that we all learned something from this experience.
+leave Galloway
+join Abe (watanabe-happy) right
+Abe (watanabe-happy): You could say that we all GREW in some way.
+join Gaiamon (gaiamon-happy) center
+Gaiamon (gaiamon-happy): (Yeah, this really has been a WILD ((JAM)) day.)
+[end_timeline]

@@ -1,0 +1,43 @@
+join Mechamon left
+Mechamon: *ROAR*
+join Gaiamon center
+Gaiamon: (W-Who are you? Why are you attacking my friend's home!?)
+Mechamon: *ROAR*
+Mysterious: Hahaha… I did not design it to be able to understand you. Not like there would bbe any use to converse with an imposter!
+leave Mechamon
+join Aelia center
+Aelia: W-Who are you!? Show yourself!
+Mysterious: Hahaha! AHAHAHAHAHAHA! I suppose it would be fit to reveal to you all the face of your destroyer!
+leave Aelia
+join Turing center
+Turing: My name is Dr. Turing M. Asimov, creator of Mechamon. Humanity's greatest scientific mind within the field of robotics!
+Turing: After the fall of human civilization, the greatest of minds gathered together to devise a plan to one day restore humanity to its former glory.
+update Gaiamon
+Turing: But any proposal I gave was denied and instead they went with some foolish notion of “living alongside nature” and to “not repeat the failings of the past”.
+update Turing
+Turing: FOOLS! This is not civilization! This is servitude to nature! Are we not the masters of the earth?! Well… If you all won’t then I shall be its master! You see I-
+Gaiamon: (ZZZZZZzzzzzz…)
+Turing: H-How dare you slumber through my speech you damned lizard brain! Do you know how long it took to memorize it all!?
+Turing: Well… no matter. I have prattled on for long enough. Mechamon, destroy Gaiamon and take its place as “Destroyer of Humanity”! Ahahahahaha!!!
+leave Turing
+join Mechamon center
+Mechamon: Target Spotted. Entering Battle Mode. Remove Limiters. Reaffirm Objective\: Destroy Gaiamon. Replace Gaiamon. Become Better Gaiamon.
+join Aelia center
+update Gaiamon
+Aelia: You got this Gaiamon! I believe in you!
+leave Aelia
+join Abe center
+Abe: Go Gaiamon! Send that robobeast back to the scrapheap it crawled out of!
+leave Abe
+join Jo center
+Jo: Oh I must have *hic* drunk too much… I am seeing double… T-Two Gaiamon’s?
+leave Jo
+join Galloway center
+Gaiamon: Please win Gaiamon!
+leave Galloway
+join Child center
+Child: You can’t lose Gaiamon!
+update Mechamon
+Mechamon: *ROAR*
+END
+[end_timeline]
