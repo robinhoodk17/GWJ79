@@ -28,14 +28,18 @@ var launch_distance : float = 0.0
 var was_launched_ago : float = 0.0
 var launch_direction : Vector3 = Vector3.ZERO
 var launch_speed : float = 0.0
-
+var already_started : bool = false
 func _ready() -> void:
-	attack_cd_timer.timeout.connect(start_walking)
+	_current_health = max_health
+	if !already_started:
+		attack_cd_timer.timeout.connect(start_walking)
+	already_started = true
 	current_state = states.IDLE
 	call_deferred("_late_ready")
 
 
 func _late_ready() -> void:
+	animation_player.play("RESET")
 	nav_agent.height = kaiju_height
 	nav_agent.radius = kaiju_radius
 	set_physics_process(false)
@@ -43,6 +47,7 @@ func _late_ready() -> void:
 
 func acquire_target(body : Node3D) -> void:
 	set_physics_process(true)
+	show()
 	player_node = body
 	current_state = states.WALKING
 
@@ -79,6 +84,7 @@ func _physics_process(delta: float) -> void:
 				was_launched_ago = 0
 				start_walking()
 		states.THROWN:
+			
 			if thrown_towards != null:
 				velocity = (thrown_towards.global_position - global_position).normalized() * launch_speed
 				move_and_slide()
@@ -127,7 +133,6 @@ func take_damage(how_much : int, launch_force : float, _launch_direction : Vecto
 
 
 func start_ragdoll():
-	Signalbus.enemy_died.emit(self)
 	##actually implement stuff
 	#physical_bones_start_simulation()
 	lockable = false
@@ -146,7 +151,7 @@ func start_throw(target : Node3D, _throw_speed, _throw_distance, damage_done):
 	set_collision_layer_value(2, true)
 	current_state = states.THROWN
 	thrown_towards = target
-	
+	set_physics_process(true)
 
 
 func die() -> void:
@@ -156,4 +161,4 @@ func die() -> void:
 
 func delete_entity() -> void:
 	Signalbus.enemy_died.emit(self)
-	queue_free()
+	get_parent().remove_child(self)

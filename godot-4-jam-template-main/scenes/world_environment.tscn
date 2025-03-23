@@ -47,7 +47,7 @@ directional_shadow_pancake_size = 80.0
 [node name="Moon" type="DirectionalLight3D" parent="DayCycle"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
 light_color = Color(0.611086, 0.611833, 0.851604, 1)
-light_energy = 0.25
+light_energy = 0.5
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 light_angular_distance = 5.0
