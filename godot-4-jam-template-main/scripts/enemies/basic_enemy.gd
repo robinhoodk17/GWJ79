@@ -168,4 +168,5 @@ func die() -> void:
 
 func delete_entity() -> void:
 	Signalbus.enemy_died.emit(self)
+	await get_tree().process_frame
 	get_parent().remove_child(self)

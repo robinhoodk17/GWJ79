@@ -20,13 +20,12 @@ viewport_path = NodePath("Sprite3D/SubViewport")
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4mpuu"]
 bg_color = Color(1, 0, 0, 0.784314)
 
-[node name="SmallKaiju" type="CharacterBody3D" node_paths=PackedStringArray("nav_agent", "attack_raycast", "animation_player", "attack_cd_timer") groups=["enemy"]]
+[node name="SmallKaiju" type="CharacterBody3D" node_paths=PackedStringArray("nav_agent", "attack_raycast", "attack_cd_timer") groups=["enemy"]]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_ohqv6")
 nav_agent = NodePath("NavigationAgent3D")
 attack_raycast = NodePath("AttackRaycast")
-animation_player = NodePath("")
 attack_cd_timer = NodePath("Attack_CD")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

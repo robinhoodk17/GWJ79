@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=4 uid="uid://cm284gwx7qpyt"]
+[gd_scene load_steps=55 format=4 uid="uid://cm284gwx7qpyt"]
 
 [ext_resource type="Script" uid="uid://dqih6i2t5n4pe" path="res://scripts/enable_guide.gd" id="1_mqemg"]
 [ext_resource type="Resource" uid="uid://v5u0dyabni7e" path="res://input/default_mapping_context.tres" id="2_y1ygp"]
@@ -24,7 +24,8 @@
 [ext_resource type="Material" uid="uid://dwmy1gd45q8ti" path="res://assets/materials/forest_floor_material.tres" id="22_60fbq"]
 [ext_resource type="PackedScene" uid="uid://cpnv5epwbqi4f" path="res://assets/3d/city.blend" id="22_cgwd4"]
 [ext_resource type="PackedScene" uid="uid://dnj4vd42wu5uj" path="res://scenes/terrain/worldfarm_tile.tscn" id="23_x7gld"]
-[ext_resource type="AudioStream" uid="uid://budghs6b45oh3" path="res://assets/audio/themes/Main Theme.mp3" id="24_h5v8l"]
+[ext_resource type="AudioStream" uid="uid://dccvwdnypm55p" path="res://assets/audio/themes/City Theme.mp3" id="25_1ytpk"]
+[ext_resource type="AudioStream" uid="uid://dkk55s016dbpt" path="res://assets/audio/themes/City - Fight Theme.mp3" id="26_1ytpk"]
 [ext_resource type="PackedScene" uid="uid://c2ow85x2y4tmc" path="res://scenes/terrain/terrain_events/change_level.tscn" id="26_rxav6"]
 [ext_resource type="Texture2D" uid="uid://ow5g3rsdnfjg" path="res://assets/textures/City.png" id="27_2pqk4"]
 [ext_resource type="PackedScene" uid="uid://cwyk20gm1yjhr" path="res://scenes/pop_up_with_message.tscn" id="28_n8t7c"]
@@ -69,19 +70,6 @@ emission_enabled = true
 material = SubResource("StandardMaterial3D_nof2k")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_t6k5e"]
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_1ij33"]
-viewport_path = NodePath("SubViewport")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ytpk"]
-resource_local_to_scene = true
-transparency = 1
-vertex_color_use_as_albedo = true
-albedo_texture = SubResource("ViewportTexture_1ij33")
-billboard_mode = 1
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_spx4u"]
-viewport_path = NodePath("SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wqi8m"]
 resource_name = "Material"
@@ -218,6 +206,19 @@ transform_format = 1
 instance_count = 50
 mesh = SubResource("ArrayMesh_l3hwt")
 buffer = PackedFloat32Array(-0.100625, -2.3571e-10, 0.00868985, 6.03114, -9.52709e-07, -0.101, -1.10348e-05, -0.501488, 0.00868985, -1.10758e-05, 0.100625, -203.66, -0.10099, -9.70562e-05, 0.00139275, -2.57902, 9.70354e-05, -0.101, -2.17926e-06, -0.503478, 0.00139275, -8.4097e-07, 0.10099, -160.163, -0.100625, -2.3571e-10, 0.00868985, 6.77471, -9.52709e-07, -0.101, -1.10348e-05, -0.50164, 0.00868985, -1.10758e-05, 0.100625, -202.272, -0.100571, 1.42933e-10, 0.00929655, 2.48214, -9.03307e-07, -0.101, -9.77054e-06, -0.508042, 0.00929655, -9.81221e-06, 0.100571, -134.704, 0.100678, -6.67815e-11, -0.00805718, 14.0151, -7.89574e-07, 0.101, -9.86691e-06, 0.498431, 0.00805718, 9.89846e-06, 0.100678, -201.438, -0.100834, -0.000429838, -0.00577059, -20.6104, 0.000579202, -0.100965, -0.00260022, -0.274404, -0.00575752, -0.00262904, 0.100801, -56.7966, -0.100625, -2.3571e-10, 0.0086898, 11.5929, -9.52704e-07, -0.101, -1.10348e-05, -0.502003, 0.0086898, -1.10758e-05, 0.100625, -198.961, 0.100781, -1.80227e-10, -0.00664232, -11.7775, 1.4726e-06, 0.101, 2.23405e-05, 0.511322, 0.00664232, -2.2389e-05, 0.100781, -163.436, -0.10099, -9.70562e-05, 0.00139275, -2.42406, 9.70354e-05, -0.101, -2.17926e-06, -0.503818, 0.00139275, -8.4097e-07, 0.10099, -137.195, 0.0759578, 0.000304703, -0.0665682, -14.4248, 0.00211198, 0.100937, 0.0028719, 0.621109, 0.0665354, -0.00355182, 0.075904, -92.3699, 0.101, 1.5716e-05, 1.06916e-05, 13.957, -1.57148e-05, 0.101, -1.11582e-05, 0.491076, -1.06934e-05, 1.11565e-05, 0.101, -134.595, 0.100736, -5.25318e-11, -0.00729754, -4.96594, -1.51494e-07, 0.101, -2.09196e-06, 0.499443, 0.00729754, 2.09744e-06, 0.100736, -198.189, -0.0969093, -0.000542061, -0.0284482, -0.0832114, 0.00058033, -0.100998, -5.24468e-05, -0.523483, -0.0284475, -0.000213781, 0.0969108, -15.8073, -0.0973954, 0, 0.026742, -15.7578, 0, -0.101, 0, 0, 0.026742, 0, 0.0973954, -26.0031, -0.100322, -0.00384558, -0.0110327, 2.2649, 0.00364484, -0.100914, 0.00203167, -0.0986825, -0.0111007, 0.00161988, 0.100375, -57.9786, 0.100736, -5.25318e-11, -0.00729756, -0.99021, -1.51494e-07, 0.101, -2.09196e-06, 0.499062, 0.00729756, 2.09744e-06, 0.100736, -179.846, -0.100821, 0.00332026, -0.00501848, -5.17375, -0.0033281, -0.100945, 7.51395e-05, -0.194073, -0.00501328, 0.000240372, 0.100875, -63.2982, 0.0904609, -0.00703254, -0.0443662, -33.4385, 0.00467102, 0.100686, -0.00643591, 1.03867, 0.0446766, 0.0037125, 0.0905053, -18.6031, 0.100834, 0.000304892, -0.0057787, -22.8137, -0.000455192, 0.100965, -0.00261571, 1.08189, 0.00576881, 0.00263746, 0.100801, -69.9907, -0.0913548, 0.00314712, 0.042958, -3.19614, -0.00378252, -0.100927, -0.000649974, -0.421578, 0.0429067, -0.00219671, 0.0914067, -42.1881, -0.0918476, 0.00224066, 0.0419523, -27.3875, -0.00306632, -0.100945, -0.00132176, 0.0447449, 0.0419001, -0.00247564, 0.0918654, -74.6404, -0.0996403, -0.00882233, -0.0139638, -11.7285, 0.00890787, -0.100606, 0, -0.237744, -0.0139094, -0.00123156, 0.10003, -17.3167, -0.100955, -7.6564e-06, -0.00301717, -21.874, -3.91682e-05, -0.100988, 0.00156684, -0.0678149, -0.00301692, 0.00156731, 0.100943, -42.306, 0.0894352, 0.0176904, -0.0434672, -6.51288, -0.0181415, 0.0993093, 0.0030903, 1.0856, 0.0432809, 0.0050711, 0.0911156, -34.6856, 0.000242366, 0.101, 1.27144e-05, 15.2595, -0.101, 0.000242367, -1.10739e-05, -0.326038, -1.11044e-05, -1.26878e-05, 0.101, -167.986, -0.100988, -0.000703088, -0.00135331, -16.8363, 0.000702245, -0.100998, 6.75904e-05, -0.455637, -0.00135375, 5.81733e-05, 0.100991, -104.755, 0.100977, 0.000705828, 0.00205069, -15.4665, -0.000706428, 0.100998, 2.23888e-05, 0.507903, -0.00205048, -3.67269e-05, 0.100979, -184.907, -0.0969093, -0.000542061, -0.0284482, -4.70356, 0.00058033, -0.100998, -5.24498e-05, -0.478872, -0.0284474, -0.000213784, 0.0969108, -25.1677, -0.100979, -0.000307293, 0.00205198, -5.28045, 0.000307809, -0.101, 2.23043e-05, -0.499425, 0.0020519, 2.85533e-05, 0.100979, -98.4384, 0.100781, -1.80227e-10, -0.00664232, -10.7986, 1.4726e-06, 0.101, 2.23405e-05, 0.505344, 0.00664232, -2.2389e-05, 0.100781, -190.399, 8.73064e-08, 0.101, 1.06916e-05, 15.2568, -0.100997, -3.13199e-10, 0.000827685, -0.167269, 0.000827685, -1.0692e-05, 0.100997, -188.738, -0.00113338, 0.0678244, -0.0748303, -0.0663003, -0.100839, 0.00337517, 0.00458648, 0.311522, 0.0055806, 0.0747627, 0.0676786, -14.7176, -0.0973052, -0.000250761, -0.0270671, -2.99924, 5.64173e-05, -0.100997, 0.000732862, -0.478508, -0.0270682, 0.000690933, 0.0973028, -91.1217, 0.100865, 0.000486784, -0.00519652, -10.2062, -0.000482111, 0.100999, 0.000103226, 0.663291, 0.00519695, -7.82832e-05, 0.100866, -56.3328, -0.100499, 2.54978e-10, 0.010051, -12.1087, -2.17001e-07, -0.101, -2.16721e-06, -0.500862, 0.010051, -2.17805e-06, 0.100499, -184.763, -0.100499, 2.54978e-10, 0.010051, -9.41212, -2.17001e-07, -0.101, -2.16721e-06, -0.500625, 0.010051, -2.17805e-06, 0.100499, -195.734, 0.100736, -5.25318e-11, -0.00729757, -2.98964, -1.51494e-07, 0.101, -2.09196e-06, 0.499431, 0.00729757, 2.09744e-06, 0.100736, -197.652, -0.100955, -7.65641e-06, -0.00301717, -17.2586, -3.91682e-05, -0.100988, 0.00156684, -0.0136803, -0.00301692, 0.00156731, 0.100943, -38.7954, 0.0852901, 0.00025779, -0.0540974, -6.11688, -0.000169445, 0.101, 0.000214145, 0.641555, 0.0540978, -9.00788e-05, 0.0852902, -68.9746, -0.100625, -2.3571e-10, 0.0086898, 14.0275, -9.52704e-07, -0.101, -1.10348e-05, -0.507522, 0.0086898, -1.10758e-05, 0.100625, -148.623, 0.100697, -0.00755869, -0.00201407, -29.746, 0.00772163, 0.100209, 0.00997602, 1.86426, 0.00125171, -0.0101, 0.100486, -38.9633, -0.10009, 3.45633e-06, 0.0135293, -33.9855, -3.50881e-05, -0.101, -0.00023378, -0.497648, 0.0135292, -0.000236374, 0.100089, 0.740621, -0.100988, -0.000703088, -0.00135331, -17.8752, 0.000702245, -0.100998, 6.75904e-05, -0.481611, -0.00135375, 5.81733e-05, 0.100991, -162.407, -0.0881018, -0.000561858, 0.0493837, -16.6692, 0.00140824, -0.100981, 0.00136345, -0.27315, 0.0493668, 0.00187788, 0.0880931, -54.1006, -0.100322, -0.00384558, -0.0110327, 7.11737, 0.00364484, -0.100914, 0.00203167, -0.269447, -0.0111006, 0.00161988, 0.100375, -57.097, -0.100988, -0.000703088, -0.00135331, -19.2447, 0.000702245, -0.100998, 6.75904e-05, -0.433265, -0.00135375, 5.81733e-05, 0.100991, -95.0221, 0.100736, -5.25318e-11, -0.00729757, 2.30519, -1.51494e-07, 0.101, -2.09196e-06, 0.499751, 0.00729757, 2.09744e-06, 0.100736, -213.047, 0.100902, -7.78964e-11, -0.0044491, -17.3726, 2.98873e-06, 0.101, 6.77803e-05, 0.512454, 0.0044491, -6.78462e-05, 0.100902, -196.57, 0.100736, -5.25318e-11, -0.00729757, -3.3101, -1.51494e-07, 0.101, -2.09196e-06, 0.498873, 0.00729757, 2.09744e-06, 0.100736, -170.741, -0.100625, -2.3571e-10, 0.0086898, 13.9462, -9.52704e-07, -0.101, -1.10348e-05, -0.500345, 0.0086898, -1.10758e-05, 0.100625, -214.085)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_1ytpk"]
+viewport_path = NodePath("Sprite3D/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_spx4u"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_1ytpk")
+billboard_mode = 1
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_t02xc"]
+viewport_path = NodePath("Sprite3D/SubViewport")
 
 [node name="Main Path" type="Node3D"]
 script = ExtResource("1_mqemg")
@@ -498,64 +499,45 @@ material_override = ExtResource("14_x7gld")
 collision_layer = 5
 collision_mask = 3
 script = ExtResource("8_i3jkc")
-pop_up = NodePath("../PopUp")
-
-[node name="PopUp" parent="city/Cube_002" index="1" instance=ExtResource("21_x7gld")]
-transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -2.5871, 6.20264, 0.964905)
-
-[node name="Sprite3D" parent="city/Cube_002/PopUp" index="1"]
-material_override = SubResource("StandardMaterial3D_1ytpk")
-texture = SubResource("ViewportTexture_spx4u")
+pop_up = NodePath("")
 
 [node name="Seeds" type="Node" parent="."]
 
 [node name="Seed" parent="Seeds" instance=ExtResource("15_xcm3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.23318, 0.598802, -166.412)
-type = 4
 
 [node name="Seed2" parent="Seeds" instance=ExtResource("15_xcm3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.30203, 0.6, -138.785)
-type = 4
 
 [node name="Seed3" parent="Seeds" instance=ExtResource("15_xcm3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.32021, 0.6, -138.785)
-type = 4
 
 [node name="Seed4" parent="Seeds" instance=ExtResource("15_xcm3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.32021, 0.6, -134.692)
-type = 4
 
 [node name="Seed5" parent="Seeds" instance=ExtResource("15_xcm3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.80212, 0.6, -132.66)
-type = 3
 
 [node name="Seed6" parent="Seeds" instance=ExtResource("15_xcm3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.404222, 0.6, -132.66)
-type = 3
 
 [node name="Seed7" parent="Seeds" instance=ExtResource("15_xcm3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.45537, 0.6, -136.889)
-type = 3
 
 [node name="Seed8" parent="Seeds" instance=ExtResource("15_xcm3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.735092, 0.6, -138.785)
-type = 3
 
 [node name="Seed9" parent="Seeds" instance=ExtResource("15_xcm3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.24672, 0.6, -138.785)
-type = 2
 
 [node name="Seed10" parent="Seeds" instance=ExtResource("15_xcm3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.24672, 0.6, -134.692)
-type = 2
 
 [node name="Seed11" parent="Seeds" instance=ExtResource("15_xcm3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.23518, 0.6, -132.66)
-type = 2
 
 [node name="Seed12" parent="Seeds" instance=ExtResource("15_xcm3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.97116, 0.6, -132.66)
-type = 2
 
 [node name="Seed13" parent="Seeds" instance=ExtResource("15_xcm3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0185971, 0.6, -136.889)
@@ -571,78 +553,63 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.72069, 0.6, -134.692)
 
 [node name="Seed17" parent="Seeds" instance=ExtResource("15_xcm3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.23878, 0.6, -132.66)
-type = 3
 
 [node name="Seed18" parent="Seeds" instance=ExtResource("15_xcm3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4451, 0.6, -132.66)
-type = 3
 
 [node name="Seeds2" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86.3986, 0.290628, 129.713)
 
 [node name="Seed2" parent="Seeds2" instance=ExtResource("15_xcm3i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.30203, 0.6, -138.785)
-type = 4
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.85036, 0.6, -133.569)
 
 [node name="Seed3" parent="Seeds2" instance=ExtResource("15_xcm3i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.32021, 0.6, -138.785)
-type = 4
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.85036, 0.6, -136.551)
 
 [node name="Seed4" parent="Seeds2" instance=ExtResource("15_xcm3i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.32021, 0.6, -134.692)
-type = 4
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.75736, 0.6, -136.551)
 
 [node name="Seed5" parent="Seeds2" instance=ExtResource("15_xcm3i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.80212, 0.6, -132.66)
-type = 3
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.72536, 0.6, -132.069)
 
 [node name="Seed6" parent="Seeds2" instance=ExtResource("15_xcm3i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.404222, 0.6, -132.66)
-type = 3
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.72536, 0.6, -141.275)
 
 [node name="Seed7" parent="Seeds2" instance=ExtResource("15_xcm3i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.45537, 0.6, -136.889)
-type = 3
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.95437, 0.6, -137.416)
 
 [node name="Seed8" parent="Seeds2" instance=ExtResource("15_xcm3i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.735092, 0.6, -138.785)
-type = 3
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.85036, 0.6, -140.136)
 
 [node name="Seed9" parent="Seeds2" instance=ExtResource("15_xcm3i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.24672, 0.6, -138.785)
-type = 2
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.85036, 0.6, -143.118)
 
 [node name="Seed10" parent="Seeds2" instance=ExtResource("15_xcm3i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.24672, 0.6, -134.692)
-type = 2
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.75736, 0.6, -143.118)
 
 [node name="Seed11" parent="Seeds2" instance=ExtResource("15_xcm3i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.23518, 0.6, -132.66)
-type = 2
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.72536, 0.6, -138.636)
 
 [node name="Seed12" parent="Seeds2" instance=ExtResource("15_xcm3i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.97116, 0.6, -132.66)
-type = 2
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.72536, 0.6, -147.842)
 
 [node name="Seed13" parent="Seeds2" instance=ExtResource("15_xcm3i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0185971, 0.6, -136.889)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.95437, 0.6, -140.89)
 
 [node name="Seed14" parent="Seeds2" instance=ExtResource("15_xcm3i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.73887, 0.6, -138.785)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.85036, 0.6, -143.61)
 
 [node name="Seed15" parent="Seeds2" instance=ExtResource("15_xcm3i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.72069, 0.6, -138.785)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.85036, 0.6, -146.592)
 
 [node name="Seed16" parent="Seeds2" instance=ExtResource("15_xcm3i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.72069, 0.6, -134.692)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.75736, 0.6, -146.592)
 
 [node name="Seed17" parent="Seeds2" instance=ExtResource("15_xcm3i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.23878, 0.6, -132.66)
-type = 3
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.72536, 0.6, -142.11)
 
 [node name="Seed18" parent="Seeds2" instance=ExtResource("15_xcm3i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4451, 0.6, -132.66)
-type = 3
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.72536, 0.6, -151.316)
 
 [node name="worldfarm1" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.017, 0.788385, -5.27965)
@@ -762,7 +729,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.2493, -0.0971693, -157.054
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.2342, -0.0816735, -143.48)
 
 [node name="theme_sound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("24_h5v8l")
+stream = ExtResource("25_1ytpk")
+bus = &"Music"
+
+[node name="combat_theme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("26_1ytpk")
 bus = &"Music"
 
 [node name="Forest" parent="." instance=ExtResource("26_rxav6")]
@@ -799,6 +770,26 @@ action = ExtResource("31_1ij33")
 message = "Bite"
 turn_off = false
 
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.0695, 2.94782, 0)
+material_override = SubResource("StandardMaterial3D_spx4u")
+texture = SubResource("ViewportTexture_t02xc")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D"]
+transparent_bg = true
+
+[node name="Label" type="Label" parent="Sprite3D/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Each area has 
+its own seeds"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="body_shape_entered" from="Section1/Bar Spot 1" to="Player" method="_on_bar_spot_1_body_shape_entered"]
 [connection signal="body_shape_exited" from="Section1/Bar Spot 1" to="Player" method="_on_bar_spot_1_body_shape_exited"]
 [connection signal="body_shape_entered" from="Section1/Bar Spot 2" to="Player" method="_on_bar_spot_2_body_shape_entered"]
@@ -810,6 +801,5 @@ turn_off = false
 [editable path="Section1/StartCombat"]
 [editable path="Section1/Trees/Tree1"]
 [editable path="city"]
-[editable path="city/Cube_002/PopUp"]
 [editable path="Forest"]
 [editable path="Ridge"]
