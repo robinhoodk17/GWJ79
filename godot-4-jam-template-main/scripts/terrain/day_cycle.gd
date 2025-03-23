@@ -7,9 +7,6 @@ extends Node3D
 @export var sun_intensity : Curve 
 @export var sky_color : Gradient 
 @export var horizon_color : Gradient
-#day length in seconds. A 5 minute day is 300
-@export var day_length : float = 20.0
-@export var start_time : float = 0.3
 const day_cover = preload("res://assets/materials/day_environment.tres")
 const night_cover = preload("res://assets/materials/night_environment.tres")
 var time : float
@@ -17,8 +14,8 @@ var time_rate : float
 var day : bool = true
 
 func _ready() -> void:
-	time_rate = 1.0 / day_length
-	time = start_time
+	time_rate = 1.0 / Global.day_length
+	time = Global.time
 	
 	
 func _physics_process(delta: float) -> void:

@@ -50,6 +50,10 @@ func _physics_process(delta: float) -> void:
 	if current_state == states.DYING:
 		return
 	match current_state:
+		states.IDLE:
+			if !is_on_floor():
+				velocity += get_gravity()
+				move_and_slide()
 		states.WALKING:
 			nav_agent.target_position = Vector3(player_node.global_position.x, 
 			global_position.y, player_node.global_position.z)
@@ -121,6 +125,7 @@ func take_damage(how_much : int, launch_force : float, _launch_direction : Vecto
 
 
 func start_ragdoll():
+	Signalbus.enemy_died.emit(self)
 	##actually implement stuff
 	#physical_bones_start_simulation()
 	lockable = false
@@ -148,4 +153,5 @@ func die() -> void:
 
 
 func delete_entity() -> void:
+	Signalbus.enemy_died.emit(self)
 	queue_free()
