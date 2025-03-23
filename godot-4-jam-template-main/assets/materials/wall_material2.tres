@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://hs7by4a12uxa"]
+
+[ext_resource type="Texture2D" uid="uid://dp6jvrbfaqsps" path="res://assets/textures/Concreto.png" id="1_hpn1i"]
+
+[resource]
+shading_mode = 2
+diffuse_mode = 3
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.693565, 0.507285, 0.00818281, 1)
+albedo_texture = ExtResource("1_hpn1i")
+metallic_specular = 0.0
+uv1_scale = Vector3(1.36, 1.36, 1.36)
+grow_amount = -1.379

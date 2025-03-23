@@ -291,6 +291,7 @@ func handle_cooldowns(delta : float):
 		current_tail_cooldown += delta
 
 func take_damage(damage : int) -> void:
+	$CameraPivot/UI/Game/Health.value = current_health
 	current_health -= damage
 	if current_health <= 0:
 		die()
