@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bojsla6nqcf03"]
+[gd_scene load_steps=18 format=3 uid="uid://bojsla6nqcf03"]
 
 [ext_resource type="Script" uid="uid://csrg6q7a24yum" path="res://ui/game/game_ui.gd" id="1_67una"]
 [ext_resource type="Script" uid="uid://c3u6rm60678fe" path="res://ui/game/show_bars.gd" id="2_d7okr"]
@@ -53,6 +53,15 @@ bg_color = Color(0.458405, 0.458405, 0.458405, 0.384314)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w08ax"]
 bg_color = Color(2.57018e-05, 0.917634, 0.251129, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7okqv"]
+bg_color = Color(0.6, 0.6, 0.6, 0.0980392)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b7dow"]
+bg_color = Color(1, 0, 0, 1)
+border_width_right = 1
+border_color = Color(0.6, 0.6, 0.6, 0.0980392)
+border_blend = true
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -263,3 +272,15 @@ label_size = 10.0
 [node name="LockOn" type="Sprite2D" parent="LockOnParent"]
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("7_b3mny")
+
+[node name="Health" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 332.0
+offset_right = 280.0
+offset_bottom = 469.0
+scale = Vector2(5.48, 0.119999)
+theme_override_styles/background = SubResource("StyleBoxFlat_7okqv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_b7dow")
+value = 100.0
+show_percentage = false

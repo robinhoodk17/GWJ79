@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://ch8gse74drulk"]
+[gd_scene load_steps=11 format=3 uid="uid://ch8gse74drulk"]
 
 [ext_resource type="PackedScene" uid="uid://d0i4cibp8vq5y" path="res://scenes/enemies/basic_enemy.tscn" id="1_4f1jf"]
 [ext_resource type="Script" uid="uid://rl8vm2mjrkbi" path="res://scripts/enemies/hitbox.gd" id="2_jidbh"]
+[ext_resource type="PackedScene" uid="uid://cuidiu4pit7ke" path="res://assets/3d/characters/enemies/Bearded Dragon Enemy.glb" id="3_7lpdb"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_yhgeu"]
 height = 1.5
@@ -11,214 +12,109 @@ resource_local_to_scene = true
 transparency = 1
 vertex_color_use_as_albedo = true
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5tdoh"]
-height = 1.5
-
-[sub_resource type="BoxMesh" id="BoxMesh_rvg3d"]
-size = Vector3(0.125, 0.125, 0.5)
+[sub_resource type="SphereShape3D" id="SphereShape3D_c8di2"]
+radius = 1.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4f1jf"]
-size = Vector3(0.125, 0.125, 0.5)
+size = Vector3(2, 2, 2)
 
-[sub_resource type="Animation" id="Animation_2mtot"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MeshInstance3D:surface_material_override/0:albedo_color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("MeshInstance3D2:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("MeshInstance3D2:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0.5, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("MeshInstance3D2/Area3D:damaging")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
+[sub_resource type="ViewportTexture" id="ViewportTexture_7lpdb"]
+viewport_path = NodePath("Sprite3D/SubViewport")
 
-[sub_resource type="Animation" id="Animation_k171f"]
-resource_name = "attack"
-length = 2.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D2:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MeshInstance3D2:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.4, 1.5, 2),
-"transitions": PackedFloat32Array(1, 0.406126, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0.5, 0), Vector3(0, 0.5, -0.75), Vector3(0, 0.5, -2), Vector3(0, 0.5, 0)]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(2.1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"attack_cooldown"
-}]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("MeshInstance3D2/Area3D:damaging")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.3, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c8di2"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = SubResource("ViewportTexture_7lpdb")
+billboard_mode = 1
 
-[sub_resource type="Animation" id="Animation_rvg3d"]
-resource_name = "die"
-length = 1.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-1.5708, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MeshInstance3D:surface_material_override/0:albedo_color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.5, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(1.5),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"delete_entity"
-}]
-}
+[sub_resource type="ViewportTexture" id="ViewportTexture_yr1xa"]
+viewport_path = NodePath("Sprite3D/SubViewport")
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_vgpjm"]
-_data = {
-&"RESET": SubResource("Animation_2mtot"),
-&"attack": SubResource("Animation_k171f"),
-&"die": SubResource("Animation_rvg3d")
-}
-
-[node name="SmallKaiju" instance=ExtResource("1_4f1jf")]
+[node name="SmallKaiju" node_paths=PackedStringArray("animation_player") instance=ExtResource("1_4f1jf")]
+animation_player = NodePath("Bearded Dragon Enemy/AnimationPlayer")
 resistance_against_launch = 5.0
-speed = 20.0
+speed = 10.0
 attack_range = 2.0
+kaiju_height = 1.0
+kaiju_radius = 1.0
 
 [node name="MeshInstance3D" parent="." index="0"]
+visible = false
 mesh = SubResource("CapsuleMesh_yhgeu")
 surface_material_override/0 = SubResource("StandardMaterial3D_jidbh")
 
 [node name="CollisionShape3D" parent="." index="1"]
-shape = SubResource("CapsuleShape3D_5tdoh")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.580608, 0)
+shape = SubResource("SphereShape3D_c8di2")
 
 [node name="NavigationAgent3D" parent="." index="2"]
 path_desired_distance = 1.0
 target_desired_distance = 1.0
-height = 1.5
+radius = 1.0
 
 [node name="AttackRaycast" parent="." index="3"]
 target_position = Vector3(0, -1, 1.65)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-visible = false
-mesh = SubResource("BoxMesh_rvg3d")
+[node name="Bearded Dragon Enemy" parent="." index="5" instance=ExtResource("3_7lpdb")]
+transform = Transform3D(-1.31134e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -1.31134e-08, 0.215531, 0, 1.72403)
 
-[node name="Area3D" type="Area3D" parent="MeshInstance3D2" index="0"]
+[node name="Skeleton3D" parent="Bearded Dragon Enemy/BD Armature" index="0"]
+bones/0/position = Vector3(0.000382389, 8.89171e-05, 0)
+bones/0/rotation = Quaternion(0, 0, 0, 1)
+bones/1/rotation = Quaternion(6.74889e-08, 1.31948e-08, -0.0306832, 0.999529)
+bones/2/rotation = Quaternion(-0.0146252, -0.000319971, 0.0587371, 0.998166)
+bones/3/rotation = Quaternion(0.0168306, 0.00109294, -0.135364, 0.990652)
+bones/4/position = Vector3(0.661559, 1.247, 0.359289)
+bones/4/rotation = Quaternion(0.587036, 0.0136846, -0.196343, 0.785271)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/position = Vector3(0.655285, 1.25217, -0.380121)
+bones/5/rotation = Quaternion(-0.290779, 0.508952, -0.583491, 0.562098)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(0.0146211, 0.00047735, -0.111598, 0.993646)
+bones/7/rotation = Quaternion(0.732831, -0.198381, 0.1643, 0.629769)
+bones/8/rotation = Quaternion(-0.0563582, 0.0138403, 0.117718, 0.99135)
+bones/9/rotation = Quaternion(-0.466539, -0.0117548, 0.186596, 0.864515)
+bones/10/rotation = Quaternion(-0.128845, -0.00283891, -0.0652957, 0.989509)
+bones/11/rotation = Quaternion(0.13024, -9.60036e-08, -0.281066, 0.95081)
+bones/12/rotation = Quaternion(0.0260209, 1.85899e-09, -0.0890356, 0.995688)
+bones/13/rotation = Quaternion(-0.0538055, -2.48285e-08, 0.062164, 0.996615)
+bones/14/rotation = Quaternion(-0.170363, -9.63318e-08, 0.289863, 0.941783)
+bones/15/rotation = Quaternion(-0.69578, 0.192711, 0.203074, 0.661448)
+bones/16/rotation = Quaternion(0.0489543, -0.000682436, 0.123792, 0.9911)
+bones/17/rotation = Quaternion(0.463121, -0.000348238, 0.158811, 0.87195)
+bones/18/rotation = Quaternion(0.200355, -0.0296538, -0.225454, 0.952969)
+bones/19/rotation = Quaternion(-0.271663, -0.0401921, -0.125161, 0.953372)
+bones/20/rotation = Quaternion(-0.131729, -0.0027569, 0.0302598, 0.99082)
+bones/21/rotation = Quaternion(-0.0370736, 0.0287525, 0.166638, 0.984901)
+bones/22/rotation = Quaternion(0.0814245, 0.0763497, 0.389813, 0.914104)
+bones/23/position = Vector3(0.000382389, 8.89171e-05, -9.05753e-11)
+bones/23/rotation = Quaternion(0.688711, 0.160241, 0.688711, -0.160241)
+bones/25/rotation = Quaternion(-0.236651, 4.60157e-08, -8.12962e-09, 0.971595)
+bones/26/rotation = Quaternion(-0.0736578, -3.67046e-08, -3.30791e-09, 0.997284)
+bones/27/rotation = Quaternion(0.149337, 6.24677e-08, 1.06697e-08, 0.988786)
+bones/28/rotation = Quaternion(0.13575, 1.17549e-07, 3.44266e-08, 0.990743)
+bones/29/rotation = Quaternion(0.0999434, 5.30745e-09, 3.76899e-08, 0.994993)
+bones/30/rotation = Quaternion(-0.216893, 0.198652, -0.698415, 0.652466)
+bones/31/rotation = Quaternion(0.248316, 0.000203224, -0.554462, 0.794299)
+bones/32/rotation = Quaternion(-0.438382, -0.0864945, 0.510966, 0.734339)
+bones/33/rotation = Quaternion(0.339556, 0.0503818, 0.00309509, 0.93923)
+bones/38/rotation = Quaternion(-0.222822, -0.132612, 0.693195, 0.672492)
+bones/39/rotation = Quaternion(0.122178, 0.0724924, 0.577343, 0.804047)
+bones/40/rotation = Quaternion(-0.670752, -0.246604, -0.235339, 0.658706)
+bones/41/rotation = Quaternion(0.246693, -0.00551529, -0.402323, 0.881617)
+
+[node name="Area3D" type="Area3D" parent="." index="6"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.215531, 0.5, -1.72403)
 script = ExtResource("2_jidbh")
 damage_amount = 5
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/Area3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.27138, 0, 0)
 shape = SubResource("BoxShape3D_4f1jf")
 
-[node name="AnimationPlayer" parent="." index="6"]
-libraries = {
-&"": SubResource("AnimationLibrary_vgpjm")
-}
+[node name="Sprite3D" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.534582, 1.04033, -1.12587)
+material_override = SubResource("StandardMaterial3D_c8di2")
+texture = SubResource("ViewportTexture_yr1xa")
+
+[editable path="Bearded Dragon Enemy"]

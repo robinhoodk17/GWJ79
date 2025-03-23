@@ -12,6 +12,7 @@ var player_node : Node3D
 var thrown_towards : Node3D
 var damage_on_throw : float
 var lockable : bool = true
+@onready var progress_bar: ProgressBar = $Sprite3D/SubViewport/ProgressBar
 
 @export_group("Stats")
 @export var max_health : int = 50
@@ -39,7 +40,8 @@ func _ready() -> void:
 
 
 func _late_ready() -> void:
-	animation_player.play("RESET")
+	progress_bar.max_value = max_health
+	progress_bar.value = max_health
 	nav_agent.height = kaiju_height
 	nav_agent.radius = kaiju_radius
 	set_physics_process(false)
@@ -50,6 +52,7 @@ func acquire_target(body : Node3D) -> void:
 	show()
 	player_node = body
 	current_state = states.WALKING
+	start_walking()
 
 
 func _physics_process(delta: float) -> void:
@@ -103,7 +106,7 @@ func check_for_attack() -> void:
 		var attacked_body : Node3D = attack_raycast.get_collider()
 		if attacked_body.is_in_group("player"):
 			current_state = states.ATTACKING
-			animation_player.play("attack")
+			animation_player.play("Eat_Plants")
 
 
 func attack_cooldown() -> void:
@@ -112,6 +115,7 @@ func attack_cooldown() -> void:
 
 func start_walking() -> void:
 	current_state = states.WALKING
+	animation_player.play("BD_Movement")
 
 
 func take_damage(how_much : int, launch_force : float, _launch_direction : Vector3) -> void:
@@ -120,7 +124,7 @@ func take_damage(how_much : int, launch_force : float, _launch_direction : Vecto
 	accumulated_launch += launch_force
 	if accumulated_launch >= resistance_against_launch:
 		if animation_player.is_playing():
-			animation_player.stop()
+			animation_player.play("Knocked_Off_In_Air")
 		launch_direction = _launch_direction
 		current_state = states.STAGGERED
 		was_launched_ago = 0.0
@@ -128,8 +132,10 @@ func take_damage(how_much : int, launch_force : float, _launch_direction : Vecto
 		launch_speed = (accumulated_launch/resistance_against_launch) * 8.0
 		accumulated_launch = 0
 	_current_health -= how_much
+	progress_bar.value = _current_health
 	if _current_health <= 0:
 		die()
+		progress_bar.value = 0
 
 
 func start_ragdoll():
@@ -156,10 +162,11 @@ func start_throw(target : Node3D, _throw_speed, _throw_distance, damage_done):
 
 func die() -> void:
 	current_state = states.DYING
-	animation_player.play("die")
+	animation_player.play("BD_Pass_Out")
 	print_debug("dying")
 
 
 func delete_entity() -> void:
 	Signalbus.enemy_died.emit(self)
+	await get_tree().process_frame
 	get_parent().remove_child(self)
