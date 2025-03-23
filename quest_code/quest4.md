@@ -39,16 +39,16 @@ join baron (baron-happy) right
 baron: Ha ha ha! Perfect! Excellent! Thank you so much my loyal pet. Next I want you to retrieve some saffron, fine liquor and-
 leave millionaire
 join explosion (explosion) center
-*BOOOOOOOOM!!!*
+explosion: *BOOOOOOOOM!!!*
 update gaiamon (gaiamon-concerned)
 gaiamon: (!)
 update baron (baron-concerned)
-leave explosion (explosion)
+leave explosion
 join millionaire (silhouette) center
 millionaire: What the-
-baron: That sounded like an explosion! What is going on!?
+baron: That sounded like an explosion! What's going on!?
 leave millionaire
-join celebrity (silhouette)
+join celebrity (silhouette) middle
 celebrity: Look over there! There is smoke on the horizon! 
 baron: Is that ... not where the city is located?
 gaiamon: (Oh no! I gotta go!) 
@@ -63,4 +63,4 @@ baron Kristopher: I-I-I m-mean… p-p-p-pretty please?
 gaiamon: (*Glaaaaaare*)
 baron Kristopher: …Okay, you can go…
 update gaiamon (gaiamon-happy)
-gaiamon: (Hehehe. This human is funny! Wish I could stay and play more but I need to go check on the others!!) 
+gaiamon: (Hehehe. This human is funny! Wish I could stay and play more but I need to go check on the others!!)
