@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://v5u0dyabni7e" path="res://input/default_mapping_context.tres" id="2_y1ygp"]
 [ext_resource type="Environment" uid="uid://blf7d0d0y7tkl" path="res://assets/materials/day_environment.tres" id="3_h5v8l"]
 [ext_resource type="Script" uid="uid://xq8hu0g533p5" path="res://scripts/terrain/day_cycle.gd" id="3_i3jkc"]
-[ext_resource type="PackedScene" uid="uid://dom2bq6x7abkr" path="res://scenes/player/player2_conflicts/player_conflicts.tscn" id="3_xcm3i"]
+[ext_resource type="PackedScene" uid="uid://dom2bq6x7abkr" path="res://scenes/player/player.tscn" id="3_xcm3i"]
 [ext_resource type="Script" uid="uid://ek8xpatk0abp" path="res://scripts/terrain/bar_spot.gd" id="4_0mpi7"]
 [ext_resource type="Gradient" uid="uid://dwl1aq5b6wqmh" path="res://scripts/shaders/horizon_color_gradient.tres" id="4_t21en"]
 [ext_resource type="Material" uid="uid://dswa7nxvhoswc" path="res://scenes/particles/Sunlight.tres" id="5_0rf43"]
@@ -13,7 +13,7 @@
 [ext_resource type="Material" uid="uid://cq1jb3btvntna" path="res://assets/materials/wall_material.tres" id="8_cgwd4"]
 [ext_resource type="Script" uid="uid://dj3oo25bv4g2m" path="res://scripts/terrain/interactable.gd" id="8_i3jkc"]
 [ext_resource type="PackedScene" uid="uid://3ch4cewd4fr5" path="res://assets/3d/Leaf Bed.blend" id="10_cgwd4"]
-[ext_resource type="PackedScene" uid="uid://cxx38lw6y1dt6" path="res://assets/3d/multi_meshes/Tree.blend" id="11_x7gld"]
+[ext_resource type="PackedScene" uid="uid://cxx38lw6y1dt6" path="res://assets/3d/Tree.blend" id="11_x7gld"]
 [ext_resource type="PackedScene" uid="uid://bw6h0b07qrtvl" path="res://assets/3d/level1.blend" id="12_0rf43"]
 [ext_resource type="PackedScene" uid="uid://ch8gse74drulk" path="res://scenes/enemies/small_kaiju.tscn" id="12_h5v8l"]
 [ext_resource type="Script" uid="uid://cxhiheuo0y8e5" path="res://scripts/killbox.gd" id="13_60fbq"]
@@ -112,7 +112,7 @@ light_angular_distance = 5.0
 light_specular = 0.0
 sky_mode = 2
 
-[node name="Player" parent="." groups=["player"] instance=ExtResource("3_xcm3i")]
+[node name="Player" parent="." instance=ExtResource("3_xcm3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.82469, 0.776253, -176.793)
 
 [node name="Section1" type="NavigationRegion3D" parent="."]

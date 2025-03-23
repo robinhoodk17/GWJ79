@@ -1,7 +1,7 @@
 extends Area3D
 class_name Combat
 
-@export var hide_enemies : bool = true
+@export var hide_enemies : bool = false
 @export var respawn : bool = true
 @export var days_for_respawn : int = 3
 var days_passed : int  = 0
@@ -11,6 +11,7 @@ var waiting_for_respawn : bool = false
 var positions : Array[Vector3] = []
 var respawning : bool = false
 var enemies_exist : bool = false
+var combat_started : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	body_entered.connect(acquire_target)
@@ -64,10 +65,12 @@ func respawn_enemies() -> void:
 	await get_tree().process_frame
 	late_ready()
 	waiting_for_respawn = false
+	combat_started = false
 
 func acquire_target(body : Node3D) -> void:
-	if !enemies_exist:
+	if !enemies_exist or combat_started:
 		return
+	combat_started = true
 	if body.is_in_group("player"):
 		Signalbus.combat_started.emit(self)
 		print_debug("combat_started")

@@ -157,6 +157,7 @@ func start_throw(target : Node3D, _throw_speed, _throw_distance, damage_done):
 func die() -> void:
 	current_state = states.DYING
 	animation_player.play("die")
+	print_debug("dying")
 
 
 func delete_entity() -> void:

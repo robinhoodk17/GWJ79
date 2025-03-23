@@ -4,6 +4,7 @@
 
 [node name="StartCombat_trigger" type="Area3D"]
 collision_layer = 0
+collision_mask = 9
 script = ExtResource("1_p8p2p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

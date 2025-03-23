@@ -37,6 +37,7 @@ enum states{IDLE, WALKING,TAIL_ATTACK,BITE_ATTACK,STOMP_ATTACK,TRANSITION, BLOCK
 @export var camera : Camera3D
 @export var camera_spring_arm : SpringArm3D
 @export var camera_pivot : Node3D
+@export var lock_on_area : Area3D
 @export_subgroup("animation")
 @export var mesh_parent : Node3D
 @export var animation_player : AnimationPlayer
@@ -175,34 +176,33 @@ func state_machine(delta : float) -> void:
 			current_state=states.TRANSITION
 		states.BITE_ATTACK:
 			walk_sound.stop()
-			if camera_pivot.current_camera_state == camera_pivot.camera_state.ENEMY_ACQUIRED:
-				velocity = Vector3.ZERO
-				set_attack_animation("Bite_Attack", 3.0)
-				current_state=states.TRANSITION
-				var targeted_enemy : Node3D = camera_pivot.locked_enemy
-				if targeted_enemy._current_health <= bite_damage:
-					print_debug("whoops, should have taken it into the mouth")
-				return
+			bellow_sound.play()
+			velocity = Vector3.ZERO
+			set_attack_animation("Bite_Attack", 3.0)
+			current_state=states.TRANSITION
+			return
 		states.BITE_ATTACK_KILL:
 			walk_sound.stop()
-			if camera_pivot.current_camera_state == camera_pivot.camera_state.ENEMY_ACQUIRED:
-				velocity = Vector3.ZERO
-				set_attack_animation("Bite_Attack_Kill", 1.5)
-				current_state = states.TRANSITION
-				carrying_enemy = true
-				var targeted_enemy : Node3D = camera_pivot.locked_enemy
-				if targeted_enemy._current_health <= bite_damage:
-					targeted_enemy._current_health = 0
-					targeted_enemy.start_ragdoll()
-					carried_enemy = targeted_enemy
-					camera_pivot.current_camera_state = camera_pivot.camera_state.LOCK_ON
-				return
+			bellow_sound.play()
+			velocity = Vector3.ZERO
+			set_attack_animation("Bite_Attack_Kill", 3.0)
+			current_state = states.TRANSITION
+			carrying_enemy = true
+			if targeted_enemy._current_health <= bite_damage:
+				var duplicate = targeted_enemy.duplicate()
+				duplicate.player_node = self
+				get_tree().root.add_child(duplicate)
+				targeted_enemy.delete_entity()
+				targeted_enemy = duplicate
+				targeted_enemy.start_ragdoll()
+				carried_enemy = targeted_enemy
+			return
 		states.THROWING:
 			walk_sound.stop()
+			bellow_sound.play()
 			current_state=states.TRANSITION
 			velocity = Vector3.ZERO
-			set_attack_animation("Throw_Enemy", 2.0)
-			
+			set_attack_animation("Throw_Enemy", 3.0)
 		states.STOMP_ATTACK:
 			walk_sound.stop()
 			roar_sound.play()
@@ -236,15 +236,23 @@ func _physics_process(delta: float) -> void:
 			current_state=states.TAIL_ATTACK
 			current_tail_cooldown = 0.0
 		if bite_action.is_triggered():
-			if camera_pivot.current_camera_state == camera_pivot.camera_state.ENEMY_ACQUIRED:
-				targeted_enemy = camera_pivot.locked_enemy
-				if targeted_enemy == null:
-					return
+			var targetable_enemies : Array[Node3D] = lock_on_area.get_overlapping_bodies()
+			targeted_enemy = null
+			var current_distance = 10000
+			for i in targetable_enemies.size():
+				if targetable_enemies[i].is_in_group("enemy"):
+					if targetable_enemies[i].lockable:
+						var candidate_distance = targetable_enemies[i].global_position.distance_squared_to(global_position)
+						if candidate_distance < current_distance:
+							targeted_enemy = targetable_enemies[i]
+			if targeted_enemy != null:
 				if carrying_enemy and carried_enemy!= null:
 					current_state = states.THROWING
 					velocity = Vector3.ZERO
 				else:
-					if targeted_enemy._current_health <= bite_damage:
+					carrying_enemy = false
+					carried_enemy = null
+					if targeted_enemy.small:
 						targeted_enemy._current_health = 0
 						targeted_enemy.start_ragdoll()
 						current_state = states.BITE_ATTACK_KILL

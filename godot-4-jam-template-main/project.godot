@@ -138,6 +138,7 @@ dialogic_default_action={
 
 3d_physics/layer_2="enemy"
 3d_physics/layer_3="interactables"
+3d_physics/layer_4="player_detection"
 
 [physics]
 
