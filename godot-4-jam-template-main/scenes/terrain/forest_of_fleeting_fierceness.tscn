@@ -1,0 +1,25 @@
+[gd_scene load_steps=7 format=3 uid="uid://dh05vexi1i10v"]
+
+[ext_resource type="Script" uid="uid://dqih6i2t5n4pe" path="res://scripts/enable_guide.gd" id="1_6736k"]
+[ext_resource type="Resource" uid="uid://v5u0dyabni7e" path="res://input/default_mapping_context.tres" id="2_gkkc5"]
+[ext_resource type="PackedScene" uid="uid://bdfdxgatveclo" path="res://scenes/world_environment.tscn" id="3_hxlqj"]
+[ext_resource type="PackedScene" uid="uid://w7t2nu6mwjg5" path="res://assets/3d/ferocious_forest/forest.blend" id="4_7dhnh"]
+[ext_resource type="Material" uid="uid://0iqgmgg2101e" path="res://assets/materials/floor_material.tres" id="5_gkkc5"]
+[ext_resource type="PackedScene" uid="uid://dom2bq6x7abkr" path="res://scenes/player/player.tscn" id="5_i2xcs"]
+
+[node name="forest_of_fleeting_fierceness" type="Node3D"]
+script = ExtResource("1_6736k")
+default_mapping_context = ExtResource("2_gkkc5")
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("3_hxlqj")]
+
+[node name="forest" parent="." instance=ExtResource("4_7dhnh")]
+
+[node name="pyramid" parent="forest" index="1"]
+material_override = ExtResource("5_gkkc5")
+
+[node name="Player" parent="." instance=ExtResource("5_i2xcs")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.72552, 100.875, 0)
+
+[editable path="forest"]

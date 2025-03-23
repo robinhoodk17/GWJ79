@@ -46,6 +46,8 @@ var lock_action_current_cooldown : float = 0.0
 @export var shake_probability : float = 0.8
 @export var tween_duration : float = 0.25
 @export var _reset_x_rotation : float = -0.35
+@export var default_FOV : float = 75
+@export var focused_FOV : float = 68
 var _target_rotation : Vector3 = Vector3(_reset_x_rotation,0,0)
 var tween : Tween
 
@@ -127,6 +129,7 @@ func _physics_process(delta: float) -> void:
 		lock_action_current_cooldown += delta
 	match current_camera_state:
 		camera_state.NORMAL:
+			camera.fov = move_toward(camera.fov, default_FOV, delta * 10.0)
 			if lock_on_sprite.visible:
 				animator_2d.stop()
 				lock_on_sprite.hide()
@@ -152,6 +155,7 @@ func _physics_process(delta: float) -> void:
 			handleShakes(delta)
 
 		camera_state.LOCK_ON:
+			camera.fov = move_toward(camera.fov, focused_FOV, delta * 10.0)
 			if lock_on_sprite.visible:
 				animator_2d.stop()
 				lock_on_sprite.hide()
@@ -189,6 +193,7 @@ func _physics_process(delta: float) -> void:
 			camera.rotation = Vector3.ZERO
 
 		camera_state.ENEMY_ACQUIRED:
+			camera.fov = move_toward(camera.fov, focused_FOV, delta * 10.0)
 			if locked_enemy == null:
 				current_camera_state = camera_state.LOCK_ON
 				locked_enemy_list.clear()
