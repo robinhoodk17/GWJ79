@@ -5,10 +5,7 @@ extends Node3D
 @export var default_mapping_context: GUIDEMappingContext
 @onready var theme_sound: AudioStreamPlayer = $theme_sound
 
-# TODO: Create your game beginning here
-
 
 func _ready() -> void:
 	theme_sound.play()
 	GUIDE.enable_mapping_context(default_mapping_context)
-	#$UI.show_ui("Game")

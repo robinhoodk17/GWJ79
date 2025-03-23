@@ -47,7 +47,7 @@ polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Arr
 geometry_parsed_geometry_type = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tnacl"]
-size = Vector3(134.954, 1, 217)
+size = Vector3(199.564, 3.11523, 217)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xcm3i"]
 size = Vector3(50.0571, 7.33386, 108.916)
@@ -273,7 +273,7 @@ collision_mask = 3
 script = ExtResource("13_60fbq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Section1/Killbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.658615, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.058, 0)
 shape = SubResource("BoxShape3D_tnacl")
 
 [node name="StartCombat" parent="Section1" instance=ExtResource("14_y1ygp")]

@@ -1,4 +1,4 @@
-extends Area3D
+extends Node3D
 
 @export var hide_enemies : bool = true
 @export var which_combat : Combat
@@ -13,7 +13,7 @@ func _ready() -> void:
 
 
 func late_ready() -> void:
-	var overlapping_bodies : Array[Node3D] = get_overlapping_bodies()
+	var overlapping_bodies : Array[Node] = get_children()
 	for i : Node3D in overlapping_bodies:
 		if i.is_in_group("enemy"):
 			body_list.append(i)
@@ -34,7 +34,7 @@ func start_wave(body : Node3D) -> void:
 	if body != which_combat:
 		return
 	Signalbus.combat_started.emit(self)
-	var overlapping_bodies : Array[Node3D] = get_overlapping_bodies()
+	var overlapping_bodies : Array[Node] = get_children()
 	for i : Node3D in overlapping_bodies:
 		if i.is_in_group("enemy"):
 			i.show()
