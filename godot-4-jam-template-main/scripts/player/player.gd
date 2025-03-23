@@ -73,6 +73,12 @@ var current_health : int = max_health
 #endregion
 @onready var animation_state_machine=$AnimationTree.get("parameters/MoveStateMachine/playback")
 
+#sounds
+@onready var walk_sound: AudioStreamPlayer = $sounds/walk
+@onready var bellow_sound: AudioStreamPlayer = $sounds/bellow
+@onready var roar_sound: AudioStreamPlayer = $sounds/roar
+@onready var seed_sound: AudioStreamPlayer = $sounds/seed
+
 
 
 func _ready() -> void:
@@ -100,9 +106,14 @@ func late_ready() -> void:
 func state_machine(delta : float) -> void:
 	match current_state:
 		states.IDLE:
+			walk_sound.stop()
+			#if walk_sound.finished:
+				
 			velocity=Vector3.ZERO
 			set_animstate("Idle")
 		states.WALKING_CARRYING:
+			walk_sound.play_varied()
+			
 			if carried_enemy == null:
 				velocity=Vector3.ZERO
 				set_animstate("Idle")
@@ -132,6 +143,8 @@ func state_machine(delta : float) -> void:
 					mesh_parent.rotation.x = 0.0
 			
 		states.WALKING:
+			walk_sound.play_varied()
+				
 			set_animstate("Walk")
 			var input_dir : Vector2 = move_action.value_axis_2d
 			direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
@@ -155,10 +168,13 @@ func state_machine(delta : float) -> void:
 					mesh_parent.rotation.x = 0.0
 					
 		states.TAIL_ATTACK:
+			walk_sound.stop()
+			bellow_sound.play()
 			velocity = Vector3.ZERO
 			set_animstate_oneshot("Tail_Attack")
 			current_state=states.TRANSITION
 		states.BITE_ATTACK:
+			walk_sound.stop()
 			if camera_pivot.current_camera_state == camera_pivot.camera_state.ENEMY_ACQUIRED:
 				velocity = Vector3.ZERO
 				set_attack_animation("Bite_Attack", 3.0)
@@ -168,6 +184,7 @@ func state_machine(delta : float) -> void:
 					print_debug("whoops, should have taken it into the mouth")
 				return
 		states.BITE_ATTACK_KILL:
+			walk_sound.stop()
 			if camera_pivot.current_camera_state == camera_pivot.camera_state.ENEMY_ACQUIRED:
 				velocity = Vector3.ZERO
 				set_attack_animation("Bite_Attack_Kill", 1.5)
@@ -181,17 +198,21 @@ func state_machine(delta : float) -> void:
 					camera_pivot.current_camera_state = camera_pivot.camera_state.LOCK_ON
 				return
 		states.THROWING:
+			walk_sound.stop()
 			current_state=states.TRANSITION
 			velocity = Vector3.ZERO
 			set_attack_animation("Throw_Enemy", 2.0)
 			
 		states.STOMP_ATTACK:
+			walk_sound.stop()
+			roar_sound.play()
 			current_state=states.TRANSITION
 			velocity = Vector3.ZERO
 			set_animstate_oneshot("Stomp_Attack")
 			velocity = Vector3.ZERO
 			current_stomp_cooldown = 0.0
 		states.TRANSITION:
+			walk_sound.stop()
 			pass
 
 
@@ -276,7 +297,8 @@ func die() -> void:
 #region New Code Region
 
 func _on_seed_picked(type):
-
+	seed_sound.pitch_scale=1.0
+	seed_sound.play()
 	match Global.seeds_carried:
 
 		1:
@@ -297,8 +319,8 @@ func _on_seed_picked(type):
 			farm_4_timer.start(sapling_growing_time)
 			
 func _on_seed_dropped():
-
-	#print_debug(Global.seeds_carried)
+	seed_sound.pitch_scale=0.9
+	seed_sound.play()
 	match Global.seeds_carried:
 
 		0:

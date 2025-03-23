@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cm284gwx7qpyt"]
+[gd_scene load_steps=36 format=3 uid="uid://cm284gwx7qpyt"]
 
 [ext_resource type="Script" uid="uid://dqih6i2t5n4pe" path="res://scripts/enable_guide.gd" id="1_mqemg"]
 [ext_resource type="Resource" uid="uid://v5u0dyabni7e" path="res://input/default_mapping_context.tres" id="2_y1ygp"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://v6l3630gxqxn" path="res://scenes/pop_up.tscn" id="21_x7gld"]
 [ext_resource type="PackedScene" uid="uid://cpnv5epwbqi4f" path="res://assets/3d/city.blend" id="22_cgwd4"]
 [ext_resource type="PackedScene" uid="uid://dnj4vd42wu5uj" path="res://scenes/terrain/worldfarm_tile.tscn" id="23_x7gld"]
+[ext_resource type="AudioStream" uid="uid://budghs6b45oh3" path="res://assets/audio/themes/Main Theme.mp3" id="24_h5v8l"]
 
 [sub_resource type="Gradient" id="Gradient_t21en"]
 offsets = PackedFloat32Array(0, 0.0947075, 0.25, 0.35, 0.5, 0.6, 1)
@@ -622,6 +623,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.2493, -0.0971693, -157.054
 
 [node name="worldfarm_tile38" parent="worldfarm1" instance=ExtResource("23_x7gld")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.2342, -0.0816735, -143.48)
+
+[node name="theme_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("24_h5v8l")
+bus = &"Music"
 
 [connection signal="body_shape_entered" from="Section1/Bar Spot 1" to="Player" method="_on_bar_spot_1_body_shape_entered"]
 [connection signal="body_shape_exited" from="Section1/Bar Spot 1" to="Player" method="_on_bar_spot_1_body_shape_exited"]

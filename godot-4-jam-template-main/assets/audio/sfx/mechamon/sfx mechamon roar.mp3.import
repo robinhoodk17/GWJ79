@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dh3kpbpqgxevf"
+path="res://.godot/imported/sfx mechamon roar.mp3-7d344c073fd8eb82f559ad612e1b527a.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/sfx/mechamon/sfx mechamon roar.mp3"
+dest_files=["res://.godot/imported/sfx mechamon roar.mp3-7d344c073fd8eb82f559ad612e1b527a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

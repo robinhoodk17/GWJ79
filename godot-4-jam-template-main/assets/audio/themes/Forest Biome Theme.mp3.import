@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://3aabuapg4sh7"
+path="res://.godot/imported/Forest Biome Theme.mp3-131209846ef5582974b58b2c2380a9f5.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/themes/Forest Biome Theme.mp3"
+dest_files=["res://.godot/imported/Forest Biome Theme.mp3-131209846ef5582974b58b2c2380a9f5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

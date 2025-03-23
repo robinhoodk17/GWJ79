@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cgqhbx3ukq3do"
+path="res://.godot/imported/sfx bd nooo.mp3-de8dc6a741af3477dca0c3eda21e1688.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/sfx/enemy 2/sfx bd nooo.mp3"
+dest_files=["res://.godot/imported/sfx bd nooo.mp3-de8dc6a741af3477dca0c3eda21e1688.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

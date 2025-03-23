@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://u5cf5et5wvno"
+path="res://.godot/imported/sfx bird dead_.mp3-4b13f9affb6830d9e5ebbed53ebce1f6.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/sfx/bird enemy/sfx bird dead_.mp3"
+dest_files=["res://.godot/imported/sfx bird dead_.mp3-4b13f9affb6830d9e5ebbed53ebce1f6.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

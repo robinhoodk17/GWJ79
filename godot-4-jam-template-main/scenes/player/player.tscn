@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=4 uid="uid://dom2bq6x7abkr"]
+[gd_scene load_steps=97 format=4 uid="uid://dom2bq6x7abkr"]
 
 [ext_resource type="Script" uid="uid://ocibsxhcwp14" path="res://scripts/player/player.gd" id="1_3eola"]
 [ext_resource type="Resource" uid="uid://b6w7oxn8rfgtk" path="res://input/tail_attack.tres" id="2_der45"]
@@ -28,6 +28,11 @@
 [ext_resource type="PackedScene" uid="uid://dtrluvg5ox2vb" path="res://ui/notifications/message_board.tscn" id="17_qcw8q"]
 [ext_resource type="PackedScene" uid="uid://crak05vlyp0ep" path="res://scenes/player/lose_screen.tscn" id="19_dmlwb"]
 [ext_resource type="Script" path="res://scenes/player/interaction_area.gd" id="28_28m0y"]
+[ext_resource type="AudioStream" uid="uid://bt6dkpo5x23fk" path="res://assets/audio/sfx/gaiamon/walk.wav" id="29_uniwh"]
+[ext_resource type="Script" uid="uid://ct1dbp3md5ppm" path="res://scripts/player/play_sfx_varied.gd" id="30_pk8ii"]
+[ext_resource type="AudioStream" uid="uid://depar803f6kf5" path="res://assets/audio/sfx/gaiamon/sfx bellow.mp3" id="30_tffgl"]
+[ext_resource type="AudioStream" uid="uid://mm5l7w6dmaeo" path="res://assets/audio/sfx/gaiamon/sfx roar.mp3" id="31_pk8ii"]
+[ext_resource type="AudioStream" uid="uid://d2w30sg1pyw2h" path="res://assets/audio/sfx/plants/Kaiju Gardener Sound Effect - Seed.mp3" id="33_5mf0n"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ioxgp"]
 size = Vector3(2, 2, 2.8031)
@@ -4257,16 +4262,16 @@ bones/6/name = "Left Eyelid"
 bones/6/parent = 4
 bones/6/rest = Transform3D(0.0493214, -0.998775, 0.0038372, 0.546822, 0.0302176, 0.836703, -0.835794, -0.0391691, 0.547643, -0.266384, 1.49088, 0.272608)
 bones/6/enabled = true
-bones/6/position = Vector3(-0.303981, 1.52061, 0.257822)
-bones/6/rotation = Quaternion(-0.417284, 0.343607, 0.565016, 0.62335)
-bones/6/scale = Vector3(1.00232, 1.00232, 1.00232)
+bones/6/position = Vector3(-0.273141, 1.49618, 0.268378)
+bones/6/rotation = Quaternion(-0.355806, 0.332047, 0.599005, 0.635878)
+bones/6/scale = Vector3(1, 1, 1)
 bones/7/name = "Right Eyelid"
 bones/7/parent = 4
 bones/7/rest = Transform3D(-0.0094775, 0.997914, -0.063855, 0.749329, 0.0493717, 0.660355, 0.66213, -0.0415899, -0.748234, 0.267038, 1.48092, 0.273869)
 bones/7/enabled = true
-bones/7/position = Vector3(0.299469, 1.50345, 0.279494)
-bones/7/rotation = Quaternion(0.677678, 0.647157, 0.182176, -0.297915)
-bones/7/scale = Vector3(1.05247, 1.05247, 1.05247)
+bones/7/position = Vector3(0.272887, 1.48549, 0.274698)
+bones/7/rotation = Quaternion(0.654791, 0.667367, 0.222589, -0.276268)
+bones/7/scale = Vector3(1.01234, 1.01234, 1.01234)
 bones/8/name = "Lower Face"
 bones/8/parent = 3
 bones/8/rest = Transform3D(0.996135, -0.00153921, -0.0878207, 0.0873069, 0.126747, 0.988085, 0.00961016, -0.991934, 0.126392, -7.5549e-08, 1.92539, 9.94789e-08)
@@ -4653,6 +4658,26 @@ camera_pivot = NodePath("../CameraPivot")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.90127, 0)
 shape = SubResource("BoxShape3D_j4nxn")
+
+[node name="sounds" type="Node" parent="."]
+
+[node name="walk" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("29_uniwh")
+bus = &"SFX"
+script = ExtResource("30_pk8ii")
+
+[node name="bellow" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("30_tffgl")
+bus = &"SFX"
+
+[node name="roar" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("31_pk8ii")
+bus = &"SFX"
+
+[node name="seed" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("33_5mf0n")
+volume_db = -7.0
+bus = &"SFX"
 
 [editable path="CameraPivot/UI/Game"]
 [editable path="CameraPivot/UI/PauseMenu"]

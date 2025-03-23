@@ -1,9 +1,10 @@
-[gd_scene load_steps=33 format=4 uid="uid://dnj4vd42wu5uj"]
+[gd_scene load_steps=34 format=4 uid="uid://dnj4vd42wu5uj"]
 
 [ext_resource type="Script" uid="uid://cretuihpyet4m" path="res://scripts/terrain/worldfarm_tile.gd" id="1_r2n1i"]
 [ext_resource type="Texture2D" uid="uid://bhmm6jliw6qa1" path="res://assets/3d/colorpalette2.png" id="2_4uksf"]
 [ext_resource type="Material" uid="uid://dj38b52k4shhk" path="res://assets/materials/colorpalette2_toon_material.tres" id="2_r2n1i"]
 [ext_resource type="Material" uid="uid://srrslakukios" path="res://assets/materials/colorpalette2_planted_material.tres" id="3_fomka"]
+[ext_resource type="AudioStream" uid="uid://bt76jv3ofykjk" path="res://assets/audio/sfx/plants/Kaiju Gardener Sound Effect - Full Plant.wav" id="5_fomka"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w8eo1"]
 resource_name = "Material"
@@ -539,6 +540,12 @@ transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 1.69064, 0)
 visible = false
 mesh = SubResource("ArrayMesh_l5jb4")
 skeleton = NodePath("")
+
+[node name="matured_sound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_fomka")
+unit_size = 30.0
+max_db = 1.0
+max_distance = 100.0
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="timeout" from="growth_timer" to="." method="_on_growth_timer_timeout"]

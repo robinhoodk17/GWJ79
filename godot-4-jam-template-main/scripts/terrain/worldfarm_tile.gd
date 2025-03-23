@@ -27,6 +27,8 @@ var plant_type=0
 @onready var plant_4_med: MeshInstance3D = $plant4_med
 @onready var plant_4_big: MeshInstance3D = $plant4_big
 
+@onready var matured_sound: AudioStreamPlayer3D = $matured_sound
+
 func _ready() -> void:
 	planted=false
 
@@ -90,6 +92,7 @@ func phase_change():
 					plant_4_med.visible=true	
 					growth_timer.start(growth_phase_time)
 		3:
+			matured_sound.play()
 			match plant_type:
 				1:
 					plant_1_med.visible=false
