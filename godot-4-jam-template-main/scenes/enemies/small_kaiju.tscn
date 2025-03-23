@@ -213,6 +213,7 @@ mesh = SubResource("BoxMesh_rvg3d")
 
 [node name="Area3D" type="Area3D" parent="MeshInstance3D2" index="0"]
 script = ExtResource("2_jidbh")
+damage_amount = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/Area3D" index="0"]
 shape = SubResource("BoxShape3D_4f1jf")

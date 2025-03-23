@@ -109,7 +109,7 @@ func start_walking() -> void:
 
 
 func take_damage(how_much : int, launch_force : float, _launch_direction : Vector3) -> void:
-	if current_state == states.DYING:
+	if current_state != states.WALKING and current_state != states.ATTACKING and current_state != states.IDLE:
 		return
 	accumulated_launch += launch_force
 	if accumulated_launch >= resistance_against_launch:

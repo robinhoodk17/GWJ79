@@ -118,6 +118,10 @@ func _ready() -> void:
 	camera.make_current()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	lock_on_timer.timeout.connect(allow_relock)
+	Signalbus.combat_finished.connect(back_to_normal)
+
+func back_to_normal(_area = null) -> void:
+	current_camera_state = camera_state.NORMAL
 
 
 func allow_relock() -> void:

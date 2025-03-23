@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cwyk20gm1yjhr"]
+[gd_scene load_steps=5 format=3 uid="uid://cwyk20gm1yjhr"]
 
 [ext_resource type="Script" uid="uid://bagcvxj2p8rkn" path="res://scripts/pop_up_with_message.gd" id="1_umrav"]
-[ext_resource type="Resource" uid="uid://t84x06cxbh2f" path="res://input/interact.tres" id="2_4cdw6"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ui8ff"]
 viewport_path = NodePath("SubViewport")
@@ -18,7 +17,6 @@ viewport_path = NodePath("SubViewport")
 
 [node name="PopUp" type="Node3D"]
 script = ExtResource("1_umrav")
-interact_action = ExtResource("2_4cdw6")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true
