@@ -27,7 +27,7 @@ default_mapping_context = ExtResource("2_gbyxq")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("1_4xw5c")]
 
-[node name="Player" parent="." groups=["player"] instance=ExtResource("2_fj8uc")]
+[node name="Player" parent="." instance=ExtResource("2_fj8uc")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.568, 1, 0)
 

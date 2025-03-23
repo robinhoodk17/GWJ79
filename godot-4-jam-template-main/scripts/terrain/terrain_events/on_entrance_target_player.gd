@@ -42,6 +42,7 @@ func enemy_died(_body : Node3D):
 		body_list_dead.append(_body)
 	if body_list.size() == body_list_dead.size():
 		Signalbus.combat_finished.emit(self)
+		print_debug("combat ended")
 		if respawn:
 			days_passed = 0
 			waiting_for_respawn = true
@@ -74,4 +75,3 @@ func acquire_target(body : Node3D) -> void:
 			if i.is_in_group("enemy"):
 				i.show()
 				i.acquire_target(body)
-				print_debug("aquirec player")
