@@ -250,6 +250,7 @@ func _physics_process(delta: float) -> void:
 			camera.rotation = Vector3.ZERO
 
 			lock_on_sprite.show()
-			lock_on_sprite.global_position = camera.unproject_position(locked_enemy.global_position)
-			if !animator_2d.is_playing():
-				animator_2d.play("rotate_lock")
+			if locked_enemy != null:
+				lock_on_sprite.global_position = camera.unproject_position(locked_enemy.global_position)
+				if !animator_2d.is_playing():
+					animator_2d.play("rotate_lock")
