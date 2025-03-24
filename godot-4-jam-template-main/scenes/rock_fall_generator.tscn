@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctln1fligqalp"]
+
+[ext_resource type="Script" uid="uid://bdhqjfolecn3h" path="res://scripts/terrain/rock_fall_generator.gd" id="1_kefsx"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_kefsx")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true

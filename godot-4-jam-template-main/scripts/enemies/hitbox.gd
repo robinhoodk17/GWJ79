@@ -2,12 +2,13 @@ extends Area3D
 
 @export var damaging : bool = false
 @export var damage_amount : int = 10
-func _ready() -> void:
-	body_entered.connect(deal_damage)
 
-
-func deal_damage(body : Node3D) -> void:
-	if damaging:
-		if body.is_in_group("player"):
-			body.take_damage(damage_amount)
+func _process(delta: float) -> void:
+	if !damaging:
+		return
+	var colliding_bodies : Array[Node3D] = get_overlapping_bodies()
+	for i : Node3D in colliding_bodies:
+		if i.is_in_group("player"):
+			i.take_damage(damage_amount)
 			damaging = false
+			return

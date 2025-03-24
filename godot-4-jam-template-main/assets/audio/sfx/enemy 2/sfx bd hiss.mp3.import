@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b3r2kgvn21vrw"
+path="res://.godot/imported/sfx bd hiss.mp3-2064bb1281f8283beb509dbc104d4f6d.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/sfx/enemy 2/sfx bd hiss.mp3"
+dest_files=["res://.godot/imported/sfx bd hiss.mp3-2064bb1281f8283beb509dbc104d4f6d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

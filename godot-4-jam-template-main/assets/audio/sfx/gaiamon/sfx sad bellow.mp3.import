@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://crkfw57a47bj"
+path="res://.godot/imported/sfx sad bellow.mp3-83fa49a60549bc561c7ff3a8e7b3845d.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/sfx/gaiamon/sfx sad bellow.mp3"
+dest_files=["res://.godot/imported/sfx sad bellow.mp3-83fa49a60549bc561c7ff3a8e7b3845d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

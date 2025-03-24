@@ -1,0 +1,28 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://dj38b52k4shhk"]
+
+[ext_resource type="Shader" uid="uid://bdoboib6qlwio" path="res://assets/shaders/toonshader.gdshader" id="1_67ah1"]
+[ext_resource type="Texture2D" uid="uid://bhmm6jliw6qa1" path="res://assets/3d/colorpalette2.png" id="2_yencc"]
+
+[sub_resource type="Gradient" id="Gradient_j4nxn"]
+offsets = PackedFloat32Array(0.563422, 0.569322, 0.817109, 0.840708)
+colors = PackedColorArray(0, 0, 0, 1, 0.164706, 0.164706, 0.164706, 1, 0.165656, 0.165656, 0.165656, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_28m0y"]
+gradient = SubResource("Gradient_j4nxn")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_67ah1")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("2_yencc")
+shader_parameter/albedo_texture_size = Vector2i(1080, 1080)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/color_grad = SubResource("GradientTexture1D_28m0y")

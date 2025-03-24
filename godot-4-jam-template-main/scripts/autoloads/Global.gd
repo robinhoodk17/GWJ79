@@ -11,6 +11,7 @@ var time : float = 0.3
 var day_length : float = 60.0
 
 var saplings_carried=0
+var plants_list:Array[int]=[0,0,0,0]
 
 
 @warning_ignore("unused_signal")
